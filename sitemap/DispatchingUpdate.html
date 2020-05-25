@@ -14,7 +14,7 @@
   <script src="./scripts/persian-date.js"></script>
   <script src="./scripts/persian-datepicker.js"></script>
   <!-- Include Scala.js compiled code -->
-  <script type="text/javascript" src="./scripts/receive-dispatch-view-fastopt.js"></script>
+  <script type="text/javascript" src="../target/scala-2.13/receive-dispatch-view-fastopt.js"></script>
   <style>
 
 @font-face {
@@ -140,7 +140,7 @@ width: 150px;
     <span class="form-control col-1 border-0 rounded-0">صاحب کالا</span>
     <input type="text" list="fname" class="form-control col-2 rounded-0" placeholder="نام" id="goodsowner_firstname" oninput="propagatePersonArticleSelection('goodsowner', 'firstname')"/>
     <input type="text" list="lname" class="form-control col-2 rounded-0" placeholder="نام خانوادگی" id="goodsowner_lastname" oninput="propagatePersonArticleSelection('goodsowner', 'lastname')"/>
-    <input type="text" list="nidno" class="form-control col-2 rounded-0" placeholder="شماره ملی" pattern="\d{10}" id="goodsowner_nationalidno" oninput="propagatePersonArticleSelection('goodsowner', 'nationalidno')"/>
+    <input type="text" list="nidno" class="form-control col-2 rounded-0" placeholder="شماره ملی" pattern="[۰-۹]{10}" id="goodsowner_nationalidno" oninput="propagatePersonArticleSelection('goodsowner', 'nationalidno')"/>
     <div class="col-4"></div>
   </div>
 
@@ -161,7 +161,7 @@ width: 150px;
     <span class="form-control col-1 border-0 rounded-0">مالک حواله</span>
     <input type="text" list="fname" class="form-control col-2 rounded-0" placeholder="نام" id="draftowner_firstname" oninput="propagatePersonArticleSelection('draftowner', 'firstname')" />
     <input type="text" list="lname" class="form-control col-2 rounded-0" placeholder="نام خانوادگی" id="draftowner_lastname" oninput="propagatePersonArticleSelection('draftowner', 'lastname')" />
-    <input type="text" list="nidno" class="form-control col-2 rounded-0" placeholder="شماره ملی" pattern="\d{10}" id="draftowner_nationalidno" oninput="propagatePersonArticleSelection('draftowner', 'nationalidno')" />
+    <input type="text" list="nidno" class="form-control col-2 rounded-0" placeholder="شماره ملی" pattern="[۰-۹]{10}" id="draftowner_nationalidno" oninput="propagatePersonArticleSelection('draftowner', 'nationalidno')" />
     <span class="form-control border-0 col-1 rounded-0">خودرو</span>
     <input type="number" class="form-control col-1 rounded-0" placeholder="ایران" min="10" max="99"  id="truckno_state">
     <input type="number" class="form-control col-1 rounded-0" placeholder="رندوم" min="100" max="999" id="truckno_random">
@@ -231,7 +231,7 @@ width: 150px;
     <span class="form-control border-0 col-1 rounded-0">تحویل‌گیرنده</span>
     <input type="text" list="fname" class="form-control col-2 rounded-0" placeholder="نام" id="assignee_firstname" oninput="propagatePersonArticleSelection('assignee', 'firstname')" />
     <input type="text" list="lname" class="form-control col-2 rounded-0" placeholder="نام خانوادگی" id="assignee_lastname" oninput="propagatePersonArticleSelection('assignee', 'lastname')" />
-    <input type="text" list="nidno" class="form-control col-2 rounded-0" placeholder="شماره ملی" pattern="\d{10}" id="assignee_nationalidno" oninput="propagatePersonArticleSelection('assignee', 'nationalidno')" />
+    <input type="text" list="nidno" class="form-control col-2 rounded-0" placeholder="شماره ملی" pattern="[۰-۹]{10}" id="assignee_nationalidno" oninput="propagatePersonArticleSelection('assignee', 'nationalidno')" />
     <div class="col-4"></div>
   </div>
   
