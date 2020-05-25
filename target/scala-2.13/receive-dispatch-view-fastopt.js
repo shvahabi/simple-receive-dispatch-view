@@ -1,4 +1,4 @@
-let populateReceivingFormOnLoad,dummie,populateDispatchingTable,removeRowFromItemsList,submitDispatchingForm,propagatePersonArticleSelection,populateReceivingTable,submitReceivingForm,populateDispatchingFormOnLoad,updateSummary,populateDataList,addNewRowToItemsList;
+let populateReceivingFormOnLoad,populateDispatchingTable,removeRowFromItemsList,submitDispatchingForm,propagatePersonArticleSelection,populateReceivingTable,submitReceivingForm,populateDispatchingFormOnLoad,updateSummary,fetchPeople,addNewRowToItemsList;
 (function(){
 'use strict';
 const $linkingInfo = Object.freeze({
@@ -734,11 +734,10 @@ const $p_Ldummy$__inquireNumberOfRows$1__I = (function($thiz) {
 const $p_Ldummy$__inquireNumberOfRows$2__I = (function($thiz) {
   return $uI($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist").childElementCount)
 });
+const $p_Ldummy$__person$1__Lorg_scalajs_dom_raw_Element__Ldummy$Person = (function($thiz, attributer) {
+  return new $c_Ldummy$Person($as_T(attributer.getAttribute("firstName")), $as_T(attributer.getAttribute("surName")), $as_T(attributer.getAttribute("nationalIDNo")))
+});
 class $c_Ldummy$ extends $c_O {
-  dummie__V() {
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("dummieelement1").innerHTML = this.translateToPersian__T__T("1399/01/24");
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("dummieelement2").innerHTML = this.translateToPersian__T__T("\u06f1\u06f3\u06f9\u06f0/\u06f0\u06f1/\u06f2\u06f4")
-  };
   fetchReceivingForm__I__Ldummy$ReceivingForm(formNumber) {
     const elem = $m_s_None$();
     const receivingForm = new $c_sr_ObjectRef(elem);
@@ -903,18 +902,22 @@ class $c_Ldummy$ extends $c_O {
     this.populateDispatchingForm__Ldummy$DispatchingForm__V(fetchedForm)
   };
   submitReceivingForm__V() {
-    const this$4 = $m_Lorg_scalajs_dom_ext_Ajax$();
+    const x = this.receivingForm__Lorg_scalajs_dom_raw_Document__Ldummy$ReceivingForm($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument()).Ldummy$ReceivingForm__f_inJsonString;
+    const this$2 = $m_s_Console$();
+    const this$3 = this$2.out__Ljava_io_PrintStream();
+    this$3.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"));
+    const this$7 = $m_Lorg_scalajs_dom_ext_Ajax$();
     const s = this.receivingForm__Lorg_scalajs_dom_raw_Document__Ldummy$ReceivingForm($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument()).Ldummy$ReceivingForm__f_inJsonString;
     const headers = $m_sci_Map$EmptyMap$();
-    this$4.apply__T__T__Lorg_scalajs_dom_ext_Ajax$InputData__I__sci_Map__Z__T__s_concurrent_Future("POST", "http://localhost:8080/receivedispatch/receipts", s, 0, headers, false, "").onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1(((this$5) => ((x0$1$2) => {
+    this$7.apply__T__T__Lorg_scalajs_dom_ext_Ajax$InputData__I__sci_Map__Z__T__s_concurrent_Future("POST", "http://localhost:8080/receivedispatch/receipts", s, 0, headers, false, "").onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1(((this$8) => ((x0$1$2) => {
       const x0$1 = $as_s_util_Try(x0$1$2);
       if ((x0$1 instanceof $c_s_util_Success)) {
         const x2 = $as_s_util_Success(x0$1);
         const response = x2.s_util_Success__f_value;
-        const x = $as_T(response.statusText);
-        const this$7 = $m_s_Console$();
-        const this$8 = this$7.out__Ljava_io_PrintStream();
-        this$8.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"))
+        const x$1 = $as_T(response.statusText);
+        const this$10 = $m_s_Console$();
+        const this$11 = this$10.out__Ljava_io_PrintStream();
+        this$11.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x$1 + "\n"))
       } else if ((x0$1 instanceof $c_s_util_Failure)) {
         const x3 = $as_s_util_Failure(x0$1);
         const e = x3.s_util_Failure__f_exception;
@@ -1198,42 +1201,120 @@ class $c_Ldummy$ extends $c_O {
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("representative_lastname").value = receivingForm.Ldummy$ReceivingForm__f_representative.Ldummy$Person__f_surName;
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("representative_nationalidno").value = receivingForm.Ldummy$ReceivingForm__f_representative.Ldummy$Person__f_nationalIDNo
   };
-  fetchPeople__sci_Map() {
-    const this$8 = $m_s_Predef$().s_Predef$__f_Map;
-    const y = new $c_Ldummy$Person("\u0634\u0627\u0647\u062f", "\u0648\u0647\u0627\u0628\u06cc", "0123456789");
-    const $$x1 = new $c_T2("0123456789", y);
-    const y$1 = new $c_Ldummy$Person("\u062d\u0627\u0645\u062f", "\u0627\u062e\u0648\u0627\u0646", "1234567890");
-    const array = [$$x1, new $c_T2("1234567890", y$1)];
-    const elems = new $c_sjsr_WrappedVarArgs(array);
-    return this$8.from__sc_IterableOnce__sci_Map(elems)
+  fetchPeople__V() {
+    const this$3 = $m_Lorg_scalajs_dom_ext_Ajax$();
+    const headers = $m_sci_Map$EmptyMap$();
+    this$3.apply__T__T__Lorg_scalajs_dom_ext_Ajax$InputData__I__sci_Map__Z__T__s_concurrent_Future("GET", "http://localhost:8080/receivedispatch/people", null, 0, headers, false, "").onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1(((this$4) => ((x0$1$2) => {
+      const x0$1 = $as_s_util_Try(x0$1$2);
+      if ((x0$1 instanceof $c_s_util_Success)) {
+        const x2 = $as_s_util_Success(x0$1);
+        const value = x2.s_util_Success__f_value;
+        const $$x1 = $m_Ldummy$();
+        const array = JSON.parse($as_T(value.responseText));
+        const this$6 = $ct_sjs_js_WrappedArray__sjs_js_Array__(new $c_sjs_js_WrappedArray(), array);
+        const this$8 = $m_sci_List$().from__sc_IterableOnce__sci_List(this$6);
+        const f = ((this$7) => ((x$2) => new $c_Ldummy$Person($dp_toString__T(x$2.FirstName), $dp_toString__T(x$2.SurName), $dp_toString__T(x$2.NationalIDNo))))(this$4);
+        let this$11;
+        if ((this$8 === $m_sci_Nil$())) {
+          this$11 = $m_sci_Nil$()
+        } else {
+          const arg1 = this$8.head__O();
+          const h = new $c_sci_$colon$colon(f(arg1), $m_sci_Nil$());
+          let t = h;
+          let rest = $as_sci_List(this$8.tail__O());
+          while ((rest !== $m_sci_Nil$())) {
+            const arg1$1 = rest.head__O();
+            const nx = new $c_sci_$colon$colon(f(arg1$1), $m_sci_Nil$());
+            t.sci_$colon$colon__f_next = nx;
+            t = nx;
+            rest = $as_sci_List(rest.tail__O())
+          };
+          this$11 = h
+        };
+        const f$1 = ((this$2$1) => ((x$3$2) => {
+          const x$3 = $as_Ldummy$Person(x$3$2);
+          const self = x$3.Ldummy$Person__f_nationalIDNo;
+          return new $c_T2(self, x$3)
+        }))(this$4);
+        let this$13;
+        if ((this$11 === $m_sci_Nil$())) {
+          this$13 = $m_sci_Nil$()
+        } else {
+          const arg1$2 = this$11.head__O();
+          const h$1 = new $c_sci_$colon$colon(f$1(arg1$2), $m_sci_Nil$());
+          let t$1 = h$1;
+          let rest$1 = $as_sci_List(this$11.tail__O());
+          while ((rest$1 !== $m_sci_Nil$())) {
+            const arg1$3 = rest$1.head__O();
+            const nx$1 = new $c_sci_$colon$colon(f$1(arg1$3), $m_sci_Nil$());
+            t$1.sci_$colon$colon__f_next = nx$1;
+            t$1 = nx$1;
+            rest$1 = $as_sci_List(rest$1.tail__O())
+          };
+          this$13 = h$1
+        };
+        $m_s_$less$colon$less$();
+        $$x1.populateDataList__sci_Map__V($m_sci_Map$().from__sc_IterableOnce__sci_Map(this$13))
+      } else if ((x0$1 instanceof $c_s_util_Failure)) {
+        const x3 = $as_s_util_Failure(x0$1);
+        const error = x3.s_util_Failure__f_exception;
+        $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert((":\u062e\u0637\u0627 \u062f\u0631 \u0627\u062c\u0631\u0627\u06cc \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0628\u0627 \u0635\u062f\u0648\u0631 \u06a9\u062f\n" + error))
+      } else {
+        throw new $c_s_MatchError(x0$1)
+      }
+    }))(this)), $m_sjs_concurrent_JSExecutionContext$Implicits$().sjs_concurrent_JSExecutionContext$Implicits$__f_queue)
   };
-  addOption__T__T__Lorg_scalajs_dom_raw_Node(textNode, value) {
+  populateDataList__sci_Map__V(fetchedPeople) {
+    const this$1 = new $c_sc_MapOps$$anon$1(fetchedPeople);
+    const this$2 = $m_sci_List$().from__sc_IterableOnce__sci_List(this$1);
+    let these = this$2;
+    while ((!these.isEmpty__Z())) {
+      const arg1 = these.head__O();
+      const person = $as_Ldummy$Person(arg1);
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("fname").appendChild($m_Ldummy$().addOption__T__T__T__Lorg_scalajs_dom_raw_Node(person.Ldummy$Person__f_firstName, person.Ldummy$Person__f_surName, person.Ldummy$Person__f_nationalIDNo));
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("lname").appendChild($m_Ldummy$().addOption__T__T__T__Lorg_scalajs_dom_raw_Node(person.Ldummy$Person__f_firstName, person.Ldummy$Person__f_surName, person.Ldummy$Person__f_nationalIDNo));
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("nidno").appendChild($m_Ldummy$().addOption__T__T__T__Lorg_scalajs_dom_raw_Node(person.Ldummy$Person__f_firstName, person.Ldummy$Person__f_surName, person.Ldummy$Person__f_nationalIDNo));
+      these = $as_sci_List(these.tail__O())
+    }
+  };
+  addOption__T__T__T__Lorg_scalajs_dom_raw_Node(firstName, surName, nationalIDNo) {
     const newOption = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("option");
-    newOption.innerHTML = textNode;
-    newOption.setAttribute("value", value);
+    newOption.innerHTML = ((((firstName + " ") + surName) + " ") + this.translateToPersian__T__T(nationalIDNo));
+    newOption.setAttribute("value", nationalIDNo);
+    newOption.setAttribute("firstName", firstName);
+    newOption.setAttribute("surName", surName);
+    newOption.setAttribute("nationalIDNo", nationalIDNo);
     return newOption
   };
   propagatePersonArticleSelection__T__T__V(personList, article) {
+    const coll = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("fname").children;
+    const this$2 = new $c_Lorg_scalajs_dom_ext_package$PimpedHtmlCollection(coll);
+    const this$4 = $m_sci_List$().from__sc_IterableOnce__sci_List(this$2);
+    const f = ((this$3) => ((x$2) => new $c_T2($p_Ldummy$__person$1__Lorg_scalajs_dom_raw_Element__Ldummy$Person(this$3, x$2).Ldummy$Person__f_nationalIDNo, $p_Ldummy$__person$1__Lorg_scalajs_dom_raw_Element__Ldummy$Person(this$3, x$2))))(this);
+    let this$6;
+    if ((this$4 === $m_sci_Nil$())) {
+      this$6 = $m_sci_Nil$()
+    } else {
+      const arg1 = this$4.head__O();
+      const h = new $c_sci_$colon$colon(f(arg1), $m_sci_Nil$());
+      let t = h;
+      let rest = $as_sci_List(this$4.tail__O());
+      while ((rest !== $m_sci_Nil$())) {
+        const arg1$1 = rest.head__O();
+        const nx = new $c_sci_$colon$colon(f(arg1$1), $m_sci_Nil$());
+        t.sci_$colon$colon__f_next = nx;
+        t = nx;
+        rest = $as_sci_List(rest.tail__O())
+      };
+      this$6 = h
+    };
+    $m_s_$less$colon$less$();
+    const fetchedPeople = $m_sci_Map$().from__sc_IterableOnce__sci_Map(this$6);
     const selected = $as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(((personList + "_") + article)).value);
-    const fetchedPeople = this.fetchPeople__sci_Map();
     if (fetchedPeople.contains__O__Z(selected)) {
       $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById((personList + "_nationalidno")).value = this.translateToPersian__T__T($as_Ldummy$Person(fetchedPeople.apply__O__O(selected)).Ldummy$Person__f_nationalIDNo);
       $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById((personList + "_firstname")).value = $as_Ldummy$Person(fetchedPeople.apply__O__O(selected)).Ldummy$Person__f_firstName;
       $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById((personList + "_lastname")).value = $as_Ldummy$Person(fetchedPeople.apply__O__O(selected)).Ldummy$Person__f_surName
-    }
-  };
-  populateDataList__V() {
-    const this$1 = this.fetchPeople__sci_Map();
-    const this$2 = new $c_sc_MapOps$$anon$1(this$1);
-    const this$3 = $m_sci_List$().from__sc_IterableOnce__sci_List(this$2);
-    let these = this$3;
-    while ((!these.isEmpty__Z())) {
-      const arg1 = these.head__O();
-      const person = $as_Ldummy$Person(arg1);
-      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("fname").appendChild($m_Ldummy$().addOption__T__T__Lorg_scalajs_dom_raw_Node((((((person.Ldummy$Person__f_firstName + " ") + person.Ldummy$Person__f_surName) + " ") + "") + $m_Ldummy$().translateToPersian__T__T(person.Ldummy$Person__f_nationalIDNo)), ("" + person.Ldummy$Person__f_nationalIDNo)));
-      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("lname").appendChild($m_Ldummy$().addOption__T__T__Lorg_scalajs_dom_raw_Node((((((person.Ldummy$Person__f_firstName + " ") + person.Ldummy$Person__f_surName) + " ") + "") + $m_Ldummy$().translateToPersian__T__T(person.Ldummy$Person__f_nationalIDNo)), ("" + person.Ldummy$Person__f_nationalIDNo)));
-      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("nidno").appendChild($m_Ldummy$().addOption__T__T__Lorg_scalajs_dom_raw_Node((((((person.Ldummy$Person__f_firstName + " ") + person.Ldummy$Person__f_surName) + " ") + "") + $m_Ldummy$().translateToPersian__T__T(person.Ldummy$Person__f_nationalIDNo)), ("" + person.Ldummy$Person__f_nationalIDNo)));
-      these = $as_sci_List(these.tail__O())
     }
   };
   addNewRowToItemsList__Lorg_scalajs_dom_raw_Node() {
@@ -10227,6 +10308,58 @@ const $d_ju_concurrent_ExecutionException = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_ju_concurrent_ExecutionException.prototype.$classData = $d_ju_concurrent_ExecutionException;
+class $c_Lorg_scalajs_dom_ext_EasySeq$$anon$1 extends $c_O {
+  constructor(outer) {
+    super();
+    this.Lorg_scalajs_dom_ext_EasySeq$$anon$1__f_index = 0;
+    this.Lorg_scalajs_dom_ext_EasySeq$$anon$1__f_$outer = null;
+    if ((outer === null)) {
+      throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+    } else {
+      this.Lorg_scalajs_dom_ext_EasySeq$$anon$1__f_$outer = outer
+    };
+    this.Lorg_scalajs_dom_ext_EasySeq$$anon$1__f_index = 0
+  };
+  iterator__sc_Iterator() {
+    return this
+  };
+  isEmpty__Z() {
+    return (!this.hasNext__Z())
+  };
+  drop__I__sc_Iterator(n) {
+    return $f_sc_Iterator__drop__I__sc_Iterator(this, n)
+  };
+  toString__T() {
+    return "<iterator>"
+  };
+  copyToArray__O__I__I__I(xs, start, len) {
+    return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len)
+  };
+  addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
+    return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  knownSize__I() {
+    return (-1)
+  };
+  hasNext__Z() {
+    return (this.Lorg_scalajs_dom_ext_EasySeq$$anon$1__f_index < this.Lorg_scalajs_dom_ext_EasySeq$$anon$1__f_$outer.Lorg_scalajs_dom_ext_EasySeq__f_org$scalajs$dom$ext$EasySeq$$jsLength)
+  };
+  next__O() {
+    const res = this.Lorg_scalajs_dom_ext_EasySeq$$anon$1__f_$outer.Lorg_scalajs_dom_ext_EasySeq__f_org$scalajs$dom$ext$EasySeq$$jsApply.apply__O__O(this.Lorg_scalajs_dom_ext_EasySeq$$anon$1__f_index);
+    this.Lorg_scalajs_dom_ext_EasySeq$$anon$1__f_index = ((1 + this.Lorg_scalajs_dom_ext_EasySeq$$anon$1__f_index) | 0);
+    return res
+  };
+}
+const $d_Lorg_scalajs_dom_ext_EasySeq$$anon$1 = new $TypeData().initClass({
+  Lorg_scalajs_dom_ext_EasySeq$$anon$1: 0
+}, false, "org.scalajs.dom.ext.EasySeq$$anon$1", {
+  Lorg_scalajs_dom_ext_EasySeq$$anon$1: 1,
+  O: 1,
+  sc_Iterator: 1,
+  sc_IterableOnce: 1,
+  sc_IterableOnceOps: 1
+});
+$c_Lorg_scalajs_dom_ext_EasySeq$$anon$1.prototype.$classData = $d_Lorg_scalajs_dom_ext_EasySeq$$anon$1;
 class $c_RTLong extends $c_jl_Number {
   constructor(lo, hi) {
     super();
@@ -11576,6 +11709,30 @@ const $d_sc_MapOps$$anon$3 = new $TypeData().initClass({
   sc_IterableOnceOps: 1
 });
 $c_sc_MapOps$$anon$3.prototype.$classData = $d_sc_MapOps$$anon$3;
+class $c_sc_Seq$ extends $c_sc_SeqFactory$Delegate {
+  constructor() {
+    super();
+    $ct_sc_SeqFactory$Delegate__sc_SeqFactory__(this, $m_sci_Seq$())
+  };
+}
+const $d_sc_Seq$ = new $TypeData().initClass({
+  sc_Seq$: 0
+}, false, "scala.collection.Seq$", {
+  sc_Seq$: 1,
+  sc_SeqFactory$Delegate: 1,
+  O: 1,
+  sc_SeqFactory: 1,
+  sc_IterableFactory: 1,
+  Ljava_io_Serializable: 1
+});
+$c_sc_Seq$.prototype.$classData = $d_sc_Seq$;
+let $n_sc_Seq$ = (void 0);
+function $m_sc_Seq$() {
+  if ((!$n_sc_Seq$)) {
+    $n_sc_Seq$ = new $c_sc_Seq$()
+  };
+  return $n_sc_Seq$
+}
 class $c_sc_StrictOptimizedLinearSeqOps$$anon$1 extends $c_sc_AbstractIterator {
   constructor(outer) {
     super();
@@ -15406,6 +15563,87 @@ function $m_s_math_Numeric$ShortIsIntegral$() {
   };
   return $n_s_math_Numeric$ShortIsIntegral$
 }
+const $ct_Lorg_scalajs_dom_ext_EasySeq__I__F1__ = (function($thiz, jsLength, jsApply) {
+  $thiz.Lorg_scalajs_dom_ext_EasySeq__f_org$scalajs$dom$ext$EasySeq$$jsLength = jsLength;
+  $thiz.Lorg_scalajs_dom_ext_EasySeq__f_org$scalajs$dom$ext$EasySeq$$jsApply = jsApply;
+  return $thiz
+});
+class $c_Lorg_scalajs_dom_ext_EasySeq extends $c_O {
+  constructor() {
+    super();
+    this.Lorg_scalajs_dom_ext_EasySeq__f_org$scalajs$dom$ext$EasySeq$$jsLength = 0;
+    this.Lorg_scalajs_dom_ext_EasySeq__f_org$scalajs$dom$ext$EasySeq$$jsApply = null
+  };
+  canEqual__O__Z(that) {
+    return true
+  };
+  equals__O__Z(o) {
+    return $f_sc_Seq__equals__O__Z(this, o)
+  };
+  hashCode__I() {
+    return $m_s_util_hashing_MurmurHash3$().seqHash__sc_Seq__I(this)
+  };
+  toString__T() {
+    return $f_sc_Iterable__toString__T(this)
+  };
+  indexWhere__F1__I__I(p, from) {
+    const this$1 = new $c_Lorg_scalajs_dom_ext_EasySeq$$anon$1(this);
+    return $f_sc_Iterator__indexWhere__F1__I__I(this$1, p, from)
+  };
+  lengthCompare__I__I(len) {
+    return $f_sc_IterableOps__sizeCompare__I__I(this, len)
+  };
+  isEmpty__Z() {
+    return $f_sc_SeqOps__isEmpty__Z(this)
+  };
+  sameElements__sc_IterableOnce__Z(that) {
+    return $f_sc_SeqOps__sameElements__sc_IterableOnce__Z(this, that)
+  };
+  applyOrElse__O__F1__O(x, default$1) {
+    return $f_s_PartialFunction__applyOrElse__O__F1__O(this, x, default$1)
+  };
+  className__T() {
+    return "Seq"
+  };
+  head__O() {
+    return new $c_Lorg_scalajs_dom_ext_EasySeq$$anon$1(this).next__O()
+  };
+  drop__I__O(n) {
+    return $f_sc_IterableOps__drop__I__O(this, n)
+  };
+  tail__O() {
+    return $f_sc_IterableOps__tail__O(this)
+  };
+  exists__F1__Z(p) {
+    return $f_sc_IterableOnceOps__exists__F1__Z(this, p)
+  };
+  addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
+    return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  knownSize__I() {
+    return (-1)
+  };
+  length__I() {
+    return this.Lorg_scalajs_dom_ext_EasySeq__f_org$scalajs$dom$ext$EasySeq$$jsLength
+  };
+  apply__I__O(x) {
+    return this.Lorg_scalajs_dom_ext_EasySeq__f_org$scalajs$dom$ext$EasySeq$$jsApply.apply__O__O(x)
+  };
+  iterator__sc_Iterator() {
+    return new $c_Lorg_scalajs_dom_ext_EasySeq$$anon$1(this)
+  };
+  fromSpecific__sc_IterableOnce__O(coll) {
+    const this$1 = $m_sc_Seq$();
+    return this$1.from__sc_IterableOnce__sc_SeqOps(coll)
+  };
+  isDefinedAt__O__Z(x) {
+    const idx = $uI(x);
+    return $f_sc_SeqOps__isDefinedAt__I__Z(this, idx)
+  };
+  apply__O__O(v1) {
+    return this.apply__I__O($uI(v1))
+  };
+}
 class $c_sc_AbstractSet extends $c_sc_AbstractIterable {
   equals__O__Z(that) {
     return $f_sc_Set__equals__O__Z(this, that)
@@ -15473,6 +15711,33 @@ function $isArrayOf_sc_Map(obj, depth) {
 function $asArrayOf_sc_Map(obj, depth) {
   return (($isArrayOf_sc_Map(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.Map;", depth))
 }
+class $c_Lorg_scalajs_dom_ext_package$PimpedHtmlCollection extends $c_Lorg_scalajs_dom_ext_EasySeq {
+  constructor(coll) {
+    super();
+    $ct_Lorg_scalajs_dom_ext_EasySeq__I__F1__(this, $uI(coll.length), new $c_sjsr_AnonFunction1(((coll$1) => ((index$2) => {
+      const index = $uI(index$2);
+      return coll$1[index]
+    }))(coll)))
+  };
+}
+const $d_Lorg_scalajs_dom_ext_package$PimpedHtmlCollection = new $TypeData().initClass({
+  Lorg_scalajs_dom_ext_package$PimpedHtmlCollection: 0
+}, false, "org.scalajs.dom.ext.package$PimpedHtmlCollection", {
+  Lorg_scalajs_dom_ext_package$PimpedHtmlCollection: 1,
+  Lorg_scalajs_dom_ext_EasySeq: 1,
+  O: 1,
+  sc_Seq: 1,
+  sc_Iterable: 1,
+  sc_IterableOnce: 1,
+  sc_IterableOps: 1,
+  sc_IterableOnceOps: 1,
+  sc_IterableFactoryDefaults: 1,
+  s_PartialFunction: 1,
+  F1: 1,
+  sc_SeqOps: 1,
+  s_Equals: 1
+});
+$c_Lorg_scalajs_dom_ext_package$PimpedHtmlCollection.prototype.$classData = $d_Lorg_scalajs_dom_ext_package$PimpedHtmlCollection;
 class $c_sc_AbstractSeq extends $c_sc_AbstractIterable {
   canEqual__O__Z(that) {
     return true
@@ -19535,6 +19800,9 @@ const $d_sjs_js_WrappedArray = new $TypeData().initClass({
 });
 $c_sjs_js_WrappedArray.prototype.$classData = $d_sjs_js_WrappedArray;
 $L0 = new $c_RTLong(0, 0);
+fetchPeople = (function() {
+  $m_Ldummy$().fetchPeople__V()
+});
 populateReceivingTable = (function(arg) {
   const prep0 = $uI(arg);
   $m_Ldummy$().populateReceivingTable__I__V(prep0)
@@ -19563,18 +19831,12 @@ submitDispatchingForm = (function() {
 updateSummary = (function() {
   $m_Ldummy$().updateSummary__V()
 });
-dummie = (function() {
-  $m_Ldummy$().dummie__V()
-});
 populateDispatchingTable = (function(arg) {
   const prep0 = $uI(arg);
   $m_Ldummy$().populateDispatchingTable__I__V(prep0)
 });
 submitReceivingForm = (function() {
   $m_Ldummy$().submitReceivingForm__V()
-});
-populateDataList = (function() {
-  $m_Ldummy$().populateDataList__V()
 });
 $s_Ldummy__main__AT__V($makeNativeArrayWrapper($d_T.getArrayOf(), []));
 }).call(this);
