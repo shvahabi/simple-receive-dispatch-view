@@ -1,4 +1,4 @@
-let populateReceivingFormOnLoad,populateDispatchingTable,removeRowFromItemsList,submitDispatchingForm,updateReceivingForm,fetchReceivingForm,fetchDispatchingForm,updateDispatchingForm,fetchPeople,addNewRowToItemsList,propagatePersonArticleSelection,deleteReceivingForm,submitReceivingForm,populateDispatchingFormOnLoad,updateSummary;
+let populateReceivingFormOnLoad,removeRowFromItemsList,submitDispatchingForm,updateReceivingForm,fetchReceivingForm,fetchDispatchingForm,updateDispatchingForm,fetchPeople,addNewRowToItemsList,deleteDispatchingForm,propagatePersonArticleSelection,deleteReceivingForm,submitReceivingForm,populateDispatchingFormOnLoad,updateSummary;
 (function(){
 'use strict';
 const $linkingInfo = Object.freeze({
@@ -741,51 +741,42 @@ class $c_Ldummy$ extends $c_O {
     const this$1 = fetchedForm.Ldummy$DispatchingForm__f_number;
     $$x1.innerText = this.translateToPersian__T__T(("" + this$1));
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("dispatcheddate").innerText = this.translateToPersian__T__T(fetchedForm.Ldummy$DispatchingForm__f_date.concat__T());
-    const $$x2 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("goods_owner");
-    const this$3 = fetchedForm.Ldummy$DispatchingForm__f_goodsOwner;
-    $$x2.innerText = $m_sr_ScalaRunTime$()._toString__s_Product__T(this$3);
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("goods_owner").innerText = ((fetchedForm.Ldummy$DispatchingForm__f_goodsOwner.Ldummy$Person__f_firstName + " ") + fetchedForm.Ldummy$DispatchingForm__f_goodsOwner.Ldummy$Person__f_surName);
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("draftdate").innerText = this.translateToPersian__T__T(fetchedForm.Ldummy$DispatchingForm__f_draftDate.concat__T());
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("draftno").innerText = fetchedForm.Ldummy$DispatchingForm__f_draftNumber;
-    const $$x3 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("draftowner");
-    const this$4 = fetchedForm.Ldummy$DispatchingForm__f_draftOwner;
-    $$x3.innerText = $m_sr_ScalaRunTime$()._toString__s_Product__T(this$4);
-    const $$x4 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("partno");
-    const this$5 = fetchedForm.Ldummy$DispatchingForm__f_partNumber;
-    $$x4.innerText = ("" + this$5);
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("truckno").innerText = this.translateToPersian__T__T(fetchedForm.Ldummy$DispatchingForm__f_truck.concat__T());
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("comments").innerText = fetchedForm.Ldummy$DispatchingForm__f_comments;
-    const $$x5 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("assignee");
-    const this$7 = fetchedForm.Ldummy$DispatchingForm__f_assignee;
-    $$x5.innerText = $m_sr_ScalaRunTime$()._toString__s_Product__T(this$7);
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_grossweight_sum").innerText = "0";
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_packageweight_sum").innerText = "0";
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_netweight_sum").innerText = "0";
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_quantity_sum").innerText = "0"
-  };
-  populateReceivingTable__Ldummy$ReceivingForm__V(fetchedForm) {
-    const $$x1 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("formno");
-    const this$1 = fetchedForm.Ldummy$ReceivingForm__f_number;
-    $$x1.innerText = this.translateToPersian__T__T(("" + this$1));
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("receiveddate").innerText = this.translateToPersian__T__T(fetchedForm.Ldummy$ReceivingForm__f_date.concat__T());
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("goods_owner").innerText = ((fetchedForm.Ldummy$ReceivingForm__f_goodsOwner.Ldummy$Person__f_firstName + " ") + fetchedForm.Ldummy$ReceivingForm__f_goodsOwner.Ldummy$Person__f_surName);
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("billofladingno").innerText = fetchedForm.Ldummy$ReceivingForm__f_billOfLading;
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("draftowner").innerText = ((fetchedForm.Ldummy$DispatchingForm__f_draftOwner.Ldummy$Person__f_firstName + " ") + fetchedForm.Ldummy$DispatchingForm__f_draftOwner.Ldummy$Person__f_surName);
     const $$x2 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("partno");
-    const this$3 = fetchedForm.Ldummy$ReceivingForm__f_partNumber;
+    const this$3 = fetchedForm.Ldummy$DispatchingForm__f_partNumber;
     $$x2.innerText = this.translateToPersian__T__T(("" + this$3));
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("origin").innerText = fetchedForm.Ldummy$ReceivingForm__f_origin;
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("truckno").innerText = fetchedForm.Ldummy$ReceivingForm__f_truck.concat__T();
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("comments").innerText = fetchedForm.Ldummy$ReceivingForm__f_comments;
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("representative").innerText = ((fetchedForm.Ldummy$ReceivingForm__f_representative.Ldummy$Person__f_firstName + " ") + fetchedForm.Ldummy$ReceivingForm__f_representative.Ldummy$Person__f_surName);
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_grossweight_sum").innerText = "0";
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_packageweight_sum").innerText = "0";
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_netweight_sum").innerText = "0";
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_quantity_sum").innerText = "0";
-    const this$10 = fetchedForm.Ldummy$ReceivingForm__f_itemsList.Ldummy$ItemsList__f_items;
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("truckno").innerText = fetchedForm.Ldummy$DispatchingForm__f_truck.concat__T();
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("comments").innerText = ("\u062a\u0648\u0636\u06cc\u062d\u0627\u062a: " + fetchedForm.Ldummy$DispatchingForm__f_comments);
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("assignee").innerText = ((fetchedForm.Ldummy$DispatchingForm__f_assignee.Ldummy$Person__f_firstName + " ") + fetchedForm.Ldummy$DispatchingForm__f_assignee.Ldummy$Person__f_surName);
+    this.itemsListPopulation__Ldummy$ItemsList__V(fetchedForm.Ldummy$DispatchingForm__f_itemsList);
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("deletebutton").removeAttribute("disabled");
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("editbutton").removeAttribute("disabled");
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("printbutton").removeAttribute("disabled")
+  };
+  itemsListPopulation__Ldummy$ItemsList__V(itemsList) {
+    let i = 1;
+    while (true) {
+      const v1 = i;
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_description_" + v1)).innerText = " ";
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_quantity_" + v1)).innerText = " ";
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_unitofmeasurement_" + v1)).innerText = " ";
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_grossweight_" + v1)).innerText = " ";
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_packageweight_" + v1)).innerText = " ";
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_netweight_" + v1)).innerText = " ";
+      if ((i === 5)) {
+        break
+      };
+      i = ((1 + i) | 0)
+    };
+    const this$5 = itemsList.Ldummy$ItemsList__f_items;
     let itemsArray;
-    if ((this$10.knownSize__I() >= 0)) {
-      const len = this$10.knownSize__I();
+    if ((this$5.knownSize__I() >= 0)) {
+      const len = this$5.knownSize__I();
       const destination = $newArrayObject($d_Ldummy$Item.getArrayOf(), [len]);
-      $f_sc_IterableOnceOps__copyToArray__O__I__I(this$10, destination, 0);
+      $f_sc_IterableOnceOps__copyToArray__O__I__I(this$5, destination, 0);
       itemsArray = destination
     } else {
       let capacity = 0;
@@ -794,7 +785,7 @@ class $c_Ldummy$ extends $c_O {
       capacity = 0;
       size = 0;
       jsElems = [];
-      const it = this$10.iterator__sc_Iterator();
+      const it = this$5.iterator__sc_Iterator();
       while (it.hasNext__Z()) {
         const elem = it.next__O();
         const unboxedElem = ((elem === null) ? null : elem);
@@ -802,155 +793,73 @@ class $c_Ldummy$ extends $c_O {
       };
       itemsArray = $makeNativeArrayWrapper($d_Ldummy$Item.getArrayOf(), jsElems)
     };
-    const this$13 = $m_s_Predef$().wrapRefArray__AO__scm_ArraySeq$ofRef(itemsArray);
-    const this$15 = $m_sci_List$().from__sc_IterableOnce__sci_List(this$13);
-    const f = ((this$14) => ((x$1$2) => {
-      const x$1 = $as_Ldummy$Item(x$1$2);
-      return x$1.Ldummy$Item__f_unitOfMeasurement
-    }))(this);
-    let this$18;
-    if ((this$15 === $m_sci_Nil$())) {
-      this$18 = $m_sci_Nil$()
-    } else {
-      const arg1 = this$15.head__O();
-      const h = new $c_sci_$colon$colon(f(arg1), $m_sci_Nil$());
-      let t = h;
-      let rest = $as_sci_List(this$15.tail__O());
-      while ((rest !== $m_sci_Nil$())) {
-        const arg1$1 = rest.head__O();
-        const nx = new $c_sci_$colon$colon(f(arg1$1), $m_sci_Nil$());
-        t.sci_$colon$colon__f_next = nx;
-        t = nx;
-        rest = $as_sci_List(rest.tail__O())
-      };
-      this$18 = h
-    };
-    const this$16 = $m_s_Predef$().wrapRefArray__AO__scm_ArraySeq$ofRef(itemsArray);
-    const this$17 = $m_sci_List$().from__sc_IterableOnce__sci_List(this$16);
-    const f$1 = ((this$2$1, itemsArray$1) => ((x$2) => {
-      $as_Ldummy$Item(x$2);
-      return itemsArray$1.get(0).Ldummy$Item__f_unitOfMeasurement
-    }))(this, itemsArray);
-    let that;
-    if ((this$17 === $m_sci_Nil$())) {
-      that = $m_sci_Nil$()
-    } else {
-      const arg1$2 = this$17.head__O();
-      const h$1 = new $c_sci_$colon$colon(f$1(arg1$2), $m_sci_Nil$());
-      let t$1 = h$1;
-      let rest$1 = $as_sci_List(this$17.tail__O());
-      while ((rest$1 !== $m_sci_Nil$())) {
-        const arg1$3 = rest$1.head__O();
-        const nx$1 = new $c_sci_$colon$colon(f$1(arg1$3), $m_sci_Nil$());
-        t$1.sci_$colon$colon__f_next = nx$1;
-        t$1 = nx$1;
-        rest$1 = $as_sci_List(rest$1.tail__O())
-      };
-      that = h$1
-    };
-    const this$19 = $as_sci_List($f_sc_StrictOptimizedIterableOps__zip__sc_IterableOnce__O(this$18, that));
-    const f$2 = ((this$3$1) => ((x$3$2) => {
-      const x$3 = $as_T2(x$3$2);
-      const x$4 = x$3.T2__f__1;
-      const y = x$3.T2__f__2;
-      return $m_sr_BoxesRunTime$().equals__O__O__Z(x$4, y)
-    }))(this);
-    let this$20;
-    if ((this$19 === $m_sci_Nil$())) {
-      this$20 = $m_sci_Nil$()
-    } else {
-      const arg1$4 = this$19.head__O();
-      const h$2 = new $c_sci_$colon$colon(f$2(arg1$4), $m_sci_Nil$());
-      let t$2 = h$2;
-      let rest$2 = $as_sci_List(this$19.tail__O());
-      while ((rest$2 !== $m_sci_Nil$())) {
-        const arg1$5 = rest$2.head__O();
-        const nx$2 = new $c_sci_$colon$colon(f$2(arg1$5), $m_sci_Nil$());
-        t$2.sci_$colon$colon__f_next = nx$2;
-        t$2 = nx$2;
-        rest$2 = $as_sci_List(rest$2.tail__O())
-      };
-      this$20 = h$2
-    };
-    const it$1 = this$20.iterator__sc_Iterator();
-    if ((!it$1.hasNext__Z())) {
-      throw $ct_jl_UnsupportedOperationException__T__(new $c_jl_UnsupportedOperationException(), "empty.reduceLeft")
-    };
-    let first = true;
-    let acc = 0;
-    while (it$1.hasNext__Z()) {
-      const x$5 = it$1.next__O();
-      if (first) {
-        acc = x$5;
-        first = false
-      } else {
-        const arg1$6 = acc;
-        const x$2$2 = $uZ(arg1$6);
-        const x$3$3 = $uZ(x$5);
-        acc = (x$2$2 && x$3$3)
-      }
-    };
-    const consistentUnitOfMeasurement = $uZ(acc);
-    const end = ((1 + itemsArray.u.length) | 0);
-    const isEmpty = (end <= 1);
-    const scala$collection$immutable$Range$$lastElement = (((-1) + end) | 0);
+    const end = itemsArray.u.length;
+    const isEmpty = (end < 1);
     if ((!isEmpty)) {
-      let i = 1;
+      let i$1 = 1;
       while (true) {
-        const v1 = i;
-        const anyItem = itemsArray.get((((-1) + v1) | 0));
-        $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_description_" + v1)).innerText = anyItem.Ldummy$Item__f_description;
-        const $$x4 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_quantity_" + v1));
+        const v1$1 = i$1;
+        const anyItem = itemsArray.get((((-1) + v1$1) | 0));
+        $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_description_" + v1$1)).innerText = anyItem.Ldummy$Item__f_description;
+        const $$x2 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_quantity_" + v1$1));
+        const $$x1 = $m_Ldummy$();
+        const this$14 = anyItem.Ldummy$Item__f_quantity;
+        $$x2.innerText = $$x1.translateToPersian__T__T(("" + this$14));
+        $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_unitofmeasurement_" + v1$1)).innerText = anyItem.Ldummy$Item__f_unitOfMeasurement;
+        const $$x4 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_grossweight_" + v1$1));
         const $$x3 = $m_Ldummy$();
-        const this$30 = anyItem.Ldummy$Item__f_quantity;
-        $$x4.innerText = $$x3.translateToPersian__T__T(("" + this$30));
-        $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_unitofmeasurement_" + v1)).innerText = anyItem.Ldummy$Item__f_unitOfMeasurement;
-        const $$x6 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_grossweight_" + v1));
+        const this$16 = anyItem.Ldummy$Item__f_grossWeight;
+        $$x4.innerText = $$x3.translateToPersian__T__T(("" + this$16));
+        const $$x6 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_packageweight_" + v1$1));
         const $$x5 = $m_Ldummy$();
-        const this$32 = anyItem.Ldummy$Item__f_grossWeight;
-        $$x6.innerText = $$x5.translateToPersian__T__T(("" + this$32));
-        const $$x8 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_packageweight_" + v1));
+        const this$18 = anyItem.Ldummy$Item__f_packageWeight;
+        $$x6.innerText = $$x5.translateToPersian__T__T(("" + this$18));
+        const $$x8 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_netweight_" + v1$1));
         const $$x7 = $m_Ldummy$();
-        const this$34 = anyItem.Ldummy$Item__f_packageWeight;
-        $$x8.innerText = $$x7.translateToPersian__T__T(("" + this$34));
-        const $$x10 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_netweight_" + v1));
-        const $$x9 = $m_Ldummy$();
-        const this$36 = anyItem.Ldummy$Item__f_netWeight;
-        $$x10.innerText = $$x9.translateToPersian__T__T(("" + this$36));
-        if (consistentUnitOfMeasurement) {
-          const $$x12 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_quantity_sum");
-          const $$x11 = $m_Ldummy$();
-          const x$6 = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_quantity_sum").innerText));
-          const this$40 = ($m_jl_Double$().parseDouble__T__D(x$6) + anyItem.Ldummy$Item__f_quantity);
-          $$x12.innerText = $$x11.translateToPersian__T__T(("" + this$40))
-        };
-        const x$7 = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_grossweight_sum").innerText));
-        const sg = $m_jl_Double$().parseDouble__T__D(x$7);
-        const x$8 = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_packageweight_sum").innerText));
-        const sp = $m_jl_Double$().parseDouble__T__D(x$8);
-        const x$9 = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_netweight_sum").innerText));
-        const sn = $m_jl_Double$().parseDouble__T__D(x$9);
-        const $$x14 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_grossweight_sum");
-        const $$x13 = $m_Ldummy$();
-        const this$48 = (sg + anyItem.Ldummy$Item__f_grossWeight);
-        $$x14.innerText = $$x13.translateToPersian__T__T(("" + this$48));
-        const $$x16 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_packageweight_sum");
-        const $$x15 = $m_Ldummy$();
-        const this$50 = (sp + anyItem.Ldummy$Item__f_packageWeight);
-        $$x16.innerText = $$x15.translateToPersian__T__T(("" + this$50));
-        const $$x18 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_netweight_sum");
-        const $$x17 = $m_Ldummy$();
-        const this$52 = (sn + anyItem.Ldummy$Item__f_netWeight);
-        $$x18.innerText = $$x17.translateToPersian__T__T(("" + this$52));
-        if ((i === scala$collection$immutable$Range$$lastElement)) {
+        const this$20 = anyItem.Ldummy$Item__f_netWeight;
+        $$x8.innerText = $$x7.translateToPersian__T__T(("" + this$20));
+        if ((i$1 === end)) {
           break
         };
-        i = ((1 + i) | 0)
+        i$1 = ((1 + i$1) | 0)
       }
     };
-    if (consistentUnitOfMeasurement) {
-      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_unitofmeasurement_sum").innerText = itemsArray.get(0).Ldummy$Item__f_unitOfMeasurement
-    };
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_quantity_sum").innerText = " ";
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_unitofmeasurement_sum").innerText = " ";
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_grossweight_sum").innerText = "\u06f0";
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_packageweight_sum").innerText = "\u06f0";
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_netweight_sum").innerText = "\u06f0";
+    const $$x9 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_quantity_sum");
+    const this$22 = itemsList.Ldummy$ItemsList__f_quantity;
+    $$x9.innerText = this.translateToPersian__T__T($dp_toString__T((this$22.isEmpty__Z() ? "-" : this$22.get__O())));
+    const $$x10 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_unitofmeasurement_sum");
+    const this$23 = itemsList.Ldummy$ItemsList__f_unitOfMeasurement;
+    $$x10.innerText = $as_T((this$23.isEmpty__Z() ? "-" : this$23.get__O()));
+    const $$x11 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_grossweight_sum");
+    const this$24 = itemsList.Ldummy$ItemsList__f_grossWeight;
+    $$x11.innerText = this.translateToPersian__T__T(("" + this$24));
+    const $$x12 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_packageweight_sum");
+    const this$26 = itemsList.Ldummy$ItemsList__f_packageWeight;
+    $$x12.innerText = this.translateToPersian__T__T(("" + this$26));
+    const $$x13 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_netweight_sum");
+    const this$28 = itemsList.Ldummy$ItemsList__f_netWeight;
+    $$x13.innerText = this.translateToPersian__T__T(("" + this$28))
+  };
+  populateReceivingTable__Ldummy$ReceivingForm__V(fetchedForm) {
+    const $$x1 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("formno");
+    const this$1 = fetchedForm.Ldummy$ReceivingForm__f_number;
+    $$x1.innerText = this.translateToPersian__T__T(("" + this$1));
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("receiveddate").innerText = this.translateToPersian__T__T(fetchedForm.Ldummy$ReceivingForm__f_date.concat__T());
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("goods_owner").innerText = ((fetchedForm.Ldummy$ReceivingForm__f_goodsOwner.Ldummy$Person__f_firstName + " ") + fetchedForm.Ldummy$ReceivingForm__f_goodsOwner.Ldummy$Person__f_surName);
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("billofladingno").innerText = fetchedForm.Ldummy$ReceivingForm__f_billOfLading;
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("origin").innerText = fetchedForm.Ldummy$ReceivingForm__f_origin;
+    const $$x2 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("partno");
+    const this$3 = fetchedForm.Ldummy$ReceivingForm__f_partNumber;
+    $$x2.innerText = this.translateToPersian__T__T(("" + this$3));
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("truckno").innerText = fetchedForm.Ldummy$ReceivingForm__f_truck.concat__T();
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("comments").innerText = ("\u062a\u0648\u0636\u06cc\u062d\u0627\u062a: " + fetchedForm.Ldummy$ReceivingForm__f_comments);
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("representative").innerText = ((fetchedForm.Ldummy$ReceivingForm__f_representative.Ldummy$Person__f_firstName + " ") + fetchedForm.Ldummy$ReceivingForm__f_representative.Ldummy$Person__f_surName);
+    this.itemsListPopulation__Ldummy$ItemsList__V(fetchedForm.Ldummy$ReceivingForm__f_itemsList);
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("deletebutton").removeAttribute("disabled");
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("editbutton").removeAttribute("disabled");
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("printbutton").removeAttribute("disabled")
@@ -959,15 +868,15 @@ class $c_Ldummy$ extends $c_O {
     const $$x1 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("formno");
     const this$1 = dispatchingForm.Ldummy$DispatchingForm__f_number;
     $$x1.value = ("" + this$1);
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("dispatcheddate").value = ((((dispatchingForm.Ldummy$DispatchingForm__f_date.Ldummy$Date__f_year + "/") + dispatchingForm.Ldummy$DispatchingForm__f_date.Ldummy$Date__f_month) + "/") + dispatchingForm.Ldummy$DispatchingForm__f_date.Ldummy$Date__f_day);
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("dispatcheddate").value = this.translateToPersian__T__T(dispatchingForm.Ldummy$DispatchingForm__f_date.concat__T());
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("goodsowner_firstname").value = dispatchingForm.Ldummy$DispatchingForm__f_goodsOwner.Ldummy$Person__f_firstName;
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("goodsowner_lastname").value = dispatchingForm.Ldummy$DispatchingForm__f_goodsOwner.Ldummy$Person__f_surName;
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("goodsowner_nationalidno").value = dispatchingForm.Ldummy$DispatchingForm__f_goodsOwner.Ldummy$Person__f_nationalIDNo;
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("goodsowner_nationalidno").value = this.translateToPersian__T__T(dispatchingForm.Ldummy$DispatchingForm__f_goodsOwner.Ldummy$Person__f_nationalIDNo);
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("draftno").value = dispatchingForm.Ldummy$DispatchingForm__f_draftNumber;
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("draftowner_firstname").value = dispatchingForm.Ldummy$DispatchingForm__f_draftOwner.Ldummy$Person__f_firstName;
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("draftowner_lastname").value = dispatchingForm.Ldummy$DispatchingForm__f_draftOwner.Ldummy$Person__f_surName;
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("draftowner_nationalidno").value = dispatchingForm.Ldummy$DispatchingForm__f_draftOwner.Ldummy$Person__f_nationalIDNo;
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("draftdate").value = ((((dispatchingForm.Ldummy$DispatchingForm__f_draftDate.Ldummy$Date__f_year + "/") + dispatchingForm.Ldummy$DispatchingForm__f_draftDate.Ldummy$Date__f_month) + "/") + dispatchingForm.Ldummy$DispatchingForm__f_draftDate.Ldummy$Date__f_day);
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("draftowner_nationalidno").value = this.translateToPersian__T__T(dispatchingForm.Ldummy$DispatchingForm__f_draftOwner.Ldummy$Person__f_nationalIDNo);
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("draftdate").value = this.translateToPersian__T__T(dispatchingForm.Ldummy$DispatchingForm__f_draftDate.concat__T());
     const $$x2 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("partno");
     const this$3 = dispatchingForm.Ldummy$DispatchingForm__f_partNumber;
     $$x2.value = ("" + this$3);
@@ -986,30 +895,36 @@ class $c_Ldummy$ extends $c_O {
     while ((!these.isEmpty__Z())) {
       const arg1 = these.head__O();
       const anyItem = $as_Ldummy$Item(arg1);
-      $m_Ldummy$().addNewRowToItemsList__Lorg_scalajs_dom_raw_Node();
-      const $$x6 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("rownumber_" + $p_Ldummy$__inquireNumberOfRows$1__I(this)));
+      $m_Ldummy$().addNewRowToItemsList__V();
+      const $$x7 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("rownumber_" + $p_Ldummy$__inquireNumberOfRows$1__I(this)));
+      const $$x6 = $m_Ldummy$();
       const this$12 = $p_Ldummy$__inquireNumberOfRows$1__I(this);
-      $$x6.innerHTML = ("" + this$12);
+      $$x7.innerHTML = $$x6.translateToPersian__T__T(("" + this$12));
       $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_description_" + $p_Ldummy$__inquireNumberOfRows$1__I(this))).value = anyItem.Ldummy$Item__f_description;
-      const $$x7 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_quantity_" + $p_Ldummy$__inquireNumberOfRows$1__I(this)));
+      const $$x9 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_quantity_" + $p_Ldummy$__inquireNumberOfRows$1__I(this)));
+      const $$x8 = $m_Ldummy$();
       const this$14 = anyItem.Ldummy$Item__f_quantity;
-      $$x7.value = ("" + this$14);
+      $$x9.value = $$x8.translateToPersian__T__T(("" + this$14));
       $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_unitofmeasurement_" + $p_Ldummy$__inquireNumberOfRows$1__I(this))).value = anyItem.Ldummy$Item__f_unitOfMeasurement;
-      const $$x8 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_grossweight_" + $p_Ldummy$__inquireNumberOfRows$1__I(this)));
+      const $$x11 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_grossweight_" + $p_Ldummy$__inquireNumberOfRows$1__I(this)));
+      const $$x10 = $m_Ldummy$();
       const this$16 = anyItem.Ldummy$Item__f_grossWeight;
-      $$x8.value = ("" + this$16);
-      const $$x9 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_packageweight_" + $p_Ldummy$__inquireNumberOfRows$1__I(this)));
+      $$x11.value = $$x10.translateToPersian__T__T(("" + this$16));
+      const $$x13 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_packageweight_" + $p_Ldummy$__inquireNumberOfRows$1__I(this)));
+      const $$x12 = $m_Ldummy$();
       const this$18 = anyItem.Ldummy$Item__f_packageWeight;
-      $$x9.value = ("" + this$18);
-      const $$x10 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_netweight_" + $p_Ldummy$__inquireNumberOfRows$1__I(this)));
+      $$x13.value = $$x12.translateToPersian__T__T(("" + this$18));
+      const $$x15 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_netweight_" + $p_Ldummy$__inquireNumberOfRows$1__I(this)));
+      const $$x14 = $m_Ldummy$();
       const this$20 = anyItem.Ldummy$Item__f_netWeight;
-      $$x10.value = ("" + this$20);
+      $$x15.value = $$x14.translateToPersian__T__T(("" + this$20));
       these = $as_sci_List(these.tail__O())
     };
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("comments").value = dispatchingForm.Ldummy$DispatchingForm__f_comments;
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("assignee_firstname").value = dispatchingForm.Ldummy$DispatchingForm__f_assignee.Ldummy$Person__f_firstName;
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("assignee_lastname").value = dispatchingForm.Ldummy$DispatchingForm__f_assignee.Ldummy$Person__f_surName;
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("assignee_nationalidno").value = dispatchingForm.Ldummy$DispatchingForm__f_assignee.Ldummy$Person__f_nationalIDNo
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("assignee_nationalidno").value = this.translateToPersian__T__T(dispatchingForm.Ldummy$DispatchingForm__f_assignee.Ldummy$Person__f_nationalIDNo);
+    this.updateSummary__V()
   };
   populateReceivingForm__Ldummy$ReceivingForm__V(receivingForm) {
     const $$x1 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("formno");
@@ -1020,10 +935,10 @@ class $c_Ldummy$ extends $c_O {
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("goodsowner_lastname").value = receivingForm.Ldummy$ReceivingForm__f_goodsOwner.Ldummy$Person__f_surName;
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("goodsowner_nationalidno").value = this.translateToPersian__T__T(receivingForm.Ldummy$ReceivingForm__f_goodsOwner.Ldummy$Person__f_nationalIDNo);
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("billofladingno").value = receivingForm.Ldummy$ReceivingForm__f_billOfLading;
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("origin").value = receivingForm.Ldummy$ReceivingForm__f_origin;
     const $$x2 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("partno");
     const this$3 = receivingForm.Ldummy$ReceivingForm__f_partNumber;
     $$x2.value = ("" + this$3);
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("origin").value = receivingForm.Ldummy$ReceivingForm__f_origin;
     const $$x3 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("truckno_state");
     const this$5 = receivingForm.Ldummy$ReceivingForm__f_truck.Ldummy$CarPlate__f_state;
     $$x3.value = ("" + this$5);
@@ -1039,7 +954,7 @@ class $c_Ldummy$ extends $c_O {
     while ((!these.isEmpty__Z())) {
       const arg1 = these.head__O();
       const anyItem = $as_Ldummy$Item(arg1);
-      $m_Ldummy$().addNewRowToItemsList__Lorg_scalajs_dom_raw_Node();
+      $m_Ldummy$().addNewRowToItemsList__V();
       const $$x7 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("rownumber_" + $p_Ldummy$__inquireNumberOfRows$2__I(this)));
       const $$x6 = $m_Ldummy$();
       const this$12 = $p_Ldummy$__inquireNumberOfRows$2__I(this);
@@ -1067,7 +982,8 @@ class $c_Ldummy$ extends $c_O {
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("comments").value = receivingForm.Ldummy$ReceivingForm__f_comments;
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("representative_firstname").value = receivingForm.Ldummy$ReceivingForm__f_representative.Ldummy$Person__f_firstName;
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("representative_lastname").value = receivingForm.Ldummy$ReceivingForm__f_representative.Ldummy$Person__f_surName;
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("representative_nationalidno").value = this.translateToPersian__T__T(receivingForm.Ldummy$ReceivingForm__f_representative.Ldummy$Person__f_nationalIDNo)
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("representative_nationalidno").value = this.translateToPersian__T__T(receivingForm.Ldummy$ReceivingForm__f_representative.Ldummy$Person__f_nationalIDNo);
+    this.updateSummary__V()
   };
   dispatchingFormFromJson__sjs_js_Dynamic__Ldummy$DispatchingForm(jsonEncodedForm) {
     const formNo = $uI(jsonEncodedForm.FormNo);
@@ -1078,7 +994,6 @@ class $c_Ldummy$ extends $c_O {
     const DispatchedDate = new $c_Ldummy$Date(("" + this$1), ("" + this$3), ("" + this$5));
     const truckNumber = new $c_Ldummy$CarPlate($uI(jsonEncodedForm.TruckNo.State), $uI(jsonEncodedForm.TruckNo.Serial), $as_T(jsonEncodedForm.TruckNo.Area), $uI(jsonEncodedForm.TruckNo.Random));
     const comments = $as_T(jsonEncodedForm.Comments);
-    const assignee = new $c_Ldummy$Person($dp_toString__T(jsonEncodedForm.Assignee.FirstName), $dp_toString__T(jsonEncodedForm.Assignee.SurName), $dp_toString__T(jsonEncodedForm.Assignee.NationalIDNo));
     const owner = new $c_Ldummy$Person($dp_toString__T(jsonEncodedForm.GoodsOwner.FirstName), $dp_toString__T(jsonEncodedForm.GoodsOwner.SurName), $dp_toString__T(jsonEncodedForm.GoodsOwner.NationalIDNo));
     const this$7 = $uI(jsonEncodedForm.DraftDate.Year);
     const this$9 = $uI(jsonEncodedForm.DraftDate.Month);
@@ -1086,6 +1001,7 @@ class $c_Ldummy$ extends $c_O {
     const draftDate = new $c_Ldummy$Date(("" + this$7), ("" + this$9), ("" + this$11));
     const draftOwner = new $c_Ldummy$Person($dp_toString__T(jsonEncodedForm.DraftOwner.FirstName), $dp_toString__T(jsonEncodedForm.DraftOwner.SurName), $dp_toString__T(jsonEncodedForm.DraftOwner.NationalIDNo));
     const draftNumber = $as_T(jsonEncodedForm.DraftNo);
+    const assignee = new $c_Ldummy$Person($dp_toString__T(jsonEncodedForm.Assignee.FirstName), $dp_toString__T(jsonEncodedForm.Assignee.SurName), $dp_toString__T(jsonEncodedForm.Assignee.NationalIDNo));
     const array = jsonEncodedForm.ItemsList;
     const this$14 = $ct_sjs_js_WrappedArray__sjs_js_Array__(new $c_sjs_js_WrappedArray(), array);
     const this$16 = $m_sci_List$().from__sc_IterableOnce__sci_List(this$14);
@@ -1112,8 +1028,6 @@ class $c_Ldummy$ extends $c_O {
   };
   receivingFormFromJson__sjs_js_Dynamic__Ldummy$ReceivingForm(jsonEncodedForm) {
     const formNo = $uI(jsonEncodedForm.FormNo);
-    const origin = $as_T(jsonEncodedForm.Origin);
-    const billOfLading = $as_T(jsonEncodedForm.BillOfLadingNo);
     const partNo = $uI(jsonEncodedForm.PartNo);
     const this$1 = $uI(jsonEncodedForm.ReceivedDate.Year);
     const this$3 = $uI(jsonEncodedForm.ReceivedDate.Month);
@@ -1121,8 +1035,10 @@ class $c_Ldummy$ extends $c_O {
     const ReceivedDate = new $c_Ldummy$Date(("" + this$1), ("" + this$3), ("" + this$5));
     const truckNumber = new $c_Ldummy$CarPlate($uI(jsonEncodedForm.TruckNo.State), $uI(jsonEncodedForm.TruckNo.Serial), $as_T(jsonEncodedForm.TruckNo.Area), $uI(jsonEncodedForm.TruckNo.Random));
     const comments = $as_T(jsonEncodedForm.Comments);
-    const representative = new $c_Ldummy$Person($dp_toString__T(jsonEncodedForm.Representative.FirstName), $dp_toString__T(jsonEncodedForm.Representative.SurName), $dp_toString__T(jsonEncodedForm.Representative.NationalIDNo));
     const owner = new $c_Ldummy$Person($dp_toString__T(jsonEncodedForm.GoodsOwner.FirstName), $dp_toString__T(jsonEncodedForm.GoodsOwner.SurName), $dp_toString__T(jsonEncodedForm.GoodsOwner.NationalIDNo));
+    const origin = $as_T(jsonEncodedForm.Origin);
+    const billOfLading = $as_T(jsonEncodedForm.BillOfLadingNo);
+    const representative = new $c_Ldummy$Person($dp_toString__T(jsonEncodedForm.Representative.FirstName), $dp_toString__T(jsonEncodedForm.Representative.SurName), $dp_toString__T(jsonEncodedForm.Representative.NationalIDNo));
     const array = jsonEncodedForm.ItemsList;
     const this$8 = $ct_sjs_js_WrappedArray__sjs_js_Array__(new $c_sjs_js_WrappedArray(), array);
     const this$10 = $m_sci_List$().from__sc_IterableOnce__sci_List(this$8);
@@ -1155,9 +1071,32 @@ class $c_Ldummy$ extends $c_O {
     this$3.apply__T__T__Lorg_scalajs_dom_ext_Ajax$InputData__I__sci_Map__Z__T__s_concurrent_Future("DELETE", url, null, 0, headers, false, "").onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1(((this$4, toBeDeletedFormNumber$1) => ((x0$1$2) => {
       const x0$1 = $as_s_util_Try(x0$1$2);
       if ((x0$1 instanceof $c_s_util_Success)) {
-        $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert(((("\u0641\u0631\u0645 \u0634\u0645\u0627\u0631\u0647 " + "") + $m_Ldummy$().translateToPersian__T__T(("" + toBeDeletedFormNumber$1))) + " \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062d\u0630\u0641 \u06af\u0631\u062f\u06cc\u062f."));
+        $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert(((("\u0641\u0631\u0645 \u0648\u0631\u0648\u062f \u0634\u0645\u0627\u0631\u0647 " + "") + $m_Ldummy$().translateToPersian__T__T(("" + toBeDeletedFormNumber$1))) + " \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062d\u0630\u0641 \u06af\u0631\u062f\u06cc\u062f."));
         return $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().open("ReceivingTable.html", "_self", "", true)
       } else if ((x0$1 instanceof $c_s_util_Failure)) {
+        const x3 = $as_s_util_Failure(x0$1);
+        const e = x3.s_util_Failure__f_exception;
+        $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert((":\u062e\u0637\u0627 \u062f\u0631 \u0627\u062c\u0631\u0627\u06cc \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0628\u0627 \u0635\u062f\u0648\u0631 \u06a9\u062f\n" + e));
+        return (void 0)
+      } else {
+        throw new $c_s_MatchError(x0$1)
+      }
+    }))(this, toBeDeletedFormNumber)), $m_sjs_concurrent_JSExecutionContext$Implicits$().sjs_concurrent_JSExecutionContext$Implicits$__f_queue)
+  };
+  deleteDispatchingForm__V() {
+    const toBeDeletedFormNumber = $doubleToInt($uD($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("tobefetchedformnumber").valueAsNumber));
+    const url = ("http://localhost:8080/receivedispatch/dispatches/" + toBeDeletedFormNumber);
+    const this$3 = $m_Lorg_scalajs_dom_ext_Ajax$();
+    const headers = $m_sci_Map$EmptyMap$();
+    this$3.apply__T__T__Lorg_scalajs_dom_ext_Ajax$InputData__I__sci_Map__Z__T__s_concurrent_Future("DELETE", url, null, 0, headers, false, "").onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1(((this$4, toBeDeletedFormNumber$1) => ((x0$1$2) => {
+      const x0$1 = $as_s_util_Try(x0$1$2);
+      if ((x0$1 instanceof $c_s_util_Success)) {
+        $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert(((("\u0641\u0631\u0645 \u062e\u0631\u0648\u062c \u0634\u0645\u0627\u0631\u0647 " + "") + $m_Ldummy$().translateToPersian__T__T(("" + toBeDeletedFormNumber$1))) + " \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062d\u0630\u0641 \u06af\u0631\u062f\u06cc\u062f."));
+        return $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().open("DispatchingTable.html", "_self", "", true)
+      } else if ((x0$1 instanceof $c_s_util_Failure)) {
+        const x3 = $as_s_util_Failure(x0$1);
+        const e = x3.s_util_Failure__f_exception;
+        $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert((":\u062e\u0637\u0627 \u062f\u0631 \u0627\u062c\u0631\u0627\u06cc \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0628\u0627 \u0635\u062f\u0648\u0631 \u06a9\u062f\n" + e));
         return (void 0)
       } else {
         throw new $c_s_MatchError(x0$1)
@@ -1198,7 +1137,7 @@ class $c_Ldummy$ extends $c_O {
           }))(this$4)), $m_sjs_concurrent_JSExecutionContext$Implicits$().sjs_concurrent_JSExecutionContext$Implicits$__f_queue);
           return (void 0)
         } else {
-          $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert(((("\u0641\u0631\u0645\u06cc \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 " + "") + $m_Ldummy$().translateToPersian__T__T(("" + toBeFetchedFormNumber$1))) + " \u062f\u0631 \u0633\u06cc\u0633\u062a\u0645 \u062b\u0628\u062a \u0646\u0634\u062f\u0647 \u0627\u0633\u062a."));
+          $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert(((("\u0641\u0631\u0645 \u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 " + "") + $m_Ldummy$().translateToPersian__T__T(("" + toBeFetchedFormNumber$1))) + " \u062f\u0631 \u0633\u06cc\u0633\u062a\u0645 \u062b\u0628\u062a \u0646\u0634\u062f\u0647 \u0627\u0633\u062a."));
           return $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().open("ReceivingTable.html", "_self", "", true)
         }
       } else if ((x0$1 instanceof $c_s_util_Failure)) {
@@ -1245,7 +1184,7 @@ class $c_Ldummy$ extends $c_O {
           }))(this$4)), $m_sjs_concurrent_JSExecutionContext$Implicits$().sjs_concurrent_JSExecutionContext$Implicits$__f_queue);
           return (void 0)
         } else {
-          $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert(((("\u0641\u0631\u0645\u06cc \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 " + "") + $m_Ldummy$().translateToPersian__T__T(("" + toBeFetchedFormNumber$1))) + " \u062f\u0631 \u0633\u06cc\u0633\u062a\u0645 \u062b\u0628\u062a \u0646\u0634\u062f\u0647 \u0627\u0633\u062a."));
+          $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert(((("\u0641\u0631\u0645 \u062e\u0631\u0648\u062c \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 " + "") + $m_Ldummy$().translateToPersian__T__T(("" + toBeFetchedFormNumber$1))) + " \u062f\u0631 \u0633\u06cc\u0633\u062a\u0645 \u062b\u0628\u062a \u0646\u0634\u062f\u0647 \u0627\u0633\u062a."));
           return $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().open("DispatchingTable.html", "_self", "", true)
         }
       } else if ((x0$1 instanceof $c_s_util_Failure)) {
@@ -1481,10 +1420,11 @@ class $c_Ldummy$ extends $c_O {
       $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById((personList + "_lastname")).value = $as_Ldummy$Person(fetchedPeople.apply__O__O(selected)).Ldummy$Person__f_surName
     }
   };
-  addNewRowToItemsList__Lorg_scalajs_dom_raw_Node() {
+  addNewRowToItemsList__V() {
     const itemsList = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist");
     const rowsCount = $uI(itemsList.childElementCount);
-    return itemsList.appendChild(this.newRow__I__Lorg_scalajs_dom_raw_Node(((1 + rowsCount) | 0)))
+    itemsList.appendChild(this.newRow__I__Lorg_scalajs_dom_raw_Node(((1 + rowsCount) | 0)));
+    this.updateSummary__V()
   };
   removeRowFromItemsList__I__V(Row) {
     const itemsList = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist");
@@ -1520,74 +1460,164 @@ class $c_Ldummy$ extends $c_O {
     this.updateSummary__V()
   };
   updateSummary__V() {
-    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("qty_sum").innerHTML = "\u06f0";
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("qty_sum").innerHTML = "_";
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("unit_sum").innerHTML = "-";
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("gw_sum").innerHTML = "\u06f0";
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("pw_sum").innerHTML = "\u06f0";
     $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("nw_sum").innerHTML = "\u06f0";
     const rowsCount = $uI($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist").childElementCount);
-    const $$x1 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("unit_sum");
-    const this$1 = $as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("itemslist_unitofmeasurement_1").value);
-    $$x1.innerHTML = this$1;
     const isEmpty = (rowsCount < 1);
-    if ((!isEmpty)) {
-      let i = 1;
+    let scala$collection$immutable$Range$$numRangeElements;
+    if (isEmpty) {
+      scala$collection$immutable$Range$$numRangeElements = 0
+    } else {
+      const hi = (rowsCount >> 31);
+      const lo = (((-1) + rowsCount) | 0);
+      const hi$1 = ((lo !== (-1)) ? hi : (((-1) + hi) | 0));
+      const lo$1 = ((1 + lo) | 0);
+      const hi$2 = ((lo$1 === 0) ? ((1 + hi$1) | 0) : hi$1);
+      scala$collection$immutable$Range$$numRangeElements = (((hi$2 === 0) ? (((-2147483648) ^ lo$1) > (-1)) : (hi$2 > 0)) ? (-1) : lo$1)
+    };
+    if ((scala$collection$immutable$Range$$numRangeElements < 0)) {
+      $m_sci_Range$().scala$collection$immutable$Range$$fail__I__I__I__Z__E(1, rowsCount, 1, true)
+    };
+    const b = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
+    const it = new $c_sci_RangeIterator(1, 1, rowsCount, isEmpty);
+    while (it.sci_RangeIterator__f__hasNext) {
+      const arg1 = it.next__I();
+      const elem = $as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_unitofmeasurement_" + arg1)).value);
+      b.addOne__O__scm_Growable(elem)
+    };
+    const this$7 = $as_sci_IndexedSeq(b.result__O());
+    const unitOfMeasurement = $m_sci_List$().from__sc_IterableOnce__sci_List(this$7);
+    const isEmpty$1 = (rowsCount < 1);
+    let scala$collection$immutable$Range$$numRangeElements$1;
+    if (isEmpty$1) {
+      scala$collection$immutable$Range$$numRangeElements$1 = 0
+    } else {
+      const hi$3 = (rowsCount >> 31);
+      const lo$2 = (((-1) + rowsCount) | 0);
+      const hi$4 = ((lo$2 !== (-1)) ? hi$3 : (((-1) + hi$3) | 0));
+      const lo$3 = ((1 + lo$2) | 0);
+      const hi$5 = ((lo$3 === 0) ? ((1 + hi$4) | 0) : hi$4);
+      scala$collection$immutable$Range$$numRangeElements$1 = (((hi$5 === 0) ? (((-2147483648) ^ lo$3) > (-1)) : (hi$5 > 0)) ? (-1) : lo$3)
+    };
+    if ((scala$collection$immutable$Range$$numRangeElements$1 < 0)) {
+      $m_sci_Range$().scala$collection$immutable$Range$$fail__I__I__I__Z__E(1, rowsCount, 1, true)
+    };
+    const b$1 = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
+    const it$1 = new $c_sci_RangeIterator(1, 1, rowsCount, isEmpty$1);
+    while (it$1.sci_RangeIterator__f__hasNext) {
+      const arg1$1 = it$1.next__I();
+      const x = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_quantity_" + arg1$1)).value));
+      const elem$1 = $m_jl_Double$().parseDouble__T__D(x);
+      b$1.addOne__O__scm_Growable(elem$1)
+    };
+    const this$16 = $as_sci_IndexedSeq(b$1.result__O());
+    const quantity = $m_sci_List$().from__sc_IterableOnce__sci_List(this$16);
+    $m_sci_List$();
+    const b$2 = new $c_scm_ListBuffer();
+    let i = 0;
+    while ((i < rowsCount)) {
+      const elem$2 = $as_T(unitOfMeasurement.head__O());
+      b$2.addOne__O__scm_ListBuffer(elem$2);
+      i = ((1 + i) | 0)
+    };
+    const that = b$2.toList__sci_List();
+    const this$18 = $as_sci_List($f_sc_StrictOptimizedIterableOps__zip__sc_IterableOnce__O(unitOfMeasurement, that));
+    const f = ((this$4$1) => ((x$2) => {
+      const x$1 = $as_T2(x$2);
+      const x$3 = x$1.T2__f__1;
+      const y = x$1.T2__f__2;
+      return $m_sr_BoxesRunTime$().equals__O__O__Z(x$3, y)
+    }))(this);
+    let this$19;
+    if ((this$18 === $m_sci_Nil$())) {
+      this$19 = $m_sci_Nil$()
+    } else {
+      const arg1$2 = this$18.head__O();
+      const h = new $c_sci_$colon$colon(f(arg1$2), $m_sci_Nil$());
+      let t = h;
+      let rest = $as_sci_List(this$18.tail__O());
+      while ((rest !== $m_sci_Nil$())) {
+        const arg1$3 = rest.head__O();
+        const nx = new $c_sci_$colon$colon(f(arg1$3), $m_sci_Nil$());
+        t.sci_$colon$colon__f_next = nx;
+        t = nx;
+        rest = $as_sci_List(rest.tail__O())
+      };
+      this$19 = h
+    };
+    const it$2 = this$19.iterator__sc_Iterator();
+    if ((!it$2.hasNext__Z())) {
+      throw $ct_jl_UnsupportedOperationException__T__(new $c_jl_UnsupportedOperationException(), "empty.reduceLeft")
+    };
+    let first = true;
+    let acc = 0;
+    while (it$2.hasNext__Z()) {
+      const x$4 = it$2.next__O();
+      if (first) {
+        acc = x$4;
+        first = false
+      } else {
+        const arg1$4 = acc;
+        const x$1$1 = $uZ(arg1$4);
+        const x$2$2 = $uZ(x$4);
+        acc = (x$1$1 && x$2$2)
+      }
+    };
+    const consistentUnitOfMeasurement = $uZ(acc);
+    if (consistentUnitOfMeasurement) {
+      const $$x1 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("qty_sum");
+      const num = $m_s_math_Numeric$DoubleIsFractional$();
+      $$x1.innerHTML = this.translateToPersian__T__T($dp_toString__T($f_sc_IterableOnceOps__sum__s_math_Numeric__O(quantity, num)));
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("unit_sum").innerHTML = $as_T(unitOfMeasurement.head__O())
+    } else {
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("qty_sum").innerHTML = "-";
+      $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("unit_sum").innerHTML = "-"
+    };
+    const isEmpty$2 = (rowsCount < 1);
+    if ((!isEmpty$2)) {
+      let i$1 = 1;
       while (true) {
-        const v1 = i;
-        const this$8 = $as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_unitofmeasurement_" + v1)).value);
-        const this$9 = $as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("unit_sum").innerHTML);
-        if ((this$8 === this$9)) {
-          const x = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("qty_sum").innerHTML));
-          const qtySum = $m_jl_Double$().parseDouble__T__D(x);
-          const $$x2 = $m_Ldummy$();
-          const this$12 = $uD($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_quantity_" + v1)).valueAsNumber);
-          const x$1 = $$x2.translateToEnglish__T__T(("" + this$12));
-          const qty = $m_jl_Double$().parseDouble__T__D(x$1);
-          const $$x4 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("qty_sum");
-          const $$x3 = $m_Ldummy$();
-          const this$16 = (qtySum + qty);
-          $$x4.innerHTML = $$x3.translateToPersian__T__T(("" + this$16))
-        } else {
-          $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("qty_sum").innerHTML = "-";
-          $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("unit_sum").innerHTML = "-"
-        };
-        const $$x5 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("unit_sum");
-        const this$18 = $as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_unitofmeasurement_" + v1)).value);
-        $$x5.innerHTML = this$18;
-        const x$2 = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("gw_sum").innerHTML));
-        const gwSum = $m_jl_Double$().parseDouble__T__D(x$2);
-        const x$3 = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("pw_sum").innerHTML));
-        const pwSum = $m_jl_Double$().parseDouble__T__D(x$3);
-        const x$4 = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("nw_sum").innerHTML));
-        const nwSum = $m_jl_Double$().parseDouble__T__D(x$4);
+        const v1 = i$1;
+        const x$5 = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("gw_sum").innerHTML));
+        const gwSum = $m_jl_Double$().parseDouble__T__D(x$5);
+        const x$6 = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("pw_sum").innerHTML));
+        const pwSum = $m_jl_Double$().parseDouble__T__D(x$6);
+        const x$7 = $m_Ldummy$().translateToEnglish__T__T($as_T($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("nw_sum").innerHTML));
+        const nwSum = $m_jl_Double$().parseDouble__T__D(x$7);
+        const $$x2 = $m_Ldummy$();
+        const this$32 = $uD($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_grossweight_" + v1)).valueAsNumber);
+        const x$8 = $$x2.translateToEnglish__T__T(("" + this$32));
+        const gw = $m_jl_Double$().parseDouble__T__D(x$8);
+        const $$x3 = $m_Ldummy$();
+        const this$36 = $uD($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_packageweight_" + v1)).valueAsNumber);
+        const x$9 = $$x3.translateToEnglish__T__T(("" + this$36));
+        const pw = $m_jl_Double$().parseDouble__T__D(x$9);
+        const $$x4 = $m_Ldummy$();
+        const this$40 = $uD($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_netweight_" + v1)).valueAsNumber);
+        const x$10 = $$x4.translateToEnglish__T__T(("" + this$40));
+        const nw = $m_jl_Double$().parseDouble__T__D(x$10);
+        const $$x7 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("gw_sum");
         const $$x6 = $m_Ldummy$();
-        const this$25 = $uD($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_grossweight_" + v1)).valueAsNumber);
-        const x$5 = $$x6.translateToEnglish__T__T(("" + this$25));
-        const gw = $m_jl_Double$().parseDouble__T__D(x$5);
-        const $$x7 = $m_Ldummy$();
-        const this$29 = $uD($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_packageweight_" + v1)).valueAsNumber);
-        const x$6 = $$x7.translateToEnglish__T__T(("" + this$29));
-        const pw = $m_jl_Double$().parseDouble__T__D(x$6);
-        const $$x8 = $m_Ldummy$();
-        const this$33 = $uD($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById(("itemslist_netweight_" + v1)).valueAsNumber);
-        const x$7 = $$x8.translateToEnglish__T__T(("" + this$33));
-        const nw = $m_jl_Double$().parseDouble__T__D(x$7);
-        const $$x10 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("gw_sum");
+        const $$x5 = $m_sc_StringOps$();
+        const array = [(gwSum + gw)];
+        $$x7.innerHTML = $$x6.translateToPersian__T__T($$x5.format$extension__T__sci_Seq__T("%.3f", new $c_sjsr_WrappedVarArgs(array)));
+        const $$x10 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("pw_sum");
         const $$x9 = $m_Ldummy$();
-        const this$37 = (gwSum + gw);
-        $$x10.innerHTML = $$x9.translateToPersian__T__T(("" + this$37));
-        const $$x12 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("pw_sum");
-        const $$x11 = $m_Ldummy$();
-        const this$39 = (pwSum + pw);
-        $$x12.innerHTML = $$x11.translateToPersian__T__T(("" + this$39));
-        const $$x14 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("nw_sum");
-        const $$x13 = $m_Ldummy$();
-        const this$41 = (nwSum + nw);
-        $$x14.innerHTML = $$x13.translateToPersian__T__T(("" + this$41));
-        if ((i === rowsCount)) {
+        const $$x8 = $m_sc_StringOps$();
+        const array$1 = [(pwSum + pw)];
+        $$x10.innerHTML = $$x9.translateToPersian__T__T($$x8.format$extension__T__sci_Seq__T("%.3f", new $c_sjsr_WrappedVarArgs(array$1)));
+        const $$x13 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("nw_sum");
+        const $$x12 = $m_Ldummy$();
+        const $$x11 = $m_sc_StringOps$();
+        const array$2 = [(nwSum + nw)];
+        $$x13.innerHTML = $$x12.translateToPersian__T__T($$x11.format$extension__T__sci_Seq__T("%.3f", new $c_sjsr_WrappedVarArgs(array$2)));
+        if ((i$1 === rowsCount)) {
           break
         };
-        i = ((1 + i) | 0)
+        i$1 = ((1 + i$1) | 0)
       }
     }
   };
@@ -1607,10 +1637,10 @@ class $c_Ldummy$ extends $c_O {
     return $as_T(dictionary.apply__O__O(abbreviation))
   };
   translateToPersian__T__T(unknown) {
-    const this$50 = $m_s_Predef$().s_Predef$__f_Map;
-    const array = [new $c_T2($bC(1643), $bC(1643)), new $c_T2($bC(46), $bC(1643)), new $c_T2($bC(47), $bC(47)), new $c_T2($bC(49), $bC(1777)), new $c_T2($bC(50), $bC(1778)), new $c_T2($bC(51), $bC(1779)), new $c_T2($bC(52), $bC(1780)), new $c_T2($bC(53), $bC(1781)), new $c_T2($bC(54), $bC(1782)), new $c_T2($bC(55), $bC(1783)), new $c_T2($bC(56), $bC(1784)), new $c_T2($bC(57), $bC(1785)), new $c_T2($bC(48), $bC(1776)), new $c_T2($bC(1777), $bC(1777)), new $c_T2($bC(1778), $bC(1778)), new $c_T2($bC(1779), $bC(1779)), new $c_T2($bC(1780), $bC(1780)), new $c_T2($bC(1781), $bC(1781)), new $c_T2($bC(1782), $bC(1782)), new $c_T2($bC(1783), $bC(1783)), new $c_T2($bC(1784), $bC(1784)), new $c_T2($bC(1785), $bC(1785)), new $c_T2($bC(1776), $bC(1776))];
+    const this$52 = $m_s_Predef$().s_Predef$__f_Map;
+    const array = [new $c_T2($bC(45), $bC(45)), new $c_T2($bC(1643), $bC(1643)), new $c_T2($bC(46), $bC(1643)), new $c_T2($bC(47), $bC(47)), new $c_T2($bC(49), $bC(1777)), new $c_T2($bC(50), $bC(1778)), new $c_T2($bC(51), $bC(1779)), new $c_T2($bC(52), $bC(1780)), new $c_T2($bC(53), $bC(1781)), new $c_T2($bC(54), $bC(1782)), new $c_T2($bC(55), $bC(1783)), new $c_T2($bC(56), $bC(1784)), new $c_T2($bC(57), $bC(1785)), new $c_T2($bC(48), $bC(1776)), new $c_T2($bC(1777), $bC(1777)), new $c_T2($bC(1778), $bC(1778)), new $c_T2($bC(1779), $bC(1779)), new $c_T2($bC(1780), $bC(1780)), new $c_T2($bC(1781), $bC(1781)), new $c_T2($bC(1782), $bC(1782)), new $c_T2($bC(1783), $bC(1783)), new $c_T2($bC(1784), $bC(1784)), new $c_T2($bC(1785), $bC(1785)), new $c_T2($bC(1776), $bC(1776))];
     const elems = new $c_sjsr_WrappedVarArgs(array);
-    const persianDigits = this$50.from__sc_IterableOnce__sci_Map(elems);
+    const persianDigits = this$52.from__sc_IterableOnce__sci_Map(elems);
     const len = $uI(unknown.length);
     const dst = $newArrayObject($d_C.getArrayOf(), [len]);
     let i = 0;
@@ -1621,14 +1651,14 @@ class $c_Ldummy$ extends $c_O {
       dst.set($$x1, $uC(persianDigits.apply__O__O($bC(arg1))));
       i = ((1 + i) | 0)
     };
-    const this$53 = $m_jl_String$();
-    return this$53.new__AC__I__I__T(dst, 0, dst.u.length)
+    const this$55 = $m_jl_String$();
+    return this$55.new__AC__I__I__T(dst, 0, dst.u.length)
   };
   translateToEnglish__T__T(unknown) {
-    const this$50 = $m_s_Predef$().s_Predef$__f_Map;
-    const array = [new $c_T2($bC(1643), $bC(46)), new $c_T2($bC(46), $bC(46)), new $c_T2($bC(47), $bC(47)), new $c_T2($bC(49), $bC(49)), new $c_T2($bC(50), $bC(50)), new $c_T2($bC(51), $bC(51)), new $c_T2($bC(52), $bC(52)), new $c_T2($bC(53), $bC(53)), new $c_T2($bC(54), $bC(54)), new $c_T2($bC(55), $bC(55)), new $c_T2($bC(56), $bC(56)), new $c_T2($bC(57), $bC(57)), new $c_T2($bC(48), $bC(48)), new $c_T2($bC(1777), $bC(49)), new $c_T2($bC(1778), $bC(50)), new $c_T2($bC(1779), $bC(51)), new $c_T2($bC(1780), $bC(52)), new $c_T2($bC(1781), $bC(53)), new $c_T2($bC(1782), $bC(54)), new $c_T2($bC(1783), $bC(55)), new $c_T2($bC(1784), $bC(56)), new $c_T2($bC(1785), $bC(57)), new $c_T2($bC(1776), $bC(48))];
+    const this$52 = $m_s_Predef$().s_Predef$__f_Map;
+    const array = [new $c_T2($bC(45), $bC(45)), new $c_T2($bC(1643), $bC(46)), new $c_T2($bC(46), $bC(46)), new $c_T2($bC(47), $bC(47)), new $c_T2($bC(49), $bC(49)), new $c_T2($bC(50), $bC(50)), new $c_T2($bC(51), $bC(51)), new $c_T2($bC(52), $bC(52)), new $c_T2($bC(53), $bC(53)), new $c_T2($bC(54), $bC(54)), new $c_T2($bC(55), $bC(55)), new $c_T2($bC(56), $bC(56)), new $c_T2($bC(57), $bC(57)), new $c_T2($bC(48), $bC(48)), new $c_T2($bC(1777), $bC(49)), new $c_T2($bC(1778), $bC(50)), new $c_T2($bC(1779), $bC(51)), new $c_T2($bC(1780), $bC(52)), new $c_T2($bC(1781), $bC(53)), new $c_T2($bC(1782), $bC(54)), new $c_T2($bC(1783), $bC(55)), new $c_T2($bC(1784), $bC(56)), new $c_T2($bC(1785), $bC(57)), new $c_T2($bC(1776), $bC(48))];
     const elems = new $c_sjsr_WrappedVarArgs(array);
-    const englishDigits = this$50.from__sc_IterableOnce__sci_Map(elems);
+    const englishDigits = this$52.from__sc_IterableOnce__sci_Map(elems);
     const len = $uI(unknown.length);
     const dst = $newArrayObject($d_C.getArrayOf(), [len]);
     let i = 0;
@@ -1639,8 +1669,8 @@ class $c_Ldummy$ extends $c_O {
       dst.set($$x1, $uC(englishDigits.apply__O__O($bC(arg1))));
       i = ((1 + i) | 0)
     };
-    const this$53 = $m_jl_String$();
-    return this$53.new__AC__I__I__T(dst, 0, dst.u.length)
+    const this$55 = $m_jl_String$();
+    return this$55.new__AC__I__I__T(dst, 0, dst.u.length)
   };
   person__Lorg_scalajs_dom_raw_Element__Lorg_scalajs_dom_raw_Element__Lorg_scalajs_dom_raw_Element__Ldummy$Person(firstName, surName, nationalIDNo) {
     return new $c_Ldummy$Person($as_T(firstName.value), $as_T(surName.value), this.translateToEnglish__T__T($as_T(nationalIDNo.value)))
@@ -2577,165 +2607,7 @@ class $c_ju_Arrays$ extends $c_O {
       }
     }
   };
-  equals__AJ__AJ__Z(a, b) {
-    if ((a === b)) {
-      return true
-    };
-    if (((a === null) || (b === null))) {
-      return false
-    };
-    const len = a.u.length;
-    if ((b.u.length !== len)) {
-      return false
-    };
-    let i = 0;
-    while ((i !== len)) {
-      const t = a.get(i);
-      const lo = t.RTLong__f_lo;
-      const hi = t.RTLong__f_hi;
-      const t$1 = b.get(i);
-      const lo$1 = t$1.RTLong__f_lo;
-      const hi$1 = t$1.RTLong__f_hi;
-      if ((!$m_sr_BoxesRunTime$().equals__O__O__Z(new $c_RTLong(lo, hi), new $c_RTLong(lo$1, hi$1)))) {
-        return false
-      };
-      i = ((1 + i) | 0)
-    };
-    return true
-  };
   equals__AI__AI__Z(a, b) {
-    if ((a === b)) {
-      return true
-    };
-    if (((a === null) || (b === null))) {
-      return false
-    };
-    const len = a.u.length;
-    if ((b.u.length !== len)) {
-      return false
-    };
-    let i = 0;
-    while ((i !== len)) {
-      const x = a.get(i);
-      const y = b.get(i);
-      if ((!$m_sr_BoxesRunTime$().equals__O__O__Z(x, y))) {
-        return false
-      };
-      i = ((1 + i) | 0)
-    };
-    return true
-  };
-  equals__AS__AS__Z(a, b) {
-    if ((a === b)) {
-      return true
-    };
-    if (((a === null) || (b === null))) {
-      return false
-    };
-    const len = a.u.length;
-    if ((b.u.length !== len)) {
-      return false
-    };
-    let i = 0;
-    while ((i !== len)) {
-      const x = a.get(i);
-      const y = b.get(i);
-      if ((!$m_sr_BoxesRunTime$().equals__O__O__Z(x, y))) {
-        return false
-      };
-      i = ((1 + i) | 0)
-    };
-    return true
-  };
-  equals__AC__AC__Z(a, b) {
-    if ((a === b)) {
-      return true
-    };
-    if (((a === null) || (b === null))) {
-      return false
-    };
-    const len = a.u.length;
-    if ((b.u.length !== len)) {
-      return false
-    };
-    let i = 0;
-    while ((i !== len)) {
-      const x = a.get(i);
-      const y = b.get(i);
-      if ((!$m_sr_BoxesRunTime$().equals__O__O__Z($bC(x), $bC(y)))) {
-        return false
-      };
-      i = ((1 + i) | 0)
-    };
-    return true
-  };
-  equals__AB__AB__Z(a, b) {
-    if ((a === b)) {
-      return true
-    };
-    if (((a === null) || (b === null))) {
-      return false
-    };
-    const len = a.u.length;
-    if ((b.u.length !== len)) {
-      return false
-    };
-    let i = 0;
-    while ((i !== len)) {
-      const x = a.get(i);
-      const y = b.get(i);
-      if ((!$m_sr_BoxesRunTime$().equals__O__O__Z(x, y))) {
-        return false
-      };
-      i = ((1 + i) | 0)
-    };
-    return true
-  };
-  equals__AZ__AZ__Z(a, b) {
-    if ((a === b)) {
-      return true
-    };
-    if (((a === null) || (b === null))) {
-      return false
-    };
-    const len = a.u.length;
-    if ((b.u.length !== len)) {
-      return false
-    };
-    let i = 0;
-    while ((i !== len)) {
-      const x = a.get(i);
-      const y = b.get(i);
-      if ((!$m_sr_BoxesRunTime$().equals__O__O__Z(x, y))) {
-        return false
-      };
-      i = ((1 + i) | 0)
-    };
-    return true
-  };
-  equals__AD__AD__Z(a, b) {
-    if ((a === b)) {
-      return true
-    };
-    if (((a === null) || (b === null))) {
-      return false
-    };
-    const len = a.u.length;
-    if ((b.u.length !== len)) {
-      return false
-    };
-    let i = 0;
-    while ((i !== len)) {
-      const x = a.get(i);
-      const y = b.get(i);
-      if ((!$m_sr_BoxesRunTime$().equals__O__O__Z(x, y))) {
-        return false
-      };
-      i = ((1 + i) | 0)
-    };
-    return true
-  };
-  equals__AF__AF__Z(a, b) {
     if ((a === b)) {
       return true
     };
@@ -2787,6 +2659,40 @@ function $m_ju_Arrays$() {
     $n_ju_Arrays$ = new $c_ju_Arrays$()
   };
   return $n_ju_Arrays$
+}
+function $is_ju_Formattable(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.ju_Formattable)))
+}
+function $as_ju_Formattable(obj) {
+  return (($is_ju_Formattable(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "java.util.Formattable"))
+}
+function $isArrayOf_ju_Formattable(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.ju_Formattable)))
+}
+function $asArrayOf_ju_Formattable(obj, depth) {
+  return (($isArrayOf_ju_Formattable(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.util.Formattable;", depth))
+}
+class $c_ju_Formatter$ extends $c_O {
+  constructor() {
+    super();
+    this.ju_Formatter$__f_java$util$Formatter$$FormatSpecifier = null;
+    $n_ju_Formatter$ = this;
+    this.ju_Formatter$__f_java$util$Formatter$$FormatSpecifier = new RegExp("(?:(\\d+)\\$)?([-#+ 0,\\(<]*)(\\d+)?(?:\\.(\\d+))?[%A-Za-z]", "g")
+  };
+}
+const $d_ju_Formatter$ = new $TypeData().initClass({
+  ju_Formatter$: 0
+}, false, "java.util.Formatter$", {
+  ju_Formatter$: 1,
+  O: 1
+});
+$c_ju_Formatter$.prototype.$classData = $d_ju_Formatter$;
+let $n_ju_Formatter$ = (void 0);
+function $m_ju_Formatter$() {
+  if ((!$n_ju_Formatter$)) {
+    $n_ju_Formatter$ = new $c_ju_Formatter$()
+  };
+  return $n_ju_Formatter$
 }
 class $c_Lorg_scalajs_dom_ext_Ajax$ extends $c_O {
   apply__T__T__Lorg_scalajs_dom_ext_Ajax$InputData__I__sci_Map__Z__T__s_concurrent_Future(method, url, data, timeout, headers, withCredentials, responseType) {
@@ -3027,6 +2933,24 @@ const $f_sc_IterableOnceOps__exists__F1__Z = (function($thiz, p) {
   };
   return res
 });
+const $f_sc_IterableOnceOps__reduceLeft__F2__O = (function($thiz, op) {
+  const it = $as_sc_IterableOnce($thiz).iterator__sc_Iterator();
+  if ((!it.hasNext__Z())) {
+    throw $ct_jl_UnsupportedOperationException__T__(new $c_jl_UnsupportedOperationException(), "empty.reduceLeft")
+  };
+  let first = true;
+  let acc = 0;
+  while (it.hasNext__Z()) {
+    const x = it.next__O();
+    if (first) {
+      acc = x;
+      first = false
+    } else {
+      acc = op.apply__O__O__O(acc, x)
+    }
+  };
+  return acc
+});
 const $f_sc_IterableOnceOps__isEmpty__Z = (function($thiz) {
   return (!$as_sc_IterableOnce($thiz).iterator__sc_Iterator().hasNext__Z())
 });
@@ -3050,6 +2974,14 @@ const $f_sc_IterableOnceOps__copyToArray__O__I__I__I = (function($thiz, xs, star
     i = ((1 + i) | 0)
   };
   return ((i - start) | 0)
+});
+const $f_sc_IterableOnceOps__sum__s_math_Numeric__O = (function($thiz, num) {
+  if ($thiz.isEmpty__Z()) {
+    return num.fromInt__I__O(0)
+  } else {
+    const op = new $c_sjsr_AnonFunction2(((this$1, num$1) => ((x$2, y$2) => num$1.plus__O__O__O(x$2, y$2)))($thiz, num));
+    return $thiz.reduceLeft__F2__O(op)
+  }
 });
 const $f_sc_IterableOnceOps__mkString__T__T__T__T = (function($thiz, start, sep, end) {
   if ($thiz.isEmpty__Z()) {
@@ -3079,6 +3011,43 @@ const $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBu
   };
   return b
 });
+const $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O = (function($thiz, evidence$2) {
+  if (($as_sc_IterableOnce($thiz).knownSize__I() >= 0)) {
+    const destination = evidence$2.newArray__I__O($as_sc_IterableOnce($thiz).knownSize__I());
+    $thiz.copyToArray__O__I__I(destination, 0);
+    return destination
+  } else {
+    let capacity = 0;
+    let size = 0;
+    let jsElems = null;
+    const elementClass = evidence$2.runtimeClass__jl_Class();
+    capacity = 0;
+    size = 0;
+    const isCharArrayBuilder = (elementClass === $d_C.getClassOf());
+    jsElems = [];
+    const xs = $as_sc_IterableOnce($thiz);
+    const it = xs.iterator__sc_Iterator();
+    while (it.hasNext__Z()) {
+      const elem = it.next__O();
+      const unboxedElem = (isCharArrayBuilder ? $uC(elem) : ((elem === null) ? elementClass.jl_Class__f_data.zero : elem));
+      jsElems.push(unboxedElem)
+    };
+    const elemRuntimeClass = ((elementClass === $d_V.getClassOf()) ? $d_jl_Void.getClassOf() : (((elementClass === $d_sr_Null$.getClassOf()) || (elementClass === $d_sr_Nothing$.getClassOf())) ? $d_O.getClassOf() : elementClass));
+    return $makeNativeArrayWrapper(elemRuntimeClass.jl_Class__f_data.getArrayOf(), jsElems)
+  }
+});
+function $is_sc_IterableOnceOps(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.sc_IterableOnceOps)))
+}
+function $as_sc_IterableOnceOps(obj) {
+  return (($is_sc_IterableOnceOps(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.IterableOnceOps"))
+}
+function $isArrayOf_sc_IterableOnceOps(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.sc_IterableOnceOps)))
+}
+function $asArrayOf_sc_IterableOnceOps(obj, depth) {
+  return (($isArrayOf_sc_IterableOnceOps(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.IterableOnceOps;", depth))
+}
 class $c_sc_Iterator$ConcatIteratorCell extends $c_O {
   constructor(head, tail) {
     super();
@@ -3170,6 +3139,18 @@ class $c_sc_StringOps$ extends $c_O {
       sb.jl_StringBuilder__f_java$lang$StringBuilder$$content = (("" + sb.jl_StringBuilder__f_java$lang$StringBuilder$$content) + stripped)
     };
     return sb.jl_StringBuilder__f_java$lang$StringBuilder$$content
+  };
+  unwrapArg$extension__T__O__O(this$, arg) {
+    if ((arg instanceof $c_s_math_ScalaNumber)) {
+      const x2 = $as_s_math_ScalaNumber(arg);
+      return x2.underlying__O()
+    } else {
+      return arg
+    }
+  };
+  format$extension__T__sci_Seq__T(this$, args) {
+    const args$1 = $asArrayOf_O($as_sc_IterableOnceOps(args.map__F1__O(new $c_sjsr_AnonFunction1(((this$1, this$$1) => ((arg$2) => $m_sc_StringOps$().unwrapArg$extension__T__O__O(this$$1, arg$2)))(this, this$)))).toArray__s_reflect_ClassTag__O($m_s_reflect_ManifestFactory$ObjectManifest$()), 1);
+    return $m_jl_String$().format__T__AO__T(this$, args$1)
   };
   drop$extension__T__I__T(this$, n) {
     const $$x1 = $m_sc_StringOps$();
@@ -3369,13 +3350,13 @@ class $c_sci_LazyList$LazyBuilder$DeferredState extends $c_O {
   eval__sci_LazyList$State() {
     const state = this.sci_LazyList$LazyBuilder$DeferredState__f__state;
     if ((state === null)) {
-      throw new $c_jl_IllegalStateException("uninitialized")
+      throw $ct_jl_IllegalStateException__T__(new $c_jl_IllegalStateException(), "uninitialized")
     };
     return $as_sci_LazyList$State(state.apply__O())
   };
   init__F0__V(state) {
     if ((this.sci_LazyList$LazyBuilder$DeferredState__f__state !== null)) {
-      throw new $c_jl_IllegalStateException("already initialized")
+      throw $ct_jl_IllegalStateException__T__(new $c_jl_IllegalStateException(), "already initialized")
     };
     this.sci_LazyList$LazyBuilder$DeferredState__f__state = state
   };
@@ -4309,7 +4290,7 @@ const $f_s_concurrent_Promise__complete__s_util_Try__s_concurrent_Promise = (fun
   if ($thiz.tryComplete__s_util_Try__Z(result)) {
     return $thiz
   } else {
-    throw new $c_jl_IllegalStateException("Promise already completed.")
+    throw $ct_jl_IllegalStateException__T__(new $c_jl_IllegalStateException(), "Promise already completed.")
   }
 });
 const $f_s_concurrent_Promise__success__O__s_concurrent_Promise = (function($thiz, value) {
@@ -5064,51 +5045,6 @@ class $c_s_util_hashing_MurmurHash3 extends $c_O {
     };
     return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(h0, rangeDiff), prev))
   };
-  arrayHash__O__I__I(a, seed) {
-    let h = seed;
-    const l = $m_sr_ScalaRunTime$().array_length__O__I(a);
-    switch (l) {
-      case 0: {
-        return this.finalizeHash__I__I__I(h, 0);
-        break
-      }
-      case 1: {
-        const $$x1 = h;
-        const x = $m_sr_ScalaRunTime$().array_apply__O__I__O(a, 0);
-        return this.finalizeHash__I__I__I(this.mix__I__I__I($$x1, $m_sr_Statics$().anyHash__O__I(x)), 1);
-        break
-      }
-      default: {
-        const x$1 = $m_sr_ScalaRunTime$().array_apply__O__I__O(a, 0);
-        const initial = $m_sr_Statics$().anyHash__O__I(x$1);
-        h = this.mix__I__I__I(h, initial);
-        const h0 = h;
-        const x$2 = $m_sr_ScalaRunTime$().array_apply__O__I__O(a, 1);
-        let prev = $m_sr_Statics$().anyHash__O__I(x$2);
-        const rangeDiff = ((prev - initial) | 0);
-        let i = 2;
-        while ((i < l)) {
-          h = this.mix__I__I__I(h, prev);
-          const x$3 = $m_sr_ScalaRunTime$().array_apply__O__I__O(a, i);
-          const hash = $m_sr_Statics$().anyHash__O__I(x$3);
-          if ((rangeDiff !== ((hash - prev) | 0))) {
-            h = this.mix__I__I__I(h, hash);
-            i = ((1 + i) | 0);
-            while ((i < l)) {
-              const $$x2 = h;
-              const x$4 = $m_sr_ScalaRunTime$().array_apply__O__I__O(a, i);
-              h = this.mix__I__I__I($$x2, $m_sr_Statics$().anyHash__O__I(x$4));
-              i = ((1 + i) | 0)
-            };
-            return this.finalizeHash__I__I__I(h, l)
-          };
-          prev = hash;
-          i = ((1 + i) | 0)
-        };
-        return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(h0, rangeDiff), prev))
-      }
-    }
-  };
   rangeHash__I__I__I__I__I(start, step, last, seed) {
     return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(this.mix__I__I__I(seed, start), step), last))
   };
@@ -5195,382 +5131,18 @@ class $c_s_util_hashing_MurmurHash3 extends $c_O {
     };
     return ((rangeState === 2) ? this.rangeHash__I__I__I__I__I(initial, rangeDiff, prev, seed) : this.finalizeHash__I__I__I(h, n))
   };
-  arrayHash$mZc$sp__AZ__I__I(a, seed) {
-    let h = seed;
-    const l = a.u.length;
-    switch (l) {
-      case 0: {
-        return this.finalizeHash__I__I__I(h, 0);
-        break
-      }
-      case 1: {
-        return this.finalizeHash__I__I__I(this.mix__I__I__I(h, (a.get(0) ? 1231 : 1237)), 1);
-        break
-      }
-      default: {
-        const initial = (a.get(0) ? 1231 : 1237);
-        h = this.mix__I__I__I(h, initial);
-        const h0 = h;
-        let prev = (a.get(1) ? 1231 : 1237);
-        const rangeDiff = ((prev - initial) | 0);
-        let i = 2;
-        while ((i < l)) {
-          h = this.mix__I__I__I(h, prev);
-          const hash = (a.get(i) ? 1231 : 1237);
-          if ((rangeDiff !== ((hash - prev) | 0))) {
-            h = this.mix__I__I__I(h, hash);
-            i = ((1 + i) | 0);
-            while ((i < l)) {
-              h = this.mix__I__I__I(h, (a.get(i) ? 1231 : 1237));
-              i = ((1 + i) | 0)
-            };
-            return this.finalizeHash__I__I__I(h, l)
-          };
-          prev = hash;
-          i = ((1 + i) | 0)
-        };
-        return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(h0, rangeDiff), prev))
-      }
-    }
-  };
-  arrayHash$mBc$sp__AB__I__I(a, seed) {
-    let h = seed;
-    const l = a.u.length;
-    switch (l) {
-      case 0: {
-        return this.finalizeHash__I__I__I(h, 0);
-        break
-      }
-      case 1: {
-        return this.finalizeHash__I__I__I(this.mix__I__I__I(h, a.get(0)), 1);
-        break
-      }
-      default: {
-        const initial = a.get(0);
-        h = this.mix__I__I__I(h, initial);
-        const h0 = h;
-        let prev = a.get(1);
-        const rangeDiff = ((prev - initial) | 0);
-        let i = 2;
-        while ((i < l)) {
-          h = this.mix__I__I__I(h, prev);
-          const hash = a.get(i);
-          if ((rangeDiff !== ((hash - prev) | 0))) {
-            h = this.mix__I__I__I(h, hash);
-            i = ((1 + i) | 0);
-            while ((i < l)) {
-              h = this.mix__I__I__I(h, a.get(i));
-              i = ((1 + i) | 0)
-            };
-            return this.finalizeHash__I__I__I(h, l)
-          };
-          prev = hash;
-          i = ((1 + i) | 0)
-        };
-        return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(h0, rangeDiff), prev))
-      }
-    }
-  };
-  arrayHash$mCc$sp__AC__I__I(a, seed) {
-    let h = seed;
-    const l = a.u.length;
-    switch (l) {
-      case 0: {
-        return this.finalizeHash__I__I__I(h, 0);
-        break
-      }
-      case 1: {
-        return this.finalizeHash__I__I__I(this.mix__I__I__I(h, a.get(0)), 1);
-        break
-      }
-      default: {
-        const initial = a.get(0);
-        h = this.mix__I__I__I(h, initial);
-        const h0 = h;
-        let prev = a.get(1);
-        const rangeDiff = ((prev - initial) | 0);
-        let i = 2;
-        while ((i < l)) {
-          h = this.mix__I__I__I(h, prev);
-          const hash = a.get(i);
-          if ((rangeDiff !== ((hash - prev) | 0))) {
-            h = this.mix__I__I__I(h, hash);
-            i = ((1 + i) | 0);
-            while ((i < l)) {
-              h = this.mix__I__I__I(h, a.get(i));
-              i = ((1 + i) | 0)
-            };
-            return this.finalizeHash__I__I__I(h, l)
-          };
-          prev = hash;
-          i = ((1 + i) | 0)
-        };
-        return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(h0, rangeDiff), prev))
-      }
-    }
-  };
-  arrayHash$mDc$sp__AD__I__I(a, seed) {
-    let h = seed;
-    const l = a.u.length;
-    switch (l) {
-      case 0: {
-        return this.finalizeHash__I__I__I(h, 0);
-        break
-      }
-      case 1: {
-        const $$x1 = h;
-        const dv = a.get(0);
-        return this.finalizeHash__I__I__I(this.mix__I__I__I($$x1, $m_sr_Statics$().doubleHash__D__I(dv)), 1);
-        break
-      }
-      default: {
-        const dv$1 = a.get(0);
-        const initial = $m_sr_Statics$().doubleHash__D__I(dv$1);
-        h = this.mix__I__I__I(h, initial);
-        const h0 = h;
-        const dv$2 = a.get(1);
-        let prev = $m_sr_Statics$().doubleHash__D__I(dv$2);
-        const rangeDiff = ((prev - initial) | 0);
-        let i = 2;
-        while ((i < l)) {
-          h = this.mix__I__I__I(h, prev);
-          const dv$3 = a.get(i);
-          const hash = $m_sr_Statics$().doubleHash__D__I(dv$3);
-          if ((rangeDiff !== ((hash - prev) | 0))) {
-            h = this.mix__I__I__I(h, hash);
-            i = ((1 + i) | 0);
-            while ((i < l)) {
-              const $$x2 = h;
-              const dv$4 = a.get(i);
-              h = this.mix__I__I__I($$x2, $m_sr_Statics$().doubleHash__D__I(dv$4));
-              i = ((1 + i) | 0)
-            };
-            return this.finalizeHash__I__I__I(h, l)
-          };
-          prev = hash;
-          i = ((1 + i) | 0)
-        };
-        return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(h0, rangeDiff), prev))
-      }
-    }
-  };
-  arrayHash$mFc$sp__AF__I__I(a, seed) {
-    let h = seed;
-    const l = a.u.length;
-    switch (l) {
-      case 0: {
-        return this.finalizeHash__I__I__I(h, 0);
-        break
-      }
-      case 1: {
-        const $$x1 = h;
-        const fv = a.get(0);
-        const this$1 = $m_sr_Statics$();
-        return this.finalizeHash__I__I__I(this.mix__I__I__I($$x1, this$1.doubleHash__D__I(fv)), 1);
-        break
-      }
-      default: {
-        const fv$1 = a.get(0);
-        const this$2 = $m_sr_Statics$();
-        const initial = this$2.doubleHash__D__I(fv$1);
-        h = this.mix__I__I__I(h, initial);
-        const h0 = h;
-        const fv$2 = a.get(1);
-        const this$3 = $m_sr_Statics$();
-        let prev = this$3.doubleHash__D__I(fv$2);
-        const rangeDiff = ((prev - initial) | 0);
-        let i = 2;
-        while ((i < l)) {
-          h = this.mix__I__I__I(h, prev);
-          const fv$3 = a.get(i);
-          const this$4 = $m_sr_Statics$();
-          const hash = this$4.doubleHash__D__I(fv$3);
-          if ((rangeDiff !== ((hash - prev) | 0))) {
-            h = this.mix__I__I__I(h, hash);
-            i = ((1 + i) | 0);
-            while ((i < l)) {
-              const $$x2 = h;
-              const fv$4 = a.get(i);
-              const this$5 = $m_sr_Statics$();
-              h = this.mix__I__I__I($$x2, this$5.doubleHash__D__I(fv$4));
-              i = ((1 + i) | 0)
-            };
-            return this.finalizeHash__I__I__I(h, l)
-          };
-          prev = hash;
-          i = ((1 + i) | 0)
-        };
-        return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(h0, rangeDiff), prev))
-      }
-    }
-  };
-  arrayHash$mIc$sp__AI__I__I(a, seed) {
-    let h = seed;
-    const l = a.u.length;
-    switch (l) {
-      case 0: {
-        return this.finalizeHash__I__I__I(h, 0);
-        break
-      }
-      case 1: {
-        return this.finalizeHash__I__I__I(this.mix__I__I__I(h, a.get(0)), 1);
-        break
-      }
-      default: {
-        const initial = a.get(0);
-        h = this.mix__I__I__I(h, initial);
-        const h0 = h;
-        let prev = a.get(1);
-        const rangeDiff = ((prev - initial) | 0);
-        let i = 2;
-        while ((i < l)) {
-          h = this.mix__I__I__I(h, prev);
-          const hash = a.get(i);
-          if ((rangeDiff !== ((hash - prev) | 0))) {
-            h = this.mix__I__I__I(h, hash);
-            i = ((1 + i) | 0);
-            while ((i < l)) {
-              h = this.mix__I__I__I(h, a.get(i));
-              i = ((1 + i) | 0)
-            };
-            return this.finalizeHash__I__I__I(h, l)
-          };
-          prev = hash;
-          i = ((1 + i) | 0)
-        };
-        return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(h0, rangeDiff), prev))
-      }
-    }
-  };
-  arrayHash$mJc$sp__AJ__I__I(a, seed) {
-    let h = seed;
-    const l = a.u.length;
-    switch (l) {
-      case 0: {
-        return this.finalizeHash__I__I__I(h, 0);
-        break
-      }
-      case 1: {
-        const $$x1 = h;
-        const t = a.get(0);
-        const lo = t.RTLong__f_lo;
-        const hi = t.RTLong__f_hi;
-        return this.finalizeHash__I__I__I(this.mix__I__I__I($$x1, $m_sr_Statics$().longHash__J__I(new $c_RTLong(lo, hi))), 1);
-        break
-      }
-      default: {
-        const t$1 = a.get(0);
-        const lo$1 = t$1.RTLong__f_lo;
-        const hi$1 = t$1.RTLong__f_hi;
-        const initial = $m_sr_Statics$().longHash__J__I(new $c_RTLong(lo$1, hi$1));
-        h = this.mix__I__I__I(h, initial);
-        const h0 = h;
-        const t$2 = a.get(1);
-        const lo$2 = t$2.RTLong__f_lo;
-        const hi$2 = t$2.RTLong__f_hi;
-        let prev = $m_sr_Statics$().longHash__J__I(new $c_RTLong(lo$2, hi$2));
-        const rangeDiff = ((prev - initial) | 0);
-        let i = 2;
-        while ((i < l)) {
-          h = this.mix__I__I__I(h, prev);
-          const t$3 = a.get(i);
-          const lo$3 = t$3.RTLong__f_lo;
-          const hi$3 = t$3.RTLong__f_hi;
-          const hash = $m_sr_Statics$().longHash__J__I(new $c_RTLong(lo$3, hi$3));
-          if ((rangeDiff !== ((hash - prev) | 0))) {
-            h = this.mix__I__I__I(h, hash);
-            i = ((1 + i) | 0);
-            while ((i < l)) {
-              const $$x2 = h;
-              const t$4 = a.get(i);
-              const lo$4 = t$4.RTLong__f_lo;
-              const hi$4 = t$4.RTLong__f_hi;
-              h = this.mix__I__I__I($$x2, $m_sr_Statics$().longHash__J__I(new $c_RTLong(lo$4, hi$4)));
-              i = ((1 + i) | 0)
-            };
-            return this.finalizeHash__I__I__I(h, l)
-          };
-          prev = hash;
-          i = ((1 + i) | 0)
-        };
-        return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(h0, rangeDiff), prev))
-      }
-    }
-  };
-  arrayHash$mSc$sp__AS__I__I(a, seed) {
-    let h = seed;
-    const l = a.u.length;
-    switch (l) {
-      case 0: {
-        return this.finalizeHash__I__I__I(h, 0);
-        break
-      }
-      case 1: {
-        return this.finalizeHash__I__I__I(this.mix__I__I__I(h, a.get(0)), 1);
-        break
-      }
-      default: {
-        const initial = a.get(0);
-        h = this.mix__I__I__I(h, initial);
-        const h0 = h;
-        let prev = a.get(1);
-        const rangeDiff = ((prev - initial) | 0);
-        let i = 2;
-        while ((i < l)) {
-          h = this.mix__I__I__I(h, prev);
-          const hash = a.get(i);
-          if ((rangeDiff !== ((hash - prev) | 0))) {
-            h = this.mix__I__I__I(h, hash);
-            i = ((1 + i) | 0);
-            while ((i < l)) {
-              h = this.mix__I__I__I(h, a.get(i));
-              i = ((1 + i) | 0)
-            };
-            return this.finalizeHash__I__I__I(h, l)
-          };
-          prev = hash;
-          i = ((1 + i) | 0)
-        };
-        return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(h0, rangeDiff), prev))
-      }
-    }
-  };
-  arrayHash$mVc$sp__Ajl_Void__I__I(a, seed) {
-    let h = seed;
-    const l = a.u.length;
-    switch (l) {
-      case 0: {
-        return this.finalizeHash__I__I__I(h, 0);
-        break
-      }
-      case 1: {
-        return this.finalizeHash__I__I__I(this.mix__I__I__I(h, 0), 1);
-        break
-      }
-      default: {
-        h = this.mix__I__I__I(h, 0);
-        const h0 = h;
-        let prev = 0;
-        const rangeDiff = prev;
-        let i = 2;
-        while ((i < l)) {
-          h = this.mix__I__I__I(h, prev);
-          if ((rangeDiff !== ((-prev) | 0))) {
-            h = this.mix__I__I__I(h, 0);
-            i = ((1 + i) | 0);
-            while ((i < l)) {
-              h = this.mix__I__I__I(h, 0);
-              i = ((1 + i) | 0)
-            };
-            return this.finalizeHash__I__I__I(h, l)
-          };
-          prev = 0;
-          i = ((1 + i) | 0)
-        };
-        return this.scala$util$hashing$MurmurHash3$$avalanche__I__I(this.mix__I__I__I(this.mix__I__I__I(h0, rangeDiff), prev))
-      }
-    }
-  };
+}
+function $is_Ljava_io_Closeable(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Ljava_io_Closeable)))
+}
+function $as_Ljava_io_Closeable(obj) {
+  return (($is_Ljava_io_Closeable(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "java.io.Closeable"))
+}
+function $isArrayOf_Ljava_io_Closeable(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Ljava_io_Closeable)))
+}
+function $asArrayOf_Ljava_io_Closeable(obj, depth) {
+  return (($isArrayOf_Ljava_io_Closeable(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.io.Closeable;", depth))
 }
 const $p_jl_Character$__nonASCIIZeroDigitCodePoints$lzycompute__AI = (function($thiz) {
   if (((((16 & $thiz.jl_Character$__f_bitmap$0) << 24) >> 24) === 0)) {
@@ -5718,6 +5290,22 @@ class $c_jl_Double$ extends $c_O {
       return ((match2 !== null) ? $p_jl_Double$__parseHexDoubleImpl$1__O__T__D(this, match2, s) : $p_jl_Double$__fail$1__T__E(this, s))
     }
   };
+  compare__D__D__I(a, b) {
+    if ((a !== a)) {
+      return ((b !== b) ? 0 : 1)
+    } else if ((b !== b)) {
+      return (-1)
+    } else if ((a === b)) {
+      if ((a === 0.0)) {
+        const ainf = (1.0 / a);
+        return ((ainf === (1.0 / b)) ? 0 : ((ainf < 0.0) ? (-1) : 1))
+      } else {
+        return 0
+      }
+    } else {
+      return ((a < b) ? (-1) : 1)
+    }
+  };
 }
 const $d_jl_Double$ = new $TypeData().initClass({
   jl_Double$: 0
@@ -5789,6 +5377,59 @@ function $m_jl_Integer$() {
     $n_jl_Integer$ = new $c_jl_Integer$()
   };
   return $n_jl_Integer$
+}
+class $c_jl_Long$ extends $c_O {
+  constructor() {
+    super();
+    this.jl_Long$__f_StringRadixInfos = null;
+    this.jl_Long$__f_bitmap$0 = false
+  };
+  java$lang$Long$$toHexString__I__I__T(lo, hi) {
+    if ((hi !== 0)) {
+      const $$x1 = $as_T($uD((hi >>> 0)).toString(16));
+      const s = $as_T($uD((lo >>> 0)).toString(16));
+      const beginIndex = $uI(s.length);
+      return ($$x1 + (("" + $as_T("00000000".substring(beginIndex))) + s))
+    } else {
+      return $as_T($uD((lo >>> 0)).toString(16))
+    }
+  };
+  java$lang$Long$$toOctalString__I__I__T(lo, hi) {
+    const lp = (1073741823 & lo);
+    const mp = (1073741823 & ((((lo >>> 30) | 0) + (hi << 2)) | 0));
+    const hp = ((hi >>> 28) | 0);
+    if ((hp !== 0)) {
+      const $$x2 = $as_T($uD((hp >>> 0)).toString(8));
+      const s = $as_T($uD((mp >>> 0)).toString(8));
+      const beginIndex = $uI(s.length);
+      const $$x1 = $as_T("0000000000".substring(beginIndex));
+      const s$1 = $as_T($uD((lp >>> 0)).toString(8));
+      const beginIndex$1 = $uI(s$1.length);
+      return (($$x2 + (("" + $$x1) + s)) + (("" + $as_T("0000000000".substring(beginIndex$1))) + s$1))
+    } else if ((mp !== 0)) {
+      const $$x3 = $as_T($uD((mp >>> 0)).toString(8));
+      const s$2 = $as_T($uD((lp >>> 0)).toString(8));
+      const beginIndex$2 = $uI(s$2.length);
+      return ($$x3 + (("" + $as_T("0000000000".substring(beginIndex$2))) + s$2))
+    } else {
+      return $as_T($uD((lp >>> 0)).toString(8))
+    }
+  };
+}
+const $d_jl_Long$ = new $TypeData().initClass({
+  jl_Long$: 0
+}, false, "java.lang.Long$", {
+  jl_Long$: 1,
+  O: 1,
+  Ljava_io_Serializable: 1
+});
+$c_jl_Long$.prototype.$classData = $d_jl_Long$;
+let $n_jl_Long$ = (void 0);
+function $m_jl_Long$() {
+  if ((!$n_jl_Long$)) {
+    $n_jl_Long$ = new $c_jl_Long$()
+  };
+  return $n_jl_Long$
 }
 class $c_jl_Number extends $c_O {
 }
@@ -5876,7 +5517,7 @@ class $c_jl_String$ extends $c_O {
   new__AC__I__I__T(value, offset, count) {
     const end = ((offset + count) | 0);
     if ((((offset < 0) || (end < offset)) || (end > value.u.length))) {
-      throw new $c_jl_StringIndexOutOfBoundsException()
+      throw $ct_jl_StringIndexOutOfBoundsException__(new $c_jl_StringIndexOutOfBoundsException())
     };
     let result = "";
     let i = offset;
@@ -5887,6 +5528,12 @@ class $c_jl_String$ extends $c_O {
       i = ((1 + i) | 0)
     };
     return result
+  };
+  format__T__AO__T(format, args) {
+    const frm = $ct_ju_Formatter__(new $c_ju_Formatter());
+    const res = frm.format__T__AO__ju_Formatter(format, args).toString__T();
+    frm.close__V();
+    return res
   };
 }
 const $d_jl_String$ = new $TypeData().initClass({
@@ -6110,7 +5757,7 @@ class $c_ju_concurrent_atomic_AtomicReference extends $c_O {
 }
 const $p_ju_regex_Matcher__ensureLastMatch__sjs_js_RegExp$ExecResult = (function($thiz) {
   if (($thiz.ju_regex_Matcher__f_lastMatch === null)) {
-    throw new $c_jl_IllegalStateException("No match available")
+    throw $ct_jl_IllegalStateException__T__(new $c_jl_IllegalStateException(), "No match available")
   };
   return $thiz.ju_regex_Matcher__f_lastMatch
 });
@@ -6884,23 +6531,6 @@ class $c_s_Array$ extends $c_O {
       $p_s_Array$__slowcopy__O__I__O__I__I__V(this, src, srcPos, dest, destPos, length)
     }
   };
-  equals__AO__AO__Z(xs, ys) {
-    if ((xs === ys)) {
-      return true
-    };
-    if ((xs.u.length !== ys.u.length)) {
-      return false
-    };
-    const len = xs.u.length;
-    let i = 0;
-    while ((i < len)) {
-      if ((!$m_sr_BoxesRunTime$().equals__O__O__Z(xs.get(i), ys.get(i)))) {
-        return false
-      };
-      i = ((1 + i) | 0)
-    };
-    return true
-  };
 }
 const $d_s_Array$ = new $TypeData().initClass({
   s_Array$: 0
@@ -6918,17 +6548,6 @@ function $m_s_Array$() {
   return $n_s_Array$
 }
 class $c_s_LowPriorityImplicits extends $c_s_LowPriorityImplicits2 {
-  wrapRefArray__AO__scm_ArraySeq$ofRef(xs) {
-    if ((xs === null)) {
-      return null
-    } else if ((xs.u.length === 0)) {
-      const this$3 = $m_scm_ArraySeq$();
-      $m_s_reflect_ManifestFactory$ObjectManifest$();
-      return this$3.scm_ArraySeq$__f_EmptyArraySeq
-    } else {
-      return new $c_scm_ArraySeq$ofRef(xs)
-    }
-  };
 }
 class $c_s_Option$ extends $c_O {
   apply__O__s_Option(x) {
@@ -7529,26 +7148,6 @@ const $d_s_package$$anon$1 = new $TypeData().initClass({
   s_Specializable: 1
 });
 $c_s_package$$anon$1.prototype.$classData = $d_s_package$$anon$1;
-class $c_s_reflect_ClassTag$ extends $c_O {
-  apply__jl_Class__s_reflect_ClassTag(runtimeClass1) {
-    return ((runtimeClass1 === $d_B.getClassOf()) ? $m_s_reflect_ManifestFactory$ByteManifest$() : ((runtimeClass1 === $d_S.getClassOf()) ? $m_s_reflect_ManifestFactory$ShortManifest$() : ((runtimeClass1 === $d_C.getClassOf()) ? $m_s_reflect_ManifestFactory$CharManifest$() : ((runtimeClass1 === $d_I.getClassOf()) ? $m_s_reflect_ManifestFactory$IntManifest$() : ((runtimeClass1 === $d_J.getClassOf()) ? $m_s_reflect_ManifestFactory$LongManifest$() : ((runtimeClass1 === $d_F.getClassOf()) ? $m_s_reflect_ManifestFactory$FloatManifest$() : ((runtimeClass1 === $d_D.getClassOf()) ? $m_s_reflect_ManifestFactory$DoubleManifest$() : ((runtimeClass1 === $d_Z.getClassOf()) ? $m_s_reflect_ManifestFactory$BooleanManifest$() : ((runtimeClass1 === $d_V.getClassOf()) ? $m_s_reflect_ManifestFactory$UnitManifest$() : ((runtimeClass1 === $d_O.getClassOf()) ? $m_s_reflect_ManifestFactory$ObjectManifest$() : ((runtimeClass1 === $d_sr_Nothing$.getClassOf()) ? $m_s_reflect_ManifestFactory$NothingManifest$() : ((runtimeClass1 === $d_sr_Null$.getClassOf()) ? $m_s_reflect_ManifestFactory$NullManifest$() : new $c_s_reflect_ClassTag$GenericClassTag(runtimeClass1)))))))))))))
-  };
-}
-const $d_s_reflect_ClassTag$ = new $TypeData().initClass({
-  s_reflect_ClassTag$: 0
-}, false, "scala.reflect.ClassTag$", {
-  s_reflect_ClassTag$: 1,
-  O: 1,
-  Ljava_io_Serializable: 1
-});
-$c_s_reflect_ClassTag$.prototype.$classData = $d_s_reflect_ClassTag$;
-let $n_s_reflect_ClassTag$ = (void 0);
-function $m_s_reflect_ClassTag$() {
-  if ((!$n_s_reflect_ClassTag$)) {
-    $n_s_reflect_ClassTag$ = new $c_s_reflect_ClassTag$()
-  };
-  return $n_s_reflect_ClassTag$
-}
 class $c_s_reflect_Manifest$ extends $c_O {
 }
 const $d_s_reflect_Manifest$ = new $TypeData().initClass({
@@ -7869,63 +7468,6 @@ const $f_s_Product2__productElement__I__O = (function($thiz, n) {
     }
   }
 });
-const $ct_sc_ClassTagIterableFactory$AnyIterableDelegate__sc_ClassTagIterableFactory__ = (function($thiz, delegate) {
-  $thiz.sc_ClassTagIterableFactory$AnyIterableDelegate__f_delegate = delegate;
-  return $thiz
-});
-class $c_sc_ClassTagIterableFactory$AnyIterableDelegate extends $c_O {
-  constructor() {
-    super();
-    this.sc_ClassTagIterableFactory$AnyIterableDelegate__f_delegate = null
-  };
-  from__sc_IterableOnce__O(it) {
-    const this$3 = this.sc_ClassTagIterableFactory$AnyIterableDelegate__f_delegate;
-    $m_s_reflect_ManifestFactory$AnyManifest$();
-    const n = it.knownSize__I();
-    if ((n > (-1))) {
-      const elements = $newArrayObject($d_O.getArrayOf(), [n]);
-      const iterator = it.iterator__sc_Iterator();
-      let i = 0;
-      while ((i < n)) {
-        elements.set(i, iterator.next__O());
-        i = ((1 + i) | 0)
-      };
-      return this$3.make__O__scm_ArraySeq(elements)
-    } else {
-      const this$5 = $m_scm_ArrayBuffer$().from__sc_IterableOnce__scm_ArrayBuffer(it);
-      let $$x1;
-      if ((this$5.scm_ArrayBuffer__f_size0 >= 0)) {
-        const len = this$5.scm_ArrayBuffer__f_size0;
-        const destination = $newArrayObject($d_O.getArrayOf(), [len]);
-        this$5.copyToArray__O__I__I__I(destination, 0, this$5.scm_ArrayBuffer__f_size0);
-        $$x1 = destination
-      } else {
-        let capacity = 0;
-        let size = 0;
-        let jsElems = null;
-        capacity = 0;
-        size = 0;
-        jsElems = [];
-        const this$8 = new $c_scm_ArrayBufferView(this$5.scm_ArrayBuffer__f_array, this$5.scm_ArrayBuffer__f_size0);
-        const it$1 = new $c_sc_IndexedSeqView$IndexedSeqViewIterator(this$8);
-        while (it$1.hasNext__Z()) {
-          const elem = it$1.next__O();
-          const unboxedElem = ((elem === null) ? null : elem);
-          jsElems.push(unboxedElem)
-        };
-        $$x1 = $makeNativeArrayWrapper($d_O.getArrayOf(), jsElems)
-      };
-      return this$3.make__O__scm_ArraySeq($$x1)
-    }
-  };
-  newBuilder__scm_Builder() {
-    const this$3 = this.sc_ClassTagIterableFactory$AnyIterableDelegate__f_delegate;
-    $m_s_reflect_ManifestFactory$AnyManifest$();
-    const this$7 = new $c_scm_ArrayBuilder$generic($d_O.getClassOf());
-    const f = new $c_sjsr_AnonFunction1(((this$6) => ((x$2) => $m_scm_ArraySeq$().make__O__scm_ArraySeq(x$2)))(this$3));
-    return new $c_scm_Builder$$anon$1(this$7, f)
-  };
-}
 const $ct_sc_IterableFactory$Delegate__sc_IterableFactory__ = (function($thiz, delegate) {
   $thiz.sc_IterableFactory$Delegate__f_delegate = delegate;
   return $thiz
@@ -9769,6 +9311,9 @@ class $c_sjsr_AnonFunction2 extends $c_sr_AbstractFunction2 {
     this.sjsr_AnonFunction2__f_f = null;
     this.sjsr_AnonFunction2__f_f = f
   };
+  apply__O__O__O(arg1, arg2) {
+    return (0, this.sjsr_AnonFunction2__f_f)(arg1, arg2)
+  };
 }
 const $d_sjsr_AnonFunction2 = new $TypeData().initClass({
   sjsr_AnonFunction2: 0
@@ -10361,7 +9906,198 @@ class $c_Ldummy$ItemsList extends $c_O {
   constructor(items) {
     super();
     this.Ldummy$ItemsList__f_items = null;
-    this.Ldummy$ItemsList__f_items = items
+    this.Ldummy$ItemsList__f_units = null;
+    this.Ldummy$ItemsList__f_consistentUnitOfMeasurement = false;
+    this.Ldummy$ItemsList__f_unitOfMeasurement = null;
+    this.Ldummy$ItemsList__f_quantity = null;
+    this.Ldummy$ItemsList__f_grossWeight = 0.0;
+    this.Ldummy$ItemsList__f_netWeight = 0.0;
+    this.Ldummy$ItemsList__f_packageWeight = 0.0;
+    this.Ldummy$ItemsList__f_items = items;
+    const f = ((this$1) => ((x$3$2) => {
+      const x$3 = $as_Ldummy$Item(x$3$2);
+      return x$3.Ldummy$Item__f_unitOfMeasurement
+    }))(this);
+    let $$x1;
+    if ((items === $m_sci_Nil$())) {
+      $$x1 = $m_sci_Nil$()
+    } else {
+      const arg1 = items.head__O();
+      const h = new $c_sci_$colon$colon(f(arg1), $m_sci_Nil$());
+      let t = h;
+      let rest = $as_sci_List(items.tail__O());
+      while ((rest !== $m_sci_Nil$())) {
+        const arg1$1 = rest.head__O();
+        const nx = new $c_sci_$colon$colon(f(arg1$1), $m_sci_Nil$());
+        t.sci_$colon$colon__f_next = nx;
+        t = nx;
+        rest = $as_sci_List(rest.tail__O())
+      };
+      $$x1 = h
+    };
+    this.Ldummy$ItemsList__f_units = $$x1;
+    const this$3 = this.Ldummy$ItemsList__f_units;
+    $m_sci_List$();
+    const n = this.Ldummy$ItemsList__f_units.length__I();
+    const b = new $c_scm_ListBuffer();
+    let i = 0;
+    while ((i < n)) {
+      const elem = $as_T(this.Ldummy$ItemsList__f_units.head__O());
+      b.addOne__O__scm_ListBuffer(elem);
+      i = ((1 + i) | 0)
+    };
+    const that = b.toList__sci_List();
+    const this$4 = $as_sci_List($f_sc_StrictOptimizedIterableOps__zip__sc_IterableOnce__O(this$3, that));
+    const f$1 = ((this$3$1) => ((x$2) => {
+      const x = $as_T2(x$2);
+      const x$1 = x.T2__f__1;
+      const y = x.T2__f__2;
+      return $m_sr_BoxesRunTime$().equals__O__O__Z(x$1, y)
+    }))(this);
+    let this$5;
+    if ((this$4 === $m_sci_Nil$())) {
+      this$5 = $m_sci_Nil$()
+    } else {
+      const arg1$2 = this$4.head__O();
+      const h$1 = new $c_sci_$colon$colon(f$1(arg1$2), $m_sci_Nil$());
+      let t$1 = h$1;
+      let rest$1 = $as_sci_List(this$4.tail__O());
+      while ((rest$1 !== $m_sci_Nil$())) {
+        const arg1$3 = rest$1.head__O();
+        const nx$1 = new $c_sci_$colon$colon(f$1(arg1$3), $m_sci_Nil$());
+        t$1.sci_$colon$colon__f_next = nx$1;
+        t$1 = nx$1;
+        rest$1 = $as_sci_List(rest$1.tail__O())
+      };
+      this$5 = h$1
+    };
+    const it = this$5.iterator__sc_Iterator();
+    if ((!it.hasNext__Z())) {
+      throw $ct_jl_UnsupportedOperationException__T__(new $c_jl_UnsupportedOperationException(), "empty.reduceLeft")
+    };
+    let first = true;
+    let acc = 0;
+    while (it.hasNext__Z()) {
+      const x$4 = it.next__O();
+      if (first) {
+        acc = x$4;
+        first = false
+      } else {
+        const arg1$4 = acc;
+        const x$4$1 = $uZ(arg1$4);
+        const x$5 = $uZ(x$4);
+        acc = (x$4$1 && x$5)
+      }
+    };
+    this.Ldummy$ItemsList__f_consistentUnitOfMeasurement = $uZ(acc);
+    this.Ldummy$ItemsList__f_unitOfMeasurement = (this.Ldummy$ItemsList__f_consistentUnitOfMeasurement ? new $c_s_Some(this.Ldummy$ItemsList__f_units.head__O()) : $m_s_None$());
+    let $$x2;
+    if (this.Ldummy$ItemsList__f_consistentUnitOfMeasurement) {
+      const f$2 = ((this$5$1) => ((x$6$2) => {
+        const x$6 = $as_Ldummy$Item(x$6$2);
+        return x$6.Ldummy$Item__f_quantity
+      }))(this);
+      let this$6;
+      if ((items === $m_sci_Nil$())) {
+        this$6 = $m_sci_Nil$()
+      } else {
+        const arg1$5 = items.head__O();
+        const h$2 = new $c_sci_$colon$colon(f$2(arg1$5), $m_sci_Nil$());
+        let t$2 = h$2;
+        let rest$2 = $as_sci_List(items.tail__O());
+        while ((rest$2 !== $m_sci_Nil$())) {
+          const arg1$6 = rest$2.head__O();
+          const nx$2 = new $c_sci_$colon$colon(f$2(arg1$6), $m_sci_Nil$());
+          t$2.sci_$colon$colon__f_next = nx$2;
+          t$2 = nx$2;
+          rest$2 = $as_sci_List(rest$2.tail__O())
+        };
+        this$6 = h$2
+      };
+      const num = $m_s_math_Numeric$IntIsIntegral$();
+      $$x2 = new $c_s_Some($f_sc_IterableOnceOps__sum__s_math_Numeric__O(this$6, num))
+    } else {
+      $$x2 = $m_s_None$()
+    };
+    this.Ldummy$ItemsList__f_quantity = $$x2;
+    const $$x3 = $m_sc_StringOps$();
+    const f$3 = ((this$6$1) => ((x$7$2) => {
+      const x$7 = $as_Ldummy$Item(x$7$2);
+      return x$7.Ldummy$Item__f_grossWeight
+    }))(this);
+    let this$8;
+    if ((items === $m_sci_Nil$())) {
+      this$8 = $m_sci_Nil$()
+    } else {
+      const arg1$7 = items.head__O();
+      const h$3 = new $c_sci_$colon$colon(f$3(arg1$7), $m_sci_Nil$());
+      let t$3 = h$3;
+      let rest$3 = $as_sci_List(items.tail__O());
+      while ((rest$3 !== $m_sci_Nil$())) {
+        const arg1$8 = rest$3.head__O();
+        const nx$3 = new $c_sci_$colon$colon(f$3(arg1$8), $m_sci_Nil$());
+        t$3.sci_$colon$colon__f_next = nx$3;
+        t$3 = nx$3;
+        rest$3 = $as_sci_List(rest$3.tail__O())
+      };
+      this$8 = h$3
+    };
+    const num$1 = $m_s_math_Numeric$DoubleIsFractional$();
+    const array = [$f_sc_IterableOnceOps__sum__s_math_Numeric__O(this$8, num$1)];
+    const x$8 = $$x3.format$extension__T__sci_Seq__T("%.3f", new $c_sjsr_WrappedVarArgs(array));
+    this.Ldummy$ItemsList__f_grossWeight = $m_jl_Double$().parseDouble__T__D(x$8);
+    const $$x4 = $m_sc_StringOps$();
+    const f$4 = ((this$7$1) => ((x$8$2) => {
+      const x$8$1 = $as_Ldummy$Item(x$8$2);
+      return x$8$1.Ldummy$Item__f_netWeight
+    }))(this);
+    let this$15;
+    if ((items === $m_sci_Nil$())) {
+      this$15 = $m_sci_Nil$()
+    } else {
+      const arg1$9 = items.head__O();
+      const h$4 = new $c_sci_$colon$colon(f$4(arg1$9), $m_sci_Nil$());
+      let t$4 = h$4;
+      let rest$4 = $as_sci_List(items.tail__O());
+      while ((rest$4 !== $m_sci_Nil$())) {
+        const arg1$10 = rest$4.head__O();
+        const nx$4 = new $c_sci_$colon$colon(f$4(arg1$10), $m_sci_Nil$());
+        t$4.sci_$colon$colon__f_next = nx$4;
+        t$4 = nx$4;
+        rest$4 = $as_sci_List(rest$4.tail__O())
+      };
+      this$15 = h$4
+    };
+    const num$2 = $m_s_math_Numeric$DoubleIsFractional$();
+    const array$1 = [$f_sc_IterableOnceOps__sum__s_math_Numeric__O(this$15, num$2)];
+    const x$9 = $$x4.format$extension__T__sci_Seq__T("%.3f", new $c_sjsr_WrappedVarArgs(array$1));
+    this.Ldummy$ItemsList__f_netWeight = $m_jl_Double$().parseDouble__T__D(x$9);
+    const $$x5 = $m_sc_StringOps$();
+    const f$5 = ((this$8$1) => ((x$9$2) => {
+      const x$9$1 = $as_Ldummy$Item(x$9$2);
+      return x$9$1.Ldummy$Item__f_packageWeight
+    }))(this);
+    let this$22;
+    if ((items === $m_sci_Nil$())) {
+      this$22 = $m_sci_Nil$()
+    } else {
+      const arg1$11 = items.head__O();
+      const h$5 = new $c_sci_$colon$colon(f$5(arg1$11), $m_sci_Nil$());
+      let t$5 = h$5;
+      let rest$5 = $as_sci_List(items.tail__O());
+      while ((rest$5 !== $m_sci_Nil$())) {
+        const arg1$12 = rest$5.head__O();
+        const nx$5 = new $c_sci_$colon$colon(f$5(arg1$12), $m_sci_Nil$());
+        t$5.sci_$colon$colon__f_next = nx$5;
+        t$5 = nx$5;
+        rest$5 = $as_sci_List(rest$5.tail__O())
+      };
+      this$22 = h$5
+    };
+    const num$3 = $m_s_math_Numeric$DoubleIsFractional$();
+    const array$2 = [$f_sc_IterableOnceOps__sum__s_math_Numeric__O(this$22, num$3)];
+    const x$10 = $$x5.format$extension__T__sci_Seq__T("%.3f", new $c_sjsr_WrappedVarArgs(array$2));
+    this.Ldummy$ItemsList__f_packageWeight = $m_jl_Double$().parseDouble__T__D(x$10)
   };
   toJsonString__T() {
     const this$2 = this.Ldummy$ItemsList__f_items;
@@ -10751,7 +10487,21 @@ const $d_Ldummy$ReceivingForm = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_Ldummy$ReceivingForm.prototype.$classData = $d_Ldummy$ReceivingForm;
+class $c_Ljava_io_IOException {
+}
+function $as_Ljava_io_IOException(obj) {
+  return (((obj instanceof $c_Ljava_io_IOException) || (obj === null)) ? obj : $throwClassCastException(obj, "java.io.IOException"))
+}
+function $isArrayOf_Ljava_io_IOException(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Ljava_io_IOException)))
+}
+function $asArrayOf_Ljava_io_IOException(obj, depth) {
+  return (($isArrayOf_Ljava_io_IOException(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.io.IOException;", depth))
+}
 class $c_Ljava_io_OutputStream extends $c_O {
+  close__V() {
+    /*<skip>*/
+  };
 }
 const $f_jl_Byte__equals__O__Z = (function($thiz, that) {
   return Object.is($thiz, that)
@@ -10950,6 +10700,19 @@ const $f_T__hashCode__I = (function($thiz) {
 const $f_T__equals__O__Z = (function($thiz, that) {
   return ($thiz === that)
 });
+const $f_T__getChars__I__I__AC__I__V = (function($thiz, srcBegin, srcEnd, dst, dstBegin) {
+  if (((((srcEnd > $uI($thiz.length)) || (srcBegin < 0)) || (srcEnd < 0)) || (srcBegin > srcEnd))) {
+    throw $ct_jl_StringIndexOutOfBoundsException__T__(new $c_jl_StringIndexOutOfBoundsException(), "Index out of Bound")
+  };
+  const offset = ((dstBegin - srcBegin) | 0);
+  let i = srcBegin;
+  while ((i < srcEnd)) {
+    const $$x1 = i;
+    const index = i;
+    dst.set((($$x1 + offset) | 0), (65535 & $uI($thiz.charCodeAt(index))));
+    i = ((1 + i) | 0)
+  }
+});
 const $f_T__replaceFirst__T__T__T = (function($thiz, regex, replacement) {
   const this$1 = $m_ju_regex_Pattern$();
   const this$2 = this$1.compile__T__I__ju_regex_Pattern(regex, 0);
@@ -11001,6 +10764,11 @@ class $c_jl_StringBuffer extends $c_O {
     this$1.jl_StringBuilder__f_java$lang$StringBuilder$$content = (("" + this$1.jl_StringBuilder__f_java$lang$StringBuilder$$content) + str);
     return this
   };
+  append__jl_CharSequence__jl_StringBuffer(s) {
+    const this$1 = this.jl_StringBuffer__f_builder;
+    this$1.jl_StringBuilder__f_java$lang$StringBuilder$$content = (("" + this$1.jl_StringBuilder__f_java$lang$StringBuilder$$content) + s);
+    return this
+  };
   append__C__jl_StringBuffer(c) {
     const this$1 = this.jl_StringBuffer__f_builder;
     const str = $as_T(String.fromCharCode(c));
@@ -11013,6 +10781,9 @@ class $c_jl_StringBuffer extends $c_O {
   };
   toString__T() {
     return this.jl_StringBuffer__f_builder.jl_StringBuilder__f_java$lang$StringBuilder$$content
+  };
+  append__jl_CharSequence__jl_Appendable(csq) {
+    return this.append__jl_CharSequence__jl_StringBuffer(csq)
   };
 }
 const $d_jl_StringBuffer = new $TypeData().initClass({
@@ -11067,12 +10838,19 @@ class $c_jl_StringBuilder extends $c_O {
     const this$1 = this.jl_StringBuilder__f_java$lang$StringBuilder$$content;
     return (65535 & $uI(this$1.charCodeAt(index)))
   };
+  getChars__I__I__AC__I__V(srcBegin, srcEnd, dst, dstBegin) {
+    $f_T__getChars__I__I__AC__I__V(this.jl_StringBuilder__f_java$lang$StringBuilder$$content, srcBegin, srcEnd, dst, dstBegin)
+  };
   subSequence__I__I__jl_CharSequence(start, end) {
     return this.substring__I__I__T(start, end)
   };
   substring__I__I__T(start, end) {
     const this$1 = this.jl_StringBuilder__f_java$lang$StringBuilder$$content;
     return $as_T(this$1.substring(start, end))
+  };
+  append__jl_CharSequence__jl_Appendable(csq) {
+    this.jl_StringBuilder__f_java$lang$StringBuilder$$content = (("" + this.jl_StringBuilder__f_java$lang$StringBuilder$$content) + csq);
+    return this
   };
 }
 const $d_jl_StringBuilder = new $TypeData().initClass({
@@ -11107,6 +10885,667 @@ function $isArrayOf_jl_VirtualMachineError(obj, depth) {
 function $asArrayOf_jl_VirtualMachineError(obj, depth) {
   return (($isArrayOf_jl_VirtualMachineError(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.lang.VirtualMachineError;", depth))
 }
+const $p_ju_Formatter__sendToDest__T__V = (function($thiz, s) {
+  if (($thiz.ju_Formatter__f_dest === null)) {
+    $thiz.ju_Formatter__f_stringOutput = (("" + $thiz.ju_Formatter__f_stringOutput) + s)
+  } else {
+    $p_ju_Formatter__sendToDestSlowPath__sjs_js_Array__V($thiz, [s])
+  }
+});
+const $p_ju_Formatter__sendToDest__T__T__V = (function($thiz, s1, s2) {
+  if (($thiz.ju_Formatter__f_dest === null)) {
+    $thiz.ju_Formatter__f_stringOutput = ((("" + $thiz.ju_Formatter__f_stringOutput) + s1) + s2)
+  } else {
+    $p_ju_Formatter__sendToDestSlowPath__sjs_js_Array__V($thiz, [s1, s2])
+  }
+});
+const $p_ju_Formatter__sendToDest__T__T__T__V = (function($thiz, s1, s2, s3) {
+  if (($thiz.ju_Formatter__f_dest === null)) {
+    $thiz.ju_Formatter__f_stringOutput = (($thiz.ju_Formatter__f_stringOutput + (("" + s1) + s2)) + s3)
+  } else {
+    $p_ju_Formatter__sendToDestSlowPath__sjs_js_Array__V($thiz, [s1, s2, s3])
+  }
+});
+const $p_ju_Formatter__sendToDestSlowPath__sjs_js_Array__V = (function($thiz, ss) {
+  try {
+    const len = $uI(ss.length);
+    let i = 0;
+    while ((i < len)) {
+      const arg1 = ss[i];
+      const x$1 = $as_T(arg1);
+      $thiz.ju_Formatter__f_dest.append__jl_CharSequence__jl_Appendable(x$1);
+      i = ((1 + i) | 0)
+    }
+  } catch (e) {
+    if ((e instanceof $c_Ljava_io_IOException)) {
+      const th = $as_Ljava_io_IOException(e);
+      $thiz.ju_Formatter__f_java$util$Formatter$$lastIOException = th
+    } else {
+      throw e
+    }
+  }
+});
+const $p_ju_Formatter__parseFlags__T__C__I = (function($thiz, flags, conversion) {
+  let bits = ((conversion <= 90) ? 256 : 0);
+  const len = $uI(flags.length);
+  let i = 0;
+  while ((i !== len)) {
+    const index = i;
+    const f = (65535 & $uI(flags.charCodeAt(index)));
+    let bit;
+    switch (f) {
+      case 45: {
+        bit = 1;
+        break
+      }
+      case 35: {
+        bit = 2;
+        break
+      }
+      case 43: {
+        bit = 4;
+        break
+      }
+      case 32: {
+        bit = 8;
+        break
+      }
+      case 48: {
+        bit = 16;
+        break
+      }
+      case 44: {
+        bit = 32;
+        break
+      }
+      case 40: {
+        bit = 64;
+        break
+      }
+      case 60: {
+        bit = 128;
+        break
+      }
+      default: {
+        throw new $c_s_MatchError($bC(f))
+      }
+    };
+    if (((bits & bit) !== 0)) {
+      throw new $c_ju_DuplicateFormatFlagsException($as_T(String.fromCharCode(f)))
+    };
+    bits = (bits | bit);
+    i = ((1 + i) | 0)
+  };
+  return bits
+});
+const $p_ju_Formatter__parsePositiveIntSilent__sjs_js_$bar__I__I = (function($thiz, capture, default$1) {
+  if ((capture === (void 0))) {
+    return default$1
+  } else {
+    const s = $as_T(capture);
+    const x = $uD(parseInt(s, 10));
+    return ((x <= 2.147483647E9) ? $doubleToInt(x) : (-1))
+  }
+});
+const $p_ju_Formatter__formatArg__O__C__I__I__I__V = (function($thiz, arg, conversion, flags, width, precision) {
+  switch (conversion) {
+    case 98:
+    case 66: {
+      if (((126 & flags) !== 0)) {
+        $p_ju_Formatter__flagsConversionMismatch$1__I__I__C__E($thiz, flags, 126, conversion)
+      };
+      const str = (((arg === false) || (arg === null)) ? "false" : "true");
+      $p_ju_Formatter__formatNonNumericString__I__I__I__T__V($thiz, flags, width, precision, str);
+      break
+    }
+    case 104:
+    case 72: {
+      if (((126 & flags) !== 0)) {
+        $p_ju_Formatter__flagsConversionMismatch$1__I__I__C__E($thiz, flags, 126, conversion)
+      };
+      let str$2;
+      if ((arg === null)) {
+        str$2 = "null"
+      } else {
+        const i = $dp_hashCode__I(arg);
+        str$2 = $as_T($uD((i >>> 0)).toString(16))
+      };
+      $p_ju_Formatter__formatNonNumericString__I__I__I__T__V($thiz, flags, width, precision, str$2);
+      break
+    }
+    case 115:
+    case 83: {
+      if ($is_ju_Formattable(arg)) {
+        const x2 = $as_ju_Formattable(arg);
+        if (((124 & flags) !== 0)) {
+          $p_ju_Formatter__flagsConversionMismatch$1__I__I__C__E($thiz, flags, 124, conversion)
+        };
+        const formattableFlags = (((((1 & flags) !== 0) ? 1 : 0) | (((2 & flags) !== 0) ? 4 : 0)) | (((256 & flags) !== 0) ? 2 : 0));
+        x2.formatTo__ju_Formatter__I__I__I__V($thiz, formattableFlags, width, precision)
+      } else {
+        if (((126 & flags) !== 0)) {
+          $p_ju_Formatter__flagsConversionMismatch$1__I__I__C__E($thiz, flags, 126, conversion)
+        };
+        const str$3 = ("" + arg);
+        $p_ju_Formatter__formatNonNumericString__I__I__I__T__V($thiz, flags, width, precision, str$3)
+      };
+      break
+    }
+    case 99:
+    case 67: {
+      if (((126 & flags) !== 0)) {
+        $p_ju_Formatter__flagsConversionMismatch$1__I__I__C__E($thiz, flags, 126, conversion)
+      };
+      if ((precision >= 0)) {
+        throw new $c_ju_IllegalFormatPrecisionException(precision)
+      };
+      if ((arg instanceof $Char)) {
+        const x2$2 = $uC(arg);
+        $p_ju_Formatter__formatNonNumericString__I__I__I__T__V($thiz, flags, width, (-1), $as_T(String.fromCharCode(x2$2)))
+      } else if ($isInt(arg)) {
+        const x3 = $uI(arg);
+        if ((!((x3 >= 0) && (x3 <= 1114111)))) {
+          throw new $c_ju_IllegalFormatCodePointException(x3)
+        };
+        let str$4;
+        if ((x3 < 65536)) {
+          str$4 = String.fromCharCode(x3)
+        } else {
+          const $$x1 = String;
+          const value = (55296 | (((-64) + (x3 >> 10)) | 0));
+          const value$1 = (56320 | (1023 & x3));
+          str$4 = $$x1.fromCharCode(value, value$1)
+        };
+        $p_ju_Formatter__formatNonNumericString__I__I__I__T__V($thiz, flags, width, (-1), $as_T(str$4))
+      } else {
+        $p_ju_Formatter__formatNullOrThrowIllegalFormatConversion$1__O__I__I__I__C__V($thiz, arg, flags, width, precision, conversion)
+      };
+      break
+    }
+    case 100: {
+      if (((2 & flags) !== 0)) {
+        $p_ju_Formatter__flagsConversionMismatch$1__I__I__C__E($thiz, flags, 2, conversion)
+      };
+      if ((((17 & flags) === 17) || ((12 & flags) === 12))) {
+        $p_ju_Formatter__illegalFlags$1__I__E($thiz, flags)
+      };
+      if ((precision >= 0)) {
+        throw new $c_ju_IllegalFormatPrecisionException(precision)
+      };
+      if ($isInt(arg)) {
+        const x2$3 = $uI(arg);
+        $thiz.java$util$Formatter$$formatNumericString__I__I__T__V(flags, width, ("" + x2$3))
+      } else if ((arg instanceof $c_RTLong)) {
+        const t = $uJ(arg);
+        const lo = t.RTLong__f_lo;
+        const hi = t.RTLong__f_hi;
+        $thiz.java$util$Formatter$$formatNumericString__I__I__T__V(flags, width, $m_RTLong$().org$scalajs$linker$runtime$RuntimeLong$$toString__I__I__T(lo, hi))
+      } else {
+        $p_ju_Formatter__formatNullOrThrowIllegalFormatConversion$1__O__I__I__I__C__V($thiz, arg, flags, width, precision, conversion)
+      };
+      break
+    }
+    case 111: {
+      if (((108 & flags) !== 0)) {
+        $p_ju_Formatter__flagsConversionMismatch$1__I__I__C__E($thiz, flags, 108, conversion)
+      };
+      if (((17 & flags) === 17)) {
+        $p_ju_Formatter__illegalFlags$1__I__E($thiz, flags)
+      };
+      if ((precision >= 0)) {
+        throw new $c_ju_IllegalFormatPrecisionException(precision)
+      };
+      const prefix = (((2 & flags) !== 0) ? "0" : "");
+      if ($isInt(arg)) {
+        const x2$4 = $uI(arg);
+        $p_ju_Formatter__padAndSendToDest__I__I__T__T__V($thiz, flags, width, prefix, $as_T($uD((x2$4 >>> 0)).toString(8)))
+      } else if ((arg instanceof $c_RTLong)) {
+        const t$1 = $uJ(arg);
+        const lo$1 = t$1.RTLong__f_lo;
+        const hi$1 = t$1.RTLong__f_hi;
+        const this$14 = $m_jl_Long$();
+        $p_ju_Formatter__padAndSendToDest__I__I__T__T__V($thiz, flags, width, prefix, this$14.java$lang$Long$$toOctalString__I__I__T(lo$1, hi$1))
+      } else {
+        $p_ju_Formatter__formatNullOrThrowIllegalFormatConversion$1__O__I__I__I__C__V($thiz, arg, flags, width, precision, conversion)
+      };
+      break
+    }
+    case 120:
+    case 88: {
+      if (((108 & flags) !== 0)) {
+        $p_ju_Formatter__flagsConversionMismatch$1__I__I__C__E($thiz, flags, 108, conversion)
+      };
+      if (((17 & flags) === 17)) {
+        $p_ju_Formatter__illegalFlags$1__I__E($thiz, flags)
+      };
+      if ((precision >= 0)) {
+        throw new $c_ju_IllegalFormatPrecisionException(precision)
+      };
+      const prefix$2 = (((2 & flags) === 0) ? "" : (((256 & flags) !== 0) ? "0X" : "0x"));
+      if ($isInt(arg)) {
+        const x2$5 = $uI(arg);
+        $p_ju_Formatter__padAndSendToDest__I__I__T__T__V($thiz, flags, width, prefix$2, $p_ju_Formatter__applyUpperCase__I__T__T($thiz, flags, $as_T($uD((x2$5 >>> 0)).toString(16))))
+      } else if ((arg instanceof $c_RTLong)) {
+        const t$2 = $uJ(arg);
+        const lo$2 = t$2.RTLong__f_lo;
+        const hi$2 = t$2.RTLong__f_hi;
+        const this$18 = $m_jl_Long$();
+        $p_ju_Formatter__padAndSendToDest__I__I__T__T__V($thiz, flags, width, prefix$2, $p_ju_Formatter__applyUpperCase__I__T__T($thiz, flags, this$18.java$lang$Long$$toHexString__I__I__T(lo$2, hi$2)))
+      } else {
+        $p_ju_Formatter__formatNullOrThrowIllegalFormatConversion$1__O__I__I__I__C__V($thiz, arg, flags, width, precision, conversion)
+      };
+      break
+    }
+    case 101:
+    case 69: {
+      if (((32 & flags) !== 0)) {
+        $p_ju_Formatter__flagsConversionMismatch$1__I__I__C__E($thiz, flags, 32, conversion)
+      };
+      if ((((17 & flags) === 17) || ((12 & flags) === 12))) {
+        $p_ju_Formatter__illegalFlags$1__I__E($thiz, flags)
+      };
+      if (((typeof arg) === "number")) {
+        const x2$1 = $uD(arg);
+        if (((x2$1 !== x2$1) || ((x2$1 === Infinity) || (x2$1 === (-Infinity))))) {
+          $thiz.java$util$Formatter$$formatNaNOrInfinite__I__I__D__V(flags, width, x2$1)
+        } else {
+          const forceDecimalSep = ((2 & flags) !== 0);
+          const arg2 = ((precision >= 0) ? precision : 6);
+          $thiz.java$util$Formatter$$formatNumericString__I__I__T__V(flags, width, $p_ju_Formatter__computerizedScientificNotation__D__I__Z__T($thiz, x2$1, arg2, forceDecimalSep))
+        }
+      } else {
+        $p_ju_Formatter__formatNullOrThrowIllegalFormatConversion$1__O__I__I__I__C__V($thiz, arg, flags, width, precision, conversion)
+      };
+      break
+    }
+    case 103:
+    case 71: {
+      if (((2 & flags) !== 0)) {
+        $p_ju_Formatter__flagsConversionMismatch$1__I__I__C__E($thiz, flags, 2, conversion)
+      };
+      if ((((17 & flags) === 17) || ((12 & flags) === 12))) {
+        $p_ju_Formatter__illegalFlags$1__I__E($thiz, flags)
+      };
+      if (((typeof arg) === "number")) {
+        const x2$6 = $uD(arg);
+        if (((x2$6 !== x2$6) || ((x2$6 === Infinity) || (x2$6 === (-Infinity))))) {
+          $thiz.java$util$Formatter$$formatNaNOrInfinite__I__I__D__V(flags, width, x2$6)
+        } else {
+          const forceDecimalSep$1 = ((2 & flags) !== 0);
+          const arg2$1 = ((precision >= 0) ? precision : 6);
+          $thiz.java$util$Formatter$$formatNumericString__I__I__T__V(flags, width, $p_ju_Formatter__generalScientificNotation__D__I__Z__T($thiz, x2$6, arg2$1, forceDecimalSep$1))
+        }
+      } else {
+        $p_ju_Formatter__formatNullOrThrowIllegalFormatConversion$1__O__I__I__I__C__V($thiz, arg, flags, width, precision, conversion)
+      };
+      break
+    }
+    case 102: {
+      if ((((17 & flags) === 17) || ((12 & flags) === 12))) {
+        $p_ju_Formatter__illegalFlags$1__I__E($thiz, flags)
+      };
+      if (((typeof arg) === "number")) {
+        const x2$7 = $uD(arg);
+        if (((x2$7 !== x2$7) || ((x2$7 === Infinity) || (x2$7 === (-Infinity))))) {
+          $thiz.java$util$Formatter$$formatNaNOrInfinite__I__I__D__V(flags, width, x2$7)
+        } else {
+          const forceDecimalSep$2 = ((2 & flags) !== 0);
+          const arg2$2 = ((precision >= 0) ? precision : 6);
+          $thiz.java$util$Formatter$$formatNumericString__I__I__T__V(flags, width, $p_ju_Formatter__decimalNotation__D__I__Z__T($thiz, x2$7, arg2$2, forceDecimalSep$2))
+        }
+      } else {
+        $p_ju_Formatter__formatNullOrThrowIllegalFormatConversion$1__O__I__I__I__C__V($thiz, arg, flags, width, precision, conversion)
+      };
+      break
+    }
+    case 37: {
+      if (((254 & flags) !== 0)) {
+        $p_ju_Formatter__illegalFlags$2__I__E($thiz, flags)
+      };
+      if ((precision >= 0)) {
+        throw new $c_ju_IllegalFormatPrecisionException(precision)
+      };
+      if ((((1 & flags) !== 0) && (width < 0))) {
+        throw new $c_ju_MissingFormatWidthException("%-%")
+      };
+      $p_ju_Formatter__padAndSendToDestNoZeroPad__I__I__T__V($thiz, flags, width, "%");
+      break
+    }
+    case 110: {
+      if (((255 & flags) !== 0)) {
+        $p_ju_Formatter__illegalFlags$2__I__E($thiz, flags)
+      };
+      if ((precision >= 0)) {
+        throw new $c_ju_IllegalFormatPrecisionException(precision)
+      };
+      if ((width >= 0)) {
+        throw new $c_ju_IllegalFormatWidthException(width)
+      };
+      $p_ju_Formatter__sendToDest__T__V($thiz, "\n");
+      break
+    }
+    default: {
+      throw new $c_ju_UnknownFormatConversionException($as_T(String.fromCharCode(conversion)))
+    }
+  }
+});
+const $p_ju_Formatter__flagsToString__I__T = (function($thiz, flags) {
+  return ((((((((((1 & flags) !== 0) ? "-" : "") + (((2 & flags) !== 0) ? "#" : "")) + (((4 & flags) !== 0) ? "+" : "")) + (((8 & flags) !== 0) ? " " : "")) + (((16 & flags) !== 0) ? "0" : "")) + (((32 & flags) !== 0) ? "," : "")) + (((64 & flags) !== 0) ? "(" : "")) + (((128 & flags) !== 0) ? "<" : ""))
+});
+const $p_ju_Formatter__computerizedScientificNotation__D__I__Z__T = (function($thiz, x, precision, forceDecimalSep) {
+  const s1 = $as_T(x.toExponential(precision));
+  const s2 = (((x === 0.0) && ((1.0 / x) < 0.0)) ? ("-" + s1) : s1);
+  const len = $uI(s2.length);
+  const index = (((-3) + len) | 0);
+  let s3;
+  if (((65535 & $uI(s2.charCodeAt(index))) !== 101)) {
+    s3 = s2
+  } else {
+    const endIndex = (((-1) + len) | 0);
+    const $$x1 = $as_T(s2.substring(0, endIndex));
+    const beginIndex = (((-1) + len) | 0);
+    s3 = (($$x1 + "0") + $as_T(s2.substring(beginIndex)))
+  };
+  if (((!forceDecimalSep) || ($uI(s3.indexOf(".")) >= 0))) {
+    return s3
+  } else {
+    const pos = $uI(s3.indexOf("e"));
+    return (($as_T(s3.substring(0, pos)) + ".") + $as_T(s3.substring(pos)))
+  }
+});
+const $p_ju_Formatter__generalScientificNotation__D__I__Z__T = (function($thiz, x, precision, forceDecimalSep) {
+  const m = $uD(Math.abs(x));
+  const p = ((precision === 0) ? 1 : precision);
+  let $$x1;
+  if ((m >= 1.0E-4)) {
+    const b = p;
+    $$x1 = (m < $uD(Math.pow(10.0, b)))
+  } else {
+    $$x1 = false
+  };
+  if ($$x1) {
+    const a = $uD(Math.log10(m));
+    const sig0 = $doubleToInt($uD(Math.ceil(a)));
+    const b$1 = sig0;
+    let sig;
+    if (($uD(Math.pow(10.0, b$1)) <= m)) {
+      sig = ((1 + sig0) | 0)
+    } else {
+      sig = sig0
+    };
+    const a$1 = ((p - sig) | 0);
+    return $p_ju_Formatter__decimalNotation__D__I__Z__T($thiz, x, ((a$1 > 0) ? a$1 : 0), forceDecimalSep)
+  } else {
+    return $p_ju_Formatter__computerizedScientificNotation__D__I__Z__T($thiz, x, (((-1) + p) | 0), forceDecimalSep)
+  }
+});
+const $p_ju_Formatter__decimalNotation__D__I__Z__T = (function($thiz, x, precision, forceDecimalSep) {
+  const s1 = $as_T(x.toFixed(precision));
+  const s2 = (((x === 0.0) && ((1.0 / x) < 0.0)) ? ("-" + s1) : s1);
+  return ((forceDecimalSep && ($uI(s2.indexOf(".")) < 0)) ? (s2 + ".") : s2)
+});
+const $p_ju_Formatter__formatNonNumericString__I__I__I__T__V = (function($thiz, flags, width, precision, str) {
+  const truncatedStr = ((precision < 0) ? str : $as_T(str.substring(0, precision)));
+  $p_ju_Formatter__padAndSendToDestNoZeroPad__I__I__T__V($thiz, flags, width, $p_ju_Formatter__applyUpperCase__I__T__T($thiz, flags, truncatedStr))
+});
+const $p_ju_Formatter__insertGroupingSeps__T__T = (function($thiz, s) {
+  const len = $uI(s.length);
+  let index = 0;
+  while (true) {
+    let $$x1;
+    if ((index !== len)) {
+      const index$1 = index;
+      const c = (65535 & $uI(s.charCodeAt(index$1)));
+      $$x1 = ((c >= 48) && (c <= 57))
+    } else {
+      $$x1 = false
+    };
+    if ($$x1) {
+      index = ((1 + index) | 0)
+    } else {
+      break
+    }
+  };
+  index = (((-3) + index) | 0);
+  if ((index <= 0)) {
+    return s
+  } else {
+    const beginIndex = index;
+    let result = $as_T(s.substring(beginIndex));
+    while ((index > 3)) {
+      const next = (((-3) + index) | 0);
+      const endIndex = index;
+      result = (($as_T(s.substring(next, endIndex)) + ",") + result);
+      index = next
+    };
+    const endIndex$1 = index;
+    return (($as_T(s.substring(0, endIndex$1)) + ",") + result)
+  }
+});
+const $p_ju_Formatter__applyUpperCase__I__T__T = (function($thiz, flags, str) {
+  return (((256 & flags) !== 0) ? $as_T(str.toUpperCase()) : str)
+});
+const $p_ju_Formatter__padAndSendToDestNoZeroPad__I__I__T__V = (function($thiz, flags, width, str) {
+  const len = $uI(str.length);
+  if ((len >= width)) {
+    $p_ju_Formatter__sendToDest__T__V($thiz, str)
+  } else if (((1 & flags) !== 0)) {
+    $p_ju_Formatter__sendToDest__T__T__V($thiz, str, $p_ju_Formatter__strRepeat__T__I__T($thiz, " ", ((width - len) | 0)))
+  } else {
+    $p_ju_Formatter__sendToDest__T__T__V($thiz, $p_ju_Formatter__strRepeat__T__I__T($thiz, " ", ((width - len) | 0)), str)
+  }
+});
+const $p_ju_Formatter__padAndSendToDest__I__I__T__T__V = (function($thiz, flags, width, prefix, str) {
+  const len = (($uI(prefix.length) + $uI(str.length)) | 0);
+  if ((len >= width)) {
+    $p_ju_Formatter__sendToDest__T__T__V($thiz, prefix, str)
+  } else if (((16 & flags) !== 0)) {
+    $p_ju_Formatter__sendToDest__T__T__T__V($thiz, prefix, $p_ju_Formatter__strRepeat__T__I__T($thiz, "0", ((width - len) | 0)), str)
+  } else if (((1 & flags) !== 0)) {
+    $p_ju_Formatter__sendToDest__T__T__T__V($thiz, prefix, str, $p_ju_Formatter__strRepeat__T__I__T($thiz, " ", ((width - len) | 0)))
+  } else {
+    $p_ju_Formatter__sendToDest__T__T__T__V($thiz, $p_ju_Formatter__strRepeat__T__I__T($thiz, " ", ((width - len) | 0)), prefix, str)
+  }
+});
+const $p_ju_Formatter__strRepeat__T__I__T = (function($thiz, s, times) {
+  let result = "";
+  let i = 0;
+  while ((i !== times)) {
+    result = (("" + result) + s);
+    i = ((1 + i) | 0)
+  };
+  return result
+});
+const $p_ju_Formatter__formatNullOrThrowIllegalFormatConversion$1__O__I__I__I__C__V = (function($thiz, arg$1, flags$1, width$1, precision$1, conversion$1) {
+  if ((arg$1 === null)) {
+    $p_ju_Formatter__formatNonNumericString__I__I__I__T__V($thiz, flags$1, width$1, precision$1, "null")
+  } else {
+    throw new $c_ju_IllegalFormatConversionException(conversion$1, $objectGetClass(arg$1))
+  }
+});
+const $p_ju_Formatter__flagsConversionMismatch$1__I__I__C__E = (function($thiz, flags$2, invalidFlags$1, conversion$2) {
+  throw new $c_ju_FormatFlagsConversionMismatchException($p_ju_Formatter__flagsToString__I__T($thiz, (flags$2 & invalidFlags$1)), conversion$2)
+});
+const $p_ju_Formatter__illegalFlags$1__I__E = (function($thiz, flags$2) {
+  throw new $c_ju_IllegalFormatFlagsException($p_ju_Formatter__flagsToString__I__T($thiz, flags$2))
+});
+const $p_ju_Formatter__illegalFlags$2__I__E = (function($thiz, flags$3) {
+  throw new $c_ju_IllegalFormatFlagsException($p_ju_Formatter__flagsToString__I__T($thiz, flags$3))
+});
+const $ct_ju_Formatter__jl_Appendable__ = (function($thiz, dest) {
+  $thiz.ju_Formatter__f_dest = dest;
+  $thiz.ju_Formatter__f_stringOutput = "";
+  $thiz.ju_Formatter__f_java$util$Formatter$$closed = false;
+  $thiz.ju_Formatter__f_java$util$Formatter$$lastIOException = null;
+  return $thiz
+});
+const $ct_ju_Formatter__ = (function($thiz) {
+  $ct_ju_Formatter__jl_Appendable__($thiz, null);
+  return $thiz
+});
+class $c_ju_Formatter extends $c_O {
+  constructor() {
+    super();
+    this.ju_Formatter__f_dest = null;
+    this.ju_Formatter__f_stringOutput = null;
+    this.ju_Formatter__f_java$util$Formatter$$closed = false;
+    this.ju_Formatter__f_java$util$Formatter$$lastIOException = null
+  };
+  close__V() {
+    if (((!this.ju_Formatter__f_java$util$Formatter$$closed) && (this.ju_Formatter__f_dest !== null))) {
+      const x1 = this.ju_Formatter__f_dest;
+      if ($is_Ljava_io_Closeable(x1)) {
+        try {
+          $as_Ljava_io_Closeable(x1).close__V()
+        } catch (e) {
+          if ((e instanceof $c_Ljava_io_IOException)) {
+            const th = $as_Ljava_io_IOException(e);
+            this.ju_Formatter__f_java$util$Formatter$$lastIOException = th
+          } else {
+            throw e
+          }
+        }
+      }
+    };
+    this.ju_Formatter__f_java$util$Formatter$$closed = true
+  };
+  format__T__AO__ju_Formatter(format, args) {
+    if (this.ju_Formatter__f_java$util$Formatter$$closed) {
+      throw new $c_ju_FormatterClosedException()
+    };
+    let lastImplicitArgIndex = 0;
+    let lastArgIndex = 0;
+    const fmtLength = $uI(format.length);
+    let fmtIndex = 0;
+    while ((fmtIndex !== fmtLength)) {
+      const fromIndex = fmtIndex;
+      const nextPercentIndex = $uI(format.indexOf("%", fromIndex));
+      if ((nextPercentIndex < 0)) {
+        const beginIndex = fmtIndex;
+        $p_ju_Formatter__sendToDest__T__V(this, $as_T(format.substring(beginIndex)));
+        return this
+      };
+      const beginIndex$1 = fmtIndex;
+      $p_ju_Formatter__sendToDest__T__V(this, $as_T(format.substring(beginIndex$1, nextPercentIndex)));
+      const formatSpecifierIndex = ((1 + nextPercentIndex) | 0);
+      const re = $m_ju_Formatter$().ju_Formatter$__f_java$util$Formatter$$FormatSpecifier;
+      re.lastIndex = formatSpecifierIndex;
+      const execResult = re.exec(format);
+      if (((execResult === null) || ($uI(execResult.index) !== formatSpecifierIndex))) {
+        let conversion;
+        if ((formatSpecifierIndex === fmtLength)) {
+          conversion = "%"
+        } else {
+          const endIndex = ((1 + formatSpecifierIndex) | 0);
+          conversion = $as_T(format.substring(formatSpecifierIndex, endIndex))
+        };
+        throw new $c_ju_UnknownFormatConversionException(conversion)
+      };
+      fmtIndex = $uI(re.lastIndex);
+      const index = (((-1) + fmtIndex) | 0);
+      const conversion$2 = (65535 & $uI(format.charCodeAt(index)));
+      const flags = $p_ju_Formatter__parseFlags__T__C__I(this, $as_T(execResult[2]), conversion$2);
+      const width = $p_ju_Formatter__parsePositiveIntSilent__sjs_js_$bar__I__I(this, execResult[3], (-1));
+      const precision = $p_ju_Formatter__parsePositiveIntSilent__sjs_js_$bar__I__I(this, execResult[4], (-1));
+      let arg;
+      if (((conversion$2 === 37) || (conversion$2 === 110))) {
+        arg = null
+      } else {
+        if ((((1 & flags) !== 0) && (width < 0))) {
+          throw new $c_ju_MissingFormatWidthException(("%" + execResult[0]))
+        };
+        let argIndex;
+        if (((128 & flags) !== 0)) {
+          argIndex = lastArgIndex
+        } else {
+          const i = $p_ju_Formatter__parsePositiveIntSilent__sjs_js_$bar__I__I(this, execResult[1], 0);
+          if ((i === 0)) {
+            lastImplicitArgIndex = ((1 + lastImplicitArgIndex) | 0);
+            argIndex = lastImplicitArgIndex
+          } else {
+            argIndex = ((i < 0) ? lastArgIndex : i)
+          }
+        };
+        if (((argIndex <= 0) || (argIndex > args.u.length))) {
+          const conversionStr = $as_T(String.fromCharCode(conversion$2));
+          if (($uI("bBhHsHcCdoxXeEgGfn%".indexOf(conversionStr)) < 0)) {
+            throw new $c_ju_UnknownFormatConversionException(conversionStr)
+          } else {
+            throw new $c_ju_MissingFormatArgumentException(("%" + execResult[0]))
+          }
+        };
+        lastArgIndex = argIndex;
+        arg = args.get((((-1) + argIndex) | 0))
+      };
+      $p_ju_Formatter__formatArg__O__C__I__I__I__V(this, arg, conversion$2, flags, width, precision)
+    };
+    return this
+  };
+  java$util$Formatter$$formatNaNOrInfinite__I__I__D__V(flags, width, x) {
+    const str = ((x !== x) ? "NaN" : ((x > 0.0) ? (((4 & flags) !== 0) ? "+Infinity" : (((8 & flags) !== 0) ? " Infinity" : "Infinity")) : (((64 & flags) !== 0) ? "(Infinity)" : "-Infinity")));
+    $p_ju_Formatter__padAndSendToDestNoZeroPad__I__I__T__V(this, flags, width, $p_ju_Formatter__applyUpperCase__I__T__T(this, flags, str))
+  };
+  java$util$Formatter$$formatNumericString__I__I__T__V(flags, width, str) {
+    if ((($uI(str.length) >= width) && ((108 & flags) === 0))) {
+      $p_ju_Formatter__sendToDest__T__V(this, $p_ju_Formatter__applyUpperCase__I__T__T(this, flags, str))
+    } else if (((124 & flags) === 0)) {
+      $p_ju_Formatter__formatNonNumericString__I__I__I__T__V(this, flags, width, (-1), str)
+    } else {
+      let x1___1;
+      let x1___2;
+      if (((65535 & $uI(str.charCodeAt(0))) !== 45)) {
+        if (((4 & flags) !== 0)) {
+          const $$x1___1 = "+";
+          const $$x1___2 = str;
+          x1___1 = $$x1___1;
+          x1___2 = $$x1___2
+        } else if (((8 & flags) !== 0)) {
+          const $$x2___1 = " ";
+          const $$x2___2 = str;
+          x1___1 = $$x2___1;
+          x1___2 = $$x2___2
+        } else {
+          const $$x3___1 = "";
+          const $$x3___2 = str;
+          x1___1 = $$x3___1;
+          x1___2 = $$x3___2
+        }
+      } else if (((64 & flags) !== 0)) {
+        const _2 = ($as_T(str.substring(1)) + ")");
+        const $$x4___1 = "(";
+        const $$x4___2 = _2;
+        x1___1 = $$x4___1;
+        x1___2 = $$x4___2
+      } else {
+        const _2$1 = $as_T(str.substring(1));
+        const $$x5___1 = "-";
+        const $$x5___2 = _2$1;
+        x1___1 = $$x5___1;
+        x1___2 = $$x5___2
+      };
+      const prefix = $as_T(x1___1);
+      const rest0 = $as_T(x1___2);
+      const rest = (((32 & flags) !== 0) ? $p_ju_Formatter__insertGroupingSeps__T__T(this, rest0) : rest0);
+      $p_ju_Formatter__padAndSendToDest__I__I__T__T__V(this, flags, width, prefix, $p_ju_Formatter__applyUpperCase__I__T__T(this, flags, rest))
+    }
+  };
+  toString__T() {
+    if (this.ju_Formatter__f_java$util$Formatter$$closed) {
+      throw new $c_ju_FormatterClosedException()
+    };
+    return ((this.ju_Formatter__f_dest === null) ? this.ju_Formatter__f_stringOutput : this.ju_Formatter__f_dest.toString__T())
+  };
+}
+const $d_ju_Formatter = new $TypeData().initClass({
+  ju_Formatter: 0
+}, false, "java.util.Formatter", {
+  ju_Formatter: 1,
+  O: 1,
+  Ljava_io_Closeable: 1,
+  jl_AutoCloseable: 1,
+  Ljava_io_Flushable: 1
+});
+$c_ju_Formatter.prototype.$classData = $d_ju_Formatter;
 class $c_ju_concurrent_ExecutionException extends $c_jl_Exception {
   constructor(message, cause) {
     super();
@@ -11150,11 +11589,20 @@ class $c_Lorg_scalajs_dom_ext_EasySeq$$anon$1 extends $c_O {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
+  copyToArray__O__I__I(xs, start) {
+    return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
   copyToArray__O__I__I__I(xs, start, len) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  toArray__s_reflect_ClassTag__O(evidence$2) {
+    return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2)
   };
   knownSize__I() {
     return (-1)
@@ -11360,11 +11808,20 @@ class $c_sc_AbstractIterator extends $c_O {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
+  copyToArray__O__I__I(xs, start) {
+    return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
   copyToArray__O__I__I__I(xs, start, len) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  toArray__s_reflect_ClassTag__O(evidence$2) {
+    return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2)
   };
   knownSize__I() {
     return (-1)
@@ -11478,6 +11935,15 @@ function $isArrayOf_sc_SeqOps(obj, depth) {
 function $asArrayOf_sc_SeqOps(obj, depth) {
   return (($isArrayOf_sc_SeqOps(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.SeqOps;", depth))
 }
+const $f_sc_StrictOptimizedIterableOps__map__F1__O = (function($thiz, f) {
+  const b = $thiz.iterableFactory__sc_IterableFactory().newBuilder__scm_Builder();
+  const it = $thiz.iterator__sc_Iterator();
+  while (it.hasNext__Z()) {
+    const elem = f.apply__O__O(it.next__O());
+    b.addOne__O__scm_Growable(elem)
+  };
+  return b.result__O()
+});
 const $f_sc_StrictOptimizedIterableOps__zip__sc_IterableOnce__O = (function($thiz, that) {
   const b = $thiz.iterableFactory__sc_IterableFactory().newBuilder__scm_Builder();
   const it1 = $thiz.iterator__sc_Iterator();
@@ -11955,11 +12421,11 @@ const $d_jl_IllegalArgumentException = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_jl_IllegalArgumentException.prototype.$classData = $d_jl_IllegalArgumentException;
+const $ct_jl_IllegalStateException__T__ = (function($thiz, s) {
+  $ct_jl_Throwable__T__jl_Throwable__Z__Z__($thiz, s, null, true, true);
+  return $thiz
+});
 class $c_jl_IllegalStateException extends $c_jl_RuntimeException {
-  constructor(s) {
-    super();
-    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, s, null, true, true)
-  };
 }
 const $d_jl_IllegalStateException = new $TypeData().initClass({
   jl_IllegalStateException: 0
@@ -12312,25 +12778,11 @@ const $d_T2 = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_T2.prototype.$classData = $d_T2;
-class $c_sc_ClassTagSeqFactory$AnySeqDelegate extends $c_sc_ClassTagIterableFactory$AnyIterableDelegate {
-  constructor(delegate) {
-    super();
-    $ct_sc_ClassTagIterableFactory$AnyIterableDelegate__sc_ClassTagIterableFactory__(this, delegate)
-  };
-}
-const $d_sc_ClassTagSeqFactory$AnySeqDelegate = new $TypeData().initClass({
-  sc_ClassTagSeqFactory$AnySeqDelegate: 0
-}, false, "scala.collection.ClassTagSeqFactory$AnySeqDelegate", {
-  sc_ClassTagSeqFactory$AnySeqDelegate: 1,
-  sc_ClassTagIterableFactory$AnyIterableDelegate: 1,
-  O: 1,
-  sc_IterableFactory: 1,
-  Ljava_io_Serializable: 1,
-  sc_SeqFactory: 1
-});
-$c_sc_ClassTagSeqFactory$AnySeqDelegate.prototype.$classData = $d_sc_ClassTagSeqFactory$AnySeqDelegate;
 const $f_sc_IndexedSeqOps__drop__I__O = (function($thiz, n) {
   return $thiz.fromSpecific__sc_IterableOnce__O(new $c_sc_IndexedSeqView$Drop($thiz, n))
+});
+const $f_sc_IndexedSeqOps__map__F1__O = (function($thiz, f) {
+  return $thiz.iterableFactory__sc_IterableFactory().from__sc_IterableOnce__O(new $c_sc_IndexedSeqView$Map($thiz, f))
 });
 const $f_sc_Iterable__toString__T = (function($thiz) {
   const start = ($thiz.className__T() + "(");
@@ -13548,11 +14000,20 @@ class $c_sci_MapKeyValueTupleIterator extends $c_sci_ChampBaseIterator {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
+  copyToArray__O__I__I(xs, start) {
+    return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
   copyToArray__O__I__I__I(xs, start, len) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  toArray__s_reflect_ClassTag__O(evidence$2) {
+    return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2)
   };
   knownSize__I() {
     return (-1)
@@ -13600,11 +14061,20 @@ class $c_sci_MapValueIterator extends $c_sci_ChampBaseIterator {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
+  copyToArray__O__I__I(xs, start) {
+    return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
   copyToArray__O__I__I__I(xs, start, len) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  toArray__s_reflect_ClassTag__O(evidence$2) {
+    return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2)
   };
   knownSize__I() {
     return (-1)
@@ -13753,11 +14223,20 @@ class $c_sci_SetHashIterator extends $c_sci_ChampBaseIterator {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
+  copyToArray__O__I__I(xs, start) {
+    return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
   copyToArray__O__I__I__I(xs, start, len) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  toArray__s_reflect_ClassTag__O(evidence$2) {
+    return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2)
   };
   knownSize__I() {
     return (-1)
@@ -13805,11 +14284,20 @@ class $c_sci_SetIterator extends $c_sci_ChampBaseIterator {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
+  copyToArray__O__I__I(xs, start) {
+    return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
   copyToArray__O__I__I__I(xs, start, len) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  toArray__s_reflect_ClassTag__O(evidence$2) {
+    return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2)
   };
   knownSize__I() {
     return (-1)
@@ -14171,30 +14659,6 @@ const $f_s_math_Ordering__lt__O__O__Z = (function($thiz, x, y) {
 const $f_s_math_Ordering__gt__O__O__Z = (function($thiz, x, y) {
   return ($thiz.compare__O__O__I(x, y) > 0)
 });
-const $p_s_reflect_ClassTag__prettyprint$1__jl_Class__T = (function($thiz, clazz) {
-  return (clazz.isArray__Z() ? (("Array[" + $p_s_reflect_ClassTag__prettyprint$1__jl_Class__T($thiz, clazz.getComponentType__jl_Class())) + "]") : clazz.getName__T())
-});
-const $f_s_reflect_ClassTag__equals__O__Z = (function($thiz, x) {
-  if ($is_s_reflect_ClassTag(x)) {
-    const x$2 = $thiz.runtimeClass__jl_Class();
-    const x$3 = $as_s_reflect_ClassTag(x).runtimeClass__jl_Class();
-    return (x$2 === x$3)
-  } else {
-    return false
-  }
-});
-function $is_s_reflect_ClassTag(obj) {
-  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.s_reflect_ClassTag)))
-}
-function $as_s_reflect_ClassTag(obj) {
-  return (($is_s_reflect_ClassTag(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.reflect.ClassTag"))
-}
-function $isArrayOf_s_reflect_ClassTag(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.s_reflect_ClassTag)))
-}
-function $asArrayOf_s_reflect_ClassTag(obj, depth) {
-  return (($isArrayOf_s_reflect_ClassTag(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.reflect.ClassTag;", depth))
-}
 class $c_sr_ScalaRunTime$$anon$1 extends $c_sc_AbstractIterator {
   constructor(x$2) {
     super();
@@ -14454,15 +14918,6 @@ const $ct_jl_ArrayIndexOutOfBoundsException__ = (function($thiz) {
 });
 class $c_jl_ArrayIndexOutOfBoundsException extends $c_jl_IndexOutOfBoundsException {
 }
-function $as_jl_ArrayIndexOutOfBoundsException(obj) {
-  return (((obj instanceof $c_jl_ArrayIndexOutOfBoundsException) || (obj === null)) ? obj : $throwClassCastException(obj, "java.lang.ArrayIndexOutOfBoundsException"))
-}
-function $isArrayOf_jl_ArrayIndexOutOfBoundsException(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.jl_ArrayIndexOutOfBoundsException)))
-}
-function $asArrayOf_jl_ArrayIndexOutOfBoundsException(obj, depth) {
-  return (($isArrayOf_jl_ArrayIndexOutOfBoundsException(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.lang.ArrayIndexOutOfBoundsException;", depth))
-}
 const $d_jl_ArrayIndexOutOfBoundsException = new $TypeData().initClass({
   jl_ArrayIndexOutOfBoundsException: 0
 }, false, "java.lang.ArrayIndexOutOfBoundsException", {
@@ -14493,11 +14948,15 @@ const $d_jl_NumberFormatException = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_jl_NumberFormatException.prototype.$classData = $d_jl_NumberFormatException;
+const $ct_jl_StringIndexOutOfBoundsException__T__ = (function($thiz, s) {
+  $ct_jl_Throwable__T__jl_Throwable__Z__Z__($thiz, s, null, true, true);
+  return $thiz
+});
+const $ct_jl_StringIndexOutOfBoundsException__ = (function($thiz) {
+  $ct_jl_Throwable__T__jl_Throwable__Z__Z__($thiz, null, null, true, true);
+  return $thiz
+});
 class $c_jl_StringIndexOutOfBoundsException extends $c_jl_IndexOutOfBoundsException {
-  constructor() {
-    super();
-    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true)
-  };
 }
 const $d_jl_StringIndexOutOfBoundsException = new $TypeData().initClass({
   jl_StringIndexOutOfBoundsException: 0
@@ -14511,6 +14970,26 @@ const $d_jl_StringIndexOutOfBoundsException = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_jl_StringIndexOutOfBoundsException.prototype.$classData = $d_jl_StringIndexOutOfBoundsException;
+class $c_ju_FormatterClosedException extends $c_jl_IllegalStateException {
+  constructor() {
+    super();
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true)
+  };
+}
+const $d_ju_FormatterClosedException = new $TypeData().initClass({
+  ju_FormatterClosedException: 0
+}, false, "java.util.FormatterClosedException", {
+  ju_FormatterClosedException: 1,
+  jl_IllegalStateException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1
+});
+$c_ju_FormatterClosedException.prototype.$classData = $d_ju_FormatterClosedException;
+class $c_ju_IllegalFormatException extends $c_jl_IllegalArgumentException {
+}
 class $c_Lorg_scalajs_dom_ext_AjaxException extends $c_jl_Exception {
   constructor(xhr) {
     super();
@@ -14707,11 +15186,20 @@ class $c_sc_AbstractIterable extends $c_O {
   exists__F1__Z(p) {
     return $f_sc_IterableOnceOps__exists__F1__Z(this, p)
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   isEmpty__Z() {
     return $f_sc_IterableOnceOps__isEmpty__Z(this)
   };
+  copyToArray__O__I__I(xs, start) {
+    return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  toArray__s_reflect_ClassTag__O(evidence$2) {
+    return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2)
   };
   knownSize__I() {
     return (-1)
@@ -14720,59 +15208,6 @@ class $c_sc_AbstractIterable extends $c_O {
     return this.fromSpecific__sc_IterableOnce__sc_IterableOps(coll)
   };
 }
-const $ct_sc_ArrayOps$ArrayIterator__O__ = (function($thiz, xs) {
-  $thiz.sc_ArrayOps$ArrayIterator__f_xs = xs;
-  $thiz.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = 0;
-  $thiz.sc_ArrayOps$ArrayIterator__f_len = $m_sr_ScalaRunTime$().array_length__O__I($thiz.sc_ArrayOps$ArrayIterator__f_xs);
-  return $thiz
-});
-class $c_sc_ArrayOps$ArrayIterator extends $c_sc_AbstractIterator {
-  constructor() {
-    super();
-    this.sc_ArrayOps$ArrayIterator__f_xs = null;
-    this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = 0;
-    this.sc_ArrayOps$ArrayIterator__f_len = 0
-  };
-  knownSize__I() {
-    return ((this.sc_ArrayOps$ArrayIterator__f_len - this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos) | 0)
-  };
-  hasNext__Z() {
-    return (this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos < this.sc_ArrayOps$ArrayIterator__f_len)
-  };
-  next__O() {
-    try {
-      const r = $m_sr_ScalaRunTime$().array_apply__O__I__O(this.sc_ArrayOps$ArrayIterator__f_xs, this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos);
-      this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = ((1 + this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos) | 0);
-      return r
-    } catch (e) {
-      if ((e instanceof $c_jl_ArrayIndexOutOfBoundsException)) {
-        return $m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty.next__O()
-      } else {
-        throw e
-      }
-    }
-  };
-  drop__I__sc_Iterator(n) {
-    if ((n > 0)) {
-      const a = $m_sr_ScalaRunTime$().array_length__O__I(this.sc_ArrayOps$ArrayIterator__f_xs);
-      const b = ((this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos + n) | 0);
-      this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = ((a < b) ? a : b)
-    };
-    return this
-  };
-}
-const $d_sc_ArrayOps$ArrayIterator = new $TypeData().initClass({
-  sc_ArrayOps$ArrayIterator: 0
-}, false, "scala.collection.ArrayOps$ArrayIterator", {
-  sc_ArrayOps$ArrayIterator: 1,
-  sc_AbstractIterator: 1,
-  O: 1,
-  sc_Iterator: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOnceOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_sc_ArrayOps$ArrayIterator.prototype.$classData = $d_sc_ArrayOps$ArrayIterator;
 class $c_sc_IndexedSeqView$IndexedSeqViewIterator extends $c_sc_AbstractIterator {
   constructor(self) {
     super();
@@ -15057,6 +15492,101 @@ const $d_sci_NumericRange$NumericRangeIterator = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_sci_NumericRange$NumericRangeIterator.prototype.$classData = $d_sci_NumericRange$NumericRangeIterator;
+class $c_sci_RangeIterator extends $c_sc_AbstractIterator {
+  constructor(start, step, lastElement, initiallyEmpty) {
+    super();
+    this.sci_RangeIterator__f_step = 0;
+    this.sci_RangeIterator__f_lastElement = 0;
+    this.sci_RangeIterator__f__hasNext = false;
+    this.sci_RangeIterator__f__next = 0;
+    this.sci_RangeIterator__f_step = step;
+    this.sci_RangeIterator__f_lastElement = lastElement;
+    this.sci_RangeIterator__f__hasNext = (!initiallyEmpty);
+    this.sci_RangeIterator__f__next = start
+  };
+  knownSize__I() {
+    return (this.sci_RangeIterator__f__hasNext ? ((1 + $intDiv(((this.sci_RangeIterator__f_lastElement - this.sci_RangeIterator__f__next) | 0), this.sci_RangeIterator__f_step)) | 0) : 0)
+  };
+  hasNext__Z() {
+    return this.sci_RangeIterator__f__hasNext
+  };
+  next__I() {
+    if ((!this.sci_RangeIterator__f__hasNext)) {
+      $m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty.next__O()
+    };
+    const value = this.sci_RangeIterator__f__next;
+    this.sci_RangeIterator__f__hasNext = (value !== this.sci_RangeIterator__f_lastElement);
+    this.sci_RangeIterator__f__next = ((value + this.sci_RangeIterator__f_step) | 0);
+    return value
+  };
+  drop__I__sc_Iterator(n) {
+    if ((n > 0)) {
+      const value = this.sci_RangeIterator__f__next;
+      const hi = (value >> 31);
+      const value$1 = $imul(this.sci_RangeIterator__f_step, n);
+      const hi$1 = (value$1 >> 31);
+      const lo = ((value + value$1) | 0);
+      const hi$2 = ((((-2147483648) ^ lo) < ((-2147483648) ^ value)) ? ((1 + ((hi + hi$1) | 0)) | 0) : ((hi + hi$1) | 0));
+      if ((this.sci_RangeIterator__f_step > 0)) {
+        const value$2 = this.sci_RangeIterator__f_lastElement;
+        const hi$3 = (value$2 >> 31);
+        let this$6__lo;
+        let this$6__hi;
+        if (((hi$3 === hi$2) ? (((-2147483648) ^ value$2) < ((-2147483648) ^ lo)) : (hi$3 < hi$2))) {
+          const $$x1__lo = value$2;
+          const $$x1__hi = hi$3;
+          this$6__lo = $$x1__lo;
+          this$6__hi = $$x1__hi
+        } else {
+          const $$x2__lo = lo;
+          const $$x2__hi = hi$2;
+          this$6__lo = $$x2__lo;
+          this$6__hi = $$x2__hi
+        };
+        this.sci_RangeIterator__f__next = this$6__lo;
+        const value$3 = this.sci_RangeIterator__f_lastElement;
+        const hi$4 = (value$3 >> 31);
+        this.sci_RangeIterator__f__hasNext = ((hi$2 === hi$4) ? (((-2147483648) ^ lo) <= ((-2147483648) ^ value$3)) : (hi$2 < hi$4))
+      } else if ((this.sci_RangeIterator__f_step < 0)) {
+        const value$4 = this.sci_RangeIterator__f_lastElement;
+        const hi$5 = (value$4 >> 31);
+        let this$10__lo;
+        let this$10__hi;
+        if (((hi$5 === hi$2) ? (((-2147483648) ^ value$4) > ((-2147483648) ^ lo)) : (hi$5 > hi$2))) {
+          const $$x3__lo = value$4;
+          const $$x3__hi = hi$5;
+          this$10__lo = $$x3__lo;
+          this$10__hi = $$x3__hi
+        } else {
+          const $$x4__lo = lo;
+          const $$x4__hi = hi$2;
+          this$10__lo = $$x4__lo;
+          this$10__hi = $$x4__hi
+        };
+        this.sci_RangeIterator__f__next = this$10__lo;
+        const value$5 = this.sci_RangeIterator__f_lastElement;
+        const hi$6 = (value$5 >> 31);
+        this.sci_RangeIterator__f__hasNext = ((hi$2 === hi$6) ? (((-2147483648) ^ lo) >= ((-2147483648) ^ value$5)) : (hi$2 > hi$6))
+      }
+    };
+    return this
+  };
+  next__O() {
+    return this.next__I()
+  };
+}
+const $d_sci_RangeIterator = new $TypeData().initClass({
+  sci_RangeIterator: 0
+}, false, "scala.collection.immutable.RangeIterator", {
+  sci_RangeIterator: 1,
+  sc_AbstractIterator: 1,
+  O: 1,
+  sc_Iterator: 1,
+  sc_IterableOnce: 1,
+  sc_IterableOnceOps: 1,
+  Ljava_io_Serializable: 1
+});
+$c_sci_RangeIterator.prototype.$classData = $d_sci_RangeIterator;
 const $p_sci_VectorBuilder__advanceToNextBlockIfNecessary__V = (function($thiz) {
   if (($thiz.sci_VectorBuilder__f_lo >= $thiz.sci_VectorBuilder__f_display0.u.length)) {
     const newBlockIndex = ((32 + $thiz.sci_VectorBuilder__f_blockIndex) | 0);
@@ -15347,87 +15877,6 @@ const $d_sci_VectorIterator = new $TypeData().initClass({
   sci_VectorPointer: 1
 });
 $c_sci_VectorIterator.prototype.$classData = $d_sci_VectorIterator;
-const $ct_scm_ArrayBuilder__ = (function($thiz) {
-  $thiz.scm_ArrayBuilder__f_capacity = 0;
-  $thiz.scm_ArrayBuilder__f_size = 0;
-  return $thiz
-});
-class $c_scm_ArrayBuilder extends $c_O {
-  constructor() {
-    super();
-    this.scm_ArrayBuilder__f_capacity = 0;
-    this.scm_ArrayBuilder__f_size = 0
-  };
-  sizeHint__I__V(size) {
-    /*<skip>*/
-  };
-}
-class $c_scm_ArraySeq$ extends $c_O {
-  constructor() {
-    super();
-    this.scm_ArraySeq$__f_untagged = null;
-    this.scm_ArraySeq$__f_EmptyArraySeq = null;
-    $n_scm_ArraySeq$ = this;
-    this.scm_ArraySeq$__f_untagged = new $c_sc_ClassTagSeqFactory$AnySeqDelegate(this);
-    this.scm_ArraySeq$__f_EmptyArraySeq = new $c_scm_ArraySeq$ofRef($newArrayObject($d_O.getArrayOf(), [0]))
-  };
-  make__O__scm_ArraySeq(x) {
-    if ((x === null)) {
-      return null
-    } else if ($isArrayOf_O(x, 1)) {
-      const x3 = $asArrayOf_O(x, 1);
-      return new $c_scm_ArraySeq$ofRef(x3)
-    } else if ($isArrayOf_I(x, 1)) {
-      const x4 = $asArrayOf_I(x, 1);
-      return new $c_scm_ArraySeq$ofInt(x4)
-    } else if ($isArrayOf_D(x, 1)) {
-      const x5 = $asArrayOf_D(x, 1);
-      return new $c_scm_ArraySeq$ofDouble(x5)
-    } else if ($isArrayOf_J(x, 1)) {
-      const x6 = $asArrayOf_J(x, 1);
-      return new $c_scm_ArraySeq$ofLong(x6)
-    } else if ($isArrayOf_F(x, 1)) {
-      const x7 = $asArrayOf_F(x, 1);
-      return new $c_scm_ArraySeq$ofFloat(x7)
-    } else if ($isArrayOf_C(x, 1)) {
-      const x8 = $asArrayOf_C(x, 1);
-      return new $c_scm_ArraySeq$ofChar(x8)
-    } else if ($isArrayOf_B(x, 1)) {
-      const x9 = $asArrayOf_B(x, 1);
-      return new $c_scm_ArraySeq$ofByte(x9)
-    } else if ($isArrayOf_S(x, 1)) {
-      const x10 = $asArrayOf_S(x, 1);
-      return new $c_scm_ArraySeq$ofShort(x10)
-    } else if ($isArrayOf_Z(x, 1)) {
-      const x11 = $asArrayOf_Z(x, 1);
-      return new $c_scm_ArraySeq$ofBoolean(x11)
-    } else if ($isArrayOf_jl_Void(x, 1)) {
-      const x12 = $asArrayOf_jl_Void(x, 1);
-      return new $c_scm_ArraySeq$ofUnit(x12)
-    } else {
-      throw new $c_s_MatchError(x)
-    }
-  };
-}
-const $d_scm_ArraySeq$ = new $TypeData().initClass({
-  scm_ArraySeq$: 0
-}, false, "scala.collection.mutable.ArraySeq$", {
-  scm_ArraySeq$: 1,
-  O: 1,
-  sc_StrictOptimizedClassTagSeqFactory: 1,
-  sc_ClassTagSeqFactory: 1,
-  sc_ClassTagIterableFactory: 1,
-  sc_EvidenceIterableFactory: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArraySeq$.prototype.$classData = $d_scm_ArraySeq$;
-let $n_scm_ArraySeq$ = (void 0);
-function $m_scm_ArraySeq$() {
-  if ((!$n_scm_ArraySeq$)) {
-    $n_scm_ArraySeq$ = new $c_scm_ArraySeq$()
-  };
-  return $n_scm_ArraySeq$
-}
 class $c_s_math_Ordering$Reverse extends $c_O {
   constructor(outer) {
     super();
@@ -15476,38 +15925,6 @@ const $d_s_math_Ordering$Reverse = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_s_math_Ordering$Reverse.prototype.$classData = $d_s_math_Ordering$Reverse;
-class $c_s_reflect_ClassTag$GenericClassTag extends $c_O {
-  constructor(runtimeClass) {
-    super();
-    this.s_reflect_ClassTag$GenericClassTag__f_runtimeClass = null;
-    this.s_reflect_ClassTag$GenericClassTag__f_runtimeClass = runtimeClass
-  };
-  equals__O__Z(x) {
-    return $f_s_reflect_ClassTag__equals__O__Z(this, x)
-  };
-  hashCode__I() {
-    const x = this.s_reflect_ClassTag$GenericClassTag__f_runtimeClass;
-    return $m_sr_Statics$().anyHash__O__I(x)
-  };
-  toString__T() {
-    return $p_s_reflect_ClassTag__prettyprint$1__jl_Class__T(this, this.s_reflect_ClassTag$GenericClassTag__f_runtimeClass)
-  };
-  runtimeClass__jl_Class() {
-    return this.s_reflect_ClassTag$GenericClassTag__f_runtimeClass
-  };
-}
-const $d_s_reflect_ClassTag$GenericClassTag = new $TypeData().initClass({
-  s_reflect_ClassTag$GenericClassTag: 0
-}, false, "scala.reflect.ClassTag$GenericClassTag", {
-  s_reflect_ClassTag$GenericClassTag: 1,
-  O: 1,
-  s_reflect_ClassTag: 1,
-  s_reflect_ClassManifestDeprecatedApis: 1,
-  s_reflect_OptManifest: 1,
-  Ljava_io_Serializable: 1,
-  s_Equals: 1
-});
-$c_s_reflect_ClassTag$GenericClassTag.prototype.$classData = $d_s_reflect_ClassTag$GenericClassTag;
 const $ct_Ljava_io_PrintStream__Ljava_io_OutputStream__Z__Ljava_nio_charset_Charset__ = (function($thiz, _out, autoFlush, charset) {
   $thiz.Ljava_io_PrintStream__f_autoFlush = autoFlush;
   $thiz.Ljava_io_PrintStream__f_charset = charset;
@@ -15532,341 +15949,283 @@ class $c_Ljava_io_PrintStream extends $c_Ljava_io_FilterOutputStream {
     this.print__T__V(s);
     this.java$lang$JSConsoleBasedPrintStream$$printString__T__V("\n")
   };
-}
-class $c_sc_ArrayOps$ArrayIterator$mcB$sp extends $c_sc_ArrayOps$ArrayIterator {
-  constructor(xs$mcB$sp) {
-    super();
-    this.sc_ArrayOps$ArrayIterator$mcB$sp__f_xs$mcB$sp = null;
-    this.sc_ArrayOps$ArrayIterator$mcB$sp__f_xs$mcB$sp = xs$mcB$sp;
-    $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcB$sp)
+  append__jl_CharSequence__Ljava_io_PrintStream(csq) {
+    this.print__T__V(((csq === null) ? "null" : $dp_toString__T(csq)));
+    return this
   };
-  next$mcB$sp__B() {
-    try {
-      const r = this.sc_ArrayOps$ArrayIterator$mcB$sp__f_xs$mcB$sp.get(this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos);
-      this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = ((1 + this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos) | 0);
-      return r
-    } catch (e) {
-      if ((e instanceof $c_jl_ArrayIndexOutOfBoundsException)) {
-        return $uB($m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty.next__O())
-      } else {
-        throw e
-      }
+  append__jl_CharSequence__jl_Appendable(x$1) {
+    return this.append__jl_CharSequence__Ljava_io_PrintStream(x$1)
+  };
+}
+class $c_ju_DuplicateFormatFlagsException extends $c_ju_IllegalFormatException {
+  constructor(f) {
+    super();
+    this.ju_DuplicateFormatFlagsException__f_f = null;
+    this.ju_DuplicateFormatFlagsException__f_f = f;
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true);
+    if ((f === null)) {
+      throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
     }
   };
-  next__O() {
-    return this.next$mcB$sp__B()
+  getMessage__T() {
+    return (("Flags = '" + this.ju_DuplicateFormatFlagsException__f_f) + "'")
   };
 }
-const $d_sc_ArrayOps$ArrayIterator$mcB$sp = new $TypeData().initClass({
-  sc_ArrayOps$ArrayIterator$mcB$sp: 0
-}, false, "scala.collection.ArrayOps$ArrayIterator$mcB$sp", {
-  sc_ArrayOps$ArrayIterator$mcB$sp: 1,
-  sc_ArrayOps$ArrayIterator: 1,
-  sc_AbstractIterator: 1,
+const $d_ju_DuplicateFormatFlagsException = new $TypeData().initClass({
+  ju_DuplicateFormatFlagsException: 0
+}, false, "java.util.DuplicateFormatFlagsException", {
+  ju_DuplicateFormatFlagsException: 1,
+  ju_IllegalFormatException: 1,
+  jl_IllegalArgumentException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
   O: 1,
-  sc_Iterator: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOnceOps: 1,
   Ljava_io_Serializable: 1
 });
-$c_sc_ArrayOps$ArrayIterator$mcB$sp.prototype.$classData = $d_sc_ArrayOps$ArrayIterator$mcB$sp;
-class $c_sc_ArrayOps$ArrayIterator$mcC$sp extends $c_sc_ArrayOps$ArrayIterator {
-  constructor(xs$mcC$sp) {
+$c_ju_DuplicateFormatFlagsException.prototype.$classData = $d_ju_DuplicateFormatFlagsException;
+class $c_ju_FormatFlagsConversionMismatchException extends $c_ju_IllegalFormatException {
+  constructor(f, c) {
     super();
-    this.sc_ArrayOps$ArrayIterator$mcC$sp__f_xs$mcC$sp = null;
-    this.sc_ArrayOps$ArrayIterator$mcC$sp__f_xs$mcC$sp = xs$mcC$sp;
-    $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcC$sp)
-  };
-  next$mcC$sp__C() {
-    try {
-      const r = this.sc_ArrayOps$ArrayIterator$mcC$sp__f_xs$mcC$sp.get(this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos);
-      this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = ((1 + this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos) | 0);
-      return r
-    } catch (e) {
-      if ((e instanceof $c_jl_ArrayIndexOutOfBoundsException)) {
-        return $uC($m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty.next__O())
-      } else {
-        throw e
-      }
+    this.ju_FormatFlagsConversionMismatchException__f_f = null;
+    this.ju_FormatFlagsConversionMismatchException__f_c = 0;
+    this.ju_FormatFlagsConversionMismatchException__f_f = f;
+    this.ju_FormatFlagsConversionMismatchException__f_c = c;
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true);
+    if ((f === null)) {
+      throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
     }
   };
-  next__O() {
-    return $bC(this.next$mcC$sp__C())
+  getMessage__T() {
+    return ((("Conversion = " + $bC(this.ju_FormatFlagsConversionMismatchException__f_c)) + ", Flags = ") + this.ju_FormatFlagsConversionMismatchException__f_f)
   };
 }
-const $d_sc_ArrayOps$ArrayIterator$mcC$sp = new $TypeData().initClass({
-  sc_ArrayOps$ArrayIterator$mcC$sp: 0
-}, false, "scala.collection.ArrayOps$ArrayIterator$mcC$sp", {
-  sc_ArrayOps$ArrayIterator$mcC$sp: 1,
-  sc_ArrayOps$ArrayIterator: 1,
-  sc_AbstractIterator: 1,
+const $d_ju_FormatFlagsConversionMismatchException = new $TypeData().initClass({
+  ju_FormatFlagsConversionMismatchException: 0
+}, false, "java.util.FormatFlagsConversionMismatchException", {
+  ju_FormatFlagsConversionMismatchException: 1,
+  ju_IllegalFormatException: 1,
+  jl_IllegalArgumentException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
   O: 1,
-  sc_Iterator: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOnceOps: 1,
   Ljava_io_Serializable: 1
 });
-$c_sc_ArrayOps$ArrayIterator$mcC$sp.prototype.$classData = $d_sc_ArrayOps$ArrayIterator$mcC$sp;
-class $c_sc_ArrayOps$ArrayIterator$mcD$sp extends $c_sc_ArrayOps$ArrayIterator {
-  constructor(xs$mcD$sp) {
+$c_ju_FormatFlagsConversionMismatchException.prototype.$classData = $d_ju_FormatFlagsConversionMismatchException;
+class $c_ju_IllegalFormatCodePointException extends $c_ju_IllegalFormatException {
+  constructor(c) {
     super();
-    this.sc_ArrayOps$ArrayIterator$mcD$sp__f_xs$mcD$sp = null;
-    this.sc_ArrayOps$ArrayIterator$mcD$sp__f_xs$mcD$sp = xs$mcD$sp;
-    $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcD$sp)
+    this.ju_IllegalFormatCodePointException__f_c = 0;
+    this.ju_IllegalFormatCodePointException__f_c = c;
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true)
   };
-  next$mcD$sp__D() {
-    try {
-      const r = this.sc_ArrayOps$ArrayIterator$mcD$sp__f_xs$mcD$sp.get(this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos);
-      this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = ((1 + this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos) | 0);
-      return r
-    } catch (e) {
-      if ((e instanceof $c_jl_ArrayIndexOutOfBoundsException)) {
-        return $uD($m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty.next__O())
-      } else {
-        throw e
-      }
+  getMessage__T() {
+    const i = this.ju_IllegalFormatCodePointException__f_c;
+    return ("Code point = 0x" + $as_T($uD((i >>> 0)).toString(16)))
+  };
+}
+const $d_ju_IllegalFormatCodePointException = new $TypeData().initClass({
+  ju_IllegalFormatCodePointException: 0
+}, false, "java.util.IllegalFormatCodePointException", {
+  ju_IllegalFormatCodePointException: 1,
+  ju_IllegalFormatException: 1,
+  jl_IllegalArgumentException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1
+});
+$c_ju_IllegalFormatCodePointException.prototype.$classData = $d_ju_IllegalFormatCodePointException;
+class $c_ju_IllegalFormatConversionException extends $c_ju_IllegalFormatException {
+  constructor(c, arg) {
+    super();
+    this.ju_IllegalFormatConversionException__f_c = 0;
+    this.ju_IllegalFormatConversionException__f_arg = null;
+    this.ju_IllegalFormatConversionException__f_c = c;
+    this.ju_IllegalFormatConversionException__f_arg = arg;
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true);
+    if ((arg === null)) {
+      throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
     }
   };
-  next__O() {
-    return this.next$mcD$sp__D()
+  getMessage__T() {
+    const this$1 = this.ju_IllegalFormatConversionException__f_c;
+    return (($as_T(String.fromCharCode(this$1)) + " != ") + this.ju_IllegalFormatConversionException__f_arg.getName__T())
   };
 }
-const $d_sc_ArrayOps$ArrayIterator$mcD$sp = new $TypeData().initClass({
-  sc_ArrayOps$ArrayIterator$mcD$sp: 0
-}, false, "scala.collection.ArrayOps$ArrayIterator$mcD$sp", {
-  sc_ArrayOps$ArrayIterator$mcD$sp: 1,
-  sc_ArrayOps$ArrayIterator: 1,
-  sc_AbstractIterator: 1,
+const $d_ju_IllegalFormatConversionException = new $TypeData().initClass({
+  ju_IllegalFormatConversionException: 0
+}, false, "java.util.IllegalFormatConversionException", {
+  ju_IllegalFormatConversionException: 1,
+  ju_IllegalFormatException: 1,
+  jl_IllegalArgumentException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
   O: 1,
-  sc_Iterator: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOnceOps: 1,
   Ljava_io_Serializable: 1
 });
-$c_sc_ArrayOps$ArrayIterator$mcD$sp.prototype.$classData = $d_sc_ArrayOps$ArrayIterator$mcD$sp;
-class $c_sc_ArrayOps$ArrayIterator$mcF$sp extends $c_sc_ArrayOps$ArrayIterator {
-  constructor(xs$mcF$sp) {
+$c_ju_IllegalFormatConversionException.prototype.$classData = $d_ju_IllegalFormatConversionException;
+class $c_ju_IllegalFormatFlagsException extends $c_ju_IllegalFormatException {
+  constructor(f) {
     super();
-    this.sc_ArrayOps$ArrayIterator$mcF$sp__f_xs$mcF$sp = null;
-    this.sc_ArrayOps$ArrayIterator$mcF$sp__f_xs$mcF$sp = xs$mcF$sp;
-    $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcF$sp)
-  };
-  next$mcF$sp__F() {
-    try {
-      const r = this.sc_ArrayOps$ArrayIterator$mcF$sp__f_xs$mcF$sp.get(this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos);
-      this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = ((1 + this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos) | 0);
-      return r
-    } catch (e) {
-      if ((e instanceof $c_jl_ArrayIndexOutOfBoundsException)) {
-        return $uF($m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty.next__O())
-      } else {
-        throw e
-      }
+    this.ju_IllegalFormatFlagsException__f_f = null;
+    this.ju_IllegalFormatFlagsException__f_f = f;
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true);
+    if ((f === null)) {
+      throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
     }
   };
-  next__O() {
-    return this.next$mcF$sp__F()
+  getMessage__T() {
+    return (("Flags = '" + this.ju_IllegalFormatFlagsException__f_f) + "'")
   };
 }
-const $d_sc_ArrayOps$ArrayIterator$mcF$sp = new $TypeData().initClass({
-  sc_ArrayOps$ArrayIterator$mcF$sp: 0
-}, false, "scala.collection.ArrayOps$ArrayIterator$mcF$sp", {
-  sc_ArrayOps$ArrayIterator$mcF$sp: 1,
-  sc_ArrayOps$ArrayIterator: 1,
-  sc_AbstractIterator: 1,
+const $d_ju_IllegalFormatFlagsException = new $TypeData().initClass({
+  ju_IllegalFormatFlagsException: 0
+}, false, "java.util.IllegalFormatFlagsException", {
+  ju_IllegalFormatFlagsException: 1,
+  ju_IllegalFormatException: 1,
+  jl_IllegalArgumentException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
   O: 1,
-  sc_Iterator: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOnceOps: 1,
   Ljava_io_Serializable: 1
 });
-$c_sc_ArrayOps$ArrayIterator$mcF$sp.prototype.$classData = $d_sc_ArrayOps$ArrayIterator$mcF$sp;
-class $c_sc_ArrayOps$ArrayIterator$mcI$sp extends $c_sc_ArrayOps$ArrayIterator {
-  constructor(xs$mcI$sp) {
+$c_ju_IllegalFormatFlagsException.prototype.$classData = $d_ju_IllegalFormatFlagsException;
+class $c_ju_IllegalFormatPrecisionException extends $c_ju_IllegalFormatException {
+  constructor(p) {
     super();
-    this.sc_ArrayOps$ArrayIterator$mcI$sp__f_xs$mcI$sp = null;
-    this.sc_ArrayOps$ArrayIterator$mcI$sp__f_xs$mcI$sp = xs$mcI$sp;
-    $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcI$sp)
+    this.ju_IllegalFormatPrecisionException__f_p = 0;
+    this.ju_IllegalFormatPrecisionException__f_p = p;
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true)
   };
-  next$mcI$sp__I() {
-    try {
-      const r = this.sc_ArrayOps$ArrayIterator$mcI$sp__f_xs$mcI$sp.get(this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos);
-      this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = ((1 + this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos) | 0);
-      return r
-    } catch (e) {
-      if ((e instanceof $c_jl_ArrayIndexOutOfBoundsException)) {
-        return $uI($m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty.next__O())
-      } else {
-        throw e
-      }
+  getMessage__T() {
+    const i = this.ju_IllegalFormatPrecisionException__f_p;
+    return ("" + i)
+  };
+}
+const $d_ju_IllegalFormatPrecisionException = new $TypeData().initClass({
+  ju_IllegalFormatPrecisionException: 0
+}, false, "java.util.IllegalFormatPrecisionException", {
+  ju_IllegalFormatPrecisionException: 1,
+  ju_IllegalFormatException: 1,
+  jl_IllegalArgumentException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1
+});
+$c_ju_IllegalFormatPrecisionException.prototype.$classData = $d_ju_IllegalFormatPrecisionException;
+class $c_ju_IllegalFormatWidthException extends $c_ju_IllegalFormatException {
+  constructor(w) {
+    super();
+    this.ju_IllegalFormatWidthException__f_w = 0;
+    this.ju_IllegalFormatWidthException__f_w = w;
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true)
+  };
+  getMessage__T() {
+    const i = this.ju_IllegalFormatWidthException__f_w;
+    return ("" + i)
+  };
+}
+const $d_ju_IllegalFormatWidthException = new $TypeData().initClass({
+  ju_IllegalFormatWidthException: 0
+}, false, "java.util.IllegalFormatWidthException", {
+  ju_IllegalFormatWidthException: 1,
+  ju_IllegalFormatException: 1,
+  jl_IllegalArgumentException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1
+});
+$c_ju_IllegalFormatWidthException.prototype.$classData = $d_ju_IllegalFormatWidthException;
+class $c_ju_MissingFormatArgumentException extends $c_ju_IllegalFormatException {
+  constructor(s) {
+    super();
+    this.ju_MissingFormatArgumentException__f_s = null;
+    this.ju_MissingFormatArgumentException__f_s = s;
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true);
+    if ((s === null)) {
+      throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
     }
   };
-  next__O() {
-    return this.next$mcI$sp__I()
+  getMessage__T() {
+    return (("Format specifier '" + this.ju_MissingFormatArgumentException__f_s) + "'")
   };
 }
-const $d_sc_ArrayOps$ArrayIterator$mcI$sp = new $TypeData().initClass({
-  sc_ArrayOps$ArrayIterator$mcI$sp: 0
-}, false, "scala.collection.ArrayOps$ArrayIterator$mcI$sp", {
-  sc_ArrayOps$ArrayIterator$mcI$sp: 1,
-  sc_ArrayOps$ArrayIterator: 1,
-  sc_AbstractIterator: 1,
+const $d_ju_MissingFormatArgumentException = new $TypeData().initClass({
+  ju_MissingFormatArgumentException: 0
+}, false, "java.util.MissingFormatArgumentException", {
+  ju_MissingFormatArgumentException: 1,
+  ju_IllegalFormatException: 1,
+  jl_IllegalArgumentException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
   O: 1,
-  sc_Iterator: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOnceOps: 1,
   Ljava_io_Serializable: 1
 });
-$c_sc_ArrayOps$ArrayIterator$mcI$sp.prototype.$classData = $d_sc_ArrayOps$ArrayIterator$mcI$sp;
-class $c_sc_ArrayOps$ArrayIterator$mcJ$sp extends $c_sc_ArrayOps$ArrayIterator {
-  constructor(xs$mcJ$sp) {
+$c_ju_MissingFormatArgumentException.prototype.$classData = $d_ju_MissingFormatArgumentException;
+class $c_ju_MissingFormatWidthException extends $c_ju_IllegalFormatException {
+  constructor(s) {
     super();
-    this.sc_ArrayOps$ArrayIterator$mcJ$sp__f_xs$mcJ$sp = null;
-    this.sc_ArrayOps$ArrayIterator$mcJ$sp__f_xs$mcJ$sp = xs$mcJ$sp;
-    $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcJ$sp)
-  };
-  next$mcJ$sp__J() {
-    try {
-      const t = this.sc_ArrayOps$ArrayIterator$mcJ$sp__f_xs$mcJ$sp.get(this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos);
-      const lo = t.RTLong__f_lo;
-      const hi = t.RTLong__f_hi;
-      this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = ((1 + this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos) | 0);
-      return new $c_RTLong(lo, hi)
-    } catch (e) {
-      if ((e instanceof $c_jl_ArrayIndexOutOfBoundsException)) {
-        return $uJ($m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty.next__O())
-      } else {
-        throw e
-      }
+    this.ju_MissingFormatWidthException__f_s = null;
+    this.ju_MissingFormatWidthException__f_s = s;
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true);
+    if ((s === null)) {
+      throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
     }
   };
-  next__O() {
-    return this.next$mcJ$sp__J()
+  getMessage__T() {
+    return this.ju_MissingFormatWidthException__f_s
   };
 }
-const $d_sc_ArrayOps$ArrayIterator$mcJ$sp = new $TypeData().initClass({
-  sc_ArrayOps$ArrayIterator$mcJ$sp: 0
-}, false, "scala.collection.ArrayOps$ArrayIterator$mcJ$sp", {
-  sc_ArrayOps$ArrayIterator$mcJ$sp: 1,
-  sc_ArrayOps$ArrayIterator: 1,
-  sc_AbstractIterator: 1,
+const $d_ju_MissingFormatWidthException = new $TypeData().initClass({
+  ju_MissingFormatWidthException: 0
+}, false, "java.util.MissingFormatWidthException", {
+  ju_MissingFormatWidthException: 1,
+  ju_IllegalFormatException: 1,
+  jl_IllegalArgumentException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
   O: 1,
-  sc_Iterator: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOnceOps: 1,
   Ljava_io_Serializable: 1
 });
-$c_sc_ArrayOps$ArrayIterator$mcJ$sp.prototype.$classData = $d_sc_ArrayOps$ArrayIterator$mcJ$sp;
-class $c_sc_ArrayOps$ArrayIterator$mcS$sp extends $c_sc_ArrayOps$ArrayIterator {
-  constructor(xs$mcS$sp) {
+$c_ju_MissingFormatWidthException.prototype.$classData = $d_ju_MissingFormatWidthException;
+class $c_ju_UnknownFormatConversionException extends $c_ju_IllegalFormatException {
+  constructor(s) {
     super();
-    this.sc_ArrayOps$ArrayIterator$mcS$sp__f_xs$mcS$sp = null;
-    this.sc_ArrayOps$ArrayIterator$mcS$sp__f_xs$mcS$sp = xs$mcS$sp;
-    $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcS$sp)
-  };
-  next$mcS$sp__S() {
-    try {
-      const r = this.sc_ArrayOps$ArrayIterator$mcS$sp__f_xs$mcS$sp.get(this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos);
-      this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = ((1 + this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos) | 0);
-      return r
-    } catch (e) {
-      if ((e instanceof $c_jl_ArrayIndexOutOfBoundsException)) {
-        return $uS($m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty.next__O())
-      } else {
-        throw e
-      }
+    this.ju_UnknownFormatConversionException__f_s = null;
+    this.ju_UnknownFormatConversionException__f_s = s;
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true);
+    if ((s === null)) {
+      throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
     }
   };
-  next__O() {
-    return this.next$mcS$sp__S()
+  getMessage__T() {
+    return (("Conversion = '" + this.ju_UnknownFormatConversionException__f_s) + "'")
   };
 }
-const $d_sc_ArrayOps$ArrayIterator$mcS$sp = new $TypeData().initClass({
-  sc_ArrayOps$ArrayIterator$mcS$sp: 0
-}, false, "scala.collection.ArrayOps$ArrayIterator$mcS$sp", {
-  sc_ArrayOps$ArrayIterator$mcS$sp: 1,
-  sc_ArrayOps$ArrayIterator: 1,
-  sc_AbstractIterator: 1,
+const $d_ju_UnknownFormatConversionException = new $TypeData().initClass({
+  ju_UnknownFormatConversionException: 0
+}, false, "java.util.UnknownFormatConversionException", {
+  ju_UnknownFormatConversionException: 1,
+  ju_IllegalFormatException: 1,
+  jl_IllegalArgumentException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
   O: 1,
-  sc_Iterator: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOnceOps: 1,
   Ljava_io_Serializable: 1
 });
-$c_sc_ArrayOps$ArrayIterator$mcS$sp.prototype.$classData = $d_sc_ArrayOps$ArrayIterator$mcS$sp;
-class $c_sc_ArrayOps$ArrayIterator$mcV$sp extends $c_sc_ArrayOps$ArrayIterator {
-  constructor(xs$mcV$sp) {
-    super();
-    this.sc_ArrayOps$ArrayIterator$mcV$sp__f_xs$mcV$sp = null;
-    this.sc_ArrayOps$ArrayIterator$mcV$sp__f_xs$mcV$sp = xs$mcV$sp;
-    $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcV$sp)
-  };
-  next$mcV$sp__V() {
-    try {
-      this.sc_ArrayOps$ArrayIterator$mcV$sp__f_xs$mcV$sp.get(this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos);
-      this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = ((1 + this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos) | 0)
-    } catch (e) {
-      if ((e instanceof $c_jl_ArrayIndexOutOfBoundsException)) {
-        $m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty.next__O()
-      } else {
-        throw e
-      }
-    }
-  };
-  next__O() {
-    this.next$mcV$sp__V()
-  };
-}
-const $d_sc_ArrayOps$ArrayIterator$mcV$sp = new $TypeData().initClass({
-  sc_ArrayOps$ArrayIterator$mcV$sp: 0
-}, false, "scala.collection.ArrayOps$ArrayIterator$mcV$sp", {
-  sc_ArrayOps$ArrayIterator$mcV$sp: 1,
-  sc_ArrayOps$ArrayIterator: 1,
-  sc_AbstractIterator: 1,
-  O: 1,
-  sc_Iterator: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOnceOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_sc_ArrayOps$ArrayIterator$mcV$sp.prototype.$classData = $d_sc_ArrayOps$ArrayIterator$mcV$sp;
-class $c_sc_ArrayOps$ArrayIterator$mcZ$sp extends $c_sc_ArrayOps$ArrayIterator {
-  constructor(xs$mcZ$sp) {
-    super();
-    this.sc_ArrayOps$ArrayIterator$mcZ$sp__f_xs$mcZ$sp = null;
-    this.sc_ArrayOps$ArrayIterator$mcZ$sp__f_xs$mcZ$sp = xs$mcZ$sp;
-    $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcZ$sp)
-  };
-  next$mcZ$sp__Z() {
-    try {
-      const r = this.sc_ArrayOps$ArrayIterator$mcZ$sp__f_xs$mcZ$sp.get(this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos);
-      this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos = ((1 + this.sc_ArrayOps$ArrayIterator__f_scala$collection$ArrayOps$ArrayIterator$$pos) | 0);
-      return r
-    } catch (e) {
-      if ((e instanceof $c_jl_ArrayIndexOutOfBoundsException)) {
-        return $uZ($m_sc_Iterator$().sc_Iterator$__f_scala$collection$Iterator$$_empty.next__O())
-      } else {
-        throw e
-      }
-    }
-  };
-  next__O() {
-    return this.next$mcZ$sp__Z()
-  };
-}
-const $d_sc_ArrayOps$ArrayIterator$mcZ$sp = new $TypeData().initClass({
-  sc_ArrayOps$ArrayIterator$mcZ$sp: 0
-}, false, "scala.collection.ArrayOps$ArrayIterator$mcZ$sp", {
-  sc_ArrayOps$ArrayIterator$mcZ$sp: 1,
-  sc_ArrayOps$ArrayIterator: 1,
-  sc_AbstractIterator: 1,
-  O: 1,
-  sc_Iterator: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOnceOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_sc_ArrayOps$ArrayIterator$mcZ$sp.prototype.$classData = $d_sc_ArrayOps$ArrayIterator$mcZ$sp;
+$c_ju_UnknownFormatConversionException.prototype.$classData = $d_ju_UnknownFormatConversionException;
 const $f_sc_View__toString__T = (function($thiz) {
   return ($thiz.className__T() + "(<not computed>)")
 });
@@ -15882,75 +16241,6 @@ function $isArrayOf_sc_View(obj, depth) {
 function $asArrayOf_sc_View(obj, depth) {
   return (($isArrayOf_sc_View(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.View;", depth))
 }
-class $c_scm_ArrayBuilder$generic extends $c_scm_ArrayBuilder {
-  constructor(elementClass) {
-    super();
-    this.scm_ArrayBuilder$generic__f_elementClass = null;
-    this.scm_ArrayBuilder$generic__f_isCharArrayBuilder = false;
-    this.scm_ArrayBuilder$generic__f_jsElems = null;
-    this.scm_ArrayBuilder$generic__f_elementClass = elementClass;
-    $ct_scm_ArrayBuilder__(this);
-    this.scm_ArrayBuilder$generic__f_isCharArrayBuilder = (elementClass === $d_C.getClassOf());
-    this.scm_ArrayBuilder$generic__f_jsElems = []
-  };
-  addOne__O__scm_ArrayBuilder$generic(elem) {
-    const unboxedElem = (this.scm_ArrayBuilder$generic__f_isCharArrayBuilder ? $uC(elem) : ((elem === null) ? this.scm_ArrayBuilder$generic__f_elementClass.jl_Class__f_data.zero : elem));
-    this.scm_ArrayBuilder$generic__f_jsElems.push(unboxedElem);
-    return this
-  };
-  addAll__sc_IterableOnce__scm_ArrayBuilder$generic(xs) {
-    const it = xs.iterator__sc_Iterator();
-    while (it.hasNext__Z()) {
-      const elem = it.next__O();
-      this.addOne__O__scm_ArrayBuilder$generic(elem)
-    };
-    return this
-  };
-  result__O() {
-    const x$2 = this.scm_ArrayBuilder$generic__f_elementClass;
-    let elemRuntimeClass;
-    if ((x$2 === $d_V.getClassOf())) {
-      elemRuntimeClass = $d_jl_Void.getClassOf()
-    } else {
-      const x$4 = this.scm_ArrayBuilder$generic__f_elementClass;
-      let $$x1;
-      if ((x$4 === $d_sr_Null$.getClassOf())) {
-        $$x1 = true
-      } else {
-        const x$6 = this.scm_ArrayBuilder$generic__f_elementClass;
-        $$x1 = (x$6 === $d_sr_Nothing$.getClassOf())
-      };
-      if ($$x1) {
-        elemRuntimeClass = $d_O.getClassOf()
-      } else {
-        elemRuntimeClass = this.scm_ArrayBuilder$generic__f_elementClass
-      }
-    };
-    return $makeNativeArrayWrapper(elemRuntimeClass.jl_Class__f_data.getArrayOf(), this.scm_ArrayBuilder$generic__f_jsElems)
-  };
-  toString__T() {
-    return "ArrayBuilder.generic"
-  };
-  addAll__sc_IterableOnce__scm_Growable(xs) {
-    return this.addAll__sc_IterableOnce__scm_ArrayBuilder$generic(xs)
-  };
-  addOne__O__scm_Growable(elem) {
-    return this.addOne__O__scm_ArrayBuilder$generic(elem)
-  };
-}
-const $d_scm_ArrayBuilder$generic = new $TypeData().initClass({
-  scm_ArrayBuilder$generic: 0
-}, false, "scala.collection.mutable.ArrayBuilder$generic", {
-  scm_ArrayBuilder$generic: 1,
-  scm_ArrayBuilder: 1,
-  O: 1,
-  scm_ReusableBuilder: 1,
-  scm_Builder: 1,
-  scm_Growable: 1,
-  scm_Clearable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArrayBuilder$generic.prototype.$classData = $d_scm_ArrayBuilder$generic;
 class $c_s_concurrent_Future$$anon$1 extends $c_ju_NoSuchElementException {
   constructor(t$2) {
     super();
@@ -16164,7 +16454,7 @@ class $c_s_concurrent_impl_Promise$DefaultPromise extends $c_ju_concurrent_atomi
         const state = _$this.ju_concurrent_atomic_AtomicReference__f_value;
         if ((state instanceof $c_s_util_Try)) {
           if ((!target.tryComplete0__O__s_util_Try__Z(target.ju_concurrent_atomic_AtomicReference__f_value, $as_s_util_Try(state)))) {
-            throw new $c_jl_IllegalStateException("Cannot link completed promises together")
+            throw $ct_jl_IllegalStateException__T__(new $c_jl_IllegalStateException(), "Cannot link completed promises together")
           }
         } else if ($is_s_concurrent_impl_Promise$Callbacks(state)) {
           const l = ((link !== null) ? link : new $c_s_concurrent_impl_Promise$Link(target));
@@ -16495,6 +16785,9 @@ class $c_jl_JSConsoleBasedPrintStream extends $c_Ljava_io_PrintStream {
       }
     }
   };
+  close__V() {
+    /*<skip>*/
+  };
 }
 const $d_jl_JSConsoleBasedPrintStream = new $TypeData().initClass({
   jl_JSConsoleBasedPrintStream: 0
@@ -16556,11 +16849,20 @@ class $c_sci_MapKeyValueTupleHashIterator extends $c_sci_ChampBaseReverseIterato
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
+  copyToArray__O__I__I(xs, start) {
+    return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
   copyToArray__O__I__I__I(xs, start, len) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  toArray__s_reflect_ClassTag__O(evidence$2) {
+    return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2)
   };
   knownSize__I() {
     return (-1)
@@ -16647,6 +16949,15 @@ const $f_s_math_Numeric$CharIsIntegral__quot__C__C__C = (function($thiz, x, y) {
 const $f_s_math_Numeric$CharIsIntegral__sign__C__C = (function($thiz, x) {
   const x$1 = x;
   return (65535 & ((x$1 === 0) ? 0 : ((x$1 < 0) ? (-1) : 1)))
+});
+const $f_s_math_Numeric$DoubleIsFractional__plus__D__D__D = (function($thiz, x, y) {
+  return (x + y)
+});
+const $f_s_math_Numeric$DoubleIsFractional__minus__D__D__D = (function($thiz, x, y) {
+  return (x - y)
+});
+const $f_s_math_Numeric$DoubleIsFractional__times__D__D__D = (function($thiz, x, y) {
+  return (x * y)
 });
 const $f_s_math_Numeric$IntIsIntegral__plus__I__I__I = (function($thiz, x, y) {
   return ((x + y) | 0)
@@ -16747,39 +17058,12 @@ function $m_s_math_Ordering$Int$() {
   };
   return $n_s_math_Ordering$Int$
 }
-class $c_s_reflect_ManifestFactory$BooleanManifest extends $c_s_reflect_AnyValManifest {
-  runtimeClass__jl_Class() {
-    return $d_Z.getClassOf()
-  };
-}
-class $c_s_reflect_ManifestFactory$ByteManifest extends $c_s_reflect_AnyValManifest {
-  runtimeClass__jl_Class() {
-    return $d_B.getClassOf()
-  };
-}
-class $c_s_reflect_ManifestFactory$CharManifest extends $c_s_reflect_AnyValManifest {
-  runtimeClass__jl_Class() {
-    return $d_C.getClassOf()
-  };
-}
-class $c_s_reflect_ManifestFactory$DoubleManifest extends $c_s_reflect_AnyValManifest {
-  runtimeClass__jl_Class() {
-    return $d_D.getClassOf()
-  };
-}
-class $c_s_reflect_ManifestFactory$FloatManifest extends $c_s_reflect_AnyValManifest {
-  runtimeClass__jl_Class() {
-    return $d_F.getClassOf()
-  };
-}
 class $c_s_reflect_ManifestFactory$IntManifest extends $c_s_reflect_AnyValManifest {
   runtimeClass__jl_Class() {
     return $d_I.getClassOf()
   };
-}
-class $c_s_reflect_ManifestFactory$LongManifest extends $c_s_reflect_AnyValManifest {
-  runtimeClass__jl_Class() {
-    return $d_J.getClassOf()
+  newArray__I__O(len) {
+    return $newArrayObject($d_I.getArrayOf(), [len])
   };
 }
 class $c_s_reflect_ManifestFactory$PhantomManifest extends $c_s_reflect_ManifestFactory$ClassTypeManifest {
@@ -16796,16 +17080,6 @@ class $c_s_reflect_ManifestFactory$PhantomManifest extends $c_s_reflect_Manifest
   };
   hashCode__I() {
     return this.s_reflect_ManifestFactory$PhantomManifest__f_hashCode
-  };
-}
-class $c_s_reflect_ManifestFactory$ShortManifest extends $c_s_reflect_AnyValManifest {
-  runtimeClass__jl_Class() {
-    return $d_S.getClassOf()
-  };
-}
-class $c_s_reflect_ManifestFactory$UnitManifest extends $c_s_reflect_AnyValManifest {
-  runtimeClass__jl_Class() {
-    return $d_V.getClassOf()
   };
 }
 class $c_sc_AbstractView extends $c_sc_AbstractIterable {
@@ -16897,6 +17171,9 @@ class $c_s_reflect_ManifestFactory$AnyManifest$ extends $c_s_reflect_ManifestFac
   runtimeClass__jl_Class() {
     return $d_O.getClassOf()
   };
+  newArray__I__O(len) {
+    return $newArrayObject($d_O.getArrayOf(), [len])
+  };
 }
 const $d_s_reflect_ManifestFactory$AnyManifest$ = new $TypeData().initClass({
   s_reflect_ManifestFactory$AnyManifest$: 0
@@ -16919,151 +17196,6 @@ function $m_s_reflect_ManifestFactory$AnyManifest$() {
     $n_s_reflect_ManifestFactory$AnyManifest$ = new $c_s_reflect_ManifestFactory$AnyManifest$()
   };
   return $n_s_reflect_ManifestFactory$AnyManifest$
-}
-class $c_s_reflect_ManifestFactory$BooleanManifest$ extends $c_s_reflect_ManifestFactory$BooleanManifest {
-  constructor() {
-    super();
-    this.s_reflect_AnyValManifest__f_toString = "Boolean";
-    this.s_reflect_AnyValManifest__f_hashCode = $systemIdentityHashCode(this)
-  };
-}
-const $d_s_reflect_ManifestFactory$BooleanManifest$ = new $TypeData().initClass({
-  s_reflect_ManifestFactory$BooleanManifest$: 0
-}, false, "scala.reflect.ManifestFactory$BooleanManifest$", {
-  s_reflect_ManifestFactory$BooleanManifest$: 1,
-  s_reflect_ManifestFactory$BooleanManifest: 1,
-  s_reflect_AnyValManifest: 1,
-  O: 1,
-  s_reflect_Manifest: 1,
-  s_reflect_ClassTag: 1,
-  s_reflect_ClassManifestDeprecatedApis: 1,
-  s_reflect_OptManifest: 1,
-  Ljava_io_Serializable: 1,
-  s_Equals: 1
-});
-$c_s_reflect_ManifestFactory$BooleanManifest$.prototype.$classData = $d_s_reflect_ManifestFactory$BooleanManifest$;
-let $n_s_reflect_ManifestFactory$BooleanManifest$ = (void 0);
-function $m_s_reflect_ManifestFactory$BooleanManifest$() {
-  if ((!$n_s_reflect_ManifestFactory$BooleanManifest$)) {
-    $n_s_reflect_ManifestFactory$BooleanManifest$ = new $c_s_reflect_ManifestFactory$BooleanManifest$()
-  };
-  return $n_s_reflect_ManifestFactory$BooleanManifest$
-}
-class $c_s_reflect_ManifestFactory$ByteManifest$ extends $c_s_reflect_ManifestFactory$ByteManifest {
-  constructor() {
-    super();
-    this.s_reflect_AnyValManifest__f_toString = "Byte";
-    this.s_reflect_AnyValManifest__f_hashCode = $systemIdentityHashCode(this)
-  };
-}
-const $d_s_reflect_ManifestFactory$ByteManifest$ = new $TypeData().initClass({
-  s_reflect_ManifestFactory$ByteManifest$: 0
-}, false, "scala.reflect.ManifestFactory$ByteManifest$", {
-  s_reflect_ManifestFactory$ByteManifest$: 1,
-  s_reflect_ManifestFactory$ByteManifest: 1,
-  s_reflect_AnyValManifest: 1,
-  O: 1,
-  s_reflect_Manifest: 1,
-  s_reflect_ClassTag: 1,
-  s_reflect_ClassManifestDeprecatedApis: 1,
-  s_reflect_OptManifest: 1,
-  Ljava_io_Serializable: 1,
-  s_Equals: 1
-});
-$c_s_reflect_ManifestFactory$ByteManifest$.prototype.$classData = $d_s_reflect_ManifestFactory$ByteManifest$;
-let $n_s_reflect_ManifestFactory$ByteManifest$ = (void 0);
-function $m_s_reflect_ManifestFactory$ByteManifest$() {
-  if ((!$n_s_reflect_ManifestFactory$ByteManifest$)) {
-    $n_s_reflect_ManifestFactory$ByteManifest$ = new $c_s_reflect_ManifestFactory$ByteManifest$()
-  };
-  return $n_s_reflect_ManifestFactory$ByteManifest$
-}
-class $c_s_reflect_ManifestFactory$CharManifest$ extends $c_s_reflect_ManifestFactory$CharManifest {
-  constructor() {
-    super();
-    this.s_reflect_AnyValManifest__f_toString = "Char";
-    this.s_reflect_AnyValManifest__f_hashCode = $systemIdentityHashCode(this)
-  };
-}
-const $d_s_reflect_ManifestFactory$CharManifest$ = new $TypeData().initClass({
-  s_reflect_ManifestFactory$CharManifest$: 0
-}, false, "scala.reflect.ManifestFactory$CharManifest$", {
-  s_reflect_ManifestFactory$CharManifest$: 1,
-  s_reflect_ManifestFactory$CharManifest: 1,
-  s_reflect_AnyValManifest: 1,
-  O: 1,
-  s_reflect_Manifest: 1,
-  s_reflect_ClassTag: 1,
-  s_reflect_ClassManifestDeprecatedApis: 1,
-  s_reflect_OptManifest: 1,
-  Ljava_io_Serializable: 1,
-  s_Equals: 1
-});
-$c_s_reflect_ManifestFactory$CharManifest$.prototype.$classData = $d_s_reflect_ManifestFactory$CharManifest$;
-let $n_s_reflect_ManifestFactory$CharManifest$ = (void 0);
-function $m_s_reflect_ManifestFactory$CharManifest$() {
-  if ((!$n_s_reflect_ManifestFactory$CharManifest$)) {
-    $n_s_reflect_ManifestFactory$CharManifest$ = new $c_s_reflect_ManifestFactory$CharManifest$()
-  };
-  return $n_s_reflect_ManifestFactory$CharManifest$
-}
-class $c_s_reflect_ManifestFactory$DoubleManifest$ extends $c_s_reflect_ManifestFactory$DoubleManifest {
-  constructor() {
-    super();
-    this.s_reflect_AnyValManifest__f_toString = "Double";
-    this.s_reflect_AnyValManifest__f_hashCode = $systemIdentityHashCode(this)
-  };
-}
-const $d_s_reflect_ManifestFactory$DoubleManifest$ = new $TypeData().initClass({
-  s_reflect_ManifestFactory$DoubleManifest$: 0
-}, false, "scala.reflect.ManifestFactory$DoubleManifest$", {
-  s_reflect_ManifestFactory$DoubleManifest$: 1,
-  s_reflect_ManifestFactory$DoubleManifest: 1,
-  s_reflect_AnyValManifest: 1,
-  O: 1,
-  s_reflect_Manifest: 1,
-  s_reflect_ClassTag: 1,
-  s_reflect_ClassManifestDeprecatedApis: 1,
-  s_reflect_OptManifest: 1,
-  Ljava_io_Serializable: 1,
-  s_Equals: 1
-});
-$c_s_reflect_ManifestFactory$DoubleManifest$.prototype.$classData = $d_s_reflect_ManifestFactory$DoubleManifest$;
-let $n_s_reflect_ManifestFactory$DoubleManifest$ = (void 0);
-function $m_s_reflect_ManifestFactory$DoubleManifest$() {
-  if ((!$n_s_reflect_ManifestFactory$DoubleManifest$)) {
-    $n_s_reflect_ManifestFactory$DoubleManifest$ = new $c_s_reflect_ManifestFactory$DoubleManifest$()
-  };
-  return $n_s_reflect_ManifestFactory$DoubleManifest$
-}
-class $c_s_reflect_ManifestFactory$FloatManifest$ extends $c_s_reflect_ManifestFactory$FloatManifest {
-  constructor() {
-    super();
-    this.s_reflect_AnyValManifest__f_toString = "Float";
-    this.s_reflect_AnyValManifest__f_hashCode = $systemIdentityHashCode(this)
-  };
-}
-const $d_s_reflect_ManifestFactory$FloatManifest$ = new $TypeData().initClass({
-  s_reflect_ManifestFactory$FloatManifest$: 0
-}, false, "scala.reflect.ManifestFactory$FloatManifest$", {
-  s_reflect_ManifestFactory$FloatManifest$: 1,
-  s_reflect_ManifestFactory$FloatManifest: 1,
-  s_reflect_AnyValManifest: 1,
-  O: 1,
-  s_reflect_Manifest: 1,
-  s_reflect_ClassTag: 1,
-  s_reflect_ClassManifestDeprecatedApis: 1,
-  s_reflect_OptManifest: 1,
-  Ljava_io_Serializable: 1,
-  s_Equals: 1
-});
-$c_s_reflect_ManifestFactory$FloatManifest$.prototype.$classData = $d_s_reflect_ManifestFactory$FloatManifest$;
-let $n_s_reflect_ManifestFactory$FloatManifest$ = (void 0);
-function $m_s_reflect_ManifestFactory$FloatManifest$() {
-  if ((!$n_s_reflect_ManifestFactory$FloatManifest$)) {
-    $n_s_reflect_ManifestFactory$FloatManifest$ = new $c_s_reflect_ManifestFactory$FloatManifest$()
-  };
-  return $n_s_reflect_ManifestFactory$FloatManifest$
 }
 class $c_s_reflect_ManifestFactory$IntManifest$ extends $c_s_reflect_ManifestFactory$IntManifest {
   constructor() {
@@ -17094,109 +17226,6 @@ function $m_s_reflect_ManifestFactory$IntManifest$() {
   };
   return $n_s_reflect_ManifestFactory$IntManifest$
 }
-class $c_s_reflect_ManifestFactory$LongManifest$ extends $c_s_reflect_ManifestFactory$LongManifest {
-  constructor() {
-    super();
-    this.s_reflect_AnyValManifest__f_toString = "Long";
-    this.s_reflect_AnyValManifest__f_hashCode = $systemIdentityHashCode(this)
-  };
-}
-const $d_s_reflect_ManifestFactory$LongManifest$ = new $TypeData().initClass({
-  s_reflect_ManifestFactory$LongManifest$: 0
-}, false, "scala.reflect.ManifestFactory$LongManifest$", {
-  s_reflect_ManifestFactory$LongManifest$: 1,
-  s_reflect_ManifestFactory$LongManifest: 1,
-  s_reflect_AnyValManifest: 1,
-  O: 1,
-  s_reflect_Manifest: 1,
-  s_reflect_ClassTag: 1,
-  s_reflect_ClassManifestDeprecatedApis: 1,
-  s_reflect_OptManifest: 1,
-  Ljava_io_Serializable: 1,
-  s_Equals: 1
-});
-$c_s_reflect_ManifestFactory$LongManifest$.prototype.$classData = $d_s_reflect_ManifestFactory$LongManifest$;
-let $n_s_reflect_ManifestFactory$LongManifest$ = (void 0);
-function $m_s_reflect_ManifestFactory$LongManifest$() {
-  if ((!$n_s_reflect_ManifestFactory$LongManifest$)) {
-    $n_s_reflect_ManifestFactory$LongManifest$ = new $c_s_reflect_ManifestFactory$LongManifest$()
-  };
-  return $n_s_reflect_ManifestFactory$LongManifest$
-}
-class $c_s_reflect_ManifestFactory$NothingManifest$ extends $c_s_reflect_ManifestFactory$PhantomManifest {
-  constructor() {
-    super();
-    this.s_reflect_ManifestFactory$PhantomManifest__f_toString = "Nothing";
-    const prefix = $m_s_None$();
-    const typeArguments = $m_sci_Nil$();
-    this.s_reflect_ManifestFactory$ClassTypeManifest__f_prefix = prefix;
-    this.s_reflect_ManifestFactory$ClassTypeManifest__f_runtimeClass1 = $d_sr_Nothing$.getClassOf();
-    this.s_reflect_ManifestFactory$ClassTypeManifest__f_typeArguments = typeArguments;
-    this.s_reflect_ManifestFactory$PhantomManifest__f_hashCode = $systemIdentityHashCode(this)
-  };
-  runtimeClass__jl_Class() {
-    return $d_sr_Nothing$.getClassOf()
-  };
-}
-const $d_s_reflect_ManifestFactory$NothingManifest$ = new $TypeData().initClass({
-  s_reflect_ManifestFactory$NothingManifest$: 0
-}, false, "scala.reflect.ManifestFactory$NothingManifest$", {
-  s_reflect_ManifestFactory$NothingManifest$: 1,
-  s_reflect_ManifestFactory$PhantomManifest: 1,
-  s_reflect_ManifestFactory$ClassTypeManifest: 1,
-  O: 1,
-  s_reflect_Manifest: 1,
-  s_reflect_ClassTag: 1,
-  s_reflect_ClassManifestDeprecatedApis: 1,
-  s_reflect_OptManifest: 1,
-  Ljava_io_Serializable: 1,
-  s_Equals: 1
-});
-$c_s_reflect_ManifestFactory$NothingManifest$.prototype.$classData = $d_s_reflect_ManifestFactory$NothingManifest$;
-let $n_s_reflect_ManifestFactory$NothingManifest$ = (void 0);
-function $m_s_reflect_ManifestFactory$NothingManifest$() {
-  if ((!$n_s_reflect_ManifestFactory$NothingManifest$)) {
-    $n_s_reflect_ManifestFactory$NothingManifest$ = new $c_s_reflect_ManifestFactory$NothingManifest$()
-  };
-  return $n_s_reflect_ManifestFactory$NothingManifest$
-}
-class $c_s_reflect_ManifestFactory$NullManifest$ extends $c_s_reflect_ManifestFactory$PhantomManifest {
-  constructor() {
-    super();
-    this.s_reflect_ManifestFactory$PhantomManifest__f_toString = "Null";
-    const prefix = $m_s_None$();
-    const typeArguments = $m_sci_Nil$();
-    this.s_reflect_ManifestFactory$ClassTypeManifest__f_prefix = prefix;
-    this.s_reflect_ManifestFactory$ClassTypeManifest__f_runtimeClass1 = $d_sr_Null$.getClassOf();
-    this.s_reflect_ManifestFactory$ClassTypeManifest__f_typeArguments = typeArguments;
-    this.s_reflect_ManifestFactory$PhantomManifest__f_hashCode = $systemIdentityHashCode(this)
-  };
-  runtimeClass__jl_Class() {
-    return $d_sr_Null$.getClassOf()
-  };
-}
-const $d_s_reflect_ManifestFactory$NullManifest$ = new $TypeData().initClass({
-  s_reflect_ManifestFactory$NullManifest$: 0
-}, false, "scala.reflect.ManifestFactory$NullManifest$", {
-  s_reflect_ManifestFactory$NullManifest$: 1,
-  s_reflect_ManifestFactory$PhantomManifest: 1,
-  s_reflect_ManifestFactory$ClassTypeManifest: 1,
-  O: 1,
-  s_reflect_Manifest: 1,
-  s_reflect_ClassTag: 1,
-  s_reflect_ClassManifestDeprecatedApis: 1,
-  s_reflect_OptManifest: 1,
-  Ljava_io_Serializable: 1,
-  s_Equals: 1
-});
-$c_s_reflect_ManifestFactory$NullManifest$.prototype.$classData = $d_s_reflect_ManifestFactory$NullManifest$;
-let $n_s_reflect_ManifestFactory$NullManifest$ = (void 0);
-function $m_s_reflect_ManifestFactory$NullManifest$() {
-  if ((!$n_s_reflect_ManifestFactory$NullManifest$)) {
-    $n_s_reflect_ManifestFactory$NullManifest$ = new $c_s_reflect_ManifestFactory$NullManifest$()
-  };
-  return $n_s_reflect_ManifestFactory$NullManifest$
-}
 class $c_s_reflect_ManifestFactory$ObjectManifest$ extends $c_s_reflect_ManifestFactory$PhantomManifest {
   constructor() {
     super();
@@ -17210,6 +17239,9 @@ class $c_s_reflect_ManifestFactory$ObjectManifest$ extends $c_s_reflect_Manifest
   };
   runtimeClass__jl_Class() {
     return $d_O.getClassOf()
+  };
+  newArray__I__O(len) {
+    return $newArrayObject($d_O.getArrayOf(), [len])
   };
 }
 const $d_s_reflect_ManifestFactory$ObjectManifest$ = new $TypeData().initClass({
@@ -17233,64 +17265,6 @@ function $m_s_reflect_ManifestFactory$ObjectManifest$() {
     $n_s_reflect_ManifestFactory$ObjectManifest$ = new $c_s_reflect_ManifestFactory$ObjectManifest$()
   };
   return $n_s_reflect_ManifestFactory$ObjectManifest$
-}
-class $c_s_reflect_ManifestFactory$ShortManifest$ extends $c_s_reflect_ManifestFactory$ShortManifest {
-  constructor() {
-    super();
-    this.s_reflect_AnyValManifest__f_toString = "Short";
-    this.s_reflect_AnyValManifest__f_hashCode = $systemIdentityHashCode(this)
-  };
-}
-const $d_s_reflect_ManifestFactory$ShortManifest$ = new $TypeData().initClass({
-  s_reflect_ManifestFactory$ShortManifest$: 0
-}, false, "scala.reflect.ManifestFactory$ShortManifest$", {
-  s_reflect_ManifestFactory$ShortManifest$: 1,
-  s_reflect_ManifestFactory$ShortManifest: 1,
-  s_reflect_AnyValManifest: 1,
-  O: 1,
-  s_reflect_Manifest: 1,
-  s_reflect_ClassTag: 1,
-  s_reflect_ClassManifestDeprecatedApis: 1,
-  s_reflect_OptManifest: 1,
-  Ljava_io_Serializable: 1,
-  s_Equals: 1
-});
-$c_s_reflect_ManifestFactory$ShortManifest$.prototype.$classData = $d_s_reflect_ManifestFactory$ShortManifest$;
-let $n_s_reflect_ManifestFactory$ShortManifest$ = (void 0);
-function $m_s_reflect_ManifestFactory$ShortManifest$() {
-  if ((!$n_s_reflect_ManifestFactory$ShortManifest$)) {
-    $n_s_reflect_ManifestFactory$ShortManifest$ = new $c_s_reflect_ManifestFactory$ShortManifest$()
-  };
-  return $n_s_reflect_ManifestFactory$ShortManifest$
-}
-class $c_s_reflect_ManifestFactory$UnitManifest$ extends $c_s_reflect_ManifestFactory$UnitManifest {
-  constructor() {
-    super();
-    this.s_reflect_AnyValManifest__f_toString = "Unit";
-    this.s_reflect_AnyValManifest__f_hashCode = $systemIdentityHashCode(this)
-  };
-}
-const $d_s_reflect_ManifestFactory$UnitManifest$ = new $TypeData().initClass({
-  s_reflect_ManifestFactory$UnitManifest$: 0
-}, false, "scala.reflect.ManifestFactory$UnitManifest$", {
-  s_reflect_ManifestFactory$UnitManifest$: 1,
-  s_reflect_ManifestFactory$UnitManifest: 1,
-  s_reflect_AnyValManifest: 1,
-  O: 1,
-  s_reflect_Manifest: 1,
-  s_reflect_ClassTag: 1,
-  s_reflect_ClassManifestDeprecatedApis: 1,
-  s_reflect_OptManifest: 1,
-  Ljava_io_Serializable: 1,
-  s_Equals: 1
-});
-$c_s_reflect_ManifestFactory$UnitManifest$.prototype.$classData = $d_s_reflect_ManifestFactory$UnitManifest$;
-let $n_s_reflect_ManifestFactory$UnitManifest$ = (void 0);
-function $m_s_reflect_ManifestFactory$UnitManifest$() {
-  if ((!$n_s_reflect_ManifestFactory$UnitManifest$)) {
-    $n_s_reflect_ManifestFactory$UnitManifest$ = new $c_s_reflect_ManifestFactory$UnitManifest$()
-  };
-  return $n_s_reflect_ManifestFactory$UnitManifest$
 }
 const $f_sc_Seq__equals__O__Z = (function($thiz, o) {
   if (($thiz === o)) {
@@ -17386,6 +17360,18 @@ const $d_sc_View$Drop = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_sc_View$Drop.prototype.$classData = $d_sc_View$Drop;
+const $ct_sc_View$Map__sc_IterableOps__F1__ = (function($thiz, underlying, f) {
+  $thiz.sc_View$Map__f_underlying = underlying;
+  $thiz.sc_View$Map__f_f = f;
+  return $thiz
+});
+class $c_sc_View$Map extends $c_sc_AbstractView {
+  constructor() {
+    super();
+    this.sc_View$Map__f_underlying = null;
+    this.sc_View$Map__f_f = null
+  };
+}
 class $c_s_math_Numeric$ByteIsIntegral$ extends $c_O {
   sign__O__O(x) {
     const x$1 = $uB(x);
@@ -17507,6 +17493,54 @@ function $m_s_math_Numeric$CharIsIntegral$() {
     $n_s_math_Numeric$CharIsIntegral$ = new $c_s_math_Numeric$CharIsIntegral$()
   };
   return $n_s_math_Numeric$CharIsIntegral$
+}
+class $c_s_math_Numeric$DoubleIsFractional$ extends $c_O {
+  fromInt__I__O(x) {
+    return x
+  };
+  times__O__O__O(x, y) {
+    const x$1 = $uD(x);
+    const y$1 = $uD(y);
+    return $f_s_math_Numeric$DoubleIsFractional__times__D__D__D(this, x$1, y$1)
+  };
+  minus__O__O__O(x, y) {
+    const x$1 = $uD(x);
+    const y$1 = $uD(y);
+    return $f_s_math_Numeric$DoubleIsFractional__minus__D__D__D(this, x$1, y$1)
+  };
+  plus__O__O__O(x, y) {
+    const x$1 = $uD(x);
+    const y$1 = $uD(y);
+    return $f_s_math_Numeric$DoubleIsFractional__plus__D__D__D(this, x$1, y$1)
+  };
+  compare__O__O__I(x, y) {
+    const x$1 = $uD(x);
+    const y$1 = $uD(y);
+    return $m_jl_Double$().compare__D__D__I(x$1, y$1)
+  };
+}
+const $d_s_math_Numeric$DoubleIsFractional$ = new $TypeData().initClass({
+  s_math_Numeric$DoubleIsFractional$: 0
+}, false, "scala.math.Numeric$DoubleIsFractional$", {
+  s_math_Numeric$DoubleIsFractional$: 1,
+  O: 1,
+  s_math_Numeric$DoubleIsFractional: 1,
+  s_math_Fractional: 1,
+  s_math_Numeric: 1,
+  s_math_Ordering: 1,
+  ju_Comparator: 1,
+  s_math_PartialOrdering: 1,
+  s_math_Equiv: 1,
+  Ljava_io_Serializable: 1,
+  s_math_Ordering$Double$IeeeOrdering: 1
+});
+$c_s_math_Numeric$DoubleIsFractional$.prototype.$classData = $d_s_math_Numeric$DoubleIsFractional$;
+let $n_s_math_Numeric$DoubleIsFractional$ = (void 0);
+function $m_s_math_Numeric$DoubleIsFractional$() {
+  if ((!$n_s_math_Numeric$DoubleIsFractional$)) {
+    $n_s_math_Numeric$DoubleIsFractional$ = new $c_s_math_Numeric$DoubleIsFractional$()
+  };
+  return $n_s_math_Numeric$DoubleIsFractional$
 }
 class $c_s_math_Numeric$IntIsIntegral$ extends $c_O {
   sign__O__O(x) {
@@ -17769,8 +17803,17 @@ class $c_Lorg_scalajs_dom_ext_EasySeq extends $c_O {
   exists__F1__Z(p) {
     return $f_sc_IterableOnceOps__exists__F1__Z(this, p)
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
+  copyToArray__O__I__I(xs, start) {
+    return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  toArray__s_reflect_ClassTag__O(evidence$2) {
+    return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2)
   };
   knownSize__I() {
     return (-1)
@@ -18115,7 +18158,7 @@ class $c_s_concurrent_impl_Promise$Transformation extends $c_s_concurrent_impl_P
           break
         }
         default: {
-          resolvedResult = new $c_s_util_Failure(new $c_jl_IllegalStateException(("BUG: encountered transformation promise with illegal type: " + this.s_concurrent_impl_Promise$Transformation__f__xform)))
+          resolvedResult = new $c_s_util_Failure($ct_jl_IllegalStateException__T__(new $c_jl_IllegalStateException(), ("BUG: encountered transformation promise with illegal type: " + this.s_concurrent_impl_Promise$Transformation__f__xform)))
         }
       };
       if ((resolvedResult !== null)) {
@@ -18292,6 +18335,32 @@ const $d_sc_SeqView$Id = new $TypeData().initClass({
   sc_SeqOps: 1
 });
 $c_sc_SeqView$Id.prototype.$classData = $d_sc_SeqView$Id;
+const $ct_sc_SeqView$Map__sc_SeqOps__F1__ = (function($thiz, underlying, f) {
+  $thiz.sc_SeqView$Map__f_underlying = underlying;
+  $thiz.sc_SeqView$Map__f_f = f;
+  $ct_sc_View$Map__sc_IterableOps__F1__($thiz, underlying, f);
+  return $thiz
+});
+class $c_sc_SeqView$Map extends $c_sc_View$Map {
+  constructor() {
+    super();
+    this.sc_SeqView$Map__f_underlying = null;
+    this.sc_SeqView$Map__f_f = null
+  };
+  indexWhere__F1__I__I(p, from) {
+    const this$1 = new $c_sc_IndexedSeqView$IndexedSeqViewIterator(this);
+    return $f_sc_Iterator__indexWhere__F1__I__I(this$1, p, from)
+  };
+  isEmpty__Z() {
+    return $f_sc_SeqOps__isEmpty__Z(this)
+  };
+  apply__I__O(idx) {
+    return this.sc_SeqView$Map__f_f.apply__O__O(this.sc_SeqView$Map__f_underlying.apply__I__O(idx))
+  };
+  length__I() {
+    return this.sc_SeqView$Map__f_underlying.length__I()
+  };
+}
 function $is_sci_Seq(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.sci_Seq)))
 }
@@ -18436,6 +18505,50 @@ const $d_sc_IndexedSeqView$Id = new $TypeData().initClass({
   sc_IndexedSeqOps: 1
 });
 $c_sc_IndexedSeqView$Id.prototype.$classData = $d_sc_IndexedSeqView$Id;
+class $c_sc_IndexedSeqView$Map extends $c_sc_SeqView$Map {
+  constructor(underlying, f) {
+    super();
+    $ct_sc_SeqView$Map__sc_SeqOps__F1__(this, underlying, f)
+  };
+  iterator__sc_Iterator() {
+    return new $c_sc_IndexedSeqView$IndexedSeqViewIterator(this)
+  };
+  stringPrefix__T() {
+    return "IndexedSeqView"
+  };
+  lengthCompare__I__I(len) {
+    const x = this.length__I();
+    return ((x === len) ? 0 : ((x < len) ? (-1) : 1))
+  };
+  knownSize__I() {
+    return this.length__I()
+  };
+  drop__I__O(n) {
+    return new $c_sc_IndexedSeqView$Drop(this, n)
+  };
+}
+const $d_sc_IndexedSeqView$Map = new $TypeData().initClass({
+  sc_IndexedSeqView$Map: 0
+}, false, "scala.collection.IndexedSeqView$Map", {
+  sc_IndexedSeqView$Map: 1,
+  sc_SeqView$Map: 1,
+  sc_View$Map: 1,
+  sc_AbstractView: 1,
+  sc_AbstractIterable: 1,
+  O: 1,
+  sc_Iterable: 1,
+  sc_IterableOnce: 1,
+  sc_IterableOps: 1,
+  sc_IterableOnceOps: 1,
+  sc_IterableFactoryDefaults: 1,
+  sc_View: 1,
+  Ljava_io_Serializable: 1,
+  sc_SeqView: 1,
+  sc_SeqOps: 1,
+  sc_IndexedSeqView: 1,
+  sc_IndexedSeqOps: 1
+});
+$c_sc_IndexedSeqView$Map.prototype.$classData = $d_sc_IndexedSeqView$Map;
 class $c_sci_AbstractSeq extends $c_sc_AbstractSeq {
 }
 class $c_scm_ArrayBufferView extends $c_sc_AbstractIndexedSeqView {
@@ -19550,6 +19663,20 @@ const $p_sci_LazyList__scala$collection$immutable$LazyList$$state$lzycompute__sc
   };
   return $thiz.sci_LazyList__f_scala$collection$immutable$LazyList$$state
 });
+const $p_sci_LazyList__mapImpl__F1__sci_LazyList = (function($thiz, f) {
+  $m_sci_LazyList$();
+  const state = new $c_sjsr_AnonFunction0(((this$1, f$1) => (() => {
+    if (this$1.isEmpty__Z()) {
+      return $m_sci_LazyList$State$Empty$()
+    } else {
+      $m_sci_LazyList$();
+      const hd = f$1.apply__O__O(this$1.scala$collection$immutable$LazyList$$state__sci_LazyList$State().head__O());
+      const tl = $p_sci_LazyList__mapImpl__F1__sci_LazyList(this$1.scala$collection$immutable$LazyList$$state__sci_LazyList$State().tail__sci_LazyList(), f$1);
+      return new $c_sci_LazyList$State$Cons(hd, tl)
+    }
+  }))($thiz, f));
+  return new $c_sci_LazyList(state)
+});
 const $p_sci_LazyList__addStringNoForce__jl_StringBuilder__T__T__T__jl_StringBuilder = (function($thiz, b, start, sep, end) {
   b.jl_StringBuilder__f_java$lang$StringBuilder$$content = (("" + b.jl_StringBuilder__f_java$lang$StringBuilder$$content) + start);
   if ((!$thiz.sci_LazyList__f_scala$collection$immutable$LazyList$$stateEvaluated)) {
@@ -19724,6 +19851,25 @@ class $c_sci_LazyList extends $c_sci_AbstractSeq {
   equals__O__Z(that) {
     return ((this === that) || $f_sc_Seq__equals__O__Z(this, that))
   };
+  reduceLeft__F2__O(f) {
+    if (this.isEmpty__Z()) {
+      throw $ct_jl_UnsupportedOperationException__T__(new $c_jl_UnsupportedOperationException(), "empty.reduceLeft")
+    } else {
+      let reducedRes = this.scala$collection$immutable$LazyList$$state__sci_LazyList$State().head__O();
+      let left = this.scala$collection$immutable$LazyList$$state__sci_LazyList$State().tail__sci_LazyList();
+      while ((!left.isEmpty__Z())) {
+        const $$x1 = reducedRes;
+        const this$1 = left;
+        reducedRes = f.apply__O__O__O($$x1, this$1.scala$collection$immutable$LazyList$$state__sci_LazyList$State().head__O());
+        const this$2 = left;
+        left = this$2.scala$collection$immutable$LazyList$$state__sci_LazyList$State().tail__sci_LazyList()
+      };
+      return reducedRes
+    }
+  };
+  map__F1__sci_LazyList(f) {
+    return ((this.sci_LazyList__f_scala$collection$immutable$LazyList$$stateEvaluated && this.isEmpty__Z()) ? $m_sci_LazyList$().sci_LazyList$__f__empty : $p_sci_LazyList__mapImpl__F1__sci_LazyList(this, f))
+  };
   drop__I__sci_LazyList(n) {
     return ((n <= 0) ? this : ((this.sci_LazyList__f_scala$collection$immutable$LazyList$$stateEvaluated && this.isEmpty__Z()) ? $m_sci_LazyList$().sci_LazyList$__f__empty : $m_sci_LazyList$().scala$collection$immutable$LazyList$$dropImpl__sci_LazyList__I__sci_LazyList(this, n)))
   };
@@ -19745,6 +19891,9 @@ class $c_sci_LazyList extends $c_sci_AbstractSeq {
   };
   drop__I__O(n) {
     return this.drop__I__sci_LazyList(n)
+  };
+  map__F1__O(f) {
+    return this.map__F1__sci_LazyList(f)
   };
   tail__O() {
     return this.scala$collection$immutable$LazyList$$state__sci_LazyList$State().tail__sci_LazyList()
@@ -19898,6 +20047,28 @@ class $c_sci_Stream extends $c_sci_AbstractSeq {
   equals__O__Z(that) {
     return ((this === that) || $f_sc_Seq__equals__O__Z(this, that))
   };
+  reduceLeft__F2__O(f) {
+    if (this.isEmpty__Z()) {
+      throw $ct_jl_UnsupportedOperationException__T__(new $c_jl_UnsupportedOperationException(), "empty.reduceLeft")
+    } else {
+      let reducedRes = this.head__O();
+      let left = $as_sci_Stream(this.tail__O());
+      while ((!left.isEmpty__Z())) {
+        reducedRes = f.apply__O__O__O(reducedRes, left.head__O());
+        left = $as_sci_Stream(left.tail__O())
+      };
+      return reducedRes
+    }
+  };
+  map__F1__sci_Stream(f) {
+    if (this.isEmpty__Z()) {
+      return $m_sci_Stream$Empty$()
+    } else {
+      const hd = f.apply__O__O(this.head__O());
+      const tl = new $c_sjsr_AnonFunction0(((this$2, f$1) => (() => $as_sci_Stream(this$2.tail__O()).map__F1__sci_Stream(f$1)))(this, f));
+      return new $c_sci_Stream$Cons(hd, tl)
+    }
+  };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(sb, start, sep, end) {
     this.force__sci_Stream();
     $p_sci_Stream__addStringNoForce__jl_StringBuilder__T__T__T__jl_StringBuilder(this, sb.scm_StringBuilder__f_underlying, start, sep, end);
@@ -19913,6 +20084,9 @@ class $c_sci_Stream extends $c_sci_AbstractSeq {
   isDefinedAt__O__Z(x) {
     const x$1 = $uI(x);
     return $f_sc_LinearSeqOps__isDefinedAt__I__Z(this, x$1)
+  };
+  map__F1__O(f) {
+    return this.map__F1__sci_Stream(f)
   };
   iterableFactory__sc_IterableFactory() {
     return $m_sci_Stream$()
@@ -19946,6 +20120,9 @@ class $c_sci_WrappedString extends $c_sci_AbstractSeq {
   drop__I__O(n) {
     return $f_sc_IndexedSeqOps__drop__I__O(this, n)
   };
+  map__F1__O(f) {
+    return $f_sc_IndexedSeqOps__map__F1__O(this, f)
+  };
   lengthCompare__I__I(len) {
     const this$1 = this.sci_WrappedString__f_scala$collection$immutable$WrappedString$$self;
     const x = $uI(this$1.length);
@@ -19961,6 +20138,26 @@ class $c_sci_WrappedString extends $c_sci_AbstractSeq {
   };
   toString__T() {
     return this.sci_WrappedString__f_scala$collection$immutable$WrappedString$$self
+  };
+  copyToArray__O__I__I(xs, start) {
+    const this$1 = this.sci_WrappedString__f_scala$collection$immutable$WrappedString$$self;
+    return this.copyToArray__O__I__I__I(xs, start, $uI(this$1.length))
+  };
+  copyToArray__O__I__I__I(xs, start, len) {
+    if ($isArrayOf_C(xs, 1)) {
+      const x2 = $asArrayOf_C(xs, 1);
+      const this$1 = this.sci_WrappedString__f_scala$collection$immutable$WrappedString$$self;
+      const srcLen = $uI(this$1.length);
+      const destLen = x2.u.length;
+      const x = ((len < srcLen) ? len : srcLen);
+      const y = ((destLen - start) | 0);
+      const x$1 = ((x < y) ? x : y);
+      const copied = ((x$1 > 0) ? x$1 : 0);
+      $f_T__getChars__I__I__AC__I__V(this.sci_WrappedString__f_scala$collection$immutable$WrappedString$$self, 0, copied, x2, start);
+      return copied
+    } else {
+      return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len)
+    }
   };
   sameElements__sc_IterableOnce__Z(o) {
     if ((o instanceof $c_sci_WrappedString)) {
@@ -20046,6 +20243,9 @@ class $c_sjsr_WrappedVarArgs extends $c_O {
     this.sjsr_WrappedVarArgs__f_scala$scalajs$runtime$WrappedVarArgs$$array = null;
     this.sjsr_WrappedVarArgs__f_scala$scalajs$runtime$WrappedVarArgs$$array = array
   };
+  map__F1__O(f) {
+    return $f_sc_StrictOptimizedIterableOps__map__F1__O(this, f)
+  };
   canEqual__O__Z(that) {
     return $f_sci_IndexedSeq__canEqual__O__Z(this, that)
   };
@@ -20099,8 +20299,17 @@ class $c_sjsr_WrappedVarArgs extends $c_O {
   exists__F1__Z(p) {
     return $f_sc_IterableOnceOps__exists__F1__Z(this, p)
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
+  copyToArray__O__I__I(xs, start) {
+    return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
+  };
+  toArray__s_reflect_ClassTag__O(evidence$2) {
+    return $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, evidence$2)
   };
   length__I() {
     return $uI(this.sjsr_WrappedVarArgs__f_scala$scalajs$runtime$WrappedVarArgs$$array.length)
@@ -20492,6 +20701,9 @@ class $c_sci_NumericRange extends $c_sci_AbstractSeq {
     this.sci_NumericRange__f_scala$collection$immutable$NumericRange$$num = null;
     this.sci_NumericRange__f_bitmap$0 = 0
   };
+  map__F1__O(f) {
+    return $f_sc_StrictOptimizedIterableOps__map__F1__O(this, f)
+  };
   canEqual__O__Z(that) {
     return $f_sci_IndexedSeq__canEqual__O__Z(this, that)
   };
@@ -20698,72 +20910,6 @@ const $d_sci_NumericRange$Inclusive = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_sci_NumericRange$Inclusive.prototype.$classData = $d_sci_NumericRange$Inclusive;
-class $c_scm_ArraySeq extends $c_scm_AbstractSeq {
-  stringPrefix__T() {
-    return "IndexedSeq"
-  };
-  drop__I__O(n) {
-    return $f_sc_IndexedSeqOps__drop__I__O(this, n)
-  };
-  lengthCompare__I__I(len) {
-    const x = this.length__I();
-    return ((x === len) ? 0 : ((x < len) ? (-1) : 1))
-  };
-  knownSize__I() {
-    return this.length__I()
-  };
-  fromSpecific__sc_IterableOnce__scm_ArraySeq(coll) {
-    const evidence$1 = this.elemTag__s_reflect_ClassTag();
-    let capacity = 0;
-    let size = 0;
-    let jsElems = null;
-    const elementClass = evidence$1.runtimeClass__jl_Class();
-    capacity = 0;
-    size = 0;
-    const isCharArrayBuilder = (elementClass === $d_C.getClassOf());
-    jsElems = [];
-    const s = coll.knownSize__I();
-    const it = coll.iterator__sc_Iterator();
-    while (it.hasNext__Z()) {
-      const elem = it.next__O();
-      const unboxedElem = (isCharArrayBuilder ? $uC(elem) : ((elem === null) ? elementClass.jl_Class__f_data.zero : elem));
-      jsElems.push(unboxedElem)
-    };
-    const $$x1 = $m_scm_ArraySeq$();
-    const elemRuntimeClass = ((elementClass === $d_V.getClassOf()) ? $d_jl_Void.getClassOf() : (((elementClass === $d_sr_Null$.getClassOf()) || (elementClass === $d_sr_Nothing$.getClassOf())) ? $d_O.getClassOf() : elementClass));
-    return $$x1.make__O__scm_ArraySeq($makeNativeArrayWrapper(elemRuntimeClass.jl_Class__f_data.getArrayOf(), jsElems))
-  };
-  className__T() {
-    return "ArraySeq"
-  };
-  equals__O__Z(other) {
-    if ((other instanceof $c_scm_ArraySeq)) {
-      const x2 = $as_scm_ArraySeq(other);
-      if (($m_sr_ScalaRunTime$().array_length__O__I(this.array__O()) !== $m_sr_ScalaRunTime$().array_length__O__I(x2.array__O()))) {
-        return false
-      }
-    };
-    return $f_sc_Seq__equals__O__Z(this, other)
-  };
-  fromSpecific__sc_IterableOnce__O(coll) {
-    return this.fromSpecific__sc_IterableOnce__scm_ArraySeq(coll)
-  };
-  fromSpecific__sc_IterableOnce__sc_IterableOps(coll) {
-    return this.fromSpecific__sc_IterableOnce__scm_ArraySeq(coll)
-  };
-  iterableFactory__sc_IterableFactory() {
-    return $m_scm_ArraySeq$().scm_ArraySeq$__f_untagged
-  };
-}
-function $as_scm_ArraySeq(obj) {
-  return (((obj instanceof $c_scm_ArraySeq) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.mutable.ArraySeq"))
-}
-function $isArrayOf_scm_ArraySeq(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.scm_ArraySeq)))
-}
-function $asArrayOf_scm_ArraySeq(obj, depth) {
-  return (($isArrayOf_scm_ArraySeq(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.ArraySeq;", depth))
-}
 const $p_sci_List__loop$2__I__sci_List__I__I = (function($thiz, i, xs, len$1) {
   while (true) {
     if ((i === len$1)) {
@@ -20818,6 +20964,22 @@ class $c_sci_List extends $c_sci_AbstractSeq {
   isEmpty__Z() {
     return (this === $m_sci_Nil$())
   };
+  map__F1__sci_List(f) {
+    if ((this === $m_sci_Nil$())) {
+      return $m_sci_Nil$()
+    } else {
+      const h = new $c_sci_$colon$colon(f.apply__O__O(this.head__O()), $m_sci_Nil$());
+      let t = h;
+      let rest = $as_sci_List(this.tail__O());
+      while ((rest !== $m_sci_Nil$())) {
+        const nx = new $c_sci_$colon$colon(f.apply__O__O(rest.head__O()), $m_sci_Nil$());
+        t.sci_$colon$colon__f_next = nx;
+        t = nx;
+        rest = $as_sci_List(rest.tail__O())
+      };
+      return h
+    }
+  };
   length__I() {
     let these = this;
     let len = 0;
@@ -20871,6 +21033,9 @@ class $c_sci_List extends $c_sci_AbstractSeq {
   };
   drop__I__O(n) {
     return $p_sc_StrictOptimizedLinearSeqOps__loop$2__I__sc_LinearSeq__sc_LinearSeq(this, n, this)
+  };
+  map__F1__O(f) {
+    return this.map__F1__sci_List(f)
   };
   iterableFactory__sc_IterableFactory() {
     return $m_sci_List$()
@@ -21057,6 +21222,9 @@ class $c_sci_Vector extends $c_sci_AbstractSeq {
     this.sci_Vector__f_endIndex = endIndex;
     this.sci_Vector__f_focus = focus;
     this.sci_Vector__f_dirty = false
+  };
+  map__F1__O(f) {
+    return $f_sc_StrictOptimizedIterableOps__map__F1__O(this, f)
   };
   canEqual__O__Z(that) {
     return $f_sci_IndexedSeq__canEqual__O__Z(this, that)
@@ -21319,250 +21487,7 @@ const $d_sci_Vector = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_sci_Vector.prototype.$classData = $d_sci_Vector;
-class $c_scm_ArraySeq$ofBoolean extends $c_scm_ArraySeq {
-  constructor(array) {
-    super();
-    this.scm_ArraySeq$ofBoolean__f_array = null;
-    this.scm_ArraySeq$ofBoolean__f_array = array
-  };
-  length__I() {
-    return this.scm_ArraySeq$ofBoolean__f_array.u.length
-  };
-  hashCode__I() {
-    const this$1 = $m_s_util_hashing_MurmurHash3$();
-    const a = this.scm_ArraySeq$ofBoolean__f_array;
-    return this$1.arrayHash$mZc$sp__AZ__I__I(a, this$1.s_util_hashing_MurmurHash3$__f_seqSeed)
-  };
-  equals__O__Z(that) {
-    if ((that instanceof $c_scm_ArraySeq$ofBoolean)) {
-      const x2 = $as_scm_ArraySeq$ofBoolean(that);
-      const a = this.scm_ArraySeq$ofBoolean__f_array;
-      const b = x2.scm_ArraySeq$ofBoolean__f_array;
-      return $m_ju_Arrays$().equals__AZ__AZ__Z(a, b)
-    } else {
-      return $c_scm_ArraySeq.prototype.equals__O__Z.call(this, that)
-    }
-  };
-  iterator__sc_Iterator() {
-    return new $c_sc_ArrayOps$ArrayIterator$mcZ$sp(this.scm_ArraySeq$ofBoolean__f_array)
-  };
-  apply$mcZI$sp__I__Z(index) {
-    return this.scm_ArraySeq$ofBoolean__f_array.get(index)
-  };
-  apply__O__O(v1) {
-    const index = $uI(v1);
-    return this.apply$mcZI$sp__I__Z(index)
-  };
-  apply__I__O(i) {
-    return this.apply$mcZI$sp__I__Z(i)
-  };
-  elemTag__s_reflect_ClassTag() {
-    return $m_s_reflect_ManifestFactory$BooleanManifest$()
-  };
-  array__O() {
-    return this.scm_ArraySeq$ofBoolean__f_array
-  };
-}
-function $as_scm_ArraySeq$ofBoolean(obj) {
-  return (((obj instanceof $c_scm_ArraySeq$ofBoolean) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.mutable.ArraySeq$ofBoolean"))
-}
-function $isArrayOf_scm_ArraySeq$ofBoolean(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.scm_ArraySeq$ofBoolean)))
-}
-function $asArrayOf_scm_ArraySeq$ofBoolean(obj, depth) {
-  return (($isArrayOf_scm_ArraySeq$ofBoolean(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.ArraySeq$ofBoolean;", depth))
-}
-const $d_scm_ArraySeq$ofBoolean = new $TypeData().initClass({
-  scm_ArraySeq$ofBoolean: 0
-}, false, "scala.collection.mutable.ArraySeq$ofBoolean", {
-  scm_ArraySeq$ofBoolean: 1,
-  scm_ArraySeq: 1,
-  scm_AbstractSeq: 1,
-  sc_AbstractSeq: 1,
-  sc_AbstractIterable: 1,
-  O: 1,
-  sc_Iterable: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOps: 1,
-  sc_IterableOnceOps: 1,
-  sc_IterableFactoryDefaults: 1,
-  sc_Seq: 1,
-  s_PartialFunction: 1,
-  F1: 1,
-  sc_SeqOps: 1,
-  s_Equals: 1,
-  scm_Seq: 1,
-  scm_Iterable: 1,
-  scm_SeqOps: 1,
-  scm_Cloneable: 1,
-  jl_Cloneable: 1,
-  scm_IndexedSeq: 1,
-  sc_IndexedSeq: 1,
-  sc_IndexedSeqOps: 1,
-  scm_IndexedSeqOps: 1,
-  sc_StrictOptimizedSeqOps: 1,
-  sc_StrictOptimizedIterableOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArraySeq$ofBoolean.prototype.$classData = $d_scm_ArraySeq$ofBoolean;
-class $c_scm_ArraySeq$ofByte extends $c_scm_ArraySeq {
-  constructor(array) {
-    super();
-    this.scm_ArraySeq$ofByte__f_array = null;
-    this.scm_ArraySeq$ofByte__f_array = array
-  };
-  length__I() {
-    return this.scm_ArraySeq$ofByte__f_array.u.length
-  };
-  apply__I__B(index) {
-    return this.scm_ArraySeq$ofByte__f_array.get(index)
-  };
-  hashCode__I() {
-    const this$1 = $m_s_util_hashing_MurmurHash3$();
-    const a = this.scm_ArraySeq$ofByte__f_array;
-    return this$1.arrayHash$mBc$sp__AB__I__I(a, this$1.s_util_hashing_MurmurHash3$__f_seqSeed)
-  };
-  equals__O__Z(that) {
-    if ((that instanceof $c_scm_ArraySeq$ofByte)) {
-      const x2 = $as_scm_ArraySeq$ofByte(that);
-      const a = this.scm_ArraySeq$ofByte__f_array;
-      const b = x2.scm_ArraySeq$ofByte__f_array;
-      return $m_ju_Arrays$().equals__AB__AB__Z(a, b)
-    } else {
-      return $c_scm_ArraySeq.prototype.equals__O__Z.call(this, that)
-    }
-  };
-  iterator__sc_Iterator() {
-    return new $c_sc_ArrayOps$ArrayIterator$mcB$sp(this.scm_ArraySeq$ofByte__f_array)
-  };
-  apply__O__O(v1) {
-    return this.apply__I__B($uI(v1))
-  };
-  apply__I__O(i) {
-    return this.apply__I__B(i)
-  };
-  elemTag__s_reflect_ClassTag() {
-    return $m_s_reflect_ManifestFactory$ByteManifest$()
-  };
-  array__O() {
-    return this.scm_ArraySeq$ofByte__f_array
-  };
-}
-function $as_scm_ArraySeq$ofByte(obj) {
-  return (((obj instanceof $c_scm_ArraySeq$ofByte) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.mutable.ArraySeq$ofByte"))
-}
-function $isArrayOf_scm_ArraySeq$ofByte(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.scm_ArraySeq$ofByte)))
-}
-function $asArrayOf_scm_ArraySeq$ofByte(obj, depth) {
-  return (($isArrayOf_scm_ArraySeq$ofByte(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.ArraySeq$ofByte;", depth))
-}
-const $d_scm_ArraySeq$ofByte = new $TypeData().initClass({
-  scm_ArraySeq$ofByte: 0
-}, false, "scala.collection.mutable.ArraySeq$ofByte", {
-  scm_ArraySeq$ofByte: 1,
-  scm_ArraySeq: 1,
-  scm_AbstractSeq: 1,
-  sc_AbstractSeq: 1,
-  sc_AbstractIterable: 1,
-  O: 1,
-  sc_Iterable: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOps: 1,
-  sc_IterableOnceOps: 1,
-  sc_IterableFactoryDefaults: 1,
-  sc_Seq: 1,
-  s_PartialFunction: 1,
-  F1: 1,
-  sc_SeqOps: 1,
-  s_Equals: 1,
-  scm_Seq: 1,
-  scm_Iterable: 1,
-  scm_SeqOps: 1,
-  scm_Cloneable: 1,
-  jl_Cloneable: 1,
-  scm_IndexedSeq: 1,
-  sc_IndexedSeq: 1,
-  sc_IndexedSeqOps: 1,
-  scm_IndexedSeqOps: 1,
-  sc_StrictOptimizedSeqOps: 1,
-  sc_StrictOptimizedIterableOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArraySeq$ofByte.prototype.$classData = $d_scm_ArraySeq$ofByte;
-class $c_scm_ArraySeq$ofChar extends $c_scm_ArraySeq {
-  constructor(array) {
-    super();
-    this.scm_ArraySeq$ofChar__f_array = null;
-    this.scm_ArraySeq$ofChar__f_array = array
-  };
-  length__I() {
-    return this.scm_ArraySeq$ofChar__f_array.u.length
-  };
-  apply__I__C(index) {
-    return this.scm_ArraySeq$ofChar__f_array.get(index)
-  };
-  hashCode__I() {
-    const this$1 = $m_s_util_hashing_MurmurHash3$();
-    const a = this.scm_ArraySeq$ofChar__f_array;
-    return this$1.arrayHash$mCc$sp__AC__I__I(a, this$1.s_util_hashing_MurmurHash3$__f_seqSeed)
-  };
-  equals__O__Z(that) {
-    if ((that instanceof $c_scm_ArraySeq$ofChar)) {
-      const x2 = $as_scm_ArraySeq$ofChar(that);
-      const a = this.scm_ArraySeq$ofChar__f_array;
-      const b = x2.scm_ArraySeq$ofChar__f_array;
-      return $m_ju_Arrays$().equals__AC__AC__Z(a, b)
-    } else {
-      return $c_scm_ArraySeq.prototype.equals__O__Z.call(this, that)
-    }
-  };
-  iterator__sc_Iterator() {
-    return new $c_sc_ArrayOps$ArrayIterator$mcC$sp(this.scm_ArraySeq$ofChar__f_array)
-  };
-  addString__scm_StringBuilder__T__T__T__scm_StringBuilder(sb, start, sep, end) {
-    const jsb = sb.scm_StringBuilder__f_underlying;
-    if (($uI(start.length) !== 0)) {
-      jsb.jl_StringBuilder__f_java$lang$StringBuilder$$content = (("" + jsb.jl_StringBuilder__f_java$lang$StringBuilder$$content) + start)
-    };
-    const len = this.scm_ArraySeq$ofChar__f_array.u.length;
-    if ((len !== 0)) {
-      if ((sep === "")) {
-        jsb.append__AC__jl_StringBuilder(this.scm_ArraySeq$ofChar__f_array)
-      } else {
-        jsb.length__I();
-        $uI(end.length);
-        $uI(sep.length);
-        const c = this.scm_ArraySeq$ofChar__f_array.get(0);
-        const str = $as_T(String.fromCharCode(c));
-        jsb.jl_StringBuilder__f_java$lang$StringBuilder$$content = (("" + jsb.jl_StringBuilder__f_java$lang$StringBuilder$$content) + str);
-        let i = 1;
-        while ((i < len)) {
-          jsb.jl_StringBuilder__f_java$lang$StringBuilder$$content = (("" + jsb.jl_StringBuilder__f_java$lang$StringBuilder$$content) + sep);
-          const c$1 = this.scm_ArraySeq$ofChar__f_array.get(i);
-          const str$1 = $as_T(String.fromCharCode(c$1));
-          jsb.jl_StringBuilder__f_java$lang$StringBuilder$$content = (("" + jsb.jl_StringBuilder__f_java$lang$StringBuilder$$content) + str$1);
-          i = ((1 + i) | 0)
-        }
-      }
-    };
-    if (($uI(end.length) !== 0)) {
-      jsb.jl_StringBuilder__f_java$lang$StringBuilder$$content = (("" + jsb.jl_StringBuilder__f_java$lang$StringBuilder$$content) + end)
-    };
-    return sb
-  };
-  apply__O__O(v1) {
-    return $bC(this.apply__I__C($uI(v1)))
-  };
-  apply__I__O(i) {
-    return $bC(this.apply__I__C(i))
-  };
-  elemTag__s_reflect_ClassTag() {
-    return $m_s_reflect_ManifestFactory$CharManifest$()
-  };
-  array__O() {
-    return this.scm_ArraySeq$ofChar__f_array
-  };
+class $c_scm_ArraySeq$ofChar {
 }
 function $as_scm_ArraySeq$ofChar(obj) {
   return (((obj instanceof $c_scm_ArraySeq$ofChar) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.mutable.ArraySeq$ofChar"))
@@ -21573,643 +21498,6 @@ function $isArrayOf_scm_ArraySeq$ofChar(obj, depth) {
 function $asArrayOf_scm_ArraySeq$ofChar(obj, depth) {
   return (($isArrayOf_scm_ArraySeq$ofChar(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.ArraySeq$ofChar;", depth))
 }
-const $d_scm_ArraySeq$ofChar = new $TypeData().initClass({
-  scm_ArraySeq$ofChar: 0
-}, false, "scala.collection.mutable.ArraySeq$ofChar", {
-  scm_ArraySeq$ofChar: 1,
-  scm_ArraySeq: 1,
-  scm_AbstractSeq: 1,
-  sc_AbstractSeq: 1,
-  sc_AbstractIterable: 1,
-  O: 1,
-  sc_Iterable: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOps: 1,
-  sc_IterableOnceOps: 1,
-  sc_IterableFactoryDefaults: 1,
-  sc_Seq: 1,
-  s_PartialFunction: 1,
-  F1: 1,
-  sc_SeqOps: 1,
-  s_Equals: 1,
-  scm_Seq: 1,
-  scm_Iterable: 1,
-  scm_SeqOps: 1,
-  scm_Cloneable: 1,
-  jl_Cloneable: 1,
-  scm_IndexedSeq: 1,
-  sc_IndexedSeq: 1,
-  sc_IndexedSeqOps: 1,
-  scm_IndexedSeqOps: 1,
-  sc_StrictOptimizedSeqOps: 1,
-  sc_StrictOptimizedIterableOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArraySeq$ofChar.prototype.$classData = $d_scm_ArraySeq$ofChar;
-class $c_scm_ArraySeq$ofDouble extends $c_scm_ArraySeq {
-  constructor(array) {
-    super();
-    this.scm_ArraySeq$ofDouble__f_array = null;
-    this.scm_ArraySeq$ofDouble__f_array = array
-  };
-  length__I() {
-    return this.scm_ArraySeq$ofDouble__f_array.u.length
-  };
-  hashCode__I() {
-    const this$1 = $m_s_util_hashing_MurmurHash3$();
-    const a = this.scm_ArraySeq$ofDouble__f_array;
-    return this$1.arrayHash$mDc$sp__AD__I__I(a, this$1.s_util_hashing_MurmurHash3$__f_seqSeed)
-  };
-  equals__O__Z(that) {
-    if ((that instanceof $c_scm_ArraySeq$ofDouble)) {
-      const x2 = $as_scm_ArraySeq$ofDouble(that);
-      const a = this.scm_ArraySeq$ofDouble__f_array;
-      const b = x2.scm_ArraySeq$ofDouble__f_array;
-      return $m_ju_Arrays$().equals__AD__AD__Z(a, b)
-    } else {
-      return $c_scm_ArraySeq.prototype.equals__O__Z.call(this, that)
-    }
-  };
-  iterator__sc_Iterator() {
-    return new $c_sc_ArrayOps$ArrayIterator$mcD$sp(this.scm_ArraySeq$ofDouble__f_array)
-  };
-  apply$mcDI$sp__I__D(index) {
-    return this.scm_ArraySeq$ofDouble__f_array.get(index)
-  };
-  apply__O__O(v1) {
-    const index = $uI(v1);
-    return this.apply$mcDI$sp__I__D(index)
-  };
-  apply__I__O(i) {
-    return this.apply$mcDI$sp__I__D(i)
-  };
-  elemTag__s_reflect_ClassTag() {
-    return $m_s_reflect_ManifestFactory$DoubleManifest$()
-  };
-  array__O() {
-    return this.scm_ArraySeq$ofDouble__f_array
-  };
-}
-function $as_scm_ArraySeq$ofDouble(obj) {
-  return (((obj instanceof $c_scm_ArraySeq$ofDouble) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.mutable.ArraySeq$ofDouble"))
-}
-function $isArrayOf_scm_ArraySeq$ofDouble(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.scm_ArraySeq$ofDouble)))
-}
-function $asArrayOf_scm_ArraySeq$ofDouble(obj, depth) {
-  return (($isArrayOf_scm_ArraySeq$ofDouble(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.ArraySeq$ofDouble;", depth))
-}
-const $d_scm_ArraySeq$ofDouble = new $TypeData().initClass({
-  scm_ArraySeq$ofDouble: 0
-}, false, "scala.collection.mutable.ArraySeq$ofDouble", {
-  scm_ArraySeq$ofDouble: 1,
-  scm_ArraySeq: 1,
-  scm_AbstractSeq: 1,
-  sc_AbstractSeq: 1,
-  sc_AbstractIterable: 1,
-  O: 1,
-  sc_Iterable: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOps: 1,
-  sc_IterableOnceOps: 1,
-  sc_IterableFactoryDefaults: 1,
-  sc_Seq: 1,
-  s_PartialFunction: 1,
-  F1: 1,
-  sc_SeqOps: 1,
-  s_Equals: 1,
-  scm_Seq: 1,
-  scm_Iterable: 1,
-  scm_SeqOps: 1,
-  scm_Cloneable: 1,
-  jl_Cloneable: 1,
-  scm_IndexedSeq: 1,
-  sc_IndexedSeq: 1,
-  sc_IndexedSeqOps: 1,
-  scm_IndexedSeqOps: 1,
-  sc_StrictOptimizedSeqOps: 1,
-  sc_StrictOptimizedIterableOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArraySeq$ofDouble.prototype.$classData = $d_scm_ArraySeq$ofDouble;
-class $c_scm_ArraySeq$ofFloat extends $c_scm_ArraySeq {
-  constructor(array) {
-    super();
-    this.scm_ArraySeq$ofFloat__f_array = null;
-    this.scm_ArraySeq$ofFloat__f_array = array
-  };
-  length__I() {
-    return this.scm_ArraySeq$ofFloat__f_array.u.length
-  };
-  hashCode__I() {
-    const this$1 = $m_s_util_hashing_MurmurHash3$();
-    const a = this.scm_ArraySeq$ofFloat__f_array;
-    return this$1.arrayHash$mFc$sp__AF__I__I(a, this$1.s_util_hashing_MurmurHash3$__f_seqSeed)
-  };
-  equals__O__Z(that) {
-    if ((that instanceof $c_scm_ArraySeq$ofFloat)) {
-      const x2 = $as_scm_ArraySeq$ofFloat(that);
-      const a = this.scm_ArraySeq$ofFloat__f_array;
-      const b = x2.scm_ArraySeq$ofFloat__f_array;
-      return $m_ju_Arrays$().equals__AF__AF__Z(a, b)
-    } else {
-      return $c_scm_ArraySeq.prototype.equals__O__Z.call(this, that)
-    }
-  };
-  iterator__sc_Iterator() {
-    return new $c_sc_ArrayOps$ArrayIterator$mcF$sp(this.scm_ArraySeq$ofFloat__f_array)
-  };
-  apply$mcFI$sp__I__F(index) {
-    return this.scm_ArraySeq$ofFloat__f_array.get(index)
-  };
-  apply__O__O(v1) {
-    const index = $uI(v1);
-    return this.apply$mcFI$sp__I__F(index)
-  };
-  apply__I__O(i) {
-    return this.apply$mcFI$sp__I__F(i)
-  };
-  elemTag__s_reflect_ClassTag() {
-    return $m_s_reflect_ManifestFactory$FloatManifest$()
-  };
-  array__O() {
-    return this.scm_ArraySeq$ofFloat__f_array
-  };
-}
-function $as_scm_ArraySeq$ofFloat(obj) {
-  return (((obj instanceof $c_scm_ArraySeq$ofFloat) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.mutable.ArraySeq$ofFloat"))
-}
-function $isArrayOf_scm_ArraySeq$ofFloat(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.scm_ArraySeq$ofFloat)))
-}
-function $asArrayOf_scm_ArraySeq$ofFloat(obj, depth) {
-  return (($isArrayOf_scm_ArraySeq$ofFloat(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.ArraySeq$ofFloat;", depth))
-}
-const $d_scm_ArraySeq$ofFloat = new $TypeData().initClass({
-  scm_ArraySeq$ofFloat: 0
-}, false, "scala.collection.mutable.ArraySeq$ofFloat", {
-  scm_ArraySeq$ofFloat: 1,
-  scm_ArraySeq: 1,
-  scm_AbstractSeq: 1,
-  sc_AbstractSeq: 1,
-  sc_AbstractIterable: 1,
-  O: 1,
-  sc_Iterable: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOps: 1,
-  sc_IterableOnceOps: 1,
-  sc_IterableFactoryDefaults: 1,
-  sc_Seq: 1,
-  s_PartialFunction: 1,
-  F1: 1,
-  sc_SeqOps: 1,
-  s_Equals: 1,
-  scm_Seq: 1,
-  scm_Iterable: 1,
-  scm_SeqOps: 1,
-  scm_Cloneable: 1,
-  jl_Cloneable: 1,
-  scm_IndexedSeq: 1,
-  sc_IndexedSeq: 1,
-  sc_IndexedSeqOps: 1,
-  scm_IndexedSeqOps: 1,
-  sc_StrictOptimizedSeqOps: 1,
-  sc_StrictOptimizedIterableOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArraySeq$ofFloat.prototype.$classData = $d_scm_ArraySeq$ofFloat;
-class $c_scm_ArraySeq$ofInt extends $c_scm_ArraySeq {
-  constructor(array) {
-    super();
-    this.scm_ArraySeq$ofInt__f_array = null;
-    this.scm_ArraySeq$ofInt__f_array = array
-  };
-  length__I() {
-    return this.scm_ArraySeq$ofInt__f_array.u.length
-  };
-  hashCode__I() {
-    const this$1 = $m_s_util_hashing_MurmurHash3$();
-    const a = this.scm_ArraySeq$ofInt__f_array;
-    return this$1.arrayHash$mIc$sp__AI__I__I(a, this$1.s_util_hashing_MurmurHash3$__f_seqSeed)
-  };
-  equals__O__Z(that) {
-    if ((that instanceof $c_scm_ArraySeq$ofInt)) {
-      const x2 = $as_scm_ArraySeq$ofInt(that);
-      const a = this.scm_ArraySeq$ofInt__f_array;
-      const b = x2.scm_ArraySeq$ofInt__f_array;
-      return $m_ju_Arrays$().equals__AI__AI__Z(a, b)
-    } else {
-      return $c_scm_ArraySeq.prototype.equals__O__Z.call(this, that)
-    }
-  };
-  iterator__sc_Iterator() {
-    return new $c_sc_ArrayOps$ArrayIterator$mcI$sp(this.scm_ArraySeq$ofInt__f_array)
-  };
-  apply$mcII$sp__I__I(index) {
-    return this.scm_ArraySeq$ofInt__f_array.get(index)
-  };
-  apply__O__O(v1) {
-    const index = $uI(v1);
-    return this.apply$mcII$sp__I__I(index)
-  };
-  apply__I__O(i) {
-    return this.apply$mcII$sp__I__I(i)
-  };
-  elemTag__s_reflect_ClassTag() {
-    return $m_s_reflect_ManifestFactory$IntManifest$()
-  };
-  array__O() {
-    return this.scm_ArraySeq$ofInt__f_array
-  };
-}
-function $as_scm_ArraySeq$ofInt(obj) {
-  return (((obj instanceof $c_scm_ArraySeq$ofInt) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.mutable.ArraySeq$ofInt"))
-}
-function $isArrayOf_scm_ArraySeq$ofInt(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.scm_ArraySeq$ofInt)))
-}
-function $asArrayOf_scm_ArraySeq$ofInt(obj, depth) {
-  return (($isArrayOf_scm_ArraySeq$ofInt(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.ArraySeq$ofInt;", depth))
-}
-const $d_scm_ArraySeq$ofInt = new $TypeData().initClass({
-  scm_ArraySeq$ofInt: 0
-}, false, "scala.collection.mutable.ArraySeq$ofInt", {
-  scm_ArraySeq$ofInt: 1,
-  scm_ArraySeq: 1,
-  scm_AbstractSeq: 1,
-  sc_AbstractSeq: 1,
-  sc_AbstractIterable: 1,
-  O: 1,
-  sc_Iterable: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOps: 1,
-  sc_IterableOnceOps: 1,
-  sc_IterableFactoryDefaults: 1,
-  sc_Seq: 1,
-  s_PartialFunction: 1,
-  F1: 1,
-  sc_SeqOps: 1,
-  s_Equals: 1,
-  scm_Seq: 1,
-  scm_Iterable: 1,
-  scm_SeqOps: 1,
-  scm_Cloneable: 1,
-  jl_Cloneable: 1,
-  scm_IndexedSeq: 1,
-  sc_IndexedSeq: 1,
-  sc_IndexedSeqOps: 1,
-  scm_IndexedSeqOps: 1,
-  sc_StrictOptimizedSeqOps: 1,
-  sc_StrictOptimizedIterableOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArraySeq$ofInt.prototype.$classData = $d_scm_ArraySeq$ofInt;
-class $c_scm_ArraySeq$ofLong extends $c_scm_ArraySeq {
-  constructor(array) {
-    super();
-    this.scm_ArraySeq$ofLong__f_array = null;
-    this.scm_ArraySeq$ofLong__f_array = array
-  };
-  length__I() {
-    return this.scm_ArraySeq$ofLong__f_array.u.length
-  };
-  hashCode__I() {
-    const this$1 = $m_s_util_hashing_MurmurHash3$();
-    const a = this.scm_ArraySeq$ofLong__f_array;
-    return this$1.arrayHash$mJc$sp__AJ__I__I(a, this$1.s_util_hashing_MurmurHash3$__f_seqSeed)
-  };
-  equals__O__Z(that) {
-    if ((that instanceof $c_scm_ArraySeq$ofLong)) {
-      const x2 = $as_scm_ArraySeq$ofLong(that);
-      const a = this.scm_ArraySeq$ofLong__f_array;
-      const b = x2.scm_ArraySeq$ofLong__f_array;
-      return $m_ju_Arrays$().equals__AJ__AJ__Z(a, b)
-    } else {
-      return $c_scm_ArraySeq.prototype.equals__O__Z.call(this, that)
-    }
-  };
-  iterator__sc_Iterator() {
-    return new $c_sc_ArrayOps$ArrayIterator$mcJ$sp(this.scm_ArraySeq$ofLong__f_array)
-  };
-  apply$mcJI$sp__I__J(index) {
-    return this.scm_ArraySeq$ofLong__f_array.get(index)
-  };
-  apply__O__O(v1) {
-    const index = $uI(v1);
-    return this.apply$mcJI$sp__I__J(index)
-  };
-  apply__I__O(i) {
-    return this.apply$mcJI$sp__I__J(i)
-  };
-  elemTag__s_reflect_ClassTag() {
-    return $m_s_reflect_ManifestFactory$LongManifest$()
-  };
-  array__O() {
-    return this.scm_ArraySeq$ofLong__f_array
-  };
-}
-function $as_scm_ArraySeq$ofLong(obj) {
-  return (((obj instanceof $c_scm_ArraySeq$ofLong) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.mutable.ArraySeq$ofLong"))
-}
-function $isArrayOf_scm_ArraySeq$ofLong(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.scm_ArraySeq$ofLong)))
-}
-function $asArrayOf_scm_ArraySeq$ofLong(obj, depth) {
-  return (($isArrayOf_scm_ArraySeq$ofLong(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.ArraySeq$ofLong;", depth))
-}
-const $d_scm_ArraySeq$ofLong = new $TypeData().initClass({
-  scm_ArraySeq$ofLong: 0
-}, false, "scala.collection.mutable.ArraySeq$ofLong", {
-  scm_ArraySeq$ofLong: 1,
-  scm_ArraySeq: 1,
-  scm_AbstractSeq: 1,
-  sc_AbstractSeq: 1,
-  sc_AbstractIterable: 1,
-  O: 1,
-  sc_Iterable: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOps: 1,
-  sc_IterableOnceOps: 1,
-  sc_IterableFactoryDefaults: 1,
-  sc_Seq: 1,
-  s_PartialFunction: 1,
-  F1: 1,
-  sc_SeqOps: 1,
-  s_Equals: 1,
-  scm_Seq: 1,
-  scm_Iterable: 1,
-  scm_SeqOps: 1,
-  scm_Cloneable: 1,
-  jl_Cloneable: 1,
-  scm_IndexedSeq: 1,
-  sc_IndexedSeq: 1,
-  sc_IndexedSeqOps: 1,
-  scm_IndexedSeqOps: 1,
-  sc_StrictOptimizedSeqOps: 1,
-  sc_StrictOptimizedIterableOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArraySeq$ofLong.prototype.$classData = $d_scm_ArraySeq$ofLong;
-const $p_scm_ArraySeq$ofRef__elemTag$lzycompute__s_reflect_ClassTag = (function($thiz) {
-  if ((!$thiz.scm_ArraySeq$ofRef__f_bitmap$0)) {
-    const $$x1 = $m_s_reflect_ClassTag$();
-    const this$1 = $thiz.scm_ArraySeq$ofRef__f_array;
-    $thiz.scm_ArraySeq$ofRef__f_elemTag = $$x1.apply__jl_Class__s_reflect_ClassTag($objectGetClass(this$1).getComponentType__jl_Class());
-    $thiz.scm_ArraySeq$ofRef__f_bitmap$0 = true
-  };
-  return $thiz.scm_ArraySeq$ofRef__f_elemTag
-});
-class $c_scm_ArraySeq$ofRef extends $c_scm_ArraySeq {
-  constructor(array) {
-    super();
-    this.scm_ArraySeq$ofRef__f_elemTag = null;
-    this.scm_ArraySeq$ofRef__f_array = null;
-    this.scm_ArraySeq$ofRef__f_bitmap$0 = false;
-    this.scm_ArraySeq$ofRef__f_array = array
-  };
-  elemTag__s_reflect_ClassTag() {
-    return ((!this.scm_ArraySeq$ofRef__f_bitmap$0) ? $p_scm_ArraySeq$ofRef__elemTag$lzycompute__s_reflect_ClassTag(this) : this.scm_ArraySeq$ofRef__f_elemTag)
-  };
-  length__I() {
-    return this.scm_ArraySeq$ofRef__f_array.u.length
-  };
-  apply__I__O(index) {
-    return this.scm_ArraySeq$ofRef__f_array.get(index)
-  };
-  hashCode__I() {
-    const this$1 = $m_s_util_hashing_MurmurHash3$();
-    const a = this.scm_ArraySeq$ofRef__f_array;
-    return this$1.arrayHash__O__I__I(a, this$1.s_util_hashing_MurmurHash3$__f_seqSeed)
-  };
-  equals__O__Z(that) {
-    if ((that instanceof $c_scm_ArraySeq$ofRef)) {
-      const x2 = $as_scm_ArraySeq$ofRef(that);
-      return $m_s_Array$().equals__AO__AO__Z(this.scm_ArraySeq$ofRef__f_array, x2.scm_ArraySeq$ofRef__f_array)
-    } else {
-      return $c_scm_ArraySeq.prototype.equals__O__Z.call(this, that)
-    }
-  };
-  iterator__sc_Iterator() {
-    return $ct_sc_ArrayOps$ArrayIterator__O__(new $c_sc_ArrayOps$ArrayIterator(), this.scm_ArraySeq$ofRef__f_array)
-  };
-  apply__O__O(v1) {
-    return this.apply__I__O($uI(v1))
-  };
-  array__O() {
-    return this.scm_ArraySeq$ofRef__f_array
-  };
-}
-function $as_scm_ArraySeq$ofRef(obj) {
-  return (((obj instanceof $c_scm_ArraySeq$ofRef) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.mutable.ArraySeq$ofRef"))
-}
-function $isArrayOf_scm_ArraySeq$ofRef(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.scm_ArraySeq$ofRef)))
-}
-function $asArrayOf_scm_ArraySeq$ofRef(obj, depth) {
-  return (($isArrayOf_scm_ArraySeq$ofRef(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.ArraySeq$ofRef;", depth))
-}
-const $d_scm_ArraySeq$ofRef = new $TypeData().initClass({
-  scm_ArraySeq$ofRef: 0
-}, false, "scala.collection.mutable.ArraySeq$ofRef", {
-  scm_ArraySeq$ofRef: 1,
-  scm_ArraySeq: 1,
-  scm_AbstractSeq: 1,
-  sc_AbstractSeq: 1,
-  sc_AbstractIterable: 1,
-  O: 1,
-  sc_Iterable: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOps: 1,
-  sc_IterableOnceOps: 1,
-  sc_IterableFactoryDefaults: 1,
-  sc_Seq: 1,
-  s_PartialFunction: 1,
-  F1: 1,
-  sc_SeqOps: 1,
-  s_Equals: 1,
-  scm_Seq: 1,
-  scm_Iterable: 1,
-  scm_SeqOps: 1,
-  scm_Cloneable: 1,
-  jl_Cloneable: 1,
-  scm_IndexedSeq: 1,
-  sc_IndexedSeq: 1,
-  sc_IndexedSeqOps: 1,
-  scm_IndexedSeqOps: 1,
-  sc_StrictOptimizedSeqOps: 1,
-  sc_StrictOptimizedIterableOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArraySeq$ofRef.prototype.$classData = $d_scm_ArraySeq$ofRef;
-class $c_scm_ArraySeq$ofShort extends $c_scm_ArraySeq {
-  constructor(array) {
-    super();
-    this.scm_ArraySeq$ofShort__f_array = null;
-    this.scm_ArraySeq$ofShort__f_array = array
-  };
-  length__I() {
-    return this.scm_ArraySeq$ofShort__f_array.u.length
-  };
-  apply__I__S(index) {
-    return this.scm_ArraySeq$ofShort__f_array.get(index)
-  };
-  hashCode__I() {
-    const this$1 = $m_s_util_hashing_MurmurHash3$();
-    const a = this.scm_ArraySeq$ofShort__f_array;
-    return this$1.arrayHash$mSc$sp__AS__I__I(a, this$1.s_util_hashing_MurmurHash3$__f_seqSeed)
-  };
-  equals__O__Z(that) {
-    if ((that instanceof $c_scm_ArraySeq$ofShort)) {
-      const x2 = $as_scm_ArraySeq$ofShort(that);
-      const a = this.scm_ArraySeq$ofShort__f_array;
-      const b = x2.scm_ArraySeq$ofShort__f_array;
-      return $m_ju_Arrays$().equals__AS__AS__Z(a, b)
-    } else {
-      return $c_scm_ArraySeq.prototype.equals__O__Z.call(this, that)
-    }
-  };
-  iterator__sc_Iterator() {
-    return new $c_sc_ArrayOps$ArrayIterator$mcS$sp(this.scm_ArraySeq$ofShort__f_array)
-  };
-  apply__O__O(v1) {
-    return this.apply__I__S($uI(v1))
-  };
-  apply__I__O(i) {
-    return this.apply__I__S(i)
-  };
-  elemTag__s_reflect_ClassTag() {
-    return $m_s_reflect_ManifestFactory$ShortManifest$()
-  };
-  array__O() {
-    return this.scm_ArraySeq$ofShort__f_array
-  };
-}
-function $as_scm_ArraySeq$ofShort(obj) {
-  return (((obj instanceof $c_scm_ArraySeq$ofShort) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.mutable.ArraySeq$ofShort"))
-}
-function $isArrayOf_scm_ArraySeq$ofShort(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.scm_ArraySeq$ofShort)))
-}
-function $asArrayOf_scm_ArraySeq$ofShort(obj, depth) {
-  return (($isArrayOf_scm_ArraySeq$ofShort(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.ArraySeq$ofShort;", depth))
-}
-const $d_scm_ArraySeq$ofShort = new $TypeData().initClass({
-  scm_ArraySeq$ofShort: 0
-}, false, "scala.collection.mutable.ArraySeq$ofShort", {
-  scm_ArraySeq$ofShort: 1,
-  scm_ArraySeq: 1,
-  scm_AbstractSeq: 1,
-  sc_AbstractSeq: 1,
-  sc_AbstractIterable: 1,
-  O: 1,
-  sc_Iterable: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOps: 1,
-  sc_IterableOnceOps: 1,
-  sc_IterableFactoryDefaults: 1,
-  sc_Seq: 1,
-  s_PartialFunction: 1,
-  F1: 1,
-  sc_SeqOps: 1,
-  s_Equals: 1,
-  scm_Seq: 1,
-  scm_Iterable: 1,
-  scm_SeqOps: 1,
-  scm_Cloneable: 1,
-  jl_Cloneable: 1,
-  scm_IndexedSeq: 1,
-  sc_IndexedSeq: 1,
-  sc_IndexedSeqOps: 1,
-  scm_IndexedSeqOps: 1,
-  sc_StrictOptimizedSeqOps: 1,
-  sc_StrictOptimizedIterableOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArraySeq$ofShort.prototype.$classData = $d_scm_ArraySeq$ofShort;
-class $c_scm_ArraySeq$ofUnit extends $c_scm_ArraySeq {
-  constructor(array) {
-    super();
-    this.scm_ArraySeq$ofUnit__f_array = null;
-    this.scm_ArraySeq$ofUnit__f_array = array
-  };
-  length__I() {
-    return this.scm_ArraySeq$ofUnit__f_array.u.length
-  };
-  hashCode__I() {
-    const this$1 = $m_s_util_hashing_MurmurHash3$();
-    const a = this.scm_ArraySeq$ofUnit__f_array;
-    return this$1.arrayHash$mVc$sp__Ajl_Void__I__I(a, this$1.s_util_hashing_MurmurHash3$__f_seqSeed)
-  };
-  equals__O__Z(that) {
-    if ((that instanceof $c_scm_ArraySeq$ofUnit)) {
-      const x2 = $as_scm_ArraySeq$ofUnit(that);
-      return (this.scm_ArraySeq$ofUnit__f_array.u.length === x2.scm_ArraySeq$ofUnit__f_array.u.length)
-    } else {
-      return $c_scm_ArraySeq.prototype.equals__O__Z.call(this, that)
-    }
-  };
-  iterator__sc_Iterator() {
-    return new $c_sc_ArrayOps$ArrayIterator$mcV$sp(this.scm_ArraySeq$ofUnit__f_array)
-  };
-  apply$mcVI$sp__I__V(index) {
-    this.scm_ArraySeq$ofUnit__f_array.get(index)
-  };
-  apply__O__O(v1) {
-    const index = $uI(v1);
-    this.apply$mcVI$sp__I__V(index)
-  };
-  apply__I__O(i) {
-    this.apply$mcVI$sp__I__V(i)
-  };
-  elemTag__s_reflect_ClassTag() {
-    return $m_s_reflect_ManifestFactory$UnitManifest$()
-  };
-  array__O() {
-    return this.scm_ArraySeq$ofUnit__f_array
-  };
-}
-function $as_scm_ArraySeq$ofUnit(obj) {
-  return (((obj instanceof $c_scm_ArraySeq$ofUnit) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.mutable.ArraySeq$ofUnit"))
-}
-function $isArrayOf_scm_ArraySeq$ofUnit(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.scm_ArraySeq$ofUnit)))
-}
-function $asArrayOf_scm_ArraySeq$ofUnit(obj, depth) {
-  return (($isArrayOf_scm_ArraySeq$ofUnit(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.mutable.ArraySeq$ofUnit;", depth))
-}
-const $d_scm_ArraySeq$ofUnit = new $TypeData().initClass({
-  scm_ArraySeq$ofUnit: 0
-}, false, "scala.collection.mutable.ArraySeq$ofUnit", {
-  scm_ArraySeq$ofUnit: 1,
-  scm_ArraySeq: 1,
-  scm_AbstractSeq: 1,
-  sc_AbstractSeq: 1,
-  sc_AbstractIterable: 1,
-  O: 1,
-  sc_Iterable: 1,
-  sc_IterableOnce: 1,
-  sc_IterableOps: 1,
-  sc_IterableOnceOps: 1,
-  sc_IterableFactoryDefaults: 1,
-  sc_Seq: 1,
-  s_PartialFunction: 1,
-  F1: 1,
-  sc_SeqOps: 1,
-  s_Equals: 1,
-  scm_Seq: 1,
-  scm_Iterable: 1,
-  scm_SeqOps: 1,
-  scm_Cloneable: 1,
-  jl_Cloneable: 1,
-  scm_IndexedSeq: 1,
-  sc_IndexedSeq: 1,
-  sc_IndexedSeqOps: 1,
-  scm_IndexedSeqOps: 1,
-  sc_StrictOptimizedSeqOps: 1,
-  sc_StrictOptimizedIterableOps: 1,
-  Ljava_io_Serializable: 1
-});
-$c_scm_ArraySeq$ofUnit.prototype.$classData = $d_scm_ArraySeq$ofUnit;
 class $c_scm_HashMap {
 }
 function $as_scm_HashMap(obj) {
@@ -22423,6 +21711,16 @@ class $c_scm_StringBuilder extends $c_scm_AbstractSeq {
   toString__T() {
     return this.scm_StringBuilder__f_underlying.jl_StringBuilder__f_java$lang$StringBuilder$$content
   };
+  toArray__s_reflect_ClassTag__O(ct) {
+    const x1 = ct.runtimeClass__jl_Class();
+    return ((x1 === $d_C.getClassOf()) ? this.toCharArray__AC() : $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O(this, ct))
+  };
+  toCharArray__AC() {
+    const len = this.scm_StringBuilder__f_underlying.length__I();
+    const arr = $newArrayObject($d_C.getArrayOf(), [len]);
+    this.scm_StringBuilder__f_underlying.getChars__I__I__AC__I__V(0, len, arr, 0);
+    return arr
+  };
   appendAll__sc_IterableOnce__scm_StringBuilder(xs) {
     if ((xs instanceof $c_sci_WrappedString)) {
       const x2 = $as_sci_WrappedString(xs);
@@ -22432,7 +21730,7 @@ class $c_scm_StringBuilder extends $c_scm_AbstractSeq {
       this$3.jl_StringBuilder__f_java$lang$StringBuilder$$content = (("" + this$3.jl_StringBuilder__f_java$lang$StringBuilder$$content) + str)
     } else if ((xs instanceof $c_scm_ArraySeq$ofChar)) {
       const x3 = $as_scm_ArraySeq$ofChar(xs);
-      this.scm_StringBuilder__f_underlying.append__AC__jl_StringBuilder(x3.scm_ArraySeq$ofChar__f_array)
+      this.scm_StringBuilder__f_underlying.append__AC__jl_StringBuilder(x3.array__AC())
     } else if ((xs instanceof $c_scm_StringBuilder)) {
       const x4 = $as_scm_StringBuilder(xs);
       const this$4 = this.scm_StringBuilder__f_underlying;
@@ -22747,6 +22045,9 @@ class $c_scm_ArrayBuffer extends $c_scm_AbstractBuffer {
   stringPrefix__T() {
     return "ArrayBuffer"
   };
+  copyToArray__O__I__I(xs, start) {
+    return this.copyToArray__O__I__I__I(xs, start, this.scm_ArrayBuffer__f_size0)
+  };
   copyToArray__O__I__I__I(xs, start, len) {
     const srcLen = this.scm_ArrayBuffer__f_size0;
     const destLen = $m_sr_ScalaRunTime$().array_length__O__I(xs);
@@ -22932,12 +22233,15 @@ updateReceivingForm = (function() {
 updateDispatchingForm = (function() {
   $m_Ldummy$().updateDispatchingForm__V()
 });
+deleteDispatchingForm = (function() {
+  $m_Ldummy$().deleteDispatchingForm__V()
+});
 populateReceivingFormOnLoad = (function(arg) {
   const prep0 = $uI(arg);
   $m_Ldummy$().populateReceivingFormOnLoad__I__V(prep0)
 });
 addNewRowToItemsList = (function() {
-  return $m_Ldummy$().addNewRowToItemsList__Lorg_scalajs_dom_raw_Node()
+  $m_Ldummy$().addNewRowToItemsList__V()
 });
 propagatePersonArticleSelection = (function(arg, arg$2) {
   const prep0 = $as_T(arg);
@@ -22953,10 +22257,6 @@ submitDispatchingForm = (function() {
 });
 updateSummary = (function() {
   $m_Ldummy$().updateSummary__V()
-});
-populateDispatchingTable = (function(arg) {
-  const prep0 = $as_Ldummy$DispatchingForm(arg);
-  $m_Ldummy$().populateDispatchingTable__Ldummy$DispatchingForm__V(prep0)
 });
 fetchDispatchingForm = (function() {
   $m_Ldummy$().fetchDispatchingForm__V()
