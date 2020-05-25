@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./css/bootstrap-rtl.min.css">
 	<link rel="stylesheet" href="./css/persian-datepicker.css"/>
-
   <script src="./scripts/jquery.min.js"></script>
   <script src="./scripts/popper.min.js"></script>
   <script src="./scripts/bootstrap.min.js"></script>
@@ -76,14 +75,12 @@ display: inline;
 width: 100px;
   float: center;
 }
-   
-    
     </style>
 
 <script type="text/javascript">
   $(document).ready(function() {
     $(".persiandatepicker").pDatepicker({format: 'YYYY/MM/DD'});
-				fetchPeople();
+		fetchPeople();
   });
 
 
@@ -98,7 +95,6 @@ width: 100px;
   <a><button class="btn btn-primary bg-primary rounded-0 border-0" onclick="submitDispatchingForm()"><b>ثبت</b></button></a>
   <a href="DispatchingForm.html"><button class="btn btn-danger bg-danger rounded-0 border-0"><b>بازنشانی</b></button></a>
 </div>
-
 
 <div class="container">  
   <div class="row">
@@ -132,7 +128,7 @@ width: 100px;
 </datalist>
 <datalist id="nidno">
 </datalist>
- 
+
   <br />
   <div class="row">
     <span class="form-control col-1 border-0 rounded-0">صاحب کالا</span>
@@ -209,12 +205,12 @@ width: 100px;
     </div>
     <div id="itemslist"></div>
     <div class="row" lang="fa">
-      <span class="form-control col-4 rounded-0" lang="fa">جمع کل</span>
-      <span class="form-control col-1 rounded-0" id="qty_sum" lang="fa">۰</span>
-      <span class="form-control col-1 rounded-0" id="unit_sum" lang="fa">-</span>
-      <span class="form-control col-2 rounded-0" id="gw_sum" lang="fa">۰</span>
-      <span class="form-control col-2 rounded-0" id="pw_sum" lang="fa">۰</span>
-      <span class="form-control col-2 rounded-0" id="nw_sum" lang="fa">۰</span>
+      <span class="form-control col-4 rounded-0">جمع کل</span>
+      <span class="form-control col-1 rounded-0" id="qty_sum">۰</span>
+      <span class="form-control col-1 rounded-0" id="unit_sum">-</span>
+      <span class="form-control col-2 rounded-0" id="gw_sum">۰</span>
+      <span class="form-control col-2 rounded-0" id="pw_sum">۰</span>
+      <span class="form-control col-2 rounded-0" id="nw_sum">۰</span>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
@@ -83,9 +83,8 @@ width: 150px;
 <script type="text/javascript">
   $(document).ready(function() {
     $(".persiandatepicker").pDatepicker({format: 'YYYY/MM/DD'});
-		populateDataList();
-		populateDispatchingFormOnLoad();
-		updateSummary();
+		fetchPeople();
+		populateDispatchingFormOnLoad(1);
   });
 
 
@@ -96,9 +95,9 @@ width: 150px;
 <body>
 
 <div class="topnav">
-<a class="bg-success" href="../index.html"><b>خانه</b></a>
-  <a class="bg-primary" href="#home"><b>ثبت</b></a>
-  <a class="bg-danger" href="ReceivingForm.html"><b>بازنشانی</b></a>
+  <a href="../index.html"><button class="btn btn-success bg-success rounded-0 border-0"><b>خانه</b></button></a>
+  <a><button class="btn btn-primary bg-primary rounded-0 border-0" onclick="updateDispatchingForm()"><b>ثبت</b></button></a>
+  <a href="DispatchingUpdate.html"><button class="btn btn-danger bg-danger rounded-0 border-0"><b>بازنشانی</b></button></a>
 </div>
 
 
@@ -122,7 +121,7 @@ width: 150px;
   <br />
   <div class="row">
     <span class="form-control col-1 border-0 rounded-0">شماره</span>
-    <input type="number" class="form-control col-1 rounded-0" placeholder="شماره" min="1" max="9999" id="formno"/>
+    <input type="number" class="form-control col-1 rounded-0" placeholder="شماره" min="1" max="9999" id="formno" disabled/>
     <div class="col-8"></div>
     <span class="form-control border-0 col-1 rounded-0">تاریخ</span>
     <input type="text" class="form-control col-1 rounded-0 persiandatepicker p-0" id="dispatcheddate" style="text-align: center;">
