@@ -39,7 +39,7 @@
 }
 
 /* Navbar links */
-.topnav a {
+.topnav button {
   display: block;
   color: black;
   text-align: center;
@@ -49,20 +49,21 @@
 width: 100px;
 }
 
-.topnav a.bg-success {
+.topnav button.bg-success {
 	float: right;
 }
 
-.topnav a.bg-primary, .topnav a.bg-danger {
+.topnav button.bg-primary, .topnav button.bg-danger {
 	float: left;
 }
 
-.topnav a.warning {
-	float: center;
+.topnav button.bg-warning {
+	float: left;
 }
 
+
 /* Navbar links on mouse-over */
-.topnav a:hover {
+.topnav button:hover {
   background-color: #ccc;
   color: black;
 }
@@ -72,11 +73,9 @@ width: 100px;
 .topnav input {
 display: inline;
   height: 55px;
-width: 150px;
+width: 100px;
   float: center;
 }
-   
-    
     </style>
 
 
@@ -84,22 +83,18 @@ width: 150px;
   $(document).ready(function() {
     $(".persiandatepicker").pDatepicker({format: 'YYYY/MM/DD'});
 		fetchPeople();
-		populateDispatchingFormOnLoad(1);
+		populateDispatchingFormOnLoad(18);
   });
-
-
 </script>
 
     
 </head>
 <body>
-
 <div class="topnav">
   <a href="../index.html"><button class="btn btn-success bg-success rounded-0 border-0"><b>خانه</b></button></a>
   <a><button class="btn btn-primary bg-primary rounded-0 border-0" onclick="updateDispatchingForm()"><b>ثبت</b></button></a>
   <a href="DispatchingUpdate.html"><button class="btn btn-danger bg-danger rounded-0 border-0"><b>بازنشانی</b></button></a>
 </div>
-
 
 <div class="container">  
   <div class="row">

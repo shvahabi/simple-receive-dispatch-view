@@ -40,87 +40,40 @@ object dummy {
       }
       case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
     }
-    /*
-    Ajax.get(s"http://localhost:8080/receivedispatch/currentform") onComplete {
-      case Success(value) => {
-        val a = JSON.parse(value.responseText).asInstanceOf[Int]
-        val url: String = s"http://localhost:8080/receivedispatch/receipts/${a}"
-        Ajax.get(url) onComplete {
-          case Success(value) => {
-            val jsonEncodedForm: js.Dynamic = JSON.parse(value.responseText)
-            val receivingForm: ReceivingForm = receivingFormFromJson(jsonEncodedForm)
-            populateReceivingForm(receivingForm)
-          }
-          case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
-        }
-      }
-      case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
-    }
-
-     */
   }
 
 
-  @JSExportTopLevel("populateDispatchingTable")
   def populateDispatchingTable(fetchedForm: DispatchingForm) = {
     document.getElementById("formno").innerText = translateToPersian(fetchedForm.number.toString)
     document.getElementById("dispatcheddate").innerText = translateToPersian(fetchedForm.date.concat)
-    document.getElementById("goods_owner").innerText = fetchedForm.goodsOwner.toString
+    document.getElementById("goods_owner").innerText = fetchedForm.goodsOwner.firstName + " " + fetchedForm.goodsOwner.surName
     document.getElementById("draftdate").innerText = translateToPersian(fetchedForm.draftDate.concat)
     document.getElementById("draftno").innerText = fetchedForm.draftNumber
-    document.getElementById("draftowner").innerText = fetchedForm.draftOwner.toString
-    document.getElementById("partno").innerText = fetchedForm.partNumber.toString
-    document.getElementById("truckno").innerText = translateToPersian(fetchedForm.truck.concat)
-    document.getElementById("comments").innerText = fetchedForm.comments
-    document.getElementById("assignee").innerText = fetchedForm.assignee.toString
+    document.getElementById("draftowner").innerText = fetchedForm.draftOwner.firstName + " " + fetchedForm.draftOwner.surName
+    document.getElementById("partno").innerText = translateToPersian(fetchedForm.partNumber.toString)
+    document.getElementById("truckno").innerText = fetchedForm.truck.concat
+    document.getElementById("comments").innerText = "توضیحات: " + fetchedForm.comments
+    document.getElementById("assignee").innerText = fetchedForm.assignee.firstName + " " + fetchedForm.assignee.surName
 
-    document.getElementById("itemslist_grossweight_sum").innerText = 0.toString
-    document.getElementById("itemslist_packageweight_sum").innerText = 0.toString
-    document.getElementById("itemslist_netweight_sum").innerText = 0.toString
-    document.getElementById("itemslist_quantity_sum").innerText = 0.toString
+    itemsListPopulation(fetchedForm.itemsList)
 
-    /*
-    val itemsArray: Array[Item] = fetchedForm.itemsList.items.toArray[Item]
-    val consistentUnitOfMeasurement: Boolean = (itemsArray.toList.map(_.unitOfMeasurement) zip itemsArray.toList.map(x => itemsArray(0).unitOfMeasurement)).map(x => x._1 == x._2).reduceLeft(_ && _)
-
-    val itemsArray = selectedForm.itemsList.items.toArray[Item]
-    for(i <- 0 until itemsArray.length - 1) {
-      val anyItem = itemsArray(i)
-      document.getElementById(s"itemslist_description_${i}").innerText = anyItem.description
-      document.getElementById(s"itemslist_quantity_${i}").innerText = anyItem.quantity.toString
-      document.getElementById(s"itemslist_unitofmeasurement_${i}").innerText = anyItem.unitOfMeasurement
-      document.getElementById(s"itemslist_grossweight_${i}").innerText = anyItem.grossWeight.toString
-      document.getElementById(s"itemslist_packageweight_${i}").innerText = anyItem.packageWeight.toString
-      document.getElementById(s"itemslist_netweight_${i}").innerText = anyItem.netWeight.toString
-    }
-
-     */
+    document.getElementById("deletebutton").removeAttribute("disabled")
+    document.getElementById("editbutton").removeAttribute("disabled")
+    document.getElementById("printbutton").removeAttribute("disabled")
   }
 
 
-
-  def populateReceivingTable(fetchedForm: ReceivingForm): Unit = {
-    document.getElementById("formno").innerText = translateToPersian(fetchedForm.number.toString)
-    document.getElementById("receiveddate").innerText = translateToPersian(fetchedForm.date.concat)
-    document.getElementById("goods_owner").innerText = fetchedForm.goodsOwner.firstName + " " + fetchedForm.goodsOwner.surName
-    document.getElementById("billofladingno").innerText = fetchedForm.billOfLading
-    document.getElementById("partno").innerText = translateToPersian(fetchedForm.partNumber.toString)
-    document.getElementById("origin").innerText = fetchedForm.origin
-    document.getElementById("truckno").innerText = fetchedForm.truck.concat
-    document.getElementById("comments").innerText = fetchedForm.comments
-    document.getElementById("representative").innerText = fetchedForm.representative.firstName + " " + fetchedForm.representative.surName
-
-    document.getElementById("itemslist_grossweight_sum").innerText = 0.toString
-    document.getElementById("itemslist_packageweight_sum").innerText = 0.toString
-    document.getElementById("itemslist_netweight_sum").innerText = 0.toString
-    document.getElementById("itemslist_quantity_sum").innerText = 0.toString
-
-
-    val itemsArray: Array[Item] = fetchedForm.itemsList.items.toArray[Item]
-    val consistentUnitOfMeasurement: Boolean = (itemsArray.toList.map(_.unitOfMeasurement) zip itemsArray.toList.map(x => itemsArray(0).unitOfMeasurement)).map(x => x._1 == x._2).reduceLeft(_ && _)
-
-
-    for(i <- 1 until itemsArray.length + 1) {
+  def itemsListPopulation(itemsList: ItemsList): Unit = {
+    for(i <- 1 to 5) {
+      document.getElementById(s"itemslist_description_${i}").innerText = " "
+      document.getElementById(s"itemslist_quantity_${i}").innerText = " "
+      document.getElementById(s"itemslist_unitofmeasurement_${i}").innerText = " "
+      document.getElementById(s"itemslist_grossweight_${i}").innerText = " "
+      document.getElementById(s"itemslist_packageweight_${i}").innerText = " "
+      document.getElementById(s"itemslist_netweight_${i}").innerText = " "
+    }
+    val itemsArray: Array[Item] = itemsList.items.toArray[Item]
+    for(i <- 1 to itemsArray.length) {
       val anyItem = itemsArray(i - 1)
       document.getElementById(s"itemslist_description_${i}").innerText = anyItem.description
       document.getElementById(s"itemslist_quantity_${i}").innerText = translateToPersian(anyItem.quantity.toString)
@@ -128,61 +81,52 @@ object dummy {
       document.getElementById(s"itemslist_grossweight_${i}").innerText = translateToPersian(anyItem.grossWeight.toString)
       document.getElementById(s"itemslist_packageweight_${i}").innerText = translateToPersian(anyItem.packageWeight.toString)
       document.getElementById(s"itemslist_netweight_${i}").innerText = translateToPersian(anyItem.netWeight.toString)
-
-      if (consistentUnitOfMeasurement) document.getElementById("itemslist_quantity_sum").innerText = translateToPersian((translateToEnglish(document.getElementById("itemslist_quantity_sum").innerText).toDouble + anyItem.quantity).toString)
-
-      val sg = translateToEnglish(document.getElementById("itemslist_grossweight_sum").innerText).toDouble
-      val sp = translateToEnglish(document.getElementById("itemslist_packageweight_sum").innerText).toDouble
-      val sn = translateToEnglish(document.getElementById("itemslist_netweight_sum").innerText).toDouble
-      document.getElementById("itemslist_grossweight_sum").innerText = translateToPersian((sg + anyItem.grossWeight).toString)
-      document.getElementById("itemslist_packageweight_sum").innerText = translateToPersian((sp + anyItem.packageWeight).toString)
-      document.getElementById("itemslist_netweight_sum").innerText = translateToPersian((sn + anyItem.netWeight).toString)
     }
 
-    if (consistentUnitOfMeasurement) document.getElementById("itemslist_unitofmeasurement_sum").innerText = itemsArray(0).unitOfMeasurement
+    document.getElementById("itemslist_quantity_sum").innerText = " "
+    document.getElementById("itemslist_unitofmeasurement_sum").innerText = " "
+    document.getElementById("itemslist_grossweight_sum").innerText = "۰"
+    document.getElementById("itemslist_packageweight_sum").innerText = "۰"
+    document.getElementById("itemslist_netweight_sum").innerText = "۰"
+
+    document.getElementById("itemslist_quantity_sum").innerText = translateToPersian(itemsList.quantity.getOrElse("-").toString)
+    document.getElementById("itemslist_unitofmeasurement_sum").innerText = itemsList.unitOfMeasurement.getOrElse("-")
+    document.getElementById("itemslist_grossweight_sum").innerText = translateToPersian(itemsList.grossWeight.toString)
+    document.getElementById("itemslist_packageweight_sum").innerText = translateToPersian(itemsList.packageWeight.toString)
+    document.getElementById("itemslist_netweight_sum").innerText = translateToPersian(itemsList.netWeight.toString)
+  }
+
+
+  def populateReceivingTable(fetchedForm: ReceivingForm): Unit = {
+    document.getElementById("formno").innerText = translateToPersian(fetchedForm.number.toString)
+    document.getElementById("receiveddate").innerText = translateToPersian(fetchedForm.date.concat)
+    document.getElementById("goods_owner").innerText = fetchedForm.goodsOwner.firstName + " " + fetchedForm.goodsOwner.surName
+    document.getElementById("billofladingno").innerText = fetchedForm.billOfLading
+    document.getElementById("origin").innerText = fetchedForm.origin
+    document.getElementById("partno").innerText = translateToPersian(fetchedForm.partNumber.toString)
+    document.getElementById("truckno").innerText = fetchedForm.truck.concat
+    document.getElementById("comments").innerText = "توضیحات: " + fetchedForm.comments
+    document.getElementById("representative").innerText = fetchedForm.representative.firstName + " " + fetchedForm.representative.surName
+
+    itemsListPopulation(fetchedForm.itemsList)
 
     document.getElementById("deletebutton").removeAttribute("disabled")
     document.getElementById("editbutton").removeAttribute("disabled")
     document.getElementById("printbutton").removeAttribute("disabled")
-
-
-
-    /*
-    Ajax.get(s"http://localhost:8080/receivedispatch/currentform") onComplete {
-      case Success(value) => {
-        val a = JSON.parse(value.responseText).asInstanceOf[Int]
-        val url: String = s"http://localhost:8080/receivedispatch/currentform"
-        val data =
-          s"""{
-            |"Previous": ${a.toString},
-            |"Current": ${fetchedForm.number.toString}
-            |}
-            |""".stripMargin
-        Ajax.put(url, data) onComplete {
-          case Success(v) => println(v.responseText)
-          case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
-        }
-      }
-      case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
-    }
-
-     */
   }
-
 
 
   def populateDispatchingForm(dispatchingForm: DispatchingForm): Unit = {
     document.getElementById("formno").asInstanceOf[html.Input].value = dispatchingForm.number.toString
-
-    document.getElementById("dispatcheddate").asInstanceOf[html.Input].value = dispatchingForm.date.year + "/" + dispatchingForm.date.month + "/" + dispatchingForm.date.day
+    document.getElementById("dispatcheddate").asInstanceOf[html.Input].value = translateToPersian(dispatchingForm.date.concat)
     document.getElementById("goodsowner_firstname").asInstanceOf[html.Input].value = dispatchingForm.goodsOwner.firstName
     document.getElementById("goodsowner_lastname").asInstanceOf[html.Input].value = dispatchingForm.goodsOwner.surName
-    document.getElementById("goodsowner_nationalidno").asInstanceOf[html.Input].value = dispatchingForm.goodsOwner.nationalIDNo
+    document.getElementById("goodsowner_nationalidno").asInstanceOf[html.Input].value = translateToPersian(dispatchingForm.goodsOwner.nationalIDNo)
     document.getElementById("draftno").asInstanceOf[html.Input].value = dispatchingForm.draftNumber
     document.getElementById("draftowner_firstname").asInstanceOf[html.Input].value = dispatchingForm.draftOwner.firstName
     document.getElementById("draftowner_lastname").asInstanceOf[html.Input].value = dispatchingForm.draftOwner.surName
-    document.getElementById("draftowner_nationalidno").asInstanceOf[html.Input].value = dispatchingForm.draftOwner.nationalIDNo
-    document.getElementById("draftdate").asInstanceOf[html.Input].value = dispatchingForm.draftDate.year + "/" + dispatchingForm.draftDate.month + "/" + dispatchingForm.draftDate.day
+    document.getElementById("draftowner_nationalidno").asInstanceOf[html.Input].value = translateToPersian(dispatchingForm.draftOwner.nationalIDNo)
+    document.getElementById("draftdate").asInstanceOf[html.Input].value = translateToPersian(dispatchingForm.draftDate.concat)
     document.getElementById("partno").asInstanceOf[html.Input].value = dispatchingForm.partNumber.toString
     document.getElementById("truckno_state").asInstanceOf[html.Input].value = dispatchingForm.truck.state.toString
     document.getElementById("truckno_random").asInstanceOf[html.Input].value = dispatchingForm.truck.random.toString
@@ -193,18 +137,19 @@ object dummy {
 
     for(anyItem <- dispatchingForm.itemsList.items) {
       addNewRowToItemsList
-      document.getElementById(s"rownumber_${inquireNumberOfRows}").innerHTML = inquireNumberOfRows.toString
+      document.getElementById(s"rownumber_${inquireNumberOfRows}").innerHTML = translateToPersian(inquireNumberOfRows.toString)
       document.getElementById(s"itemslist_description_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.description
-      document.getElementById(s"itemslist_quantity_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.quantity.toString
+      document.getElementById(s"itemslist_quantity_${inquireNumberOfRows}").asInstanceOf[html.Input].value = translateToPersian(anyItem.quantity.toString)
       document.getElementById(s"itemslist_unitofmeasurement_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.unitOfMeasurement
-      document.getElementById(s"itemslist_grossweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.grossWeight.toString
-      document.getElementById(s"itemslist_packageweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.packageWeight.toString
-      document.getElementById(s"itemslist_netweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.netWeight.toString
+      document.getElementById(s"itemslist_grossweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = translateToPersian(anyItem.grossWeight.toString)
+      document.getElementById(s"itemslist_packageweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = translateToPersian(anyItem.packageWeight.toString)
+      document.getElementById(s"itemslist_netweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = translateToPersian(anyItem.netWeight.toString)
     }
     document.getElementById("comments").asInstanceOf[html.Input].value = dispatchingForm.comments
     document.getElementById("assignee_firstname").asInstanceOf[html.Input].value = dispatchingForm.assignee.firstName
     document.getElementById("assignee_lastname").asInstanceOf[html.Input].value = dispatchingForm.assignee.surName
-    document.getElementById("assignee_nationalidno").asInstanceOf[html.Input].value = dispatchingForm.assignee.nationalIDNo
+    document.getElementById("assignee_nationalidno").asInstanceOf[html.Input].value = translateToPersian(dispatchingForm.assignee.nationalIDNo)
+    updateSummary()
   }
 
 
@@ -214,13 +159,13 @@ object dummy {
 
   def populateReceivingForm(receivingForm: ReceivingForm): Unit = {
     document.getElementById("formno").asInstanceOf[html.Input].value = receivingForm.number.toString
-    document.getElementById("receiveddate").asInstanceOf[html.Input].value = translateToPersian(receivingForm.date.concat)//year + "/" + receivingForm.date.month + "/" + receivingForm.date.day)
+    document.getElementById("receiveddate").asInstanceOf[html.Input].value = translateToPersian(receivingForm.date.concat)
     document.getElementById("goodsowner_firstname").asInstanceOf[html.Input].value = receivingForm.goodsOwner.firstName
     document.getElementById("goodsowner_lastname").asInstanceOf[html.Input].value = receivingForm.goodsOwner.surName
     document.getElementById("goodsowner_nationalidno").asInstanceOf[html.Input].value = translateToPersian(receivingForm.goodsOwner.nationalIDNo)
     document.getElementById("billofladingno").asInstanceOf[html.Input].value = receivingForm.billOfLading
-    document.getElementById("partno").asInstanceOf[html.Input].value = receivingForm.partNumber.toString
     document.getElementById("origin").asInstanceOf[html.Input].value = receivingForm.origin
+    document.getElementById("partno").asInstanceOf[html.Input].value = receivingForm.partNumber.toString
     document.getElementById("truckno_state").asInstanceOf[html.Input].value = receivingForm.truck.state.toString
     document.getElementById("truckno_random").asInstanceOf[html.Input].value = receivingForm.truck.random.toString
     document.getElementById("truckno_area").asInstanceOf[html.Input].value = receivingForm.truck.area
@@ -242,6 +187,7 @@ object dummy {
     document.getElementById("representative_firstname").asInstanceOf[html.Input].value = receivingForm.representative.firstName
     document.getElementById("representative_lastname").asInstanceOf[html.Input].value = receivingForm.representative.surName
     document.getElementById("representative_nationalidno").asInstanceOf[html.Input].value = translateToPersian(receivingForm.representative.nationalIDNo)
+    updateSummary()
   }
 
   def dispatchingFormFromJson(jsonEncodedForm: js.Dynamic): DispatchingForm = {
@@ -250,11 +196,12 @@ object dummy {
     val DispatchedDate: Date = Date(jsonEncodedForm.DispatchedDate.Year.asInstanceOf[Int].toString, jsonEncodedForm.DispatchedDate.Month.asInstanceOf[Int].toString, jsonEncodedForm.DispatchedDate.Day.asInstanceOf[Int].toString)
     val truckNumber: CarPlate = CarPlate(jsonEncodedForm.TruckNo.State.asInstanceOf[Int], jsonEncodedForm.TruckNo.Serial.asInstanceOf[Int],jsonEncodedForm.TruckNo.Area.asInstanceOf[String], jsonEncodedForm.TruckNo.Random.asInstanceOf[Int])
     val comments: String = jsonEncodedForm.Comments.asInstanceOf[String]
-    val assignee: Person = Person(jsonEncodedForm.Assignee.FirstName.toString, jsonEncodedForm.Assignee.SurName.toString, jsonEncodedForm.Assignee.NationalIDNo.toString)
     val owner: Person = Person(jsonEncodedForm.GoodsOwner.FirstName.toString, jsonEncodedForm.GoodsOwner.SurName.toString, jsonEncodedForm.GoodsOwner.NationalIDNo.toString)
+
     val draftDate: Date = Date(jsonEncodedForm.DraftDate.Year.asInstanceOf[Int].toString, jsonEncodedForm.DraftDate.Month.asInstanceOf[Int].toString, jsonEncodedForm.DraftDate.Day.asInstanceOf[Int].toString)
     val draftOwner: Person = Person(jsonEncodedForm.DraftOwner.FirstName.toString, jsonEncodedForm.DraftOwner.SurName.toString, jsonEncodedForm.DraftOwner.NationalIDNo.toString)
     val draftNumber: String = jsonEncodedForm.DraftNo.asInstanceOf[String]
+    val assignee: Person = Person(jsonEncodedForm.Assignee.FirstName.toString, jsonEncodedForm.Assignee.SurName.toString, jsonEncodedForm.Assignee.NationalIDNo.toString)
 
     val listOfItems: List[Item] = jsonEncodedForm.ItemsList.asInstanceOf[js.Array[js.Dynamic]].toList.map(x => Item(x.Description.asInstanceOf[String], x.Quantity.asInstanceOf[Int], x.UnitOfMeasurement.asInstanceOf[String], x.GrossWeight.asInstanceOf[Double], x.PackageWeight.asInstanceOf[Double], x.NetWeight.asInstanceOf[Double]))
     val itemsList: ItemsList = ItemsList(listOfItems)
@@ -264,14 +211,17 @@ object dummy {
 
   def receivingFormFromJson(jsonEncodedForm: js.Dynamic): ReceivingForm = {
     val formNo: Int = jsonEncodedForm.FormNo.asInstanceOf[Int]
-    val origin: String = jsonEncodedForm.Origin.asInstanceOf[String]
-    val billOfLading: String = jsonEncodedForm.BillOfLadingNo.asInstanceOf[String]
     val partNo: Int = jsonEncodedForm.PartNo.asInstanceOf[Int]
     val ReceivedDate: Date = Date(jsonEncodedForm.ReceivedDate.Year.asInstanceOf[Int].toString, jsonEncodedForm.ReceivedDate.Month.asInstanceOf[Int].toString, jsonEncodedForm.ReceivedDate.Day.asInstanceOf[Int].toString)
     val truckNumber: CarPlate = CarPlate(jsonEncodedForm.TruckNo.State.asInstanceOf[Int], jsonEncodedForm.TruckNo.Serial.asInstanceOf[Int],jsonEncodedForm.TruckNo.Area.asInstanceOf[String], jsonEncodedForm.TruckNo.Random.asInstanceOf[Int])
     val comments: String = jsonEncodedForm.Comments.asInstanceOf[String]
-    val representative: Person = Person(jsonEncodedForm.Representative.FirstName.toString, jsonEncodedForm.Representative.SurName.toString, jsonEncodedForm.Representative.NationalIDNo.toString)
     val owner: Person = Person(jsonEncodedForm.GoodsOwner.FirstName.toString, jsonEncodedForm.GoodsOwner.SurName.toString, jsonEncodedForm.GoodsOwner.NationalIDNo.toString)
+
+    val origin: String = jsonEncodedForm.Origin.asInstanceOf[String]
+    val billOfLading: String = jsonEncodedForm.BillOfLadingNo.asInstanceOf[String]
+    val representative: Person = Person(jsonEncodedForm.Representative.FirstName.toString, jsonEncodedForm.Representative.SurName.toString, jsonEncodedForm.Representative.NationalIDNo.toString)
+
+
     val listOfItems: List[Item] = jsonEncodedForm.ItemsList.asInstanceOf[js.Array[js.Dynamic]].toList.map(x => Item(x.Description.asInstanceOf[String], x.Quantity.asInstanceOf[Int], x.UnitOfMeasurement.asInstanceOf[String], x.GrossWeight.asInstanceOf[Double], x.PackageWeight.asInstanceOf[Double], x.NetWeight.asInstanceOf[Double]))
     val itemsList: ItemsList = ItemsList(listOfItems)
 
@@ -285,7 +235,7 @@ object dummy {
     Ajax.delete(url) onComplete {
       case Success(value) => {
         dom.window.alert(
-          "فرم شماره" +
+          "فرم ورود شماره" +
             " " +
             s"${translateToPersian(toBeDeletedFormNumber.toString)}" +
             " " +
@@ -293,14 +243,32 @@ object dummy {
           )
         dom.window.open("ReceivingTable.html", "_self", "", true)
       }
-      case Failure(e) => doNothing; //dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
+      case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
     }
+  }
+
+  @JSExportTopLevel("deleteDispatchingForm")
+  def deleteDispatchingForm() = {
+    val toBeDeletedFormNumber: Int = document.getElementById("tobefetchedformnumber").asInstanceOf[html.Input].valueAsNumber.toInt
+    val url: String = s"http://localhost:8080/receivedispatch/dispatches/${toBeDeletedFormNumber}"
+    Ajax.delete(url) onComplete {
+      case Success(value) => {
+        dom.window.alert(
+          "فرم خروج شماره" +
+            " " +
+            s"${translateToPersian(toBeDeletedFormNumber.toString)}" +
+            " " +
+            "با موفقیت حذف گردید."
+        )
+        dom.window.open("DispatchingTable.html", "_self", "", true)
+      }
+      case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)    }
   }
 
   def doNothing = {}
 
   @JSExportTopLevel("fetchReceivingForm")
-  def fetchReceivingForm() = {
+  def fetchReceivingForm(): Unit = {
 
     val toBeFetchedFormNumber: Int = document.getElementById("tobefetchedformnumber").asInstanceOf[html.Input].valueAsNumber.toInt
     Ajax.get(s"http://localhost:8080/receivedispatch/receipts") onComplete {
@@ -319,7 +287,7 @@ object dummy {
         }
         else {
           dom.window.alert(
-            "فرمی با شماره" +
+            "فرم ورود با شماره" +
               " " +
               s"${translateToPersian(toBeFetchedFormNumber.toString)}" +
               " " +
@@ -361,26 +329,6 @@ object dummy {
   }
 
 
-  /*
-ReceivingForm(
-  Person("حامد", "اخوان","1234567890"),
-  1234,
-  Date("1390", "01", "03"),
-  5,
-  CarPlate(22, 12, "و", 123),
-  "GEW-123",
-  "سمنان",
-  ItemsList(List(
-    Item("خامه", 10, "کارتن", 1000, 50, 950),
-    Item("بستنی", 10, "کارتن", 2000, 100, 1900),
-    Item("کره", 10, "کارتن", 3000, 150, 2850),
-    Item("شیر", 10, "کارتن", 4000, 200, 3800)
-  )),
-  "شرایط مساعد",
-  Person("مصطفی","علینقی", "2345678901"),
-  " "
-)
- */
 
 
 
@@ -404,7 +352,7 @@ ReceivingForm(
         }
         else {
           dom.window.alert(
-            "فرمی با شماره" +
+            "فرم خروج با شماره" +
               " " +
               s"${translateToPersian(toBeFetchedFormNumber.toString)}" +
               " " +
@@ -415,81 +363,11 @@ ReceivingForm(
       }
       case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
     }
-
-    /*
-    DispatchingForm(
-      Person("حامد", "اخوان","1234567890"),
-      4321,
-      Date("1390", "01", "03"),
-      5,
-      CarPlate(22, 12, "و", 123),
-      Date("1390", "01", "05"),
-      "GEW-123",
-      Person("مصطفی", "کریمی", "0061234567"),
-      ItemsList(List(
-        Item("شیر", 10, "کارتن", 4000, 200, 3800),
-        Item("کره", 10, "کارتن", 3000, 150, 2850),
-        Item("بستنی", 10, "کارتن", 2000, 100, 1900),
-        Item("خامه", 10, "کارتن", 1000, 50, 950)
-      )),
-      "شرایط مساعد",
-      Person("مرتضی","علینقی", "2345678901"),
-      " "
-    )
-    */
-
-/*
-    var dispatchingForm: Option[DispatchingForm] = None
-    val url: String = s"http://localhost:8080/receivedispatch/dispatches/${formNumber}"
-    Ajax.get(url).onComplete {
-      case Success(response) => {
-        val json: String = response.responseText
-
-        val formNo: Int = jsonDecomposer(json, "FormNo").toInt
-        val dispatchedDate: Date = JSON.parse(jsonDecomposer(json,"DispatchedDate")).asInstanceOf[Date]
-        val owner: Person = JSON.parse(jsonDecomposer(json, "GoodsOwner")).asInstanceOf[Person]
-        val draftNumber: String = jsonDecomposer(json,"DraftNo")
-        val partNo: Int = jsonDecomposer(json,"PartNo").toInt
-        val truckNumber: CarPlate = JSON.parse(jsonDecomposer(json,"TruckNo")).asInstanceOf[CarPlate]
-        val draftOwner: Person = JSON.parse(jsonDecomposer(json,"DraftOwner")).asInstanceOf[Person]
-        val draftDate: Date = JSON.parse(jsonDecomposer(json,"DraftDate")).asInstanceOf[Date]
-        val comments: String = jsonDecomposer(json,"Comments")
-        val assignee: Person = JSON.parse(jsonDecomposer(json,"Assignee")).asInstanceOf[Person]
-        val listOfItems: List[Item] = List(Item("", 0, "", 0, 0, 0))
-          //JSON.parse(jsonDecomposer(json,"ItemsList")).toList.map(item => JSON.parse(item).asInstanceOf[Item])
-        JSON.parse(jsonDecomposer(json,"ItemsList")).toList.foreach(println())
-        val itemsList: ItemsList = ItemsList(listOfItems)
-
-        dispatchingForm = Some(DispatchingForm(owner, formNo, dispatchedDate, partNo, truckNumber, draftDate, draftNumber, draftOwner, itemsList, comments, assignee))
-      }
-      case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
-    }
-
-    dispatchingForm.getOrElse(
-      DispatchingForm(
-        Person("", "",""),
-        99999999,
-        Date("", "", ""),
-        0,
-        CarPlate(0, 0, "x", 0),
-        Date("", "", ""),
-        "",
-        Person("", "", ""),
-        ItemsList(List(
-          Item("", 0, "", 0, 0, 0)
-        )),
-        "فرمی با این شماره در سرور یافت نشد",
-        Person("","", ""),
-        "{ }"
-      )
-    )
-
- */
   }
 
 
   @JSExportTopLevel("populateDispatchingFormOnLoad")
-  def populateDispatchingFormOnLoad(a: Int) = {
+  def populateDispatchingFormOnLoad(a: Int): Unit = {
     val url: String = s"http://localhost:8080/receivedispatch/dispatches/${a}"
     Ajax.get(url) onComplete {
       case Success(value) => {
@@ -520,7 +398,7 @@ ReceivingForm(
   }
 
   @JSExportTopLevel("updateReceivingForm")
-  def updateReceivingForm() = {
+  def updateReceivingForm(): Unit = {
     val doc: ReceivingForm = receivingForm(document)
     val url: String = s"http://localhost:8080/receivedispatch/receipts/${doc.number}"
     Ajax.put(url, doc.inJsonString) onComplete {
@@ -556,7 +434,7 @@ ReceivingForm(
   }
 
   @JSExportTopLevel("updateDispatchingForm")
-  def updateDispatchingForm() = {
+  def updateDispatchingForm(): Unit = {
     val doc: DispatchingForm = dispathingForm(document)
     val url: String = s"http://localhost:8080/receivedispatch/dispatches/${doc.number}"
     Ajax.post(url, doc.inJsonString) onComplete {
@@ -621,6 +499,7 @@ ReceivingForm(
     val itemsList = document.getElementById("itemslist")
     val rowsCount = itemsList.childElementCount
     itemsList.appendChild(newRow(rowsCount + 1))
+    updateSummary
   }
 
   @JSExportTopLevel("removeRowFromItemsList")
@@ -642,53 +521,43 @@ ReceivingForm(
       document.getElementById(s"itemslist_packageweight_${item}").setAttribute("id", s"itemslist_packageweight_${item - 1}")
       document.getElementById(s"itemslist_netweight_${item}").setAttribute("id", s"itemslist_netweight_${item - 1}")
     }
-    updateSummary
+    updateSummary()
   }
 
   @JSExportTopLevel("updateSummary")
-  def updateSummary() = {
-
-    document.getElementById("qty_sum").innerHTML = "۰"
+  def updateSummary(): Unit = {
+    document.getElementById("qty_sum").innerHTML = "_"
     document.getElementById("unit_sum").innerHTML = "-"
     document.getElementById("gw_sum").innerHTML = "۰"
     document.getElementById("pw_sum").innerHTML = "۰"
     document.getElementById("nw_sum").innerHTML = "۰"
+
     val rowsCount = document.getElementById("itemslist").childElementCount
-
-    //document.getElementById("unit_sum").innerHTML = document.getElementById("itemslist_unitofmeasurement_1").asInstanceOf[html.Input].value.toString
-
-    //document.getElementById("unit_sum").innerHTML = document.getElementById("itemslist_unitofmeasurement_1").asInstanceOf[html.Input].valueAsNumber.toInt.toString
-
-    document.getElementById("unit_sum").innerHTML = document.getElementById("itemslist_unitofmeasurement_1").asInstanceOf[html.Input].value.toString
-
+    val unitOfMeasurement: List[String] = (for (item <- 1 to rowsCount) yield document.getElementById(s"itemslist_unitofmeasurement_${item}").asInstanceOf[html.Input].value).toList
+    val quantity: List[Double] =  (for (item <- 1 to rowsCount) yield translateToEnglish(document.getElementById(s"itemslist_quantity_${item}").asInstanceOf[html.Input].value).toDouble).toList
+    val consistentUnitOfMeasurement: Boolean = (unitOfMeasurement zip List.fill(rowsCount)(unitOfMeasurement.head)).map(x => x._1 == x._2).reduceLeft(_ && _)
+    if (consistentUnitOfMeasurement) {
+      document.getElementById("qty_sum").innerHTML = translateToPersian(quantity.sum.toString)
+      document.getElementById("unit_sum").innerHTML = unitOfMeasurement.head
+    }
+    else {
+      document.getElementById("qty_sum").innerHTML = "-"
+      document.getElementById("unit_sum").innerHTML = "-"
+    }
 
     for (item <- 1 to rowsCount) {
-
-      if (document.getElementById(s"itemslist_unitofmeasurement_${item}").asInstanceOf[html.Input].value.toString == document.getElementById("unit_sum").innerHTML.toString) {
-        val qtySum: Double = translateToEnglish(document.getElementById("qty_sum").innerHTML).toDouble
-        val qty: Double = translateToEnglish(document.getElementById(s"itemslist_quantity_${item}").asInstanceOf[Input].valueAsNumber.toString).toDouble
-        document.getElementById("qty_sum").innerHTML = translateToPersian((qtySum + qty).toString)
-      }
-      else {
-        document.getElementById("qty_sum").innerHTML = "-"
-        document.getElementById("unit_sum").innerHTML = "-"
-      }
-
-      document.getElementById("unit_sum").innerHTML = document.getElementById(s"itemslist_unitofmeasurement_${item}").asInstanceOf[html.Input].value.toString
       val gwSum: Double = translateToEnglish(document.getElementById("gw_sum").innerHTML).toDouble
       val pwSum: Double = translateToEnglish(document.getElementById("pw_sum").innerHTML).toDouble
       val nwSum: Double = translateToEnglish(document.getElementById("nw_sum").innerHTML).toDouble
       val gw: Double = translateToEnglish(document.getElementById(s"itemslist_grossweight_${item}").asInstanceOf[Input].valueAsNumber.toString).toDouble
       val pw: Double = translateToEnglish(document.getElementById(s"itemslist_packageweight_${item}").asInstanceOf[Input].valueAsNumber.toString).toDouble
       val nw: Double = translateToEnglish(document.getElementById(s"itemslist_netweight_${item}").asInstanceOf[Input].valueAsNumber.toString).toDouble
-      document.getElementById("gw_sum").innerHTML = translateToPersian((gwSum + gw).toString)
-      document.getElementById("pw_sum").innerHTML = translateToPersian((pwSum + pw).toString)
-      document.getElementById("nw_sum").innerHTML = translateToPersian((nwSum + nw).toString)
+      document.getElementById("gw_sum").innerHTML = translateToPersian("%.3f".format(gwSum + gw))
+      document.getElementById("pw_sum").innerHTML = translateToPersian("%.3f".format(pwSum + pw))
+      document.getElementById("nw_sum").innerHTML = translateToPersian("%.3f".format(nwSum + nw))
     }
-
-
-
   }
+
 
   def newRow(RowNumber: Int) :Node = {
     val newItems = document.createElement("div")
@@ -790,11 +659,20 @@ ReceivingForm(
       s"""[
         |${items.map(x => x.toJsonString).reduceLeft((y: String, z: String) => y + ", " + z).toString}
         |]""".stripMargin
+
+    private val units: List[String] = items.map(_.unitOfMeasurement)
+    private val consistentUnitOfMeasurement: Boolean = (units zip List.fill(units.length)(units.head)).map(x => x._1 == x._2).reduceLeft(_ && _)
+    val unitOfMeasurement: Option[String] = if (consistentUnitOfMeasurement) Some(units.head) else None
+    val quantity: Option[Int] = if (consistentUnitOfMeasurement) Some(items.map(_.quantity).sum) else None
+    val grossWeight: Double = "%.3f".format(items.map(_.grossWeight).sum).toDouble
+    val netWeight: Double = "%.3f".format(items.map(_.netWeight).sum).toDouble
+    val packageWeight: Double = "%.3f".format(items.map(_.packageWeight).sum).toDouble
   }
 
 
   def translateToPersian(unknown: String): String = {
     val persianDigits: Map[Char, Char] = Map(
+      '-' -> '-',
       '٫' -> '٫',
       '.' -> '٫',
       '/' -> '/',
@@ -824,6 +702,7 @@ ReceivingForm(
 
   def translateToEnglish(unknown: String): String = {
     val englishDigits: Map[Char, Char] = Map(
+      '-' -> '-',
       '٫' -> '.',
       '.' -> '.',
       '/' -> '/',
