@@ -5,9 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./css/bootstrap-rtl.min.css">
+	<link rel="stylesheet" href="./css/persian-datepicker.css"/>
+
   <script src="./scripts/jquery.min.js"></script>
   <script src="./scripts/popper.min.js"></script>
   <script src="./scripts/bootstrap.min.js"></script>
+	<script src="./scripts/jquery.js"></script>
+  <script src="./scripts/persian-date.js"></script>
+  <script src="./scripts/persian-datepicker.js"></script>
   <!-- Include Scala.js compiled code -->
   <script type="text/javascript" src="./target/scala-2.13/receive-dispatch-view-fastopt.js"></script>
   <style>
@@ -55,11 +60,9 @@
   <div class="row">
     <span class="form-control col-1 border-0 rounded-0">شماره</span>
     <input type="number" class="form-control col-1 rounded-0" placeholder="شماره" min="1" max="9999" id="formno"/>
-    <div class="col-6"></div>
+    <div class="col-8"></div>
     <span class="form-control border-0 col-1 rounded-0">تاریخ</span>
-    <input type="number" class="form-control col-1 rounded-0" placeholder="روز" min="01" max="31" id="receiveddate_day">
-    <input type="number" class="form-control col-1 rounded-0" placeholder="ماه" min="01" max="12" id="receiveddate_month">
-    <input type="number" class="form-control col-1 rounded-0" placeholder="سال" min="1300" max="1499" id="receiveddate_year">
+    <input type="text" class="form-control col-1 rounded-0 persiandatepicker p-0" id="receiveddate" style="text-align: center;">
   </div>
 
   <br />

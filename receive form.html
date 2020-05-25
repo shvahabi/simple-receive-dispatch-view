@@ -38,7 +38,8 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $(".persiandatepicker").pDatepicker();
+    $(".persiandatepicker").pDatepicker({format: 'YYYY/MM/DD'});
+		populateDataList();
   });
 </script>
 
@@ -66,19 +67,27 @@
   <div class="row">
     <span class="form-control col-1 border-0 rounded-0">شماره</span>
     <input type="number" class="form-control col-1 rounded-0" placeholder="شماره" min="1" max="9999" id="formno"/>
-    <div class="col-6"></div>
+    <div class="col-8"></div>
     <span class="form-control border-0 col-1 rounded-0">تاریخ</span>
-    <input type="number" class="form-control col-1 rounded-0 persiandatepicker" placeholder="روز" min="01" max="31" id="receiveddate_day">
-    <input type="number" class="form-control col-1 rounded-0 persiandatepicker" placeholder="ماه" min="01" max="12" id="receiveddate_month">
-    <input type="number" class="form-control col-1 rounded-0 persiandatepicker" placeholder="سال" min="1300" max="1499" id="receiveddate_year">
+    <input type="text" class="form-control col-1 rounded-0 persiandatepicker p-0" id="receiveddate" style="text-align: center;">
   </div>
+
+
+<datalist id="goodsowner_fname">
+</datalist>
+<datalist id="goodsowner_lname">
+</datalist>
+<datalist id="goodsowner_nidno">
+</datalist>
+
+
 
   <br />
   <div class="row">
     <span class="form-control col-1 border-0 rounded-0">صاحب کالا</span>
-    <input type="text" class="form-control col-2 rounded-0" placeholder="نام" id="goodsowner_firstname"/>
-    <input type="text" class="form-control col-2 rounded-0" placeholder="نام خانوادگی" id="goodsowner_lastname"/>
-    <input type="text" class="form-control col-2 rounded-0" placeholder="شماره ملی" pattern="\d{10}" id="goodsowner_nationalidno"/>
+    <input type="text" list="goodsowner_fname" class="form-control col-2 rounded-0" placeholder="نام" id="goodsowner_firstname" onchange="propagatePersonSelection('goodsowner_firstname')"/>
+    <input type="text" list="goodsowner_lname" class="form-control col-2 rounded-0" placeholder="نام خانوادگی" id="goodsowner_lastname" onchange="propagatePersonSelection('goodsowner_lastname')"/>
+    <input type="text" list="goodsowner_nidno" class="form-control col-2 rounded-0" placeholder="شماره ملی" pattern="\d{10}" id="goodsowner_nationalidno" onchange="propagatePersonSelection('goodsowner_nationalidno')"/>
     <div class="col-4"></div>
   </div>
 

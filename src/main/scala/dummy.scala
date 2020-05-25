@@ -12,6 +12,35 @@ object dummy {
 
   }
 
+  def fetchPeople: Map[String, Person] = {
+    Map("0123456789" -> Person("شاهد", "وهابی", "0123456789"), "1234567890" -> Person("حامد", "اخوان", "1234567890"))
+  }
+
+  def addOption(textNode: String, value: String): Node = {
+    val newOption = document.createElement("option")
+    newOption.innerHTML = textNode
+    newOption.setAttribute("value", value)
+    newOption
+  }
+
+  @JSExportTopLevel("propagatePersonSelection")
+  def propagatePersonSelection(sourceInputElementId: String) = {
+    val selected = document.getElementById(sourceInputElementId).asInstanceOf[html.Input].value.toString
+    val fetchedPeople: Map[String, Person] = fetchPeople
+    document.getElementById("goodsowner_nationalidno").asInstanceOf[html.Input].value = fetchedPeople(selected).nationalIDNo.toString
+    document.getElementById("goodsowner_firstname").asInstanceOf[html.Input].value = fetchedPeople(selected).firstName.toString
+    document.getElementById("goodsowner_lastname").asInstanceOf[html.Input].value = fetchedPeople(selected).surName.toString
+  }
+
+  @JSExportTopLevel("populateDataList")
+  def populateDataList() = {
+    for(person <- fetchPeople.values.toList) {
+      document.getElementById("goodsowner_fname").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${person.nationalIDNo}", s"${person.nationalIDNo}"))
+      document.getElementById("goodsowner_lname").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${person.nationalIDNo}", s"${person.nationalIDNo}"))
+      document.getElementById("goodsowner_nidno").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${person.nationalIDNo}", s"${person.nationalIDNo}"))
+    }
+  }
+
   @JSExportTopLevel("addNewRowToItemsList")
   def addNewRowToItemsList() = {
     val itemsList = document.getElementById("itemslist")
@@ -205,7 +234,8 @@ object dummy {
     ReceivingForm(owner, formNo, receivedDate, partNo, truckNumber, billOfLadingNumber, origin, itemsList, comments, representative, documentToJsonString)
   }
 
-
+  /*
   person(document),
   number: Int, date: Date, partNumber: Int, truck: CarPlate, billOfLading: String, origin: String, itemsList: ItemsList, comments: String, representative: Person, inJsonString: String)
+   */
 }
