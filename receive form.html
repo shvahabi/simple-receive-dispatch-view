@@ -5,9 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./css/bootstrap-rtl.min.css">
+	<link rel="stylesheet" href="./css/persian-datepicker.css"/>
+  
   <script src="./scripts/jquery.min.js"></script>
   <script src="./scripts/popper.min.js"></script>
   <script src="./scripts/bootstrap.min.js"></script>
+	<script src="./scripts/jquery.js"></script>
+  <script src="./scripts/persian-date.js"></script>
+  <script src="./scripts/persian-datepicker.js"></script>
   <!-- Include Scala.js compiled code -->
   <script type="text/javascript" src="./target/scala-2.13/receive-dispatch-view-fastopt.js"></script>
   <style>
@@ -30,6 +35,12 @@
    
     
     </style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".persiandatepicker").pDatepicker();
+  });
+</script>
 
     
 </head>
@@ -57,9 +68,9 @@
     <input type="number" class="form-control col-1 rounded-0" placeholder="شماره" min="1" max="9999" id="formno"/>
     <div class="col-6"></div>
     <span class="form-control border-0 col-1 rounded-0">تاریخ</span>
-    <input type="number" class="form-control col-1 rounded-0" placeholder="روز" min="01" max="31" id="receiveddate_day">
-    <input type="number" class="form-control col-1 rounded-0" placeholder="ماه" min="01" max="12" id="receiveddate_month">
-    <input type="number" class="form-control col-1 rounded-0" placeholder="سال" min="1300" max="1499" id="receiveddate_year">
+    <input type="number" class="form-control col-1 rounded-0 persiandatepicker" placeholder="روز" min="01" max="31" id="receiveddate_day">
+    <input type="number" class="form-control col-1 rounded-0 persiandatepicker" placeholder="ماه" min="01" max="12" id="receiveddate_month">
+    <input type="number" class="form-control col-1 rounded-0 persiandatepicker" placeholder="سال" min="1300" max="1499" id="receiveddate_year">
   </div>
 
   <br />
@@ -90,32 +101,32 @@
     <input type="number" class="form-control col-1 rounded-0" placeholder="ایران" min="10" max="99" id="truckno_state">
     <input type="number" class="form-control col-1 rounded-0" placeholder="رندوم" min="100" max="999" id="truckno_random">
     <select type="text" class="form-control col-1 rounded-0" placeholder="الفبا" id="truckno_area">
-      <option value="">الف</option>
-      <option value="">ب</option>
-      <option value="">پ</option>
-      <option value="">ت</option>
-      <option value="">ث</option>
-      <option value="">ج</option>
-      <option value="">د</option>
-      <option value="">ز</option>
-      <option value="">ژ</option>
-      <option value="">س</option>
-      <option value="">ش</option>
-      <option value="">ص</option>
-      <option value="">ط</option>
-      <option value="">ع</option>
-      <option value="">ف</option>
-      <option value="">ق</option>
-      <option value="">ک</option>
-      <option value="">گ</option>
-      <option value="">ل</option>
-      <option value="">م</option>
-      <option value="">ن</option>
-      <option value="">و</option>
-      <option value="">ه</option>
-      <option value="">ی</option>
-      <option value="">D</option>
-      <option value="">S</option>
+      <option value="a">الف</option>
+      <option value="b">ب</option>
+      <option value="p">پ</option>
+      <option value="t">ت</option>
+      <option value="th">ث</option>
+      <option value="j">ج</option>
+      <option value="d">د</option>
+      <option value="z">ز</option>
+      <option value="zh">ژ</option>
+      <option value="s">س</option>
+      <option value="sh">ش</option>
+      <option value="ss">ص</option>
+      <option value="tt">ط</option>
+      <option value="e">ع</option>
+      <option value="f">ف</option>
+      <option value="q">ق</option>
+      <option value="k">ک</option>
+      <option value="g">گ</option>
+      <option value="l">ل</option>
+      <option value="m">م</option>
+      <option value="n">ن</option>
+      <option value="v">و</option>
+      <option value="h">ه</option>
+      <option value="y">ی</option>
+      <option value="dd">D</option>
+      <option value="sss">S</option>
     </select>
     <input type="number" class="form-control col-1 rounded-0" placeholder="سریال" min="10" max="99" id="truckno_serial">
   </div>

@@ -1,0 +1,21 @@
+<head>
+	
+<link rel="stylesheet" href="css/persian-datepicker.min.css"/>
+<script src="scripts/jquery.js"></script>
+  <script src="scripts/persian-date.min.js"></script>
+  <script src="scripts/persian-datepicker.min.js"></script>
+
+</head>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".example1").pDatepicker();
+  });
+
+var pd = $('.selector').persianDatepicker();
+pd.show();
+</script>
+
+<input type="text" class="example1"/>
+
+<button class="selector" onclick="persianDatepicker().show">hello</button>
