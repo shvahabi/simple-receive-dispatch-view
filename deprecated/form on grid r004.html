@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/bootstrap-rtl.min.css">
+  <script src="./script/jquery.min.js"></script>
+  <script src="./script/popper.min.js"></script>
+  <script src="./script/bootstrap.min.js"></script>
+  <style>
+
+@font-face {
+      font-family: 'Vazir';
+      src: url('./fonts/Vazir.eot');
+      src: local('./fonts/Vazir'), url('./fonts/Vazir.woff') format('woff'), url('./fonts/Vazir.ttf') format('truetype');
+      }
+
+
+    div, input {
+      /* border: 1px solid black; */
+      font-family: 'Vazir', sans-serif;
+      font-size: 12px;
+      line-height: 1.6;
+      direction: rtl;
+    }
+
+   
+    
+    </style>
+
+    
+</head>
+<body>
+<form class="container">  
+  <div class="row">
+    <div class="col-12 border-0"><h1>سردخانه فرخ</h1></div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 border-0"><h2>برگ ورود کالا</h2></div>
+  </div>
+
+  <br />
+  <div class="row">
+    <div class="col-3">
+      <div class="row">
+        <span class="form-control col-3 border-0 rounded-0">شماره</span>
+        <input type="text" class="form-control col-9 rounded-0" placeholder="شماره فرم کاغذی"/>
+      </div>
+    </div>
+    <div class="col-6"></div>
+    <div class="col-3">
+      <div class="row">
+        <span class="form-control border-0 col-3 rounded-0">تاریخ</span>
+        <input type="number" class="form-control col-3 rounded-0" placeholder="روز">
+        <input type="number" class="form-control col-3 rounded-0" placeholder="ماه">
+        <input type="number" class="form-control col-3 rounded-0" placeholder="سال">
+      </div>
+    </div>
+  </div>
+
+<br />
+<div class="row">
+  <div class="col-6">
+    <div class="row">
+      <span class="form-control border-0 col-2 rounded-0">صاحب کالا</span>    
+      <input type="text" class="form-control col-2 rounded-0" placeholder="نام" />
+      <input type="text" class="form-control col-4 rounded-0" placeholder="نام خانوادگی" />
+      <input type="text" class="form-control col-4 rounded-0" placeholder="شماره ملی" />
+    </div>
+  </div>
+</div>
+
+<br />
+  <div class="row">
+    <div class="col-4">
+      <div class="row">
+        <span class="form-control border-0 col-3 rounded-0">بارنامه</span>
+        <input type="text" class="form-control col-9 rounded-0" placeholder="شماره" />
+      </div>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div class="row">
+        <span class="form-control border-0 col-3 rounded-0">پارتی</span>
+        <input type="number" class="form-control col-9 rounded-0" placeholder="شماره" />
+      </div>
+    </div>
+  </div>
+
+
+  <br />  
+  <div class="row">
+    <div class="col-4">
+      <div class="row">
+        <span class="form-control border-0 col-3 rounded-0">مبداء</span>
+        <input type="text" class="form-control col-9 rounded-0" placeholder="محل ارسال" />
+      </div>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-6">
+      <div class="row">
+        <span class="form-control border-0 col-3 rounded-0">شماره خودرو</span>
+        <input type="number" class="form-control col-2 rounded-0" placeholder="ایران">
+        <input type="number" class="form-control col-2 rounded-0" placeholder="رندوم">
+        <select type="text" class="form-control custom-select col-3 rounded-0" placeholder="الفبا">
+          <option value="">الف</option>
+          <option value="">ب</option>
+          <option value="">پ</option>
+          <option value="">ت</option>
+          <option value="">ث</option>
+          <option value="">ج</option>
+          <option value="">د</option>
+          <option value="">ز</option>
+          <option value="">ژ</option>
+          <option value="">س</option>
+          <option value="">ش</option>
+          <option value="">ص</option>
+          <option value="">ط</option>
+          <option value="">ع</option>
+          <option value="">ف</option>
+          <option value="">ق</option>
+          <option value="">ک</option>
+          <option value="">گ</option>
+          <option value="">ل</option>
+          <option value="">م</option>
+          <option value="">ن</option>
+          <option value="">و</option>
+          <option value="">ه</option>
+          <option value="">ی</option>
+          <option value="">D</option>
+          <option value="">S</option>
+        </select>
+        <input type="number" class="form-control col-2 rounded-0" placeholder="سریال">
+      </div>
+    </div>
+  </div>
+  
+  
+<br/>
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <button class="btn btn-outline-success col-1 rounded-0" type="button">ردیف</button>
+      <span class="form-control col-3 rounded-0">عنوان کالا</span>
+      <span class="form-control col-1 rounded-0">مقدار</span>
+      <span class="form-control col-1 rounded-0">واحد</span>
+      <span class="form-control col-2 rounded-0">وزن ناخالص</span>
+      <span class="form-control col-2 rounded-0">وزن خالی بسته</span>
+      <span class="form-control col-2 rounded-0">وزن خالص</span>
+    </div>
+    <div class="row">
+      <button class="btn btn-outline-danger col-1 rounded-0" type="button">--</button>
+      <span class="form-control col-1 rounded-0">۱</span>
+      <input type="text" class="form-control col-2 rounded-0" placeholder="عنوان کالا">
+      <input type="number" class="form-control col-1 rounded-0" placeholder="0">
+      <input type="text" class="form-control col-1 rounded-0" placeholder="واحد">
+      <input type="text" class="form-control col-2 rounded-0" placeholder="وزن ناخالص">
+      <input type="text" class="form-control col-2 rounded-0" placeholder="وزن خالی بسته">
+      <input type="text" class="form-control col-2 rounded-0" placeholder="وزن خالص">
+    </div>
+    <div class="row">
+      <span class="form-control col-4 rounded-0">جمع کل</span>
+      <span class="form-control col-1 rounded-0">۰</span>
+      <span class="form-control col-1 rounded-0">-</span>
+      <span class="form-control col-2 rounded-0">۰</span>
+      <span class="form-control col-2 rounded-0">۰</span>
+      <span class="form-control col-2 rounded-0">۰</span>      
+    </div>
+  </div>
+</div>
+
+  <br />
+  <div class="row">
+    <textarea class="form-control col-12 rounded-0" placeholder="توضیحات"></textarea>
+  </div>
+
+  <br />
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <span class="form-control border-0 col-3 rounded-0">نماینده</span>
+        <input type="text" class="form-control col-3 rounded-0" placeholder="نام">
+        <input type="text" class="form-control col-3 rounded-0" placeholder="نام خانوادگی">
+        <input type="text" class="form-control col-3 rounded-0" placeholder="شماره ملی">    
+      </div>
+    </div>
+  </div>
+  
+</form>
+</body>
+</html>
+
