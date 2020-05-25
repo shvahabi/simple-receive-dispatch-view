@@ -1,31 +1,24 @@
 import org.scalajs.dom
 import dom.{Document, Element, Node, document, html}
-import dummy.translateToEnglish
-import org.scalajs.dom.html.{Area, Input}
+import org.scalajs.dom.html.{Input, TextArea}
+//import argonaut._, Argonaut._
 
 import scalajs.js.annotation.JSExportTopLevel
-import scalajs.js.annotation.JSExport
 import org.scalajs.dom.ext._
 
-import scala.scalajs.concurrent.JSExecutionContext.Implicits._
+import scala.concurrent.Future
 import scala.scalajs.js
+
+//import scala.concurrent.Future
+import scala.scalajs.concurrent.JSExecutionContext.Implicits._
+//import scala.scalajs.js
 import scala.scalajs.js.JSON
 import scala.util.{Failure, Success}
 
 
 object dummy {
 
-
   def main(args: Array[String]): Unit = {
-
-  }
-
-  @JSExportTopLevel("dummie")
-  def dummie() = {
-    val dummie1 = "1399/01/24"
-    val dummie2 = "۱۳۹۰/۰۱/۲۴"
-    document.getElementById("dummieelement1").innerHTML = translateToPersian(dummie1)
-    document.getElementById("dummieelement2").innerHTML = translateToPersian(dummie2)
   }
 
   def fetchReceivingForm(formNumber: Int = 0): ReceivingForm = {
@@ -206,6 +199,7 @@ object dummy {
   @JSExportTopLevel("submitReceivingForm")
   def submitReceivingForm() = {
     val url: String = "http://localhost:8080/receivedispatch/receipts"
+    println(receivingForm(document).inJsonString)
     Ajax.post(url, receivingForm(document).inJsonString).onComplete {
       case Success(response) => println(response.statusText)
       case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
@@ -342,47 +336,94 @@ object dummy {
     document.getElementById("representative_nationalidno").asInstanceOf[html.Input].value = receivingForm.representative.nationalIDNo
   }
 
-  def fetchPeople: Map[String, Person] = {
+  @JSExportTopLevel("fetchPeople")
+  def fetchPeople() {
 
-    Map("0123456789" -> Person("شاهد", "وهابی", "0123456789"), "1234567890" -> Person("حامد", "اخوان", "1234567890"))
-		/*
-    var result: List[Person] = Nil
+
+    //Map("0123456789" -> Person("شاهد", "وهابی", "0123456789"), "1234567890" -> Person("حامد", "اخوان", "1234567890"))
+
+    //var result: List[Person] = Nil
+    /*
+
+
+    object Pelo {
+      implicit def codec: CodecJson[Pelo] = casecodec3(Pelo.apply, Pelo.unapply)("FirstName", "SurName", "NationalIDNo")
+
+    }
+
+     */
+
+    //case class Pelo(FirstName: String, SurName: String, NationalIDNo: String)
+
+    def jsToPerson(jsObject: js.Dynamic): Person = {
+      Person(s"${jsObject.FirstName}", s"${jsObject.SurName}", s"${jsObject.NationalIDNo}")
+    }
 
     val url = "http://localhost:8080/receivedispatch/people"
-    def getData = Ajax.get(url).map(_.responseText).map(JSON.parse(_)).map(_.asInstanceOf[Seq[Person]])
-      getData.onComplete {
-        case Success(v) => result = v.toList
-        case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
+    //def getData = Ajax.get(url).map(_.responseText).map(JSON.parse(_)).asInstanceOf[Future[js.Array[js.Dynamic]]]
+    Ajax.get(url) onComplete {
+      case Success(value) => {
+        populateDataList(JSON.parse(value.responseText).asInstanceOf[js.Array[js.Dynamic]].toList.map(x => Person(x.FirstName.toString, x.SurName.toString, x.NationalIDNo.toString)).map(x => (x.nationalIDNo -> x)).toMap)
+        //println(JSON.parse(value.responseText).asInstanceOf[js.Array[js.Dynamic]].toList.head.SurName)
+        //println(JSON.parse(value.responseText).asInstanceOf[js.Array[js.Dynamic]].toList.head.NationalIDNo)
+        //.toList.map(jsToPerson).map(x => (x.nationalIDNo -> x)).toMap println(value(1).SurName) //.map(println)//populateDataList(value)
       }
-    val fetchedPeople: Map[String, Person] = result.map(x => (x.nationalIDNo, x)).toMap
-    fetchedPeople
-*/
+      case Failure(error) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + error)
+    }
+
+    /*
+    onComplete {
+      case Success(value) => {
+        value.map(_.responseText)
+
+        //val a = JSON.parse(value.responseText).asInstanceOf[js.Array[Any]]
+        //println(a(1).stringify)//.foreach(println(_)) //.map(x => JSON.stringify(x)).foreach(println(_))
+
+      } //.asInstanceOf[Seq[Person]].toList.map(person => (person.nationalIDNo, person)).toMap) //populateDataList(value.responseText.map(JSON.parse(_)).map(_.asInstanceOf[Seq[Person]]).toList.map(person => (person.nationalIDNo, person)).toMap)
+      case Failure(e) => dom.window.alert(":خطا در اجرای درخواست با صدور کد" + "\n" + e)
+    }
+
+     */
+
+
+
+
   }
 
-  def addOption(textNode: String, value: String): Node = {
+
+  def populateDataList(fetchedPeople: Map[String, Person]) = {
+
+    for(person <- fetchedPeople.values.toList) {
+      document.getElementById("fname").appendChild(addOption(person.firstName, person.surName, person.nationalIDNo))
+      document.getElementById("lname").appendChild(addOption(person.firstName, person.surName, person.nationalIDNo))
+      document.getElementById("nidno").appendChild(addOption(person.firstName, person.surName, person.nationalIDNo))
+    }
+
+  }
+
+
+  def addOption(firstName: String, surName: String, nationalIDNo: String): Node = {
     val newOption = document.createElement("option")
-    newOption.innerHTML = textNode
-    newOption.setAttribute("value", value)
+    newOption.innerHTML = firstName + " " +  surName + " " + translateToPersian(nationalIDNo)
+    newOption.setAttribute("value", nationalIDNo)
+    newOption.setAttribute("firstName", firstName)
+    newOption.setAttribute("surName", surName)
+    newOption.setAttribute("nationalIDNo", nationalIDNo)
     newOption
   }
 
   @JSExportTopLevel("propagatePersonArticleSelection")
   def propagatePersonArticleSelection(personList: String, article: String) = {
+
+    def person(attributer: Element): Person = Person(attributer.getAttribute("firstName"), attributer.getAttribute("surName"), attributer.getAttribute("nationalIDNo"))
+
+    val fetchedPeople: Map[String, Person] = document.getElementById("fname").children.toList.map(x => (person(x).nationalIDNo, person(x))).toMap
+
     val selected: String = document.getElementById(personList + "_" + article).asInstanceOf[html.Input].value
-    val fetchedPeople: Map[String, Person] = fetchPeople
     if (fetchedPeople contains selected) {
       document.getElementById(s"${personList}_nationalidno").asInstanceOf[html.Input].value = translateToPersian(fetchedPeople(selected).nationalIDNo)
       document.getElementById(s"${personList}_firstname").asInstanceOf[html.Input].value = fetchedPeople(selected).firstName
       document.getElementById(s"${personList}_lastname").asInstanceOf[html.Input].value = fetchedPeople(selected).surName
-    }
-  }
-
-  @JSExportTopLevel("populateDataList")
-  def populateDataList() = {
-    for(person <- fetchPeople.values.toList) {
-      document.getElementById("fname").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${translateToPersian(person.nationalIDNo)}", s"${person.nationalIDNo}"))
-      document.getElementById("lname").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${translateToPersian(person.nationalIDNo)}", s"${person.nationalIDNo}"))
-      document.getElementById("nidno").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${translateToPersian(person.nationalIDNo)}", s"${person.nationalIDNo}"))
     }
   }
 
@@ -681,5 +722,4 @@ object dummy {
 
     ReceivingForm(owner, formNo, receivedDate, partNo, truckNumber, billOfLadingNumber, origin, itemsList, comments, representative, documentToJsonString)
   }
-
 }
