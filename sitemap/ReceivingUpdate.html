@@ -83,7 +83,7 @@ width: 100px;
   $(document).ready(function() {
     $(".persiandatepicker").pDatepicker({format: 'YYYY/MM/DD'});
 		fetchPeople();
-		populateReceivingFormOnLoad(17);
+		populateReceivingFormOnLoad();
   });
 </script>
 
@@ -93,7 +93,7 @@ width: 100px;
 <div class="topnav">
   <a href="../index.html"><button class="btn btn-success bg-success rounded-0 border-0"><b>خانه</b></button></a>
   <a><button class="btn btn-primary bg-primary rounded-0 border-0" onclick="updateReceivingForm()"><b>ثبت</b></button></a>
-  <a href="ReceivingUpdate.html"><button class="btn btn-danger bg-danger rounded-0 border-0"><b>بازنشانی</b></button></a>
+  <a><button class="btn btn-danger bg-danger rounded-0 border-0" onclick="editReceivingForm()"><b>بازنشانی</b></button></a>
 </div>
 
 <div class="container">  
