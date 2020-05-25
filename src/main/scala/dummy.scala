@@ -12,6 +12,130 @@ object dummy {
 
   }
 
+  def fetchReceivingForm: ReceivingForm = {
+    ReceivingForm(
+      Person("حامد", "اخوان","1234567890"),
+      1234,
+      Date(1390, 1, 3),
+      5,
+      CarPlate(22, 12, "و", 123),
+      "GEW-123",
+      "سمنان",
+      ItemsList(List(
+        Item("خامه", 10, "کارتن", 1000, 50, 950),
+        Item("بستنی", 10, "کارتن", 2000, 100, 1900),
+        Item("کره", 10, "کارتن", 3000, 150, 2850),
+        Item("شیر", 10, "کارتن", 4000, 200, 3800)
+      )),
+      "شرایط مساعد",
+      Person("مصطفی","علینقی", "2345678901"),
+      " "
+    )
+  }
+
+  def fetchDispatchingForm: DispatchingForm = {
+    DispatchingForm(
+      Person("حامد", "اخوان","1234567890"),
+      4321,
+      Date(1390, 1, 3),
+      5,
+      CarPlate(22, 12, "و", 123),
+      Date(1390, 1, 5),
+      "GEW-123",
+      Person("مصطفی", "کریمی", "0061234567"),
+      ItemsList(List(
+        Item("شیر", 10, "کارتن", 4000, 200, 3800),
+        Item("کره", 10, "کارتن", 3000, 150, 2850),
+        Item("بستنی", 10, "کارتن", 2000, 100, 1900),
+        Item("خامه", 10, "کارتن", 1000, 50, 950)
+      )),
+      "شرایط مساعد",
+      Person("مرتضی","علینقی", "2345678901"),
+      " "
+    )
+  }
+
+  @JSExportTopLevel("populateReceivingFormOnLoad")
+  def populateReceivingFormOnLoad() = {
+    val fetchedForm: ReceivingForm = fetchReceivingForm
+    populateReceivingForm(fetchedForm)
+  }
+
+  @JSExportTopLevel("populateDispatchingFormOnLoad")
+  def populateDispatchingFormOnLoad() = {
+    val fetchedForm: DispatchingForm = fetchDispatchingForm
+    populateDispatchingForm(fetchedForm)
+  }
+
+
+  def populateDispatchingForm(dispatchingForm: DispatchingForm): Unit = {
+    document.getElementById("formno").asInstanceOf[html.Input].value = dispatchingForm.number.toString
+
+    document.getElementById("dispatcheddate").asInstanceOf[html.Input].value = dispatchingForm.date.year + "/" + dispatchingForm.date.month + "/" + dispatchingForm.date.day
+    document.getElementById("goodsowner_firstname").asInstanceOf[html.Input].value = dispatchingForm.goodsOwner.firstName
+    document.getElementById("goodsowner_lastname").asInstanceOf[html.Input].value = dispatchingForm.goodsOwner.surName
+    document.getElementById("goodsowner_nationalidno").asInstanceOf[html.Input].value = dispatchingForm.goodsOwner.nationalIDNo
+    document.getElementById("draftno").asInstanceOf[html.Input].value = dispatchingForm.draftNumber
+    document.getElementById("draftowner_firstname").asInstanceOf[html.Input].value = dispatchingForm.draftOwner.firstName
+    document.getElementById("draftowner_lastname").asInstanceOf[html.Input].value = dispatchingForm.draftOwner.surName
+    document.getElementById("draftowner_nationalidno").asInstanceOf[html.Input].value = dispatchingForm.draftOwner.nationalIDNo
+    document.getElementById("draftdate").asInstanceOf[html.Input].value = dispatchingForm.draftDate.year + "/" + dispatchingForm.draftDate.month + "/" + dispatchingForm.draftDate.day
+    document.getElementById("partno").asInstanceOf[html.Input].value = dispatchingForm.partNumber.toString
+    document.getElementById("truckno_state").asInstanceOf[html.Input].value = dispatchingForm.truck.state.toString
+    document.getElementById("truckno_random").asInstanceOf[html.Input].value = dispatchingForm.truck.random.toString
+    document.getElementById("truckno_area").asInstanceOf[html.Input].value = dispatchingForm.truck.area
+    document.getElementById("truckno_serial").asInstanceOf[html.Input].value = dispatchingForm.truck.serial.toString
+
+    def inquireNumberOfRows: Int = document.getElementById("itemslist").childElementCount
+
+    for(anyItem <- dispatchingForm.itemsList.items) {
+      addNewRowToItemsList
+      document.getElementById(s"rownumber_${inquireNumberOfRows}").innerHTML = inquireNumberOfRows.toString
+      document.getElementById(s"itemslist_description_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.description
+      document.getElementById(s"itemslist_quantity_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.quantity.toString
+      document.getElementById(s"itemslist_unitofmeasurement_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.unitOfMeasurement
+      document.getElementById(s"itemslist_grossweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.grossWeight.toString
+      document.getElementById(s"itemslist_packageweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.packageWeight.toString
+      document.getElementById(s"itemslist_netweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.netWeight.toString
+    }
+    document.getElementById("comments").asInstanceOf[html.Input].value = dispatchingForm.comments
+    document.getElementById("assignee_firstname").asInstanceOf[html.Input].value = dispatchingForm.assignee.firstName
+    document.getElementById("assignee_lastname").asInstanceOf[html.Input].value = dispatchingForm.assignee.surName
+    document.getElementById("assignee_nationalidno").asInstanceOf[html.Input].value = dispatchingForm.assignee.nationalIDNo
+  }
+
+  def populateReceivingForm(receivingForm: ReceivingForm): Unit = {
+    document.getElementById("formno").asInstanceOf[html.Input].value = receivingForm.number.toString
+    document.getElementById("receiveddate").asInstanceOf[html.Input].value = receivingForm.date.year + "/" + receivingForm.date.month + "/" + receivingForm.date.day
+    document.getElementById("goodsowner_firstname").asInstanceOf[html.Input].value = receivingForm.goodsOwner.firstName
+    document.getElementById("goodsowner_lastname").asInstanceOf[html.Input].value = receivingForm.goodsOwner.surName
+    document.getElementById("goodsowner_nationalidno").asInstanceOf[html.Input].value = receivingForm.goodsOwner.nationalIDNo
+    document.getElementById("billofladingno").asInstanceOf[html.Input].value = receivingForm.billOfLading
+    document.getElementById("partno").asInstanceOf[html.Input].value = receivingForm.partNumber.toString
+    document.getElementById("origin").asInstanceOf[html.Input].value = receivingForm.origin
+    document.getElementById("truckno_state").asInstanceOf[html.Input].value = receivingForm.truck.state.toString
+    document.getElementById("truckno_random").asInstanceOf[html.Input].value = receivingForm.truck.random.toString
+    document.getElementById("truckno_area").asInstanceOf[html.Input].value = receivingForm.truck.area
+    document.getElementById("truckno_serial").asInstanceOf[html.Input].value = receivingForm.truck.serial.toString
+
+    def inquireNumberOfRows: Int = document.getElementById("itemslist").childElementCount
+
+    for(anyItem <- receivingForm.itemsList.items) {
+      addNewRowToItemsList
+      document.getElementById(s"rownumber_${inquireNumberOfRows}").innerHTML = inquireNumberOfRows.toString
+      document.getElementById(s"itemslist_description_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.description
+      document.getElementById(s"itemslist_quantity_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.quantity.toString
+      document.getElementById(s"itemslist_unitofmeasurement_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.unitOfMeasurement
+      document.getElementById(s"itemslist_grossweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.grossWeight.toString
+      document.getElementById(s"itemslist_packageweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.packageWeight.toString
+      document.getElementById(s"itemslist_netweight_${inquireNumberOfRows}").asInstanceOf[html.Input].value = anyItem.netWeight.toString
+    }
+    document.getElementById("comments").asInstanceOf[html.Input].value = receivingForm.comments
+    document.getElementById("representative_firstname").asInstanceOf[html.Input].value = receivingForm.representative.firstName
+    document.getElementById("representative_lastname").asInstanceOf[html.Input].value = receivingForm.representative.surName
+    document.getElementById("representative_nationalidno").asInstanceOf[html.Input].value = receivingForm.representative.nationalIDNo
+  }
+
   def fetchPeople: Map[String, Person] = {
     Map("0123456789" -> Person("شاهد", "وهابی", "0123456789"), "1234567890" -> Person("حامد", "اخوان", "1234567890"))
   }
@@ -23,21 +147,23 @@ object dummy {
     newOption
   }
 
-  @JSExportTopLevel("propagatePersonSelection")
-  def propagatePersonSelection(sourceInputElementId: String) = {
-    val selected = document.getElementById(sourceInputElementId).asInstanceOf[html.Input].value.toString
+  @JSExportTopLevel("propagatePersonArticleSelection")
+  def propagatePersonArticleSelection(personList: String, article: String) = {
+    val selected: String = document.getElementById(personList + "_" + article).asInstanceOf[html.Input].value
     val fetchedPeople: Map[String, Person] = fetchPeople
-    document.getElementById("goodsowner_nationalidno").asInstanceOf[html.Input].value = fetchedPeople(selected).nationalIDNo.toString
-    document.getElementById("goodsowner_firstname").asInstanceOf[html.Input].value = fetchedPeople(selected).firstName.toString
-    document.getElementById("goodsowner_lastname").asInstanceOf[html.Input].value = fetchedPeople(selected).surName.toString
+    if (fetchedPeople contains selected) {
+      document.getElementById(s"${personList}_nationalidno").asInstanceOf[html.Input].value = fetchedPeople(selected).nationalIDNo.toString
+      document.getElementById(s"${personList}_firstname").asInstanceOf[html.Input].value = fetchedPeople(selected).firstName.toString
+      document.getElementById(s"${personList}_lastname").asInstanceOf[html.Input].value = fetchedPeople(selected).surName.toString
+    }
   }
 
   @JSExportTopLevel("populateDataList")
   def populateDataList() = {
     for(person <- fetchPeople.values.toList) {
-      document.getElementById("goodsowner_fname").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${person.nationalIDNo}", s"${person.nationalIDNo}"))
-      document.getElementById("goodsowner_lname").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${person.nationalIDNo}", s"${person.nationalIDNo}"))
-      document.getElementById("goodsowner_nidno").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${person.nationalIDNo}", s"${person.nationalIDNo}"))
+      document.getElementById("fname").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${person.nationalIDNo}", s"${person.nationalIDNo}"))
+      document.getElementById("lname").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${person.nationalIDNo}", s"${person.nationalIDNo}"))
+      document.getElementById("nidno").appendChild(addOption(s"${person.firstName} " + s"${person.surName} " + s"${person.nationalIDNo}", s"${person.nationalIDNo}"))
     }
   }
 
@@ -197,6 +323,7 @@ object dummy {
   //def itemsList()
 
   case class ReceivingForm(goodsOwner: Person, number: Int, date: Date, partNumber: Int, truck: CarPlate, billOfLading: String, origin: String, itemsList: ItemsList, comments: String, representative: Person, inJsonString: String)
+  case class DispatchingForm(goodsOwner: Person, number: Int, date: Date, partNumber: Int, truck: CarPlate, draftDate: Date, draftNumber: String, draftOwner: Person, itemsList: ItemsList, comments: String, assignee: Person, inJsonString: String)
 
   def receivingForm(document: Document): ReceivingForm = {
     val formNo = document.getElementById("formno").asInstanceOf[html.Input].valueAsNumber.toInt
