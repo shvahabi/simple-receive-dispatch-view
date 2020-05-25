@@ -2,20 +2,29 @@ $(document).ready(function() {
   var index = 0;
 
   function ajaxCallRequest(f_method, f_url, f_data) {
-    $('#dataSent').val(unescape(f_data));
-    var f_contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
+    //$('#dataSent').val(unescape(f_data));
+		//console.log(f_data);
+    var f_contentType = 'text/plain; charset=UTF-8';
     $.ajax({
       url: f_url,
       type: f_method,
+			//headers: {  'Access-Control-Allow-Origin': * },
       contentType: f_contentType,
-      dataType: 'json',
+      //dataType: 'json',
       data: f_data,
-      success: function(data) {
-        var jsonResult = JSON.stringify(data);
-        $('#results').val(unescape(jsonResult));
-      },
+      //error: function(data) {         console.log(data);      },
     });
-  }
+  };
+
+$('#sendTreeJSon').click(function(event) {
+    event.preventDefault();
+    var form = $('#ajaxForm');
+    var method = 'post';
+    var url = 'http://127.0.0.1:8080/forms/receiving';
+    var jsonData = JSON.stringify($(form).serializeObject());
+    console.log(jsonData);
+    ajaxCallRequest(method, url, jsonData);
+  });
 
   $(document).on('click', '.btn-add', function(event) {
     event.preventDefault();
@@ -36,7 +45,7 @@ $(document).ready(function() {
     //console.log(index);
     inputs[index * 6 + 0].name = 'itemslist[' + index + '][description]';
     inputs[index * 6 + 1].name = 'itemslist[' + index + '][quantity]';
-    inputs[index * 6 + 2].name = 'itemslist[' + index + '][unitofmeasurment]';
+    inputs[index * 6 + 2].name = 'itemslist[' + index + '][unitofmeasurement]';
     inputs[index * 6 + 3].name = 'itemslist[' + index + '][grossweight]';
     inputs[index * 6 + 4].name = 'itemslist[' + index + '][packageweight]';
     inputs[index * 6 + 5].name = 'itemslist[' + index + '][netweight]';
@@ -153,15 +162,9 @@ $(document).ready(function() {
     },
   }); */
 
-  $('#sendTreeJSon').click(function(event) {
-    event.preventDefault();
-    var form = $('#ajaxForm');
-    var method = form.attr('method');
-    var url = form.attr('action') + 'treejson/';
-    var jsonData = $(form).serializeObject();
-    console.log(jsonData);
-    ajaxCallRequest(method, url, jsonData);
-  });
+  
+
+/*
 
   $.mockjax({
     url: 'http://127.0.0.1/formreceiving/',
@@ -173,6 +176,8 @@ $(document).ready(function() {
       this.responseText = data;
     },
   });
+
+*/
 
   $('#defaultData').click(function(event) {
     event.preventDefault();
