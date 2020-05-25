@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
@@ -8,6 +8,11 @@
   <script src="./scripts/jquery.min.js"></script>
   <script src="./scripts/popper.min.js"></script>
   <script src="./scripts/bootstrap.min.js"></script>
+  <script src="./scripts/jquery.js"></script>
+  <script src="./scripts/persian-date.js"></script>
+  <script src="./scripts/persian-datepicker.js"></script>
+  <!-- Include Scala.js compiled code -->
+  <script type="text/javascript" src="../target/scala-2.13/receive-dispatch-view-fastopt.js"></script>
   <style>
 
 @font-face {
@@ -37,13 +42,15 @@
     }
 
 
+
+
 .topnav {
   overflow: hidden;
   background-color: #e9e9e9;
 }
 
 /* Navbar links */
-.topnav a {
+.topnav button {
   display: block;
   color: black;
   text-align: center;
@@ -53,21 +60,21 @@
 width: 100px;
 }
 
-.topnav a.bg-success {
+.topnav button.bg-success {
 	float: right;
 }
 
-.topnav a.bg-primary, .topnav a.bg-danger {
+.topnav button.bg-primary, .topnav button.bg-danger {
 	float: left;
 }
 
-.topnav a.bg-warning {
+.topnav button.bg-warning {
 	float: left;
 }
 
 
 /* Navbar links on mouse-over */
-.topnav a:hover {
+.topnav button:hover {
   background-color: #ccc;
   color: black;
 }
@@ -81,9 +88,7 @@ width: 100px;
   float: center;
 }
 
-    
 
-    
     </style>
 
     
@@ -91,16 +96,16 @@ width: 100px;
 <body>
 
 <div class="topnav border-0">
-<a class="bg-success" href="../index.html"><b>خانه</b></a>
-<a class="bg-primary" href="DispatchingUpdate.html"><b>ویرایش</b></a>
-<a class="bg-warning" href=""><b>چاپ</b></a>
-<a class="bg-danger" href=""><b>حذف</b></a>
-<div class="row">
-<div class="col-6 border-0"></div>
-<input type="number" class="form-control rounded-0 border-0" placeholder="شماره" min="1" max="9999" id="formno"/>
-    <a class="bg-primary" href="">نمایش</a>
-<div class="col-6 border-0"></div>
-</div>
+  <a href="../index.html"><button class="btn btn-success bg-success rounded-0 border-0"><b>خانه</b></button></a>
+  <a href="DispatchingUpdate.html"><button class="btn btn-primary bg-primary rounded-0 border-0"><b>ویرایش</b></button></a>
+  <a class="bg-warning"><button class="btn btn-warning bg-warning rounded-0 border-0" onclick="submitDispatchingForm()"><b>چاپ</b></button></a>
+  <a><button class="btn btn-danger bg-danger rounded-0 border-0"><b>حذف</b></button></a>
+  <div class="row">
+    <div class="col-6 border-0"></div>
+    <input type="number" class="form-control rounded-0 border-0" placeholder="شماره" min="1" max="9999" id="number"/>
+    <a><button class="btn btn-primary bg-primary rounded-0 border-0" onclick="populateDispatchingTable(document.getElementById('number').value)"><b>نمایش</b></button></a>
+    <div class="col-6 border-0"></div>
+  </div>
 </div>
 
 
@@ -125,35 +130,35 @@ width: 100px;
 
   <div class="row">
     <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">شماره</div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="formno"></div></div>
 		<div class="col-4 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
     <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">تاریخ</div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="dispatcheddate"></div></div>
   </div>
 
 
   <div class="row">
     <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">صاحب کالا</div></div>
-    <div class="col-10 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-10 p-0 m-0"><div class="d-flex justify-content-center border-0" id="goods_owner"></div></div>
   </div>
 
 
   <div class="row">
     <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">شماره حواله</div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="draftno"></div></div>
     <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">تاریخ حواله</div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="draftdate"></div></div>
     <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">پارتی</div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="partno"></div></div>
   </div>
 
 
 
   <div class="row">
     <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">مالک حواله</div></div>
-    <div class="col-6 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-6 p-0 m-0"><div class="d-flex justify-content-center border-0" id="draftowner"></div></div>
     <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">شماره خودرو</div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="truckno"></div></div>
   </div>
   
   
@@ -169,75 +174,76 @@ width: 100px;
   </div>
   <div class="row">
     <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">۱</div></div>
-    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_description_1"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_1"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_1"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_1"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_1"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_1"></div></div>
   </div>
   <div class="row">
     <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">۲</div></div>
-    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_description_2"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_2"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_2"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_2"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_2"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_2"></div></div>
   </div>
   <div class="row">
     <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">۳</div></div>
-    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_description_3"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_3"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_3"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_3"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_3"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_3"></div></div>
   </div>
   <div class="row">
     <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">۴</div></div>
-    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_description_4"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_4"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_4"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_4"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_4"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_4"></div></div>
   </div>
   <div class="row">
     <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">۵</div></div>
-    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_description_5"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_5"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_5"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_5"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_5"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_5"></div></div>
   </div>
   <div class="row">
     <div class="col-4 p-0 m-0"><div class="d-flex justify-content-center border-0">جمع کل</div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_sum"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_sum"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_sum"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_sum"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_sum"></div></div>
   </div>
 
 
 
   <div class="row">
     <div class="col-12 pr-2 m-0">
-<div class="d-flex justify-content-right border-0">توضیحات</div>
+      <div class="d-flex justify-content-right border-0">توضیحات</div>
+      <div class="d-flex justify-content-right border-0" id="comments"></div>
     </div>
   </div>
   <div class="row" style="height: 20mm;">
     <div class="col-4 p-0 m-0">
-<div class="d-flex justify-content-center border-0">صاحب کالا/نماینده</div>
-                    
+      <div class="d-flex justify-content-center border-0">تحویل گیرنده</div>
+      <div class="d-flex justify-content-center border-0" id="assignee"></div>
     </div>
     <div class="col-4 p-0 m-0">
-<div class="d-flex justify-content-center border-0">انباردار</div>                          
+      <div class="d-flex justify-content-center border-0">انباردار</div>
     </div>
     <div class="col-4 p-0 m-0">
-<div class="d-flex justify-content-center border-0">مدیر سردخانه</div>                    
+      <div class="d-flex justify-content-center border-0">مدیر سردخانه</div>
     </div>
   </div>  
   </div>

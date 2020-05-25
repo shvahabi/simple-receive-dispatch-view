@@ -1,1 +1,1 @@
-/home/shahed/Documents/bsp/builds/view/0.19.0/receive-dispatch-view/target/scala-2.13/receive-dispatch-view-fastopt.js
+/home/shahed/Documents/bsp/builds/view/0.20.0/receive-dispatch-view/target/scala-2.13/receive-dispatch-view-fastopt.js
