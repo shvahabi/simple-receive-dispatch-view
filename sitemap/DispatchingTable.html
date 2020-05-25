@@ -143,7 +143,6 @@ function disableButtons() {
 document.getElementById("printbutton").setAttribute("disabled", "");
 document.getElementById("editbutton").setAttribute("disabled", "");
 document.getElementById("deletebutton").setAttribute("disabled", "");
-
 };
 </script>
     
@@ -152,12 +151,12 @@ document.getElementById("deletebutton").setAttribute("disabled", "");
 
 <div class="topnav border-0" id="nonprintarea">
   <a href="../index.html"><button class="btn btn-success bg-success rounded-0 border-0"><b>خانه</b></button></a>
-  <a href="DispatchingUpdate.html"><button class="btn btn-primary bg-primary rounded-0 border-0" id="editbutton" disabled><b>ویرایش</b></button></a>
-  <a class="bg-warning"><button class="btn btn-warning bg-warning rounded-0 border-0" onclick="window.print()" id="printbutton" disabled><b>چاپ</b></button></a>
-  <a><button class="btn btn-danger bg-danger rounded-0 border-0" onclick="deleteDispatchingForm()" id="deletebutton" disabled><b>حذف</b></button></a>
+  <a><button class="btn btn-primary bg-primary rounded-0 border-0" id="editbutton" onclick="editDispatchingForm()" disabled><b>ویرایش</b></button></a>
+  <a><button class="btn btn-warning bg-warning rounded-0 border-0" onclick="window.print()" id="printbutton" disabled><b>چاپ</b></button></a>
+  <a><button class="btn btn-danger  bg-danger  rounded-0 border-0" onclick="deleteDispatchingForm()" id="deletebutton" disabled><b>حذف</b></button></a>
   <div class="row">
     <div class="col-6 border-0"></div>
-    <input type="number" class="form-control rounded-0 border-0" placeholder="شماره" min="1" max="9999" id="tobefetchedformnumber" onchange="disableButtons()"/>
+    <input type="number" class="form-control rounded-0 border-0" placeholder="شماره" min="1" max="9999" id="formno" onchange="disableButtons()"/>
     <a><button class="btn btn-primary bg-primary rounded-0 border-0" onclick="fetchDispatchingForm()"><b>نمایش</b></button></a>
     <div class="col-6 border-0"></div>
   </div>
@@ -185,7 +184,7 @@ document.getElementById("deletebutton").setAttribute("disabled", "");
 
   <div class="row">
     <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">شماره</div></div>
-    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="formno"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="paperno"></div></div>
 		<div class="col-4 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
     <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">تاریخ</div></div>
     <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="dispatcheddate"></div></div>

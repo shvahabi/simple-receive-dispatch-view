@@ -29,8 +29,24 @@ object dummy {
   def main(args: Array[String]): Unit = {
   }
 
+  @JSExportTopLevel("editReceivingForm")
+  def editReceivingForm(): Unit = {
+    val updatingForm = document.getElementById("formno").asInstanceOf[html.Input].valueAsNumber.toInt
+    dom.window.open("ReceivingUpdate.html?formNo=" + updatingForm, "_self", "", true)
+  }
+
+  @JSExportTopLevel("editDispatchingForm")
+  def editDispatchingForm(): Unit = {
+    val updatingForm = document.getElementById("formno").asInstanceOf[html.Input].valueAsNumber.toInt
+    dom.window.open("DispatchingUpdate.html?formNo=" + updatingForm, "_self", "", true)
+  }
+
+  def uriParameterExtractor(uri: String): Map[String, String] =
+    js.URIUtils.decodeURIComponent(uri).tail.split("&").toList.map(x => (x.split("=").head, x.split("=").tail.head)).toMap
+
   @JSExportTopLevel("populateReceivingFormOnLoad")
-  def populateReceivingFormOnLoad(a: Int) = {
+  def populateReceivingFormOnLoad(): Unit = {
+    val a: String = uriParameterExtractor(dom.window.location.search)("formNo")
     val url: String = s"http://localhost:8080/receivedispatch/receipts/${a}"
     Ajax.get(url) onComplete {
       case Success(value) => {
@@ -98,7 +114,7 @@ object dummy {
 
 
   def populateReceivingTable(fetchedForm: ReceivingForm): Unit = {
-    document.getElementById("formno").innerText = translateToPersian(fetchedForm.number.toString)
+    document.getElementById("paperno").innerText = translateToPersian(fetchedForm.number.toString)
     document.getElementById("receiveddate").innerText = translateToPersian(fetchedForm.date.concat)
     document.getElementById("goods_owner").innerText = fetchedForm.goodsOwner.firstName + " " + fetchedForm.goodsOwner.surName
     document.getElementById("billofladingno").innerText = fetchedForm.billOfLading
@@ -154,10 +170,16 @@ object dummy {
 
 
 
+  /*
+  @JSExportTopLevel("checker")
+  def checker() = {
+  Globals.updatingForm = 19
+}
 
-
+   */
 
   def populateReceivingForm(receivingForm: ReceivingForm): Unit = {
+     //receivingForm.number.toString.toInt
     document.getElementById("formno").asInstanceOf[html.Input].value = receivingForm.number.toString
     document.getElementById("receiveddate").asInstanceOf[html.Input].value = translateToPersian(receivingForm.date.concat)
     document.getElementById("goodsowner_firstname").asInstanceOf[html.Input].value = receivingForm.goodsOwner.firstName
@@ -229,8 +251,8 @@ object dummy {
   }
 
   @JSExportTopLevel("deleteReceivingForm")
-  def deleteReceivingForm() = {
-    val toBeDeletedFormNumber: Int = document.getElementById("tobefetchedformnumber").asInstanceOf[html.Input].valueAsNumber.toInt
+  def deleteReceivingForm(): Unit = {
+    val toBeDeletedFormNumber: Int = document.getElementById("formno").asInstanceOf[html.Input].valueAsNumber.toInt
     val url: String = s"http://localhost:8080/receivedispatch/receipts/${toBeDeletedFormNumber}"
     Ajax.delete(url) onComplete {
       case Success(value) => {
@@ -248,8 +270,8 @@ object dummy {
   }
 
   @JSExportTopLevel("deleteDispatchingForm")
-  def deleteDispatchingForm() = {
-    val toBeDeletedFormNumber: Int = document.getElementById("tobefetchedformnumber").asInstanceOf[html.Input].valueAsNumber.toInt
+  def deleteDispatchingForm(): Unit = {
+    val toBeDeletedFormNumber: Int = document.getElementById("formno").asInstanceOf[html.Input].valueAsNumber.toInt
     val url: String = s"http://localhost:8080/receivedispatch/dispatches/${toBeDeletedFormNumber}"
     Ajax.delete(url) onComplete {
       case Success(value) => {
@@ -270,7 +292,7 @@ object dummy {
   @JSExportTopLevel("fetchReceivingForm")
   def fetchReceivingForm(): Unit = {
 
-    val toBeFetchedFormNumber: Int = document.getElementById("tobefetchedformnumber").asInstanceOf[html.Input].valueAsNumber.toInt
+    val toBeFetchedFormNumber: Int = document.getElementById("formno").asInstanceOf[html.Input].valueAsNumber.toInt
     Ajax.get(s"http://localhost:8080/receivedispatch/receipts") onComplete {
       case Success(value) => {
         val existingFormNumbers: List[Int] = JSON.parse(value.responseText).asInstanceOf[js.Array[Int]].toList
@@ -335,7 +357,7 @@ object dummy {
   @JSExportTopLevel("fetchDispatchingForm")
   def fetchDispatchingForm(): Unit = {
 
-    val toBeFetchedFormNumber: Int = document.getElementById("tobefetchedformnumber").asInstanceOf[html.Input].valueAsNumber.toInt
+    val toBeFetchedFormNumber: Int = document.getElementById("formno").asInstanceOf[html.Input].valueAsNumber.toInt
     Ajax.get(s"http://localhost:8080/receivedispatch/dispatches") onComplete {
       case Success(value) => {
         val existingFormNumbers: List[Int] = JSON.parse(value.responseText).asInstanceOf[js.Array[Int]].toList
@@ -367,7 +389,8 @@ object dummy {
 
 
   @JSExportTopLevel("populateDispatchingFormOnLoad")
-  def populateDispatchingFormOnLoad(a: Int): Unit = {
+  def populateDispatchingFormOnLoad(): Unit = {
+    val a: String = uriParameterExtractor(dom.window.location.search)("formNo")
     val url: String = s"http://localhost:8080/receivedispatch/dispatches/${a}"
     Ajax.get(url) onComplete {
       case Success(value) => {
@@ -380,7 +403,7 @@ object dummy {
   }
 
   @JSExportTopLevel("submitReceivingForm")
-  def submitReceivingForm() = {
+  def submitReceivingForm(): Unit = {
     val url: String = "http://localhost:8080/receivedispatch/receipts"
     val doc: ReceivingForm = receivingForm(document)
     Ajax.post(url, doc.inJsonString) onComplete {
@@ -416,7 +439,7 @@ object dummy {
   }
 
   @JSExportTopLevel("submitDispatchingForm")
-  def submitDispatchingForm() = {
+  def submitDispatchingForm(): Unit = {
     val url: String = "http://localhost:8080/receivedispatch/dispatches"
     val doc: DispatchingForm = dispathingForm(document)
     Ajax.post(url, doc.inJsonString) onComplete {
@@ -437,7 +460,7 @@ object dummy {
   def updateDispatchingForm(): Unit = {
     val doc: DispatchingForm = dispathingForm(document)
     val url: String = s"http://localhost:8080/receivedispatch/dispatches/${doc.number}"
-    Ajax.post(url, doc.inJsonString) onComplete {
+    Ajax.put(url, doc.inJsonString) onComplete {
       case Success(response) => {
         dom.window.alert(
           "فرم خروج کالا به شماره" +
@@ -625,7 +648,7 @@ object dummy {
   }
 
   case class CarPlate(state: Int, serial: Int, area: String, random: Int) {
-    def concat: String = "\u202D" + translateToPersian(serial.toString) + "\u202D" + translatePlateArea(area) + "\u202D" + translateToPersian(random.toString) + "\u202D" + " " + "\u202D" +translateToPersian(state.toString)
+    def concat: String = "\u202D" + translateToPersian(serial.toString) + "\u202C" + "\u202E" + translatePlateArea(area) + "\u202C" + "\u202D" + translateToPersian(random.toString) + " " + "\u202D" + translateToPersian(state.toString)
     def toJsonString: String =
       s"""{
         |"State": ${state},
@@ -635,7 +658,7 @@ object dummy {
         |}""".stripMargin
   }
   case class Date(year: String, month: String, day: String) {
-    def concat: String = ("0000" + year).takeRight(4) + "/" + ("00" + month).takeRight(2) + "/" + ("00" + day).takeRight(2)
+    def concat: String = ("0000" + year)      .takeRight(4) + "/" + ("00" + month).takeRight(2) + "/" + ("00" + day).takeRight(2)
     def toJsonString: String =
       s"""{
         |"Year": ${year.replaceFirst("^0+(?!$)", "")},
