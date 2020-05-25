@@ -79,7 +79,7 @@ $(document).ready(function() {
     e.preventDefault();
     alert('remove');
   });
-
+/*
   $('#sendQueryString').click(function(event) {
     event.preventDefault();
     var form = $('#ajaxForm');
@@ -151,7 +151,7 @@ $(document).ready(function() {
       var data = settings.data;
       this.responseText = data;
     },
-  });
+  }); */
 
   $('#sendTreeJSon').click(function(event) {
     event.preventDefault();
@@ -164,7 +164,7 @@ $(document).ready(function() {
   });
 
   $.mockjax({
-    url: '/ajaxRequest/treejson/',
+    url: 'http://127.0.0.1/formreceiving/',
     type: 'POST',
     contentType: 'text/json',
     responseTime: 0,
