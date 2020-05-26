@@ -1,0 +1,7 @@
+project/project/
+project/target/
+target/streams/
+target/scala-2.13/classes/
+target/scala-2.13/update/
+target/scala-2.13/updateFull/
+commitmsg

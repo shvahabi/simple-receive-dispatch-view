@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/bootstrap-rtl.min.css">
+  <script src="./scripts/jquery.min.js"></script>
+  <script src="./scripts/popper.min.js"></script>
+  <script src="./scripts/bootstrap.min.js"></script>
+  <script src="./scripts/jquery.js"></script>
+  <script src="./scripts/persian-date.js"></script>
+  <script src="./scripts/persian-datepicker.js"></script>
+  <!-- Include Scala.js compiled code -->
+  <script type="text/javascript" src="../target/scala-2.13/receive-dispatch-view-fastopt.js"></script>
+  <style>
+  @font-face {
+      font-family: 'Vazir';
+      src: url('./fonts/Vazir.eot');
+      src: local('./fonts/Vazir'), url('./fonts/Vazir.woff') format('woff'), url('./fonts/Vazir.ttf') format('truetype');
+      }
+
+      div {
+      border: 0.1px solid black;
+      font-family: 'Vazir', sans-serif;
+      font-size: 13px;
+      line-height: 2.5;
+      direction: rtl;
+      }
+      .row {
+      height: auto;
+width: 133mm;
+
+padding: 0;
+border: 0px solid black;
+      }
+
+   .container {
+
+     height: 209.9mm;
+width: 148mm;
+margin: auto;
+padding: 13mm 13mm 5mm 5mm;
+overflow: hidden;
+    }
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+  width: auto
+}
+
+.topnav .row {
+  width: auto
+}
+
+/* Navbar links */
+.topnav button {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+width: 100px;
+}
+
+.topnav button.bg-success {
+	float: right;
+}
+
+.topnav button.bg-primary, .topnav button.bg-danger {
+	float: left;
+}
+
+.topnav button.bg-warning {
+	float: left;
+}
+
+
+/* Navbar links on mouse-over */
+.topnav button:hover {
+  background-color: #ccc;
+  color: black;
+}
+
+
+/* Style the input field inside the navbar */
+.topnav input {
+display: inline;
+  height: 55px;
+width: 100px;
+  float: center;
+}
+
+
+
+@media only print {
+
+@page
+{
+height: 210mm;
+width: 148mm;
+margin: 0;
+padding: 0;
+}
+ div {
+font-size: 13px;
+border: 0.15px solid black;
+margin: 0;
+padding: 0;
+}
+
+
+.row {
+height: auto;
+max-width: 133mm;
+padding: 0;
+margin: 0;
+border: 0px solid black;
+}
+
+#printarea {
+height: 209.9mm;
+width: 148mm;
+margin: 0mm 0mm 0mm 0mm;
+padding: 13mm 10mm 5mm 5mm;
+overflow: hidden;
+border: 0px solid black;
+}
+
+
+}
+
+
+</style>
+
+  <script type="text/javascript">
+function hideOther() { document.getElementById("nonprintarea").style.display = "none";};
+function showAll() { document.getElementById("nonprintarea").style.display = "block";};
+function disableButtons() {
+document.getElementById("printbutton").setAttribute("disabled", "");
+document.getElementById("editbutton").setAttribute("disabled", "");
+document.getElementById("deletebutton").setAttribute("disabled", "");
+};
+</script>
+    
+</head>
+<body onbeforeprint="hideOther()" onafterprint="showAll()" class="p-0 m-0">
+
+<div class="topnav border-0" id="nonprintarea">
+  <a href="../index.html"><button class="btn btn-success bg-success rounded-0 border-0"><b>خانه</b></button></a>
+  <a><button class="btn btn-primary bg-primary rounded-0 border-0" id="editbutton" onclick="editReceivingForm()" disabled><b>ویرایش</b></button></a>
+  <a><button class="btn btn-warning bg-warning rounded-0 border-0" onclick="window.print()" disabled id="printbutton"><b>چاپ</b></button></a>
+  <a><button class="btn btn-danger bg-danger rounded-0 border-0" onclick="deleteReceivingForm()" id="deletebutton" disabled><b>حذف</b></button></a>
+  <div class="row">
+    <div class="col-6 border-0"></div>
+    <input type="number" class="form-control rounded-0 border-0" placeholder="شماره" min="1" max="9999" id="formno" onchange="disableButtons()"/>
+    <a><button class="btn btn-primary bg-primary rounded-0 border-0" onclick="fetchReceivingForm()"><b>نمایش</b></button></a>
+    <div class="col-6 border-0"></div>
+  </div>
+</div>
+
+
+<div class="container" id="printarea">
+  <div class="row">
+    <div class="col-12 border-0  p-0 m-0">
+      <div class="d-flex justify-content-center border-0">
+        <h4>سردخانه فرخ</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 border-0  p-0 m-0">
+      <div class="d-flex justify-content-center border-0">
+        <h5>برگ ورود کالا</h5>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">شماره</div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="paperno"></div></div>
+		<div class="col-4 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">تاریخ</div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="receiveddate"></div></div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">صاحب کالا</div></div>
+    <div class="col-10 p-0 m-0"><div class="d-flex justify-content-center border-0" id="goods_owner"></div></div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">شماره بارنامه</div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="billofladingno"></div></div>
+		<div class="col-4 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">پارتی</div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="partno"></div></div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">محل ارسال</div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="origin"></div></div>
+		<div class="col-4 p-0 m-0"><div class="d-flex justify-content-center border-0"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">شماره خودرو</div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="truckno"></div></div>
+  </div>
+  
+  
+
+  <div class="row">
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">ردیف</div></div>
+    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0">عنوان کالا</div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">مقدار</div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">واحد</div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">وزن ناخالص</div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">وزن خالی بسته</div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0">وزن خالص</div></div>
+  </div>
+  <div class="row">
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">۱</div></div>
+    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_description_1"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_1"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_1"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_1"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_1"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_1"></div></div>
+  </div>
+  <div class="row">
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">۲</div></div>
+    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_description_2"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_2"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_2"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_2"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_2"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_2"></div></div>
+  </div>
+  <div class="row">
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">۳</div></div>
+    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_description_3"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_3"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_3"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_3"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_3"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_3"></div></div>
+  </div>
+  <div class="row">
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">۴</div></div>
+    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_description_4"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_4"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_4"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_4"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_4"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_4"></div></div>
+  </div>
+  <div class="row">
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0">۵</div></div>
+    <div class="col-3 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_description_5"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_5"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_5"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_5"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_5"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_5"></div></div>
+  </div>
+  <div class="row">
+    <div class="col-4 p-0 m-0"><div class="d-flex justify-content-center border-0">جمع کل</div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_quantity_sum"></div></div>
+    <div class="col-1 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_unitofmeasurement_sum"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_grossweight_sum"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_packageweight_sum"></div></div>
+    <div class="col-2 p-0 m-0"><div class="d-flex justify-content-center border-0" id="itemslist_netweight_sum"></div></div>
+  </div>
+
+
+
+  <div class="row" style="height: 25mm;">
+    <div class="col-12 p-2 m-0">
+      <div class="d-flex justify-content-right border-0" id="comments">توضیحات</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 p-2 m-0">
+      <div class="d-flex justify-content-right border-0" style="line-height: 1.5; font-size: 10px;">
+        عیوب پنهانی کالا، بیمه کالا، مسؤولیت حقوقی و قانونی کالا بعهده صاحب کالا می‌باشد.
+      </div>
+        <div class="d-flex justify-content-right border-0" style="line-height: 1.5; font-size:10px;">
+        مسؤولیت عدم تطابق محتویات داخل بسته‌بندی با اطلاعات مندرج در برچسب اطلاعات کالا به عهده صاحب کالا و تحویل‌دهنده کالا می‌باشد و سردخانه هیچگونه مسؤولیتی در این خصوص ندارد.
+      </div>
+    </div>
+  </div>
+  <div class="row" style="height: 20mm;">
+    <div class="col-4 p-0 m-0">
+      <div class="d-flex justify-content-center border-0">صاحب کالا/نماینده</div>
+      <div class="d-flex justify-content-center border-0" id="representative"></div>
+    </div>
+    <div class="col-4 p-0 m-0">
+      <div class="d-flex justify-content-center border-0">انباردار</div>
+    </div>
+    <div class="col-4 p-0 m-0">
+      <div class="d-flex justify-content-center border-0">مدیر سردخانه</div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>
+

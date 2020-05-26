@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/bootstrap-rtl.min.css">
+	<link rel="stylesheet" href="./css/persian-datepicker.css"/>
+  <script src="./scripts/jquery.min.js"></script>
+  <script src="./scripts/popper.min.js"></script>
+  <script src="./scripts/bootstrap.min.js"></script>
+	<script src="./scripts/jquery.js"></script>
+  <script src="./scripts/persian-date.js"></script>
+  <script src="./scripts/persian-datepicker.js"></script>
+  <!-- Include Scala.js compiled code -->
+  <script type="text/javascript" src="../target/scala-2.13/receive-dispatch-view-fastopt.js"></script>
+  <style>
+
+@font-face {
+      font-family: 'Vazir';
+      src: url('./fonts/Vazir.eot');
+      src: local('./fonts/Vazir'), url('./fonts/Vazir.woff') format('woff'), url('./fonts/Vazir.ttf') format('truetype');
+      }
+
+
+    div, input {
+      /* border: 1px solid black; */
+      font-family: 'Vazir', sans-serif;
+      font-size: 12px;
+      line-height: 1.6;
+      direction: rtl;
+    }
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+/* Navbar links */
+.topnav button {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+width: 100px;
+}
+
+.topnav button.bg-success {
+	float: right;
+}
+
+.topnav button.bg-primary, .topnav button.bg-danger {
+	float: left;
+}
+
+.topnav button.bg-warning {
+	float: left;
+}
+
+
+/* Navbar links on mouse-over */
+.topnav button:hover {
+  background-color: #ccc;
+  color: black;
+}
+
+
+/* Style the input field inside the navbar */
+.topnav input {
+display: inline;
+  height: 55px;
+width: 100px;
+  float: center;
+}
+    </style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".persiandatepicker").pDatepicker({format: 'YYYY/MM/DD'});
+		fetchPeople();
+  });
+
+
+</script>
+
+    
+</head>
+<body>
+
+<div class="topnav">
+  <a href="../index.html"><button class="btn btn-success bg-success rounded-0 border-0"><b>خانه</b></button></a>
+  <a><button class="btn btn-primary bg-primary rounded-0 border-0" onclick="submitDispatchingForm()"><b>ثبت</b></button></a>
+  <a href="DispatchingForm.html"><button class="btn btn-danger bg-danger rounded-0 border-0"><b>بازنشانی</b></button></a>
+</div>
+
+<div class="container">  
+  <div class="row">
+    <div class="col-12 border-0">
+      <div class="d-flex justify-content-center">
+        <h1>سردخانه فرخ</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 border-0">
+      <div class="d-flex justify-content-center">
+        <h2>برگ خروج کالا</h2>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <div class="row">
+    <span class="form-control col-1 border-0 rounded-0">شماره</span>
+    <input type="number" class="form-control col-1 rounded-0" placeholder="شماره" min="1" max="9999" id="formno"/>
+    <div class="col-8"></div>
+    <span class="form-control border-0 col-1 rounded-0">تاریخ</span>
+    <input type="text" class="form-control col-1 rounded-0 persiandatepicker p-0" id="dispatcheddate" style="text-align: center;">
+  </div>
+
+<datalist id="fname">
+</datalist>
+<datalist id="lname">
+</datalist>
+<datalist id="nidno">
+</datalist>
+
+  <br />
+  <div class="row">
+    <span class="form-control col-1 border-0 rounded-0">صاحب کالا</span>
+    <input type="text" list="fname" class="form-control col-2 rounded-0" placeholder="نام" id="goodsowner_firstname" oninput="propagatePersonArticleSelection('goodsowner', 'firstname')"/>
+    <input type="text" list="lname" class="form-control col-2 rounded-0" placeholder="نام خانوادگی" id="goodsowner_lastname" oninput="propagatePersonArticleSelection('goodsowner', 'lastname')"/>
+    <input type="text" list="nidno" class="form-control col-2 rounded-0" placeholder="شماره ملی" pattern="[۰-۹]{10}" id="goodsowner_nationalidno" oninput="propagatePersonArticleSelection('goodsowner', 'nationalidno')"/>
+    <div class="col-4"></div>
+  </div>
+
+<br />
+  <div class="row">
+    <span class="form-control border-0 col-1 rounded-0">شماره‌حواله</span>
+    <input type="text" class="form-control col-1 rounded-0" placeholder="شماره" id="draftno"/>
+    <span class="form-control border-0 col-1 rounded-0">تاریخ حواله</span>
+    <input type="text" class="form-control col-1 rounded-0 persiandatepicker p-0" id="draftdate" style="text-align: center;">
+    <div class="col-6"></div>
+    <span class="form-control border-0 col-1 rounded-0">پارتی</span>
+    <input type="number" class="form-control col-1 rounded-0" placeholder="شماره" min="1" id="partno"/>
+  </div>
+
+
+  <br />  
+  <div class="row">
+    <span class="form-control col-1 border-0 rounded-0">مالک حواله</span>
+    <input type="text" list="fname" class="form-control col-2 rounded-0" placeholder="نام" id="draftowner_firstname" oninput="propagatePersonArticleSelection('draftowner', 'firstname')" />
+    <input type="text" list="lname" class="form-control col-2 rounded-0" placeholder="نام خانوادگی" id="draftowner_lastname" oninput="propagatePersonArticleSelection('draftowner', 'lastname')" />
+    <input type="text" list="nidno" class="form-control col-2 rounded-0" placeholder="شماره ملی" pattern="[۰-۹]{10}" id="draftowner_nationalidno" oninput="propagatePersonArticleSelection('draftowner', 'nationalidno')" />
+    <span class="form-control border-0 col-1 rounded-0">خودرو</span>
+    <input type="number" class="form-control col-1 rounded-0" placeholder="ایران" min="10" max="99" id="truckno_state">
+    <input type="number" class="form-control col-1 rounded-0" placeholder="رندوم" min="100" max="999" id="truckno_random">
+    <select type="text" class="form-control col-1 rounded-0" placeholder="الفبا" id="truckno_area">
+      <option value="a">الف</option>
+      <option value="b">ب</option>
+      <option value="p">پ</option>
+      <option value="t">ت</option>
+      <option value="th">ث</option>
+      <option value="j">ج</option>
+      <option value="d">د</option>
+      <option value="z">ز</option>
+      <option value="zh">ژ</option>
+      <option value="s">س</option>
+      <option value="sh">ش</option>
+      <option value="ss">ص</option>
+      <option value="tt">ط</option>
+      <option value="e">ع</option>
+      <option value="f">ف</option>
+      <option value="q">ق</option>
+      <option value="k">ک</option>
+      <option value="g">گ</option>
+      <option value="l">ل</option>
+      <option value="m">م</option>
+      <option value="n">ن</option>
+      <option value="v">و</option>
+      <option value="h">ه</option>
+      <option value="y">ی</option>
+      <option value="dd">D</option>
+      <option value="sss">S</option>
+    </select>
+    <input type="number" class="form-control col-1 rounded-0" placeholder="سریال" min="10" max="99" id="truckno_serial">
+  </div>
+  
+  
+<br />
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <button class="btn btn-outline-success col-1 rounded-0" type="button" id="appendrow" onclick="addNewRowToItemsList()">ردیف</button>
+      <span class="form-control col-3 rounded-0">عنوان کالا</span>
+      <span class="form-control col-1 rounded-0">مقدار</span>
+      <span class="form-control col-1 rounded-0">واحد</span>
+      <span class="form-control col-2 rounded-0">وزن ناخالص</span>
+      <span class="form-control col-2 rounded-0">وزن خالی بسته</span>
+      <span class="form-control col-2 rounded-0">وزن خالص</span>
+    </div>
+    <div id="itemslist"></div>
+    <div class="row" lang="fa">
+      <span class="form-control col-4 rounded-0">جمع کل</span>
+      <span class="form-control col-1 rounded-0" id="qty_sum">۰</span>
+      <span class="form-control col-1 rounded-0" id="unit_sum">-</span>
+      <span class="form-control col-2 rounded-0" id="gw_sum">۰</span>
+      <span class="form-control col-2 rounded-0" id="pw_sum">۰</span>
+      <span class="form-control col-2 rounded-0" id="nw_sum">۰</span>
+    </div>
+  </div>
+</div>
+
+  <br />
+  <div class="row">
+    <textarea class="form-control col-12 rounded-0" placeholder="توضیحات" id="comments"></textarea>
+  </div>
+
+  <br />
+  <div class="row">
+    <span class="form-control border-0 col-1 rounded-0">تحویل‌گیرنده</span>
+    <input type="text" list="fname" class="form-control col-2 rounded-0" placeholder="نام" id="assignee_firstname" oninput="propagatePersonArticleSelection('assignee', 'firstname')" />
+    <input type="text" list="lname" class="form-control col-2 rounded-0" placeholder="نام خانوادگی" id="assignee_lastname" oninput="propagatePersonArticleSelection('assignee', 'lastname')" />
+    <input type="text" list="nidno" class="form-control col-2 rounded-0" placeholder="شماره ملی" pattern="[۰-۹]{10}" id="assignee_nationalidno" oninput="propagatePersonArticleSelection('assignee', 'nationalidno')" />
+    <div class="col-4"></div>
+  </div>
+  
+  
+</div>
+</body>
+</html>
+
